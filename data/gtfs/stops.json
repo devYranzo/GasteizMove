@@ -1,0 +1,4833 @@
+[
+  {
+    "id": "1179",
+    "name": "Prado",
+    "latitude": 42.845945,
+    "longitude": -2.674669,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "E1",
+        "name": "E1"
+      }
+    ]
+  },
+  {
+    "id": "1001",
+    "name": "Intermodal",
+    "latitude": 42.85952,
+    "longitude": -2.68017,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      }
+    ]
+  },
+  {
+    "id": "1171",
+    "name": "Bº Tomás Zumarraga 71",
+    "latitude": 42.851921,
+    "longitude": -2.691413,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1190",
+    "name": "Alibarra / Bekolarra",
+    "latitude": 42.860789,
+    "longitude": -2.718366,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1081",
+    "name": "Aragón",
+    "latitude": 42.84917,
+    "longitude": -2.657531,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1398",
+    "name": "Bake kalea  -  Paz",
+    "latitude": 42.845745,
+    "longitude": -2.668094,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1368",
+    "name": "Derechos Humanos / Paseo Eskibel",
+    "latitude": 42.841355,
+    "longitude": -2.698488,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1031",
+    "name": "Nieves Cano / Unibersitatea",
+    "latitude": 42.83856,
+    "longitude": -2.67252,
+    "routes": [
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1225",
+    "name": "Derechos Humanos / Reina Sofía",
+    "latitude": 42.842172,
+    "longitude": -2.70297,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1322",
+    "name": "Naciones Unidas / Mariturri",
+    "latitude": 42.848882,
+    "longitude": -2.70871,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1320",
+    "name": "Paula Montal / Casas Rojas",
+    "latitude": 42.855688,
+    "longitude": -2.703252,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1080",
+    "name": "Jacinto Benavente 7",
+    "latitude": 42.845451,
+    "longitude": -2.658112,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1221",
+    "name": "Lermandabidea / Zuazobidea",
+    "latitude": 42.849075,
+    "longitude": -2.733245,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1051",
+    "name": "Zumaquera",
+    "latitude": 42.835865,
+    "longitude": -2.665105,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1104",
+    "name": "Portal Legutiano 50",
+    "latitude": 42.856136,
+    "longitude": -2.664763,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1154",
+    "name": "Castilla 9",
+    "latitude": 42.843762,
+    "longitude": -2.679193,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1334",
+    "name": "Bake kalea  /  Santiago Ospitalea  -  Paz / Hospital Santiago",
+    "latitude": 42.846357,
+    "longitude": -2.667951,
+    "routes": []
+  },
+  {
+    "id": "1364",
+    "name": "Lermandabidea / Jundiz",
+    "latitude": 42.846571,
+    "longitude": -2.738264,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1359",
+    "name": "Hegoalde",
+    "latitude": 42.836099,
+    "longitude": -2.667875,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1246",
+    "name": "Antonio Machado 58",
+    "latitude": 42.858907,
+    "longitude": -2.697072,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1131",
+    "name": "Portal Foronda 35",
+    "latitude": 42.86292,
+    "longitude": -2.684945,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1391",
+    "name": "Pedro Asúa 21",
+    "latitude": 42.84878,
+    "longitude": -2.689551,
+    "routes": [
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1152",
+    "name": "Castilla 47",
+    "latitude": 42.840864,
+    "longitude": -2.687469,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1074",
+    "name": "Mendizorrotza",
+    "latitude": 42.838281,
+    "longitude": -2.686375,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1388",
+    "name": "Lermandabidea / Ortuoste",
+    "latitude": 42.850236,
+    "longitude": -2.730011,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1045",
+    "name": "Madrid / Andalucía",
+    "latitude": 42.85481,
+    "longitude": -2.657449,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1182",
+    "name": "Valladolid / Andalucía",
+    "latitude": 42.851814,
+    "longitude": -2.65913,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "G6",
+        "name": "G6"
+      }
+    ]
+  },
+  {
+    "id": "1323",
+    "name": "Naciones Unidas / Salvador Dalí",
+    "latitude": 42.848232,
+    "longitude": -2.704776,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1236",
+    "name": "Av. Bruselas / Joaquín Collar",
+    "latitude": 42.851219,
+    "longitude": -2.654706,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1313",
+    "name": "Larragana / Kapelamendi",
+    "latitude": 42.866845,
+    "longitude": -2.645695,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1328",
+    "name": "Elvira Zulueta",
+    "latitude": 42.840898,
+    "longitude": -2.683429,
+    "routes": [
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1037",
+    "name": "Los Herrán 86",
+    "latitude": 42.852725,
+    "longitude": -2.666794,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1375",
+    "name": "Antonio Amat 24",
+    "latitude": 42.838594,
+    "longitude": -2.647696,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1227",
+    "name": "Naciones Unidas 1",
+    "latitude": 42.845329,
+    "longitude": -2.695142,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1056",
+    "name": "Castillo Fontecha / Castilla",
+    "latitude": 42.840714,
+    "longitude": -2.691179,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1169",
+    "name": "Bº Tomás Zumarraga / Argentina",
+    "latitude": 42.850698,
+    "longitude": -2.684852,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "7",
+        "name": "7"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1376",
+    "name": "Venta La Estrella / Oreitiasolo",
+    "latitude": 42.83693,
+    "longitude": -2.6576,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1055",
+    "name": "Mendizorrotza",
+    "latitude": 42.838486,
+    "longitude": -2.687537,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1270",
+    "name": "Av. Los Huetos / Mayoristas",
+    "latitude": 42.857845,
+    "longitude": -2.721099,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1393",
+    "name": "Bº Tomás Zumarraga 98",
+    "latitude": 42.852014,
+    "longitude": -2.691394,
+    "routes": [
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1017",
+    "name": "Av. Gasteiz / Bastiturri",
+    "latitude": 42.84781,
+    "longitude": -2.681558,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1177",
+    "name": "Adriano VI 17",
+    "latitude": 42.847467,
+    "longitude": -2.682497,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "7",
+        "name": "7"
+      },
+      {
+        "id": "G3",
+        "name": "G3"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1386",
+    "name": "Txagorritxu",
+    "latitude": 42.857193,
+    "longitude": -2.688955,
+    "routes": [
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1054",
+    "name": "Salbatierrabide",
+    "latitude": 42.837578,
+    "longitude": -2.680159,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1400",
+    "name": "Gabriel Martínez Aragón",
+    "latitude": 42.847517,
+    "longitude": -2.638502,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1010",
+    "name": "Av. Santiago / Sanidad",
+    "latitude": 42.847054,
+    "longitude": -2.666332,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1220",
+    "name": "Lermandabidea 4",
+    "latitude": 42.844356,
+    "longitude": -2.742692,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1184",
+    "name": "8 de marzo 24",
+    "latitude": 42.854129,
+    "longitude": -2.650263,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "G6",
+        "name": "G6"
+      }
+    ]
+  },
+  {
+    "id": "1201",
+    "name": "Arriurdina / Júndiz",
+    "latitude": 42.834811,
+    "longitude": -2.734888,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1079",
+    "name": "Jacinto Benavente / Florida",
+    "latitude": 42.842029,
+    "longitude": -2.658296,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1025",
+    "name": "Europa",
+    "latitude": 42.852489,
+    "longitude": -2.680517,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1023",
+    "name": "Honduras",
+    "latitude": 42.857253,
+    "longitude": -2.681034,
+    "routes": [
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1347",
+    "name": "Henry Morton Stanley / Av Los Huetos",
+    "latitude": 42.8529,
+    "longitude": -2.69865,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1109",
+    "name": "Portal Zurbano / Biosfera",
+    "latitude": 42.863657,
+    "longitude": -2.64646,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1087",
+    "name": "Portal Bergara 25",
+    "latitude": 42.87356,
+    "longitude": -2.64654,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1028",
+    "name": "Av. Gasteiz 19",
+    "latitude": 42.844521,
+    "longitude": -2.682503,
+    "routes": [
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1301",
+    "name": "Paz",
+    "latitude": 42.845029,
+    "longitude": -2.668275,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "E1",
+        "name": "E1"
+      }
+    ]
+  },
+  {
+    "id": "1271",
+    "name": "Luis Olariaga / Gernikako Arbola",
+    "latitude": 42.868086,
+    "longitude": -2.683161,
+    "routes": [
+      {
+        "id": "E7",
+        "name": "E7"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1091",
+    "name": "Portal Betoño 15",
+    "latitude": 42.859631,
+    "longitude": -2.659934,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1339",
+    "name": "Iliada 10",
+    "latitude": 42.844763,
+    "longitude": -2.644029,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1268",
+    "name": "Av. Los Huetos / Mercedes",
+    "latitude": 42.856688,
+    "longitude": -2.714014,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1073",
+    "name": "Castillo Fontecha / Castilla",
+    "latitude": 42.840616,
+    "longitude": -2.691274,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1160",
+    "name": "Intermodal",
+    "latitude": 42.8602,
+    "longitude": -2.68201,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "E7",
+        "name": "E7"
+      }
+    ]
+  },
+  {
+    "id": "1326",
+    "name": "Bº Tomás Zumarraga 34",
+    "latitude": 42.850262,
+    "longitude": -2.681835,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1011",
+    "name": "Paz",
+    "latitude": 42.844424,
+    "longitude": -2.668424,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1251",
+    "name": "Venta la Estrella 6",
+    "latitude": 42.837104,
+    "longitude": -2.657172,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1040",
+    "name": "Portal Arriaga / Venezuela",
+    "latitude": 42.859424,
+    "longitude": -2.674048,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1034",
+    "name": "Los Herrán 4",
+    "latitude": 42.842529,
+    "longitude": -2.664236,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "8",
+        "name": "8"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      },
+      {
+        "id": "E1",
+        "name": "E1"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      },
+      {
+        "id": "G6",
+        "name": "G6"
+      }
+    ]
+  },
+  {
+    "id": "1134",
+    "name": "Portal Arriaga 21",
+    "latitude": 42.855689,
+    "longitude": -2.673449,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1276",
+    "name": "Derechos Humanos / Reina Sofía",
+    "latitude": 42.841985,
+    "longitude": -2.701259,
+    "routes": [
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1261",
+    "name": "Wellington",
+    "latitude": 42.859909,
+    "longitude": -2.69193,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1020",
+    "name": "Av. Gasteiz 86",
+    "latitude": 42.854766,
+    "longitude": -2.679928,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      }
+    ]
+  },
+  {
+    "id": "1085",
+    "name": "Zaramaga / Portal Gamarra",
+    "latitude": 42.859247,
+    "longitude": -2.662224,
+    "routes": [
+      {
+        "id": "9",
+        "name": "9"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1137",
+    "name": "Francia 23",
+    "latitude": 42.848625,
+    "longitude": -2.668401,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1231",
+    "name": "Portal Elorriaga / Ambulatorio",
+    "latitude": 42.84877,
+    "longitude": -2.651825,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1130",
+    "name": "Donostia 11",
+    "latitude": 42.862526,
+    "longitude": -2.689064,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1178",
+    "name": "Adriano VI 1",
+    "latitude": 42.84658,
+    "longitude": -2.679838,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1048",
+    "name": "Jacinto Benavente 7",
+    "latitude": 42.845535,
+    "longitude": -2.658204,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1302",
+    "name": "Paz",
+    "latitude": 42.845362,
+    "longitude": -2.668195,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1147",
+    "name": "Camino Armentia",
+    "latitude": 42.834592,
+    "longitude": -2.703881,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1105",
+    "name": "Portal Betoño 4",
+    "latitude": 42.857626,
+    "longitude": -2.662529,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1044",
+    "name": "Madrid 36",
+    "latitude": 42.856849,
+    "longitude": -2.659435,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1006",
+    "name": "Portal Legutiano / Iparralde",
+    "latitude": 42.854959,
+    "longitude": -2.666627,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1280",
+    "name": "Iruña / Baiona",
+    "latitude": 42.862154,
+    "longitude": -2.697824,
+    "routes": [
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1282",
+    "name": "Donostia / Baiona",
+    "latitude": 42.864575,
+    "longitude": -2.690565,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1082",
+    "name": "Madrid / Aranzabela",
+    "latitude": 42.852982,
+    "longitude": -2.65728,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      },
+      {
+        "id": "G6",
+        "name": "G6"
+      }
+    ]
+  },
+  {
+    "id": "1135",
+    "name": "San Ignacio",
+    "latitude": 42.852685,
+    "longitude": -2.671687,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1242",
+    "name": "Derechos Humanos / Reina Sofía",
+    "latitude": 42.842304,
+    "longitude": -2.703002,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1362",
+    "name": "Jundiz / Zurrupitieta",
+    "latitude": 42.841971,
+    "longitude": -2.737848,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1069",
+    "name": "Seminario",
+    "latitude": 42.85065,
+    "longitude": -2.688501,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "7",
+        "name": "7"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1041",
+    "name": "Juan de Garay / Arriaga",
+    "latitude": 42.86023,
+    "longitude": -2.6786,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "8",
+        "name": "8"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      },
+      {
+        "id": "E7",
+        "name": "E7"
+      }
+    ]
+  },
+  {
+    "id": "1014",
+    "name": "Teodoro Dublang 49",
+    "latitude": 42.843184,
+    "longitude": -2.684404,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1335",
+    "name": "Av. Los Huetos 2",
+    "latitude": 42.853101,
+    "longitude": -2.696454,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1321",
+    "name": "Paula Montal / Casas Rojas",
+    "latitude": 42.855695,
+    "longitude": -2.703888,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1181",
+    "name": "Olaguibel / Ambulatorio",
+    "latitude": 42.845833,
+    "longitude": -2.665582,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1092",
+    "name": "Portal Gamarra / Deba",
+    "latitude": 42.858928,
+    "longitude": -2.66292,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1355",
+    "name": "Seminario",
+    "latitude": 42.851399,
+    "longitude": -2.688886,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1062",
+    "name": "Jose Atxotegi 22",
+    "latitude": 42.855869,
+    "longitude": -2.688569,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1016",
+    "name": "Adriano VI / Bustinzuri",
+    "latitude": 42.848715,
+    "longitude": -2.686201,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1299",
+    "name": "Paz",
+    "latitude": 42.844645,
+    "longitude": -2.668372,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1115",
+    "name": "Portal Gamarra 41",
+    "latitude": 42.873297,
+    "longitude": -2.658036,
+    "routes": [
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1338",
+    "name": "Bruselas / Portal Elorriaga",
+    "latitude": 42.849741,
+    "longitude": -2.647297,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1404",
+    "name": "Aragoi  -  Aragón",
+    "latitude": 42.848648,
+    "longitude": -2.656821,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1027",
+    "name": "Av. Gasteiz 45",
+    "latitude": 42.847541,
+    "longitude": -2.68181,
+    "routes": [
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1039",
+    "name": "Reyes Católicos 1",
+    "latitude": 42.85531,
+    "longitude": -2.673,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1214",
+    "name": "Lermandabidea / Lanzadera",
+    "latitude": 42.850666,
+    "longitude": -2.72349,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1094",
+    "name": "Obispo Ballester",
+    "latitude": 42.852544,
+    "longitude": -2.666466,
+    "routes": [
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1351",
+    "name": "Bremen/Düsseldorf",
+    "latitude": 42.853339,
+    "longitude": -2.709234,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1205",
+    "name": "Ariñez",
+    "latitude": 42.829514,
+    "longitude": -2.748318,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1150",
+    "name": "Castilla 107",
+    "latitude": 42.838104,
+    "longitude": -2.695366,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1392",
+    "name": "Esmaltaciones",
+    "latitude": 42.835405,
+    "longitude": -2.661227,
+    "routes": [
+      {
+        "id": "E1",
+        "name": "E1"
+      }
+    ]
+  },
+  {
+    "id": "1377",
+    "name": "Teresa Calcuta 8",
+    "latitude": 42.847848,
+    "longitude": -2.693162,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1015",
+    "name": "Teodoro Dublang / Bustinzuri",
+    "latitude": 42.84397,
+    "longitude": -2.68778,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1208",
+    "name": "Jundiz / Paduleta",
+    "latitude": 42.832313,
+    "longitude": -2.73453,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1239",
+    "name": "Naciones Unidas 1",
+    "latitude": 42.845414,
+    "longitude": -2.694801,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1043",
+    "name": "Zaramaga / Portal Gamarra",
+    "latitude": 42.859032,
+    "longitude": -2.662442,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1341",
+    "name": "Iliada / Nadine Gordimer",
+    "latitude": 42.844893,
+    "longitude": -2.644039,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1399",
+    "name": "Bruselas hiribidea  /  Elorriaga  -  Av. Bruselas  /  Elorriaga",
+    "latitude": 42.848548,
+    "longitude": -2.641641,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1317",
+    "name": "Larragana / Portal Bergara",
+    "latitude": 42.867312,
+    "longitude": -2.650818,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1279",
+    "name": "Iruña / Lizarra",
+    "latitude": 42.860241,
+    "longitude": -2.696032,
+    "routes": [
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1133",
+    "name": "Portal Arriaga / Venezuela",
+    "latitude": 42.859493,
+    "longitude": -2.674184,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1199",
+    "name": "Basaldea / Gerezpea",
+    "latitude": 42.838462,
+    "longitude": -2.730744,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1401",
+    "name": "Bruselas hiribidea  /  Elorriaga  -  Av. Bruselas  /  Elorriaga",
+    "latitude": 42.848753,
+    "longitude": -2.641533,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1250",
+    "name": "Heraclio Fournier 42",
+    "latitude": 42.83585,
+    "longitude": -2.660731,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "E1",
+        "name": "E1"
+      }
+    ]
+  },
+  {
+    "id": "1191",
+    "name": "Alibarra / Mayoristas",
+    "latitude": 42.858506,
+    "longitude": -2.721773,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1314",
+    "name": "Buesa Arena",
+    "latitude": 42.864433,
+    "longitude": -2.644102,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1118",
+    "name": "Portal Gamarra 3",
+    "latitude": 42.86157,
+    "longitude": -2.66195,
+    "routes": [
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1353",
+    "name": "Las Arenas / Mercedes",
+    "latitude": 42.849721,
+    "longitude": -2.71441,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1372",
+    "name": "Teresa Calcuta 15",
+    "latitude": 42.84764,
+    "longitude": -2.692928,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1083",
+    "name": "Madrid / 8 de marzo",
+    "latitude": 42.854711,
+    "longitude": -2.65716,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      },
+      {
+        "id": "G6",
+        "name": "G6"
+      }
+    ]
+  },
+  {
+    "id": "1022",
+    "name": "Intermodal",
+    "latitude": 42.85966,
+    "longitude": -2.68227,
+    "routes": [
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1207",
+    "name": "Paduleta / Uzbina",
+    "latitude": 42.831167,
+    "longitude": -2.738766,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1212",
+    "name": "Basaldea / Zurripitieta",
+    "latitude": 42.843647,
+    "longitude": -2.732244,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1032",
+    "name": "Nieves Cano / Comandante Izarduy",
+    "latitude": 42.838483,
+    "longitude": -2.669024,
+    "routes": [
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1142",
+    "name": "José María Cagigal 5",
+    "latitude": 42.834453,
+    "longitude": -2.699074,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1206",
+    "name": "Paduleta / Mendigorritxu",
+    "latitude": 42.831045,
+    "longitude": -2.743824,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1217",
+    "name": "Zurrupitieta / Jundiz",
+    "latitude": 42.841259,
+    "longitude": -2.738386,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1248",
+    "name": "Heraclio Fournier 2",
+    "latitude": 42.838547,
+    "longitude": -2.665714,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "E1",
+        "name": "E1"
+      }
+    ]
+  },
+  {
+    "id": "1114",
+    "name": "Gamarra Mayor",
+    "latitude": 42.876958,
+    "longitude": -2.657355,
+    "routes": [
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1365",
+    "name": "Lermandabidea / Araneta",
+    "latitude": 42.844601,
+    "longitude": -2.743405,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1093",
+    "name": "Portal Legutiano 41",
+    "latitude": 42.856752,
+    "longitude": -2.664104,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1163",
+    "name": "Portal Foronda 64",
+    "latitude": 42.868626,
+    "longitude": -2.687715,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1237",
+    "name": "Madrid / Valladolid",
+    "latitude": 42.85212,
+    "longitude": -2.65778,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1003",
+    "name": "Zaramaga / Reyes de Navarra",
+    "latitude": 42.86123,
+    "longitude": -2.67,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      }
+    ]
+  },
+  {
+    "id": "1211",
+    "name": "Basaldea / Gerezpea",
+    "latitude": 42.838709,
+    "longitude": -2.730666,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1086",
+    "name": "Durana Pueblo",
+    "latitude": 42.890694,
+    "longitude": -2.639972,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1095",
+    "name": "José Mardones",
+    "latitude": 42.849489,
+    "longitude": -2.665759,
+    "routes": [
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1156",
+    "name": "Ramiro Maeztu 20",
+    "latitude": 42.849145,
+    "longitude": -2.678264,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1059",
+    "name": "Pedro Asúa 12",
+    "latitude": 42.847599,
+    "longitude": -2.690602,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1012",
+    "name": "Catedral",
+    "latitude": 42.844676,
+    "longitude": -2.677132,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1063",
+    "name": "Euskal Herria",
+    "latitude": 42.858213,
+    "longitude": -2.684685,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1342",
+    "name": "Guillermo Elio",
+    "latitude": 42.838989,
+    "longitude": -2.652043,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1363",
+    "name": "Zurrupitieta / Jundiz",
+    "latitude": 42.841947,
+    "longitude": -2.736915,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1380",
+    "name": "Antonio Amat 2",
+    "latitude": 42.841343,
+    "longitude": -2.645043,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1068",
+    "name": "Mexico / Residencia",
+    "latitude": 42.853335,
+    "longitude": -2.687455,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1170",
+    "name": "Bº Tomás Zumarraga 76",
+    "latitude": 42.851174,
+    "longitude": -2.687597,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1367",
+    "name": "Zurrupitieta / Mendigorritxu",
+    "latitude": 42.837865,
+    "longitude": -2.745354,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1366",
+    "name": "Mendigorritxu",
+    "latitude": 42.84045,
+    "longitude": -2.746847,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1144",
+    "name": "Camino Armentia",
+    "latitude": 42.834701,
+    "longitude": -2.703871,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1120",
+    "name": "Aretxabaleta / Pueblo",
+    "latitude": 42.831532,
+    "longitude": -2.672655,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1100",
+    "name": "Judimendi 7",
+    "latitude": 42.847254,
+    "longitude": -2.66135,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1296",
+    "name": "Prado",
+    "latitude": 42.845845,
+    "longitude": -2.67521,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1033",
+    "name": "Castro Urdiales",
+    "latitude": 42.83894,
+    "longitude": -2.66575,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "8",
+        "name": "8"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1403",
+    "name": "Asparrena",
+    "latitude": 42.83105,
+    "longitude": -2.67069,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1148",
+    "name": "Armentia / Basílica",
+    "latitude": 42.832501,
+    "longitude": -2.701428,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1066",
+    "name": "Txagorritxu",
+    "latitude": 42.856547,
+    "longitude": -2.690813,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1187",
+    "name": "Urartea / San Miguel Atxa",
+    "latitude": 42.862369,
+    "longitude": -2.710929,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1185",
+    "name": "Urartea / Vitorialanda",
+    "latitude": 42.858881,
+    "longitude": -2.708418,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1192",
+    "name": "Asteguieta",
+    "latitude": 42.86133,
+    "longitude": -2.729698,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1007",
+    "name": "Valladolid 10",
+    "latitude": 42.853359,
+    "longitude": -2.66416,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "G6",
+        "name": "G6"
+      }
+    ]
+  },
+  {
+    "id": "1348",
+    "name": "Henry Morton Stanley / Océano Atlántico",
+    "latitude": 42.850231,
+    "longitude": -2.699469,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1258",
+    "name": "Florida / Jacinto Benavente",
+    "latitude": 42.841782,
+    "longitude": -2.655914,
+    "routes": [
+      {
+        "id": "G6",
+        "name": "G6"
+      }
+    ]
+  },
+  {
+    "id": "1361",
+    "name": "Lermandabidea / Jundiz",
+    "latitude": 42.846926,
+    "longitude": -2.738759,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1019",
+    "name": "Europa",
+    "latitude": 42.852111,
+    "longitude": -2.680455,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1240",
+    "name": "Zabalgana 39",
+    "latitude": 42.844049,
+    "longitude": -2.696862,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1378",
+    "name": "Zurrupitieta / Jundiz",
+    "latitude": 42.841831,
+    "longitude": -2.736818,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1180",
+    "name": "Olaguibel 20",
+    "latitude": 42.84622,
+    "longitude": -2.66888,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "7",
+        "name": "7"
+      },
+      {
+        "id": "E1",
+        "name": "E1"
+      }
+    ]
+  },
+  {
+    "id": "1241",
+    "name": "Derechos Humanos / Paseo Eskibel",
+    "latitude": 42.841481,
+    "longitude": -2.698711,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1327",
+    "name": "Reyes Navarra / Telefonica",
+    "latitude": 42.857481,
+    "longitude": -2.669284,
+    "routes": [
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1345",
+    "name": "Portal Zurbano 2",
+    "latitude": 42.86401,
+    "longitude": -2.65094,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1298",
+    "name": "Catedral",
+    "latitude": 42.845036,
+    "longitude": -2.67661,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "7",
+        "name": "7"
+      },
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1138",
+    "name": "Castilla 36",
+    "latitude": 42.842158,
+    "longitude": -2.684125,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1203",
+    "name": "Paduleta / Uzbina",
+    "latitude": 42.831252,
+    "longitude": -2.738774,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1046",
+    "name": "Madrid / Valladolid",
+    "latitude": 42.852973,
+    "longitude": -2.657636,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1175",
+    "name": "Av. Los Huetos / Ali",
+    "latitude": 42.853648,
+    "longitude": -2.699416,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1382",
+    "name": "Iruña Veleia / Oyón",
+    "latitude": 42.839655,
+    "longitude": -2.707066,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1123",
+    "name": "Portal Gamarra 28",
+    "latitude": 42.861468,
+    "longitude": -2.661909,
+    "routes": [
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1158",
+    "name": "Coronación ",
+    "latitude": 42.852703,
+    "longitude": -2.674941,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1218",
+    "name": "Zurrupitieta / Mendigorritxu",
+    "latitude": 42.837916,
+    "longitude": -2.745589,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1108",
+    "name": "Betoño Pueblo",
+    "latitude": 42.863197,
+    "longitude": -2.654833,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1358",
+    "name": "Consultas externas",
+    "latitude": 42.854223,
+    "longitude": -2.691701,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1394",
+    "name": "Jacinto Benavente 2",
+    "latitude": 42.845317,
+    "longitude": -2.658369,
+    "routes": [
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1102",
+    "name": "Valladolid 3",
+    "latitude": 42.853239,
+    "longitude": -2.663149,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1157",
+    "name": "Domingo Beltrán",
+    "latitude": 42.851969,
+    "longitude": -2.67731,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1126",
+    "name": "Plaza Gamarra",
+    "latitude": 42.874486,
+    "longitude": -2.656142,
+    "routes": [
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1070",
+    "name": "Pedro Asúa 12",
+    "latitude": 42.847584,
+    "longitude": -2.690679,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1162",
+    "name": "Portal Foronda 44",
+    "latitude": 42.865021,
+    "longitude": -2.685264,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1311",
+    "name": "Viveros",
+    "latitude": 42.877902,
+    "longitude": -2.642793,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1315",
+    "name": "Portal Zurbano / Biosfera",
+    "latitude": 42.863968,
+    "longitude": -2.647538,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1330",
+    "name": "Mariturri / Oyón",
+    "latitude": 42.839184,
+    "longitude": -2.711509,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1373",
+    "name": "Teodoro Dublang / Bustinzuri",
+    "latitude": 42.84429,
+    "longitude": -2.68863,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1050",
+    "name": "Esmaltaciones",
+    "latitude": 42.835691,
+    "longitude": -2.659734,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1183",
+    "name": "8 de marzo 10",
+    "latitude": 42.85489,
+    "longitude": -2.65459,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "G6",
+        "name": "G6"
+      }
+    ]
+  },
+  {
+    "id": "1166",
+    "name": "8 de marzo 13",
+    "latitude": 42.85525,
+    "longitude": -2.654505,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1316",
+    "name": "Larragana / Kapelamendi",
+    "latitude": 42.867019,
+    "longitude": -2.645639,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1385",
+    "name": "Mariturri / Reina Sofía",
+    "latitude": 42.836463,
+    "longitude": -2.710858,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1172",
+    "name": "Av. Los Huetos / Ali",
+    "latitude": 42.853797,
+    "longitude": -2.699586,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1038",
+    "name": "Plaza Zuberoa",
+    "latitude": 42.854497,
+    "longitude": -2.668132,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1204",
+    "name": "Paduleta / Mendigorritxu",
+    "latitude": 42.831132,
+    "longitude": -2.743844,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1173",
+    "name": "Av. Los Huetos / Antonio Machado",
+    "latitude": 42.854973,
+    "longitude": -2.705121,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1232",
+    "name": "Varsovia",
+    "latitude": 42.847226,
+    "longitude": -2.650955,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1202",
+    "name": "Jundiz / Paduleta",
+    "latitude": 42.832158,
+    "longitude": -2.734681,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1009",
+    "name": "Av. Santiago 43",
+    "latitude": 42.847657,
+    "longitude": -2.661766,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1306",
+    "name": "Cementerio",
+    "latitude": 42.834025,
+    "longitude": -2.616074,
+    "routes": [
+      {
+        "id": "E1",
+        "name": "E1"
+      }
+    ]
+  },
+  {
+    "id": "1349",
+    "name": "Henry Morton Stanley / Av Los Huetos",
+    "latitude": 42.853094,
+    "longitude": -2.698481,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1136",
+    "name": "Francia / San Antón",
+    "latitude": 42.850924,
+    "longitude": -2.669471,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1346",
+    "name": "Paula Montal / Escolapias",
+    "latitude": 42.855604,
+    "longitude": -2.70049,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1273",
+    "name": "Arriaga / Pueblo",
+    "latitude": 42.865677,
+    "longitude": -2.676752,
+    "routes": [
+      {
+        "id": "E7",
+        "name": "E7"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1324",
+    "name": "Naciones Unidas / Paseo Unicef",
+    "latitude": 42.846358,
+    "longitude": -2.700008,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1249",
+    "name": "Heraclio Fournier 24",
+    "latitude": 42.837217,
+    "longitude": -2.66324,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "E1",
+        "name": "E1"
+      }
+    ]
+  },
+  {
+    "id": "1042",
+    "name": "Zaramaga / Boulevard",
+    "latitude": 42.86092,
+    "longitude": -2.66849,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1233",
+    "name": "Bulevar Salburua / La Valletta",
+    "latitude": 42.845296,
+    "longitude": -2.649596,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "G6",
+        "name": "G6"
+      }
+    ]
+  },
+  {
+    "id": "1096",
+    "name": "Manuel Iradier",
+    "latitude": 42.84171,
+    "longitude": -2.66771,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      },
+      {
+        "id": "E1",
+        "name": "E1"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1035",
+    "name": "Los Herrán 36",
+    "latitude": 42.845362,
+    "longitude": -2.665148,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "8",
+        "name": "8"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "5000",
+    "name": "Alibarra  /  Handizkariak  -  Alibarra  /  Mayoristas",
+    "latitude": 42.858541,
+    "longitude": -2.721592,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1381",
+    "name": "Iruña Veleia / Reina Sofía",
+    "latitude": 42.83698,
+    "longitude": -2.705547,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1383",
+    "name": "Iruña Veleia / Reina Sofía",
+    "latitude": 42.836802,
+    "longitude": -2.70574,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1174",
+    "name": "Av. Los Huetos / Borinbizkarra",
+    "latitude": 42.85485,
+    "longitude": -2.70512,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1238",
+    "name": "Av. Santiago 55",
+    "latitude": 42.848,
+    "longitude": -2.65905,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1196",
+    "name": "Lermandabidea / Lanzadera",
+    "latitude": 42.851132,
+    "longitude": -2.723789,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1356",
+    "name": "Consultas externas",
+    "latitude": 42.854332,
+    "longitude": -2.691678,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1297",
+    "name": "Catedral",
+    "latitude": 42.84487,
+    "longitude": -2.676875,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1387",
+    "name": "Lermandabidea / Ortuoste",
+    "latitude": 42.849822,
+    "longitude": -2.729465,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1106",
+    "name": "Portal Betoño 16",
+    "latitude": 42.859405,
+    "longitude": -2.66008,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1234",
+    "name": "Bulevar Salburua 7",
+    "latitude": 42.847131,
+    "longitude": -2.649846,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1067",
+    "name": "Jose Atxotegi / Txagorritxu",
+    "latitude": 42.855444,
+    "longitude": -2.68828,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1229",
+    "name": "Av. Santiago 46",
+    "latitude": 42.84786,
+    "longitude": -2.65951,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1188",
+    "name": "Urartea / Alibarra",
+    "latitude": 42.864184,
+    "longitude": -2.712239,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1164",
+    "name": "Bulevar Salburua / Plaza Unión",
+    "latitude": 42.850987,
+    "longitude": -2.650541,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1024",
+    "name": "Av. Gasteiz 93",
+    "latitude": 42.854406,
+    "longitude": -2.680108,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1090",
+    "name": "Portal Betoño / I.D. arte",
+    "latitude": 42.861219,
+    "longitude": -2.657711,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1272",
+    "name": "Portal Arriaga / Lascaray",
+    "latitude": 42.87027,
+    "longitude": -2.680412,
+    "routes": [
+      {
+        "id": "E7",
+        "name": "E7"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1325",
+    "name": "Naciones Unidas / Salvador Dalí",
+    "latitude": 42.848486,
+    "longitude": -2.705075,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1228",
+    "name": "Av. Gasteiz / Juzgados",
+    "latitude": 42.843981,
+    "longitude": -2.682422,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1124",
+    "name": "Portal Gamarra / Cantábrico",
+    "latitude": 42.864255,
+    "longitude": -2.660961,
+    "routes": [
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1260",
+    "name": "Jesús Guridi",
+    "latitude": 42.84414,
+    "longitude": -2.66803,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "E1",
+        "name": "E1"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      },
+      {
+        "id": "G6",
+        "name": "G6"
+      }
+    ]
+  },
+  {
+    "id": "1159",
+    "name": "Portal Arriaga 20",
+    "latitude": 42.855768,
+    "longitude": -2.673323,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1053",
+    "name": "Unibertsitatea",
+    "latitude": 42.836687,
+    "longitude": -2.672782,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1065",
+    "name": "Euskal Herria",
+    "latitude": 42.858725,
+    "longitude": -2.68394,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1097",
+    "name": "Comandante Izarduy 14",
+    "latitude": 42.837745,
+    "longitude": -2.668876,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1226",
+    "name": "Naciones Unidas / Paseo Unicef",
+    "latitude": 42.846205,
+    "longitude": -2.699992,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1165",
+    "name": "8 de marzo 27",
+    "latitude": 42.85445,
+    "longitude": -2.65001,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1247",
+    "name": "Wellington",
+    "latitude": 42.859621,
+    "longitude": -2.691954,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1374",
+    "name": "Juan Ángel Sáez",
+    "latitude": 42.843786,
+    "longitude": -2.685388,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1168",
+    "name": "Basoa",
+    "latitude": 42.854731,
+    "longitude": -2.676896,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1029",
+    "name": "Portal Lasarte",
+    "latitude": 42.838376,
+    "longitude": -2.683828,
+    "routes": [
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1340",
+    "name": "Iliada / Gabriel Martínez Aragón",
+    "latitude": 42.846052,
+    "longitude": -2.639034,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1395",
+    "name": "Jacinto Benavente/Florida",
+    "latitude": 42.841919,
+    "longitude": -2.658552,
+    "routes": [
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1116",
+    "name": "Portal Gamarra 17",
+    "latitude": 42.868932,
+    "longitude": -2.659537,
+    "routes": [
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1235",
+    "name": "Av. Bruselas 7",
+    "latitude": 42.850699,
+    "longitude": -2.651588,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1189",
+    "name": "Alibarra / Gobeo",
+    "latitude": 42.862008,
+    "longitude": -2.715211,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1127",
+    "name": "Landaberde",
+    "latitude": 42.869456,
+    "longitude": -2.690402,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1167",
+    "name": "Valladolid / Andalucía",
+    "latitude": 42.851998,
+    "longitude": -2.659115,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1141",
+    "name": "Castilla 120",
+    "latitude": 42.838373,
+    "longitude": -2.695062,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1099",
+    "name": "Judimendi / San Juan",
+    "latitude": 42.845627,
+    "longitude": -2.661374,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1389",
+    "name": "Viveros",
+    "latitude": 42.877517,
+    "longitude": -2.642891,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1210",
+    "name": "Arriurdina / Basaldea",
+    "latitude": 42.835534,
+    "longitude": -2.730227,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1209",
+    "name": "Arriurdina / Júndiz",
+    "latitude": 42.834763,
+    "longitude": -2.734678,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1350",
+    "name": "Bremen 15",
+    "latitude": 42.85349,
+    "longitude": -2.70857,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1139",
+    "name": "Castilla / Etxezarra",
+    "latitude": 42.841035,
+    "longitude": -2.687382,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1331",
+    "name": "Iruña Veleia / Derechos Humanos",
+    "latitude": 42.841604,
+    "longitude": -2.708144,
+    "routes": [
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1161",
+    "name": "Portal Foronda 24",
+    "latitude": 42.862665,
+    "longitude": -2.68366,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1132",
+    "name": "Intermodal",
+    "latitude": 42.860333,
+    "longitude": -2.682977,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1198",
+    "name": "Basaldea / Zurrupitieta",
+    "latitude": 42.843489,
+    "longitude": -2.732307,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1384",
+    "name": "Mariturri / Oyón",
+    "latitude": 42.838338,
+    "longitude": -2.711634,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1245",
+    "name": "Antonio Machado / Pasaje",
+    "latitude": 42.857404,
+    "longitude": -2.700924,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      },
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1360",
+    "name": "Comandante Izarduy / Zumaquera",
+    "latitude": 42.835918,
+    "longitude": -2.669393,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1117",
+    "name": "Portal Gamarra / Cantábrico",
+    "latitude": 42.864351,
+    "longitude": -2.661015,
+    "routes": [
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1143",
+    "name": "Av. San Prudencio",
+    "latitude": 42.83381,
+    "longitude": -2.70222,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1390",
+    "name": "Ariñez Concejo",
+    "latitude": 42.828711,
+    "longitude": -2.74981,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1084",
+    "name": "Madrid 36",
+    "latitude": 42.857111,
+    "longitude": -2.659247,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1397",
+    "name": "Esmaltazioak  -  Esmaltaciones",
+    "latitude": 42.835319,
+    "longitude": -2.661179,
+    "routes": [
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1021",
+    "name": "Honduras",
+    "latitude": 42.857417,
+    "longitude": -2.680851,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1176",
+    "name": "Bº Tomás Zumarraga 71",
+    "latitude": 42.851852,
+    "longitude": -2.691356,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1026",
+    "name": "Av. Gasteiz 73",
+    "latitude": 42.850576,
+    "longitude": -2.680936,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "8",
+        "name": "8"
+      }
+    ]
+  },
+  {
+    "id": "1396",
+    "name": "Trianas",
+    "latitude": 42.837143,
+    "longitude": -2.662541,
+    "routes": [
+      {
+        "id": "E1",
+        "name": "E1"
+      }
+    ]
+  },
+  {
+    "id": "1219",
+    "name": "Mendigorritxu",
+    "latitude": 42.840585,
+    "longitude": -2.746766,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1002",
+    "name": "Juan de Garay / Paraguay",
+    "latitude": 42.860319,
+    "longitude": -2.677475,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1312",
+    "name": "Larragana / Portal Bergara",
+    "latitude": 42.86716,
+    "longitude": -2.65087,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1153",
+    "name": "Castilla / Prado",
+    "latitude": 42.842059,
+    "longitude": -2.684042,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1018",
+    "name": "Av. Gasteiz 54",
+    "latitude": 42.850461,
+    "longitude": -2.680785,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      }
+    ]
+  },
+  {
+    "id": "1110",
+    "name": "Buesa Arena",
+    "latitude": 42.864548,
+    "longitude": -2.642978,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1336",
+    "name": "Av. Los Huetos / Jerónimo Roure",
+    "latitude": 42.852499,
+    "longitude": -2.694235,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1267",
+    "name": "Venta la caña",
+    "latitude": 42.87421,
+    "longitude": -2.681437,
+    "routes": [
+      {
+        "id": "E7",
+        "name": "E7"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1101",
+    "name": "Judimendi / San José",
+    "latitude": 42.85032,
+    "longitude": -2.6612,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1052",
+    "name": "Hegoalde",
+    "latitude": 42.836197,
+    "longitude": -2.667979,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1008",
+    "name": "Judimendi / San José",
+    "latitude": 42.849993,
+    "longitude": -2.661304,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      }
+    ]
+  },
+  {
+    "id": "1243",
+    "name": "Derechos Humanos 34",
+    "latitude": 42.841954,
+    "longitude": -2.705793,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1078",
+    "name": "Esmaltaciones",
+    "latitude": 42.835582,
+    "longitude": -2.65991,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1337",
+    "name": "Bulevar Salburua / Paseo de Atenas",
+    "latitude": 42.851174,
+    "longitude": -2.650741,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "G6",
+        "name": "G6"
+      }
+    ]
+  },
+  {
+    "id": "1402",
+    "name": "Bruselas hiribidea  /  Elorriagako atea  -  Av. Bruselas  /  Portal Elorriaga",
+    "latitude": 42.849864,
+    "longitude": -2.647277,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1379",
+    "name": "Iliada / Bulevar Salburua",
+    "latitude": 42.844062,
+    "longitude": -2.648385,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1030",
+    "name": "Salbatierrabide",
+    "latitude": 42.837522,
+    "longitude": -2.680013,
+    "routes": [
+      {
+        "id": "8",
+        "name": "8"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1283",
+    "name": "Etxezarra",
+    "latitude": 42.844805,
+    "longitude": -2.692489,
+    "routes": [
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1318",
+    "name": "Portal Bergara / Eskalmendi",
+    "latitude": 42.873594,
+    "longitude": -2.646368,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1128",
+    "name": "Donostia 49",
+    "latitude": 42.86781,
+    "longitude": -2.692894,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1103",
+    "name": "Reyes Navarra 10",
+    "latitude": 42.854626,
+    "longitude": -2.665579,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1224",
+    "name": "Derechos Humanos 29",
+    "latitude": 42.84189,
+    "longitude": -2.705625,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1061",
+    "name": "Mexico / Residencia",
+    "latitude": 42.85316,
+    "longitude": -2.68736,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1036",
+    "name": "José Mardones",
+    "latitude": 42.849357,
+    "longitude": -2.665772,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "8",
+        "name": "8"
+      },
+      {
+        "id": "G6",
+        "name": "G6"
+      }
+    ]
+  },
+  {
+    "id": "1058",
+    "name": "Castillo Fontecha / Aretxaga",
+    "latitude": 42.843272,
+    "longitude": -2.692012,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1300",
+    "name": "Paz",
+    "latitude": 42.844832,
+    "longitude": -2.668326,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1354",
+    "name": "Antonio Machado/Paula Montal",
+    "latitude": 42.855794,
+    "longitude": -2.705069,
+    "routes": [
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1089",
+    "name": "Harrobi",
+    "latitude": 42.862658,
+    "longitude": -2.655928,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1149",
+    "name": "José María Cagigal 4",
+    "latitude": 42.834354,
+    "longitude": -2.699258,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1262",
+    "name": "Antonio Machado 17",
+    "latitude": 42.85909,
+    "longitude": -2.69717,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1343",
+    "name": "Antonio Amat 47",
+    "latitude": 42.838158,
+    "longitude": -2.648196,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1077",
+    "name": "Zumaquera",
+    "latitude": 42.835769,
+    "longitude": -2.664945,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1263",
+    "name": "Antonio Machado / Pasaje",
+    "latitude": 42.85734,
+    "longitude": -2.70165,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1200",
+    "name": "Arriurdina / Basaldea",
+    "latitude": 42.835595,
+    "longitude": -2.730346,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1140",
+    "name": "Castilla 80",
+    "latitude": 42.839718,
+    "longitude": -2.691197,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1075",
+    "name": "Unibertsitatea",
+    "latitude": 42.836645,
+    "longitude": -2.672711,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1344",
+    "name": "Antonio Amat 5",
+    "latitude": 42.841423,
+    "longitude": -2.644708,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1329",
+    "name": "Reina Sofía",
+    "latitude": 42.83637,
+    "longitude": -2.709093,
+    "routes": [
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1119",
+    "name": "Comandante Izarduy / Zumaquera",
+    "latitude": 42.83585,
+    "longitude": -2.669401,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1064",
+    "name": "Zaramaga / Boulevard",
+    "latitude": 42.861328,
+    "longitude": -2.668923,
+    "routes": [
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1151",
+    "name": "Castilla 67",
+    "latitude": 42.839947,
+    "longitude": -2.690089,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      }
+    ]
+  },
+  {
+    "id": "1121",
+    "name": "Zalduondo",
+    "latitude": 42.826893,
+    "longitude": -2.674723,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      },
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  },
+  {
+    "id": "1295",
+    "name": "Prado",
+    "latitude": 42.845922,
+    "longitude": -2.674805,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1309",
+    "name": "Reyes Navarra 19",
+    "latitude": 42.857364,
+    "longitude": -2.66929,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "G1",
+        "name": "G1"
+      }
+    ]
+  },
+  {
+    "id": "1071",
+    "name": "Castillo Fontecha / Aretxaga",
+    "latitude": 42.843297,
+    "longitude": -2.692194,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ]
+  },
+  {
+    "id": "1281",
+    "name": "Baiona",
+    "latitude": 42.863223,
+    "longitude": -2.695877,
+    "routes": [
+      {
+        "id": "G4",
+        "name": "G4"
+      }
+    ]
+  },
+  {
+    "id": "1319",
+    "name": "Paula Montal / Escolapias",
+    "latitude": 42.855731,
+    "longitude": -2.700585,
+    "routes": [
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1255",
+    "name": "Venta la Estrella / Errekaleor",
+    "latitude": 42.837836,
+    "longitude": -2.65472,
+    "routes": [
+      {
+        "id": "10",
+        "name": "10"
+      }
+    ]
+  },
+  {
+    "id": "1155",
+    "name": "Ramiro Maeztu 6",
+    "latitude": 42.847233,
+    "longitude": -2.678895,
+    "routes": [
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "7",
+        "name": "7"
+      }
+    ]
+  },
+  {
+    "id": "1369",
+    "name": "Zabalgana 38",
+    "latitude": 42.843984,
+    "longitude": -2.696601,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1357",
+    "name": "Txagorritxu",
+    "latitude": 42.856217,
+    "longitude": -2.690957,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1230",
+    "name": "Portal Elorriaga 6",
+    "latitude": 42.848354,
+    "longitude": -2.655194,
+    "routes": [
+      {
+        "id": "6",
+        "name": "6"
+      }
+    ]
+  },
+  {
+    "id": "1047",
+    "name": "Aragón",
+    "latitude": 42.84917,
+    "longitude": -2.65782,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "G2",
+        "name": "G2"
+      }
+    ]
+  },
+  {
+    "id": "1215",
+    "name": "Lermandabidea / Zuazobidea",
+    "latitude": 42.84947,
+    "longitude": -2.73367,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1275",
+    "name": "Micaela Portilla / Juzgados",
+    "latitude": 42.843373,
+    "longitude": -2.681452,
+    "routes": [
+      {
+        "id": "1",
+        "name": "1"
+      },
+      {
+        "id": "10",
+        "name": "10"
+      },
+      {
+        "id": "4",
+        "name": "4"
+      },
+      {
+        "id": "6",
+        "name": "6"
+      },
+      {
+        "id": "G3",
+        "name": "G3"
+      }
+    ]
+  },
+  {
+    "id": "1186",
+    "name": "Urartea / Vitoriabidea",
+    "latitude": 42.86044,
+    "longitude": -2.709542,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1352",
+    "name": "Las Arenas / Mercedes",
+    "latitude": 42.85005,
+    "longitude": -2.715156,
+    "routes": [
+      {
+        "id": "5",
+        "name": "5"
+      }
+    ]
+  },
+  {
+    "id": "1049",
+    "name": "Jacinto Benavente / Florida",
+    "latitude": 42.84199,
+    "longitude": -2.658399,
+    "routes": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ]
+  },
+  {
+    "id": "1107",
+    "name": "Portal Betoño / I.D. arte",
+    "latitude": 42.861235,
+    "longitude": -2.657526,
+    "routes": [
+      {
+        "id": "3",
+        "name": "3"
+      }
+    ]
+  },
+  {
+    "id": "1125",
+    "name": "Portal Gamarra 46",
+    "latitude": 42.868424,
+    "longitude": -2.659514,
+    "routes": [
+      {
+        "id": "9",
+        "name": "9"
+      }
+    ]
+  }
+]

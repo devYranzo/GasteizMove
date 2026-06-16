@@ -1,0 +1,31 @@
+agency_id,route_id,route_short_name,route_long_name,route_type,route_desc,route_color,route_sort_order,route_url,continuous_pickup,continuous_drop_off
+320,1,1,Circular,3,1 - Circular,ffdd00,5,,1,1
+320,10,10,Aldaia - Larrein,3,10 - Aldaia - Larrein,00a54f,4,,1,1
+320,3,3,Betoño - Goikolarra,3,3 - Betoño - Goikolarra,44c7f4,9,,1,1
+320,4,4,Lakua - Mariturri,3,4 - Lakua - Mariturri,ed1c24,40,,1,1
+320,5,5,Arkaiate - Elejalde,3,5 - Arkaiate - Elejalde,8cc63f,19,,1,1
+320,6,6,Zabalgana - Arkaiate,3,6 - Zabalgana - Arkaiate,a066aa,11,,1,1
+320,7,7,Borinbizkarra - Paz,3,7 - Borinbizkarra - Paz,a76534,70,,1,1
+320,8,8,Unibertsitatea,3,8 - Unibertsitatea,faa61a,6,,1,1
+320,9,9,Gamarra - Goikolarra,3,9 - Gamarra - Goikolarra,0066b3,1,,1,1
+320,A,A,BEI A,3,A - BEI A,f499c1,21,,1,1
+320,B,B,BEI B,3,B - BEI B,FB6E8A,12,,1,1
+320,E1,E1,Cementerio El Salvador,3,E1 - Cementerio El Salvador,d8f400,15,,1,1
+320,E3,E3,Fernando Buesa Arena,3,E3 - Fernando Buesa Arena,ace000,25,,1,1
+320,E4,E4,Fernando Buesa Arena,3,E4 - Fernando Buesa Arena,6cb500,14,,1,1
+320,E5,E5,Especial Alavés A,3,E5 - Especial Alavés A,abe424,22,,1,1
+320,E6,E6,Especial Alavés B,3,E6 - Especial Alavés B,faa61a,41,,1,1
+320,E7,E7,Abetxuko,3,E7 - Abetxuko,ffdd00,3,,1,1
+320,E8,E8,Especial conciertos Buesa Arena,3,E8 - Especial conciertos Buesa Arena,ffdd00,13,,1,1
+320,ES,ES,San Prudencio,3,ES - San Prudencio,c39e13,7,,1,1
+320,F,F,Ferial,3,F - Ferial,f499c1,74,,1,1
+320,FN,FN,Ferial Nocturno,3,FN - Ferial Nocturno,44c7f4,29,,1,1
+320,G1,G1,Lakua - Abetxuko,3,G1 - Lakua - Abetxuko,ffdd00,16,,1,1
+320,G2,G2,Adurtza - Salburua,3,G2 - Adurtza - Salburua,f499c1,8,,1,1
+320,G3,G3,Armentia - Zabalgana,3,G3 - Armentia - Zabalgana,44c7f4,20,,1,1
+320,G4,G4,Sansomendi - Lakua,3,G4 - Sansomendi - Lakua,ed1c24,2,,1,1
+320,G6,G6,Salburua - Aranbizkarra,3,G6 - Salburua - Aranbizkarra,faa61a,28,,1,1
+320,N1,N1,Baskonia Noche,3,N1 - Baskonia Noche,ace000,52,,1,1
+320,N2,N2,Eventos Buesa noche,3,N2 - Eventos Buesa noche,ffdd00,10,,1,1
+320,N3,N3,Especial mendi A nocturno,3,N3 - Especial mendi A nocturno,abe424,39,,1,1
+320,N4,N4,Especial mendi B nocturno,3,N4 - Especial mendi B nocturno,faa61a,65,,1,1
