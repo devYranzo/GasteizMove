@@ -25,7 +25,45 @@ export default function TabOneScreen() {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const [sheetIndex, setSheetIndex] = useState(-1);
 
-  // User Location
+  // 🆕 INITIAL REGION CONTROLADO
+  const [initialRegion, setInitialRegion] = useState<null | {
+    latitude: number;
+    longitude: number;
+    latitudeDelta: number;
+    longitudeDelta: number;
+  }>(null);
+
+  // 🆕 obtener ubicación al cargar
+  useEffect(() => {
+    async function getLocation() {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+
+      if (status === "granted") {
+        const location = await Location.getCurrentPositionAsync({});
+
+        setInitialRegion({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+          latitudeDelta: 0.006, // 👈 más cerca
+          longitudeDelta: 0.006,
+        });
+
+        return;
+      }
+
+      // fallback Vitoria
+      setInitialRegion({
+        latitude: 42.846,
+        longitude: -2.673,
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.05,
+      });
+    }
+
+    getLocation();
+  }, []);
+
+  // User Location (CENTRAR)
   async function centerOnUser() {
     const { status } = await Location.requestForegroundPermissionsAsync();
 
@@ -37,8 +75,8 @@ export default function TabOneScreen() {
       {
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01,
+        latitudeDelta: 0.006, // 👈 MÁS CERCA (IMPORTANTE)
+        longitudeDelta: 0.006,
       },
       500
     );
@@ -72,7 +110,6 @@ export default function TabOneScreen() {
     bottomSheetRef.current?.close();
   }
 
-  // Filter stops based on search
   const filteredStops = stops.filter((stop) =>
     stop.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -111,20 +148,16 @@ export default function TabOneScreen() {
     return () => clearInterval(interval);
   }, [selectedRouteId]);
 
+  // ⛔ IMPORTANTE: no renderizar mapa sin región
+  if (!initialRegion) {
+    return <View style={{ flex: 1 }} />;
+  }
+
   return (
     <View style={{ flex: 1 }}>
       <SearchBar value={search} onChangeText={setSearch} />
-      <MapView
-        style={{ flex: 1 }}
-        initialRegion={{
-          latitude: 42.846,
-          longitude: -2.673,
-          latitudeDelta: 0.05,
-          longitudeDelta: 0.05,
-        }}
-        ref={mapRef}
-        showsUserLocation
-      >
+
+      <MapView style={{ flex: 1 }} initialRegion={initialRegion} ref={mapRef} showsUserLocation>
         <RouteLines selectedRouteId={selectedRouteId} />
         <BusStops
           stops={filteredStops}
@@ -141,7 +174,6 @@ export default function TabOneScreen() {
           position: "absolute",
           right: 20,
           bottom: sheetIndex === -1 ? 30 : sheetIndex === 0 ? 150 : 350,
-
           width: 52,
           height: 52,
           borderRadius: 26,
