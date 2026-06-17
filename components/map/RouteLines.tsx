@@ -14,7 +14,7 @@ export function RouteLines({ selectedRouteId }: Props) {
         .filter((route) => route.routeId === selectedRouteId)
         .map((route) => (
           <Polyline
-            key={route.routeId}
+            key={`${route.routeId}-${route.shapeId}`}
             coordinates={route.coordinates.map(([longitude, latitude]) => ({
               latitude,
               longitude,
