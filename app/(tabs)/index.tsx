@@ -1,5 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import MapView from "react-native-maps";
 
@@ -19,13 +19,19 @@ export default function TabOneScreen() {
   const [search, setSearch] = useState("");
   const [selectedStop, setSelectedStop] = useState<Stop | null>(null);
   const [selectedRouteId, setSelectedRouteId] = useState<string | null>(null);
+  const [visibleRegion, setVisibleRegion] = useState<{
+    latitude: number;
+    longitude: number;
+    latitudeDelta: number;
+    longitudeDelta: number;
+  } | null>(null);
   const [buses, setBuses] = useState<any[]>([]);
 
   const mapRef = useRef<MapView>(null);
   const bottomSheetRef = useRef<BottomSheet>(null);
   const [sheetIndex, setSheetIndex] = useState(-1);
 
-  // 🆕 INITIAL REGION CONTROLADO
+  // INITIAL REGION CONTROLADO
   const [initialRegion, setInitialRegion] = useState<null | {
     latitude: number;
     longitude: number;
@@ -33,7 +39,7 @@ export default function TabOneScreen() {
     longitudeDelta: number;
   }>(null);
 
-  // 🆕 obtener ubicación al cargar
+  // Obtener ubicación al cargar
   useEffect(() => {
     async function getLocation() {
       const { status } = await Location.requestForegroundPermissionsAsync();
@@ -44,7 +50,7 @@ export default function TabOneScreen() {
         setInitialRegion({
           latitude: location.coords.latitude,
           longitude: location.coords.longitude,
-          latitudeDelta: 0.006, // 👈 más cerca
+          latitudeDelta: 0.006,
           longitudeDelta: 0.006,
         });
 
@@ -75,12 +81,33 @@ export default function TabOneScreen() {
       {
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
-        latitudeDelta: 0.006, // 👈 MÁS CERCA (IMPORTANTE)
+        latitudeDelta: 0.006,
         longitudeDelta: 0.006,
       },
       500
     );
   }
+
+  const visibleStopIds = useMemo(() => {
+    const ids = stops
+      .filter((stop) => {
+        if (selectedRouteId) {
+          return stop.routes.some((r) => r.id === selectedRouteId);
+        }
+        if (search.trim()) {
+          return stop.name.toLowerCase().includes(search.toLowerCase());
+        }
+        if (!visibleRegion) return false;
+        const latOk =
+          Math.abs(stop.latitude - visibleRegion.latitude) < visibleRegion.latitudeDelta / 2;
+        const lngOk =
+          Math.abs(stop.longitude - visibleRegion.longitude) < visibleRegion.longitudeDelta / 2;
+        return latOk && lngOk;
+      })
+      .map((s) => s.id);
+
+    return new Set(ids);
+  }, [selectedRouteId, search, visibleRegion]);
 
   // Handlers
   function handleStopPress(stop: Stop) {
@@ -92,27 +119,26 @@ export default function TabOneScreen() {
 
   function handleRoutePress(routeId: string) {
     setSelectedRouteId(routeId);
+    setSearch("");
   }
 
   function handleClearRoute() {
     setSelectedRouteId(null);
+    setSearch("");
   }
 
   function handleSheetChange(index: number) {
     setSheetIndex(index);
-
     if (index === -1) {
       setSelectedRouteId(null);
+      setSelectedStop(null);
+      setSearch("");
     }
   }
 
   function handleCloseSheet() {
     bottomSheetRef.current?.close();
   }
-
-  const filteredStops = stops.filter((stop) =>
-    stop.name.toLowerCase().includes(search.toLowerCase())
-  );
 
   // Fetch buses every 6 seconds when a route is selected
   useEffect(() => {
@@ -148,7 +174,7 @@ export default function TabOneScreen() {
     return () => clearInterval(interval);
   }, [selectedRouteId]);
 
-  // ⛔ IMPORTANTE: no renderizar mapa sin región
+  // IMPORTANTE: no renderizar mapa sin región
   if (!initialRegion) {
     return <View style={{ flex: 1 }} />;
   }
@@ -157,12 +183,18 @@ export default function TabOneScreen() {
     <View style={{ flex: 1 }}>
       <SearchBar value={search} onChangeText={setSearch} />
 
-      <MapView style={{ flex: 1 }} initialRegion={initialRegion} ref={mapRef} showsUserLocation>
+      <MapView
+        style={{ flex: 1 }}
+        initialRegion={initialRegion}
+        ref={mapRef}
+        showsUserLocation
+        onRegionChangeComplete={(region) => setVisibleRegion(region)}
+      >
         <RouteLines selectedRouteId={selectedRouteId} />
         <BusStops
-          stops={filteredStops}
+          stops={stops}
+          visibleStopIds={visibleStopIds}
           selectedStopId={selectedStop?.id ?? null}
-          selectedRouteId={selectedRouteId}
           onStopPress={handleStopPress}
         />
         <LiveBuses buses={buses} />

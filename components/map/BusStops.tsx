@@ -7,37 +7,30 @@ export type Stop = {
   name: string;
   latitude: number;
   longitude: number;
-  routes: {
-    id: string;
-    name: string;
-  }[];
+  routes: { id: string; name: string }[];
 };
 
 interface Props {
   stops: Stop[];
+  visibleStopIds: Set<string>;
   selectedStopId: string | null;
-  selectedRouteId: string | null;
   onStopPress?: (stop: Stop) => void;
 }
 
-export function BusStops({ stops, selectedStopId, selectedRouteId, onStopPress }: Props) {
-  const visibleStops = selectedRouteId
-    ? stops.filter((stop) => stop.routes.some((r) => r.id === selectedRouteId))
-    : stops;
-
+export function BusStops({ stops, visibleStopIds, selectedStopId, onStopPress }: Props) {
   return (
     <>
-      {visibleStops.map((stop) => {
+      {stops.map((stop) => {
         const isSelected = stop.id === selectedStopId;
+        const isVisible = visibleStopIds.has(stop.id);
 
         return (
           <Marker
-            key={`${stop.id}-${selectedRouteId ? "route" : "all"}`}
-            coordinate={{
-              latitude: stop.latitude,
-              longitude: stop.longitude,
-            }}
-            onPress={() => onStopPress?.(stop)}
+            key={stop.id}
+            coordinate={{ latitude: stop.latitude, longitude: stop.longitude }}
+            onPress={() => isVisible && onStopPress?.(stop)}
+            opacity={isVisible ? 1 : 0}
+            tappable={isVisible}
           >
             <View
               style={{
