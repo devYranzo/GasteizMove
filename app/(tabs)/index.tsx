@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { MaterialIcons } from "@expo/vector-icons";
+import { useEffect, useRef, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import MapView from "react-native-maps";
 
@@ -8,19 +9,23 @@ import * as Location from "expo-location";
 import { View } from "@/components/Themed";
 import { StopBottomSheet } from "@/components/bottom-sheet/StopBottomSheet";
 import { BusStops, Stop } from "@/components/map/BusStops";
+import { LiveBuses } from "@/components/map/LiveBuses";
 import { RouteLines } from "@/components/map/RouteLines";
+import { SearchBar } from "@/components/map/SearchBar";
 
 import stops from "@/data/gtfs/stops.json";
-import { MaterialIcons } from "@expo/vector-icons";
 
 export default function TabOneScreen() {
+  const [search, setSearch] = useState("");
   const [selectedStop, setSelectedStop] = useState<Stop | null>(null);
   const [selectedRouteId, setSelectedRouteId] = useState<string | null>(null);
+  const [buses, setBuses] = useState<any[]>([]);
 
   const mapRef = useRef<MapView>(null);
   const bottomSheetRef = useRef<BottomSheet>(null);
   const [sheetIndex, setSheetIndex] = useState(-1);
 
+  // User Location
   async function centerOnUser() {
     const { status } = await Location.requestForegroundPermissionsAsync();
 
@@ -39,6 +44,7 @@ export default function TabOneScreen() {
     );
   }
 
+  // Handlers
   function handleStopPress(stop: Stop) {
     setSelectedStop(stop);
     setSelectedRouteId(null);
@@ -66,11 +72,48 @@ export default function TabOneScreen() {
     bottomSheetRef.current?.close();
   }
 
-  console.log("selectedStop", selectedStop?.id);
-  console.log("selectedRouteId", selectedRouteId);
+  // Filter stops based on search
+  const filteredStops = stops.filter((stop) =>
+    stop.name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  // Fetch buses every 6 seconds when a route is selected
+  useEffect(() => {
+    if (!selectedRouteId) {
+      setBuses([]);
+      return;
+    }
+
+    let interval: any;
+
+    const fetchBuses = async () => {
+      try {
+        const res = await fetch(`http://192.168.50.10:3000/api/buses?routeId=${selectedRouteId}`);
+
+        const data = await res.json();
+
+        if (Array.isArray(data)) {
+          setBuses(data);
+        } else {
+          console.warn("API no devolvió array:", data);
+          setBuses([]);
+        }
+      } catch (e) {
+        console.log("Error buses:", e);
+        setBuses([]);
+      }
+    };
+
+    fetchBuses();
+
+    interval = setInterval(fetchBuses, 6000);
+
+    return () => clearInterval(interval);
+  }, [selectedRouteId]);
 
   return (
     <View style={{ flex: 1 }}>
+      <SearchBar value={search} onChangeText={setSearch} />
       <MapView
         style={{ flex: 1 }}
         initialRegion={{
@@ -84,11 +127,12 @@ export default function TabOneScreen() {
       >
         <RouteLines selectedRouteId={selectedRouteId} />
         <BusStops
-          stops={stops}
+          stops={filteredStops}
           selectedStopId={selectedStop?.id ?? null}
           selectedRouteId={selectedRouteId}
           onStopPress={handleStopPress}
         />
+        <LiveBuses buses={buses} />
       </MapView>
 
       <TouchableOpacity

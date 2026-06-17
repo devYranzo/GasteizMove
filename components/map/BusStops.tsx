@@ -21,13 +21,9 @@ interface Props {
 }
 
 export function BusStops({ stops, selectedStopId, selectedRouteId, onStopPress }: Props) {
-  const visibleStops =
-    selectedRouteId !== null ? stops.filter((stop) => stop.id === selectedStopId) : stops;
-
-  console.log({
-    selectedStopId,
-    selectedRouteId,
-  });
+  const visibleStops = selectedRouteId
+    ? stops.filter((stop) => stop.routes.some((r) => r.id === selectedRouteId))
+    : stops;
 
   return (
     <>
