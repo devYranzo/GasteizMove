@@ -66,6 +66,9 @@ export default function TabOneScreen() {
     bottomSheetRef.current?.close();
   }
 
+  console.log("selectedStop", selectedStop?.id);
+  console.log("selectedRouteId", selectedRouteId);
+
   return (
     <View style={{ flex: 1 }}>
       <MapView

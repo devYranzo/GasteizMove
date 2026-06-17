@@ -21,29 +21,27 @@ interface Props {
 }
 
 export function BusStops({ stops, selectedStopId, selectedRouteId, onStopPress }: Props) {
-  const handlePress = (stop: Stop) => {
-    onStopPress?.(stop);
-  };
+  const visibleStops =
+    selectedRouteId !== null ? stops.filter((stop) => stop.id === selectedStopId) : stops;
+
+  console.log({
+    selectedStopId,
+    selectedRouteId,
+  });
 
   return (
     <>
-      {stops.map((stop) => {
+      {visibleStops.map((stop) => {
         const isSelected = stop.id === selectedStopId;
-
-        const shouldHide = selectedRouteId !== null && !isSelected;
-
-        if (shouldHide) {
-          return null;
-        }
 
         return (
           <Marker
-            key={stop.id}
+            key={`${stop.id}-${selectedRouteId ? "route" : "all"}`}
             coordinate={{
               latitude: stop.latitude,
               longitude: stop.longitude,
             }}
-            onPress={() => handlePress(stop)}
+            onPress={() => onStopPress?.(stop)}
           >
             <View
               style={{
