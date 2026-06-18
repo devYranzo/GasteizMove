@@ -1,0 +1,4694 @@
+[
+  {
+    "nameEs": "Acceso al cementerio",
+    "nameEu": "Acceso al cementerio",
+    "latitude": 42.83628435,
+    "longitude": -2.61640115
+  },
+  {
+    "nameEs": "Andra Mari de Eskolunbe",
+    "nameEu": "Andra Mari de Eskolunbe",
+    "latitude": 42.8443969,
+    "longitude": -2.5723837
+  },
+  {
+    "nameEs": "Antzuola kalea",
+    "nameEu": "Antzuola kalea",
+    "latitude": 42.8610616,
+    "longitude": -2.6546602
+  },
+  {
+    "nameEs": "Arcena",
+    "nameEu": "Arcena",
+    "latitude": 42.8267833,
+    "longitude": -2.7537698
+  },
+  {
+    "nameEs": "Avenida 8 de Marzo",
+    "nameEu": "Martxoak 8 etorbidea",
+    "latitude": 42.854726066666665,
+    "longitude": -2.6526453833333337
+  },
+  {
+    "nameEs": "Avenida de Bratislava",
+    "nameEu": "Bratislava hiribidea",
+    "latitude": 42.844580949999994,
+    "longitude": -2.649472
+  },
+  {
+    "nameEs": "Avenida de Bruselas",
+    "nameEu": "Brusela hiribidea",
+    "latitude": 42.8492624875,
+    "longitude": -2.645018583333333
+  },
+  {
+    "nameEs": "Avenida de Budapest",
+    "nameEu": "Budapest hiribidea",
+    "latitude": 42.844836125,
+    "longitude": -2.653039225
+  },
+  {
+    "nameEs": "Avenida de Gasteiz",
+    "nameEu": "Gasteiz hiribidea",
+    "latitude": 42.848581956000004,
+    "longitude": -2.68138644
+  },
+  {
+    "nameEs": "Avenida de Iruña-Veleia",
+    "nameEu": "Iruña-Veleia hiribidea",
+    "latitude": 42.84078183125,
+    "longitude": -2.706930625
+  },
+  {
+    "nameEs": "Avenida de Judizmendi",
+    "nameEu": "Judimendi hiribidea",
+    "latitude": 42.848314300000006,
+    "longitude": -2.661329342857143
+  },
+  {
+    "nameEs": "Avenida de la Capital de Euskadi",
+    "nameEu": "Euskadiko Hiriburuaren etorbidea",
+    "latitude": 42.843530339999994,
+    "longitude": -2.64425453
+  },
+  {
+    "nameEs": "Avenida de la Constitución Europea",
+    "nameEu": "Europako Konstituzioaren hiribidea",
+    "latitude": 42.818915000000004,
+    "longitude": -2.78630225
+  },
+  {
+    "nameEs": "Avenida de la Ilustración",
+    "nameEu": "Ilustrazioaren hiribidea",
+    "latitude": 42.84327941428571,
+    "longitude": -2.699577299999999
+  },
+  {
+    "nameEs": "Avenida de Londres",
+    "nameEu": "Londres hiribidea",
+    "latitude": 42.85503803333334,
+    "longitude": -2.6542217999999997
+  },
+  {
+    "nameEs": "Avenida de los Derechos Humanos",
+    "nameEu": "Giza eskubideen hiribidea",
+    "latitude": 42.84149161333333,
+    "longitude": -2.7013939266666664
+  },
+  {
+    "nameEs": "Avenida de los Huetos",
+    "nameEu": "Oto hiribidea",
+    "latitude": 42.85822424722223,
+    "longitude": -2.718498427777778
+  },
+  {
+    "nameEs": "Avenida de los Olmos",
+    "nameEu": "Zumarren hiribidea",
+    "latitude": 42.874127349999995,
+    "longitude": -2.65505455
+  },
+  {
+    "nameEs": "Avenida de los Treviñeses",
+    "nameEu": "Trebiñubide hiribidea",
+    "latitude": 42.8116194,
+    "longitude": -2.709281
+  },
+  {
+    "nameEs": "Avenida de Naciones Unidas",
+    "nameEu": "Nazio Batuen hiribidea",
+    "latitude": 42.8469969,
+    "longitude": -2.701725925
+  },
+  {
+    "nameEs": "Avenida de Olarambe",
+    "nameEu": "Olaranbe hiribidea",
+    "latitude": 42.8180428,
+    "longitude": -2.652249133333333
+  },
+  {
+    "nameEs": "Avenida de Olarambe",
+    "nameEu": "Avenida de Olarambe",
+    "latitude": 42.8166537,
+    "longitude": -2.6519059
+  },
+  {
+    "nameEs": "Avenida de Olárizu",
+    "nameEu": "Olarizu hiribidea",
+    "latitude": 42.83297182,
+    "longitude": -2.65969684
+  },
+  {
+    "nameEs": "Avenida de París",
+    "nameEu": "Paris hiribidea",
+    "latitude": 42.853116400000005,
+    "longitude": -2.6520118249999998
+  },
+  {
+    "nameEs": "Avenida de Praga",
+    "nameEu": "Praga hiribidea",
+    "latitude": 42.8452115,
+    "longitude": -2.650767675
+  },
+  {
+    "nameEs": "Avenida de Roma",
+    "nameEu": "Erroma hiribidea",
+    "latitude": 42.8509774,
+    "longitude": -2.651517375
+  },
+  {
+    "nameEs": "Avenida de San Prudencio",
+    "nameEu": "San Prudentzio hiribidea",
+    "latitude": 42.8349702,
+    "longitude": -2.6953772899999997
+  },
+  {
+    "nameEs": "Avenida de Santa Cruz",
+    "nameEu": "Gurutze Santuaren hiribidea",
+    "latitude": 42.8178469,
+    "longitude": -2.6531775
+  },
+  {
+    "nameEs": "Avenida de Santiago",
+    "nameEu": "Done Jakue hiribidea",
+    "latitude": 42.84766176666667,
+    "longitude": -2.661394755555556
+  },
+  {
+    "nameEs": "Avenida de Varsovia",
+    "nameEu": "Varsovia hiribidea",
+    "latitude": 42.84711234,
+    "longitude": -2.651951
+  },
+  {
+    "nameEs": "Avenida de Zabalgana",
+    "nameEu": "Zabalgana hiribidea",
+    "latitude": 42.84550901764706,
+    "longitude": -2.6960594941176472
+  },
+  {
+    "nameEs": "Avenida del Cantábrico",
+    "nameEu": "Kantabrikoaren hiribidea",
+    "latitude": 42.86400458666666,
+    "longitude": -2.6614770266666667
+  },
+  {
+    "nameEs": "Avenida del Mediterráneo",
+    "nameEu": "Mediterraneoaren hiribidea",
+    "latitude": 42.84631447857142,
+    "longitude": -2.694368314285714
+  },
+  {
+    "nameEs": "Avenida del Zadorra",
+    "nameEu": "Zadorra hiribidea",
+    "latitude": 42.87151649583333,
+    "longitude": -2.6859931833333337
+  },
+  {
+    "nameEs": "Avenida Nuestra Señora de Estíbaliz",
+    "nameEu": "Estibalizko Andre Mariaren hiribidea",
+    "latitude": 42.8435351,
+    "longitude": -2.66356355
+  },
+  {
+    "nameEs": "Avenida Reina Sofía",
+    "nameEu": "Sofia erreginaren hiribidea",
+    "latitude": 42.8402817,
+    "longitude": -2.704349646153846
+  },
+  {
+    "nameEs": "Bulevar de Mariturri",
+    "nameEu": "Mariturri bulebarra",
+    "latitude": 42.844693893333336,
+    "longitude": -2.710192713333333
+  },
+  {
+    "nameEs": "Bulevar de Salburua",
+    "nameEu": "Salburua bulebarra",
+    "latitude": 42.847282508333336,
+    "longitude": -2.6498130625000003
+  },
+  {
+    "nameEs": "Bulevar Euskal Herria",
+    "nameEu": "Euskal Herria bulebarra",
+    "latitude": 42.856523045,
+    "longitude": -2.6888970100000003
+  },
+  {
+    "nameEs": "Calle Abendaño",
+    "nameEu": "Abendaño kalea",
+    "latitude": 42.8457291,
+    "longitude": -2.68355155
+  },
+  {
+    "nameEs": "Calle Abetxuko",
+    "nameEu": "Abetxuku kalea",
+    "latitude": 42.8787856,
+    "longitude": -2.6854863
+  },
+  {
+    "nameEs": "Calle Abrevadero",
+    "nameEu": "Aska kalea",
+    "latitude": 42.8481766,
+    "longitude": -2.6687008
+  },
+  {
+    "nameEs": "Calle Adriano VI",
+    "nameEu": "Adriano VI.aren kalea",
+    "latitude": 42.84781032,
+    "longitude": -2.68348662
+  },
+  {
+    "nameEs": "Calle Adurtza",
+    "nameEu": "Adurtza kalea",
+    "latitude": 42.835691133333334,
+    "longitude": -2.662880866666667
+  },
+  {
+    "nameEs": "Calle Agirrelanda",
+    "nameEu": "Agirrelanda kalea",
+    "latitude": 42.8667583,
+    "longitude": -2.6755645
+  },
+  {
+    "nameEs": "Calle Aguirre Miramón",
+    "nameEu": "Agirre Miramon kalea",
+    "latitude": 42.837502549999996,
+    "longitude": -2.67540095
+  },
+  {
+    "nameEs": "Calle Aizkorri",
+    "nameEu": "Aizkorri kalea",
+    "latitude": 42.8299496,
+    "longitude": -2.6552419
+  },
+  {
+    "nameEs": "Calle Ajanalde",
+    "nameEu": "Ajanalde kalea",
+    "latitude": 42.8491525,
+    "longitude": -2.7411652
+  },
+  {
+    "nameEs": "Calle Álava",
+    "nameEu": "Araba kalea",
+    "latitude": 42.83708253333333,
+    "longitude": -2.6759339333333334
+  },
+  {
+    "nameEs": "Calle Albert Einstein",
+    "nameEu": "Albert Einstein kalea",
+    "latitude": 42.910528575,
+    "longitude": -2.6692754499999998
+  },
+  {
+    "nameEs": "Calle Albertia",
+    "nameEu": "Albertia kalea",
+    "latitude": 42.828306749999996,
+    "longitude": -2.6539031499999997
+  },
+  {
+    "nameEs": "Calle Alberto Schommer",
+    "nameEu": "Alberto Schommer kalea",
+    "latitude": 42.83861026666667,
+    "longitude": -2.6672643333333332
+  },
+  {
+    "nameEs": "Calle Alboka",
+    "nameEu": "Alboka kalea",
+    "latitude": 42.8398239,
+    "longitude": -2.66753365
+  },
+  {
+    "nameEs": "Calle Aldabe",
+    "nameEu": "Aldabe kalea",
+    "latitude": 42.8513827,
+    "longitude": -2.676144
+  },
+  {
+    "nameEs": "Calle Aldapa",
+    "nameEu": "Aldapa kalea",
+    "latitude": 42.83147496666667,
+    "longitude": -2.701306033333333
+  },
+  {
+    "nameEs": "Calle Alfredo Donnay",
+    "nameEu": "Alfredo Donnay kalea",
+    "latitude": 42.8663038,
+    "longitude": -2.6762741
+  },
+  {
+    "nameEs": "Calle Alibarra",
+    "nameEu": "Alibarra kalea",
+    "latitude": 42.8626303,
+    "longitude": -2.7148930000000004
+  },
+  {
+    "nameEs": "Calle Alto de Armentia",
+    "nameEu": "Armentiagana kalea",
+    "latitude": 42.83547896153847,
+    "longitude": -2.7047980692307694
+  },
+  {
+    "nameEs": "Calle Amatierra",
+    "nameEu": "Amatierra kalea",
+    "latitude": 42.8182973,
+    "longitude": -2.6889839
+  },
+  {
+    "nameEs": "Calle Amboto",
+    "nameEu": "Anboto kalea",
+    "latitude": 42.8296087,
+    "longitude": -2.65615
+  },
+  {
+    "nameEs": "Calle Amizkarra",
+    "nameEu": "Amizkarra kalea",
+    "latitude": 42.85103716,
+    "longitude": -2.66215034
+  },
+  {
+    "nameEs": "Calle Amurrio",
+    "nameEu": "Amurrio kalea",
+    "latitude": 42.8569678,
+    "longitude": -2.667368
+  },
+  {
+    "nameEs": "Calle Andalucía",
+    "nameEu": "Andaluzia kalea",
+    "latitude": 42.8521061,
+    "longitude": -2.6583774399999998
+  },
+  {
+    "nameEs": "Calle Andoin",
+    "nameEu": "Andoin kalea",
+    "latitude": 42.8257062,
+    "longitude": -2.676015
+  },
+  {
+    "nameEs": "Calle Andra Mari de Angosto",
+    "nameEu": "Angostoko Andre Mariaren kalea",
+    "latitude": 42.8450212,
+    "longitude": -2.5748437
+  },
+  {
+    "nameEs": "Calle Andra Mari de Eskolunbe",
+    "nameEu": "Eskolunbeko Andre Mariaren kalea",
+    "latitude": 42.8450853,
+    "longitude": -2.5735453
+  },
+  {
+    "nameEs": "Calle Andra Mari de Ibérnalo",
+    "nameEu": "Ibernaloko Andre Mariaren kalea",
+    "latitude": 42.84264853999999,
+    "longitude": -2.57304654
+  },
+  {
+    "nameEs": "Calle Andra Mari de la Encina",
+    "nameEu": "Arteko Andre Mariaren kalea",
+    "latitude": 42.84364192,
+    "longitude": -2.57185314
+  },
+  {
+    "nameEs": "Calle Andra Mari de Toloño",
+    "nameEu": "Toloñoko Andre Mariaren kalea",
+    "latitude": 42.84224708000001,
+    "longitude": -2.57450472
+  },
+  {
+    "nameEs": "Calle Ángela Figuera Aymerich",
+    "nameEu": "Angela Figuera Aymerich kalea",
+    "latitude": 42.86145465,
+    "longitude": -2.68673205
+  },
+  {
+    "nameEs": "Calle Anglo-Vasco",
+    "nameEu": "Anglo-Vascoaren kalea",
+    "latitude": 42.8518852,
+    "longitude": -2.6655875
+  },
+  {
+    "nameEs": "Calle Angulema",
+    "nameEu": "Angulema kalea",
+    "latitude": 42.8429594,
+    "longitude": -2.6674108
+  },
+  {
+    "nameEs": "Calle Antoni Tàpies",
+    "nameEu": "Antoni Tàpies kalea",
+    "latitude": 42.8461864,
+    "longitude": -2.7086844
+  },
+  {
+    "nameEs": "Calle Antonia María de Oviedo",
+    "nameEu": "Antonia Maria de Oviedo kalea",
+    "latitude": 42.8327591,
+    "longitude": -2.6945242
+  },
+  {
+    "nameEs": "Calle Antonio Amat Maiz",
+    "nameEu": "Antonio Amat Maiz kalea",
+    "latitude": 42.84290507272726,
+    "longitude": -2.6450689454545455
+  },
+  {
+    "nameEs": "Calle Antonio de Sucre",
+    "nameEu": "Antonio de Sucre kalea",
+    "latitude": 42.8490909,
+    "longitude": -2.6640434
+  },
+  {
+    "nameEs": "Calle Antonio Machado",
+    "nameEu": "Antonio Machado kalea",
+    "latitude": 42.857694276923084,
+    "longitude": -2.7001707
+  },
+  {
+    "nameEs": "Calle Antonio Miranda",
+    "nameEu": "Antonio Miranda kalea",
+    "latitude": 42.837130099999996,
+    "longitude": -2.6943197
+  },
+  {
+    "nameEs": "Calle Anzuola",
+    "nameEu": "Antzuola kalea",
+    "latitude": 42.8608846,
+    "longitude": -2.6555202
+  },
+  {
+    "nameEs": "Calle Araca",
+    "nameEu": "Araka kalea",
+    "latitude": 42.875860125,
+    "longitude": -2.679933875
+  },
+  {
+    "nameEs": "Calle Aragón",
+    "nameEu": "Aragoi kalea",
+    "latitude": 42.849481733333334,
+    "longitude": -2.6579842333333334
+  },
+  {
+    "nameEs": "Calle Arana",
+    "nameEu": "Arana kalea",
+    "latitude": 42.85040093333333,
+    "longitude": -2.666165466666666
+  },
+  {
+    "nameEs": "Calle Aranbizkarra",
+    "nameEu": "Aranbizkarra kalea",
+    "latitude": 42.850320249999996,
+    "longitude": -2.6588407500000004
+  },
+  {
+    "nameEs": "Calle Araneta",
+    "nameEu": "Araneta kalea",
+    "latitude": 42.84480430000001,
+    "longitude": -2.7447394249999997
+  },
+  {
+    "nameEs": "Calle Arangutxi",
+    "nameEu": "Arangutxi kalea",
+    "latitude": 42.8398396,
+    "longitude": -2.7315899
+  },
+  {
+    "nameEs": "Calle Aranzabela",
+    "nameEu": "Arantzabela kalea",
+    "latitude": 42.8490427,
+    "longitude": -2.6597053
+  },
+  {
+    "nameEs": "Calle Araya",
+    "nameEu": "Araia kalea",
+    "latitude": 42.82345755,
+    "longitude": -2.67481205
+  },
+  {
+    "nameEs": "Calle Araz",
+    "nameEu": "Aratz kalea",
+    "latitude": 42.8313043,
+    "longitude": -2.6564177
+  },
+  {
+    "nameEs": "Calle Árcamo",
+    "nameEu": "Arkamu kalea",
+    "latitude": 42.8278277,
+    "longitude": -2.7541962
+  },
+  {
+    "nameEs": "Calle Árcena",
+    "nameEu": "Arcena kalea",
+    "latitude": 42.827274,
+    "longitude": -2.75455895
+  },
+  {
+    "nameEs": "Calle Areitio",
+    "nameEu": "Areitio kalea",
+    "latitude": 42.8401728,
+    "longitude": -2.6878154
+  },
+  {
+    "nameEs": "Calle Arenal",
+    "nameEu": "Areatza kalea",
+    "latitude": 42.8484972,
+    "longitude": -2.7442805
+  },
+  {
+    "nameEs": "Calle Argentina",
+    "nameEu": "Argentina kalea",
+    "latitude": 42.853619679999994,
+    "longitude": -2.6838296
+  },
+  {
+    "nameEs": "Calle Ariznabarra",
+    "nameEu": "Ariznabarra kalea",
+    "latitude": 42.8423259,
+    "longitude": -2.6903247
+  },
+  {
+    "nameEs": "Calle Ariznavarra",
+    "nameEu": "Ariznabarra Kalea",
+    "latitude": 42.8428446,
+    "longitude": -2.6915098
+  },
+  {
+    "nameEs": "Calle Arkaiabidea",
+    "nameEu": "Arkaiabidea",
+    "latitude": 42.8476739,
+    "longitude": -2.640101866666667
+  },
+  {
+    "nameEs": "Calle Arkatxa",
+    "nameEu": "Arkatxa kalea",
+    "latitude": 42.835146800000004,
+    "longitude": -2.658853625
+  },
+  {
+    "nameEs": "Calle Arriagana",
+    "nameEu": "Arriagana kalea",
+    "latitude": 42.8759062,
+    "longitude": -2.6769843
+  },
+  {
+    "nameEs": "Calle Arrieta",
+    "nameEu": "Arrieta kalea",
+    "latitude": 42.8488479,
+    "longitude": -2.6721654
+  },
+  {
+    "nameEs": "Calle Arriurdiña",
+    "nameEu": "Arriurdiña kalea",
+    "latitude": 42.835439750000006,
+    "longitude": -2.7301304
+  },
+  {
+    "nameEs": "Calle Arroxeta",
+    "nameEu": "Arroxeta kalea",
+    "latitude": 42.8485234,
+    "longitude": -2.7421133
+  },
+  {
+    "nameEs": "Calle Artandi",
+    "nameEu": "Artandi kalea",
+    "latitude": 42.8781509,
+    "longitude": -2.659394
+  },
+  {
+    "nameEs": "Calle Artapadura",
+    "nameEu": "Artapadura kalea",
+    "latitude": 42.8694724,
+    "longitude": -2.6691524
+  },
+  {
+    "nameEs": "Calle Artetxo",
+    "nameEu": "Artetxo kalea",
+    "latitude": 42.8128206,
+    "longitude": -2.7108368
+  },
+  {
+    "nameEs": "Calle Artzarana",
+    "nameEu": "Artzarana kalea",
+    "latitude": 42.833337825,
+    "longitude": -2.693826275
+  },
+  {
+    "nameEs": "Calle Arzúa",
+    "nameEu": "Artzua kalea",
+    "latitude": 42.8198141,
+    "longitude": -2.6929296999999996
+  },
+  {
+    "nameEs": "Calle Asestadero",
+    "nameEu": "Asestadero kalea",
+    "latitude": 42.8532038,
+    "longitude": -2.7064519
+  },
+  {
+    "nameEs": "Calle Askarra",
+    "nameEu": "Askarra kalea",
+    "latitude": 42.83939837142857,
+    "longitude": -2.754209842857143
+  },
+  {
+    "nameEs": "Calle Aspárrena",
+    "nameEu": "Asparrena kalea",
+    "latitude": 42.8285664,
+    "longitude": -2.6724731999999998
+  },
+  {
+    "nameEs": "Calle Asturias",
+    "nameEu": "Asturias kalea",
+    "latitude": 42.84827095,
+    "longitude": -2.6595602
+  },
+  {
+    "nameEs": "Calle Atxo Apellániz",
+    "nameEu": "Atxo Apellaniz kalea",
+    "latitude": 42.8355784,
+    "longitude": -2.6962697
+  },
+  {
+    "nameEs": "Calle Azeduia",
+    "nameEu": "Azeduia kalea",
+    "latitude": 42.8742065,
+    "longitude": -2.6785084
+  },
+  {
+    "nameEs": "Calle Azkoitia",
+    "nameEu": "Azkoitia kalea",
+    "latitude": 42.8613421,
+    "longitude": -2.6554918
+  },
+  {
+    "nameEs": "Calle Azpeitia",
+    "nameEu": "Azpeitia kalea",
+    "latitude": 42.8617567,
+    "longitude": -2.6546018
+  },
+  {
+    "nameEs": "Calle Azucarera",
+    "nameEu": "Azukreola kalea",
+    "latitude": 42.8587631,
+    "longitude": -2.7194008
+  },
+  {
+    "nameEs": "Calle Badaya",
+    "nameEu": "Badaia kalea",
+    "latitude": 42.851064216666664,
+    "longitude": -2.6791237333333338
+  },
+  {
+    "nameEs": "Calle Baja Navarra",
+    "nameEu": "Behenafarroa kalea",
+    "latitude": 42.8553835,
+    "longitude": -2.6689331
+  },
+  {
+    "nameEs": "Calle Barcelona",
+    "nameEu": "Bartzelona kalea",
+    "latitude": 42.86765566,
+    "longitude": -2.69118018
+  },
+  {
+    "nameEs": "Calle Baroa",
+    "nameEu": "Baroa kalea",
+    "latitude": 42.86931145,
+    "longitude": -2.6834707499999997
+  },
+  {
+    "nameEs": "Calle Barratxi",
+    "nameEu": "Barratxi kalea",
+    "latitude": 42.87235015,
+    "longitude": -2.6517017
+  },
+  {
+    "nameEs": "Calle Barrenkalea",
+    "nameEu": "Barrenkalea",
+    "latitude": 42.8519582,
+    "longitude": -2.6722114
+  },
+  {
+    "nameEs": "Calle Barrundia",
+    "nameEu": "Barrundia kalea",
+    "latitude": 42.834180950000004,
+    "longitude": -2.67650745
+  },
+  {
+    "nameEs": "Calle Basaldea",
+    "nameEu": "Basaldea kalea",
+    "latitude": 42.8397987,
+    "longitude": -2.7310681
+  },
+  {
+    "nameEs": "Calle Basoa",
+    "nameEu": "Basoa kalea",
+    "latitude": 42.855183399999994,
+    "longitude": -2.679593333333333
+  },
+  {
+    "nameEs": "Calle Bastobi",
+    "nameEu": "Bastobi kalea",
+    "latitude": 42.87798115,
+    "longitude": -2.6583695499999997
+  },
+  {
+    "nameEs": "Calle Batxikabo",
+    "nameEu": "Batxikabo kalea",
+    "latitude": 42.8306003,
+    "longitude": -2.6559447
+  },
+  {
+    "nameEs": "Calle Bayona",
+    "nameEu": "Baiona kalea",
+    "latitude": 42.86459906363636,
+    "longitude": -2.692611045454545
+  },
+  {
+    "nameEs": "Calle Beato Tomás de Zumárraga",
+    "nameEu": "Tomas Zumarraga dohatsuaren kalea",
+    "latitude": 42.85097911363636,
+    "longitude": -2.686268822727273
+  },
+  {
+    "nameEs": "Calle Becerro de Bengoa",
+    "nameEu": "Becerro de Bengoa kalea",
+    "latitude": 42.8453829,
+    "longitude": -2.6750387
+  },
+  {
+    "nameEs": "Calle Beethoven",
+    "nameEu": "Beethoven kalea",
+    "latitude": 42.8530757,
+    "longitude": -2.67764
+  },
+  {
+    "nameEs": "Calle Beistegui Hermanos",
+    "nameEu": "Beistegui Hermanos kalea",
+    "latitude": 42.8321613,
+    "longitude": -2.6579369
+  },
+  {
+    "nameEs": "Calle Bekolarra",
+    "nameEu": "Bekolarra kalea",
+    "latitude": 42.858901644444444,
+    "longitude": -2.7161950444444445
+  },
+  {
+    "nameEs": "Calle Bekolasa",
+    "nameEu": "Bekolasa kalea",
+    "latitude": 42.820511800000006,
+    "longitude": -2.6901488000000002
+  },
+  {
+    "nameEs": "Calle Belate",
+    "nameEu": "Belate kalea",
+    "latitude": 42.8650643,
+    "longitude": -2.6969772
+  },
+  {
+    "nameEs": "Calle Benito Guinea",
+    "nameEu": "Benito Ginea kalea",
+    "latitude": 42.846251,
+    "longitude": -2.6627806
+  },
+  {
+    "nameEs": "Calle Bernal Díaz de Luco",
+    "nameEu": "Bernal Diaz de Luco kalea",
+    "latitude": 42.8558015,
+    "longitude": -2.6706641
+  },
+  {
+    "nameEs": "Calle Biak Bat",
+    "nameEu": "Biak Bat kalea",
+    "latitude": 42.83451913333334,
+    "longitude": -2.706160633333333
+  },
+  {
+    "nameEs": "Calle Bidegana",
+    "nameEu": "Bidegana kalea",
+    "latitude": 42.8428595,
+    "longitude": -2.7519986909090908
+  },
+  {
+    "nameEs": "Calle Bidezarra",
+    "nameEu": "Bidezarra kalea",
+    "latitude": 42.8186124,
+    "longitude": -2.6904238
+  },
+  {
+    "nameEs": "Calle Bilodabidea",
+    "nameEu": "Bilodabidea kalea",
+    "latitude": 42.84097828,
+    "longitude": -2.75918908
+  },
+  {
+    "nameEs": "Calle Bizenta Mogel",
+    "nameEu": "Bizenta Mogel kalea",
+    "latitude": 42.844631533333335,
+    "longitude": -2.6811104
+  },
+  {
+    "nameEs": "Calle Blas de Otero",
+    "nameEu": "Blas de Otero kalea",
+    "latitude": 42.8627615,
+    "longitude": -2.6874242428571433
+  },
+  {
+    "nameEs": "Calle Bolivia",
+    "nameEu": "Bolivia kalea",
+    "latitude": 42.853755899999996,
+    "longitude": -2.682260225
+  },
+  {
+    "nameEs": "Calle Borinbizkarra",
+    "nameEu": "Borinbizkarra kalea",
+    "latitude": 42.8537402,
+    "longitude": -2.7044523
+  },
+  {
+    "nameEs": "Calle Brasil",
+    "nameEu": "Brasil kalea",
+    "latitude": 42.8583578,
+    "longitude": -2.6789235
+  },
+  {
+    "nameEs": "Calle Bremen",
+    "nameEu": "Bremen kalea",
+    "latitude": 42.85392996,
+    "longitude": -2.7082183400000006
+  },
+  {
+    "nameEs": "Calle Bruno Villarreal",
+    "nameEu": "Bruno Villarreal kalea",
+    "latitude": 42.853814,
+    "longitude": -2.6779354
+  },
+  {
+    "nameEs": "Calle Bueno Monreal",
+    "nameEu": "Bueno Monreal kalea",
+    "latitude": 42.8509401,
+    "longitude": -2.6704635
+  },
+  {
+    "nameEs": "Calle Burgos",
+    "nameEu": "Burgos kalea",
+    "latitude": 42.85468801428571,
+    "longitude": -2.659733514285714
+  },
+  {
+    "nameEs": "Calle Burubizkarra",
+    "nameEu": "Burubizkarra kalea",
+    "latitude": 42.8530333,
+    "longitude": -2.7000056
+  },
+  {
+    "nameEs": "Calle Bustaldea",
+    "nameEu": "Bustaldea kalea",
+    "latitude": 42.8312178,
+    "longitude": -2.6718686
+  },
+  {
+    "nameEs": "Calle Bustinzuri",
+    "nameEu": "Buztinzuri kalea",
+    "latitude": 42.8466709,
+    "longitude": -2.68722
+  },
+  {
+    "nameEs": "Calle Bustinzuri",
+    "nameEu": "Buztunzuri kalea",
+    "latitude": 42.844352799999996,
+    "longitude": -2.68799305
+  },
+  {
+    "nameEs": "Calle Busturbi",
+    "nameEu": "Busturbi kalea",
+    "latitude": 42.8785221,
+    "longitude": -2.6569356
+  },
+  {
+    "nameEs": "Calle Campo de los Palacios",
+    "nameEu": "Jauregilanda kalea",
+    "latitude": 42.828252500000005,
+    "longitude": -2.6659960500000004
+  },
+  {
+    "nameEs": "Calle Canal de Santo Tomás",
+    "nameEu": "Santo Tomasen ubideko kalea",
+    "latitude": 42.86531505714286,
+    "longitude": -2.6561609714285717
+  },
+  {
+    "nameEs": "Calle Canciller Ayala",
+    "nameEu": "Aiala Kantzilerraren kalea",
+    "latitude": 42.843386333333335,
+    "longitude": -2.6665944666666666
+  },
+  {
+    "nameEs": "Calle Castillo de Esquíbel",
+    "nameEu": "Eskibelgo gazteluaren kalea",
+    "latitude": 42.841966150000005,
+    "longitude": -2.68551765
+  },
+  {
+    "nameEs": "Calle Castillo de Fontecha",
+    "nameEu": "Fontetxako gazteluaren kalea",
+    "latitude": 42.84301403333333,
+    "longitude": -2.691784033333333
+  },
+  {
+    "nameEs": "Calle Castillo de Guevara",
+    "nameEu": "Gebarako gazteluaren kalea",
+    "latitude": 42.8417253,
+    "longitude": -2.6907714
+  },
+  {
+    "nameEs": "Calle Castillo de Lantarón",
+    "nameEu": "Lantarongo gazteluaren kalea",
+    "latitude": 42.842743,
+    "longitude": -2.6943317
+  },
+  {
+    "nameEs": "Calle Castillo de Mendilucía",
+    "nameEu": "Mendiluzeko gazteluaren kalea",
+    "latitude": 42.8414867,
+    "longitude": -2.6905857
+  },
+  {
+    "nameEs": "Calle Castillo de Ocio",
+    "nameEu": "Ozioko gazteluaren kalea",
+    "latitude": 42.842592749999994,
+    "longitude": -2.69014975
+  },
+  {
+    "nameEs": "Calle Castillo de Quejana",
+    "nameEu": "Kexaako gazteluaren kalea",
+    "latitude": 42.84146135,
+    "longitude": -2.690169825
+  },
+  {
+    "nameEs": "Calle Castro Urdiales",
+    "nameEu": "Castro Urdiales kalea",
+    "latitude": 42.839629349999996,
+    "longitude": -2.66415005
+  },
+  {
+    "nameEs": "Calle Ceferino de Uríen",
+    "nameEu": "Ceferino Urien kalea",
+    "latitude": 42.8526194,
+    "longitude": -2.7002624
+  },
+  {
+    "nameEs": "Calle Cercas Bajas",
+    "nameEu": "Zerkabarren kalea",
+    "latitude": 42.8490843,
+    "longitude": -2.6756185
+  },
+  {
+    "nameEs": "Calle Chile",
+    "nameEu": "Txile kalea",
+    "latitude": 42.85206704285714,
+    "longitude": -2.6852480142857145
+  },
+  {
+    "nameEs": "Calle Chiquita",
+    "nameEu": "Txikita kalea",
+    "latitude": 42.8512968,
+    "longitude": -2.6725563
+  },
+  {
+    "nameEs": "Calle Cofradía de Arriaga",
+    "nameEu": "Arriagako kofradiaren kalea",
+    "latitude": 42.85713918333334,
+    "longitude": -2.674311583333333
+  },
+  {
+    "nameEs": "Calle Cola y Goiti",
+    "nameEu": "Cola y Goiti kalea",
+    "latitude": 42.84688,
+    "longitude": -2.6634417
+  },
+  {
+    "nameEs": "Calle Colegio San Prudencio",
+    "nameEu": "San Prudentzio ikastetxeko kalea",
+    "latitude": 42.849121249999996,
+    "longitude": -2.66918605
+  },
+  {
+    "nameEs": "Calle Colombia",
+    "nameEu": "Kolonbia kalea",
+    "latitude": 42.8550217,
+    "longitude": -2.6846885
+  },
+  {
+    "nameEs": "Calle Comandante Izarduy",
+    "nameEu": "Izardui Komandantearen kalea",
+    "latitude": 42.83779816666666,
+    "longitude": -2.6689045444444446
+  },
+  {
+    "nameEs": "Calle Compostela",
+    "nameEu": "Konpostela kalea",
+    "latitude": 42.8321015,
+    "longitude": -2.7060646000000004
+  },
+  {
+    "nameEs": "Calle Concejo",
+    "nameEu": "Kontzeju kalea",
+    "latitude": 42.8677773,
+    "longitude": -2.6397473
+  },
+  {
+    "nameEs": "Calle Concepción Arenal Ponte",
+    "nameEu": "Concepcion Arenal Ponte kalea",
+    "latitude": 42.8447702,
+    "longitude": -2.6414883
+  },
+  {
+    "nameEs": "Calle Concha Espina",
+    "nameEu": "Concha Espina kalea",
+    "latitude": 42.8395162,
+    "longitude": -2.6889496
+  },
+  {
+    "nameEs": "Calle Condado de Treviño",
+    "nameEu": "Trebinuko Konderriaren kalea",
+    "latitude": 42.8471585,
+    "longitude": -2.6621151
+  },
+  {
+    "nameEs": "Calle Conde Don Vela",
+    "nameEu": "Don Bela kondearen kalea",
+    "latitude": 42.857177275,
+    "longitude": -2.6875139249999997
+  },
+  {
+    "nameEs": "Calle Copenhague",
+    "nameEu": "Kopenhague kalea",
+    "latitude": 42.8551697,
+    "longitude": -2.6502288
+  },
+  {
+    "nameEs": "Calle Corazonistas",
+    "nameEu": "Korazonisten kalea",
+    "latitude": 42.8403549,
+    "longitude": -2.6776713
+  },
+  {
+    "nameEs": "Calle Coronación de la Virgen Blanca",
+    "nameEu": "Andre Maria Zuriaren Koroatzearen kalea",
+    "latitude": 42.852904466666665,
+    "longitude": -2.674133533333334
+  },
+  {
+    "nameEs": "Calle Coronela Ibaibarriaga",
+    "nameEu": "Ibaibarriaga koroneltsaren kalea",
+    "latitude": 42.85753093333333,
+    "longitude": -2.691716533333333
+  },
+  {
+    "nameEs": "Calle Correría",
+    "nameEu": "Hedegile kalea",
+    "latitude": 42.850273533333336,
+    "longitude": -2.673306866666666
+  },
+  {
+    "nameEs": "Calle Costa Rica",
+    "nameEu": "Costa Rica kalea",
+    "latitude": 42.85653745,
+    "longitude": -2.6745174
+  },
+  {
+    "nameEs": "Calle Cruz Blanca",
+    "nameEu": "Gurutze Zuriko kalea",
+    "latitude": 42.8525865,
+    "longitude": -2.6790944999999997
+  },
+  {
+    "nameEs": "Calle Cuadrilla de Añana",
+    "nameEu": "Añanako Taldearen kalea",
+    "latitude": 42.8595385,
+    "longitude": -2.6691547
+  },
+  {
+    "nameEs": "Calle Cuadrilla de Ayala",
+    "nameEu": "Aiarako Taldearen kalea",
+    "latitude": 42.8560864,
+    "longitude": -2.6661010999999997
+  },
+  {
+    "nameEs": "Calle Cuadrilla de la Rioja Alavesa",
+    "nameEu": "Arabar Errioxako Taldearen kalea",
+    "latitude": 42.859222625,
+    "longitude": -2.665286725
+  },
+  {
+    "nameEs": "Calle Cuadrilla de Salvatierra",
+    "nameEu": "Aguraingo Taldearen kalea",
+    "latitude": 42.85966688,
+    "longitude": -2.6662741600000004
+  },
+  {
+    "nameEs": "Calle Cuadrilla de Vitoria",
+    "nameEu": "Gasteizko Taldearen kalea",
+    "latitude": 42.857442275,
+    "longitude": -2.6697073437499994
+  },
+  {
+    "nameEs": "Calle Cuadrilla de Zuya",
+    "nameEu": "Zuiako Taldearen kalea",
+    "latitude": 42.856922579999996,
+    "longitude": -2.664601
+  },
+  {
+    "nameEs": "Calle Cuatro Caminos",
+    "nameEu": "Laubideta kalea",
+    "latitude": 42.8767095,
+    "longitude": -2.6829959
+  },
+  {
+    "nameEs": "Calle Cuba",
+    "nameEu": "Kuba kalea",
+    "latitude": 42.85829,
+    "longitude": -2.6800207
+  },
+  {
+    "nameEs": "Calle Cuchillería",
+    "nameEu": "Aiztogile kalea",
+    "latitude": 42.84979263333333,
+    "longitude": -2.6715098333333334
+  },
+  {
+    "nameEs": "Calle Cuenca del Deba",
+    "nameEu": "Deba arroaren kalea",
+    "latitude": 42.8568384,
+    "longitude": -2.65491425
+  },
+  {
+    "nameEs": "Calle Daría Imbert Aranguren",
+    "nameEu": "Daria Imbert Aranguren kalea",
+    "latitude": 42.8386375,
+    "longitude": -2.649294
+  },
+  {
+    "nameEs": "Calle de Hospitaleros",
+    "nameEu": "Ostatu emaileen kalea",
+    "latitude": 42.832305225,
+    "longitude": -2.7043322
+  },
+  {
+    "nameEs": "Calle de los Isunza",
+    "nameEu": "Isuntzatarren kalea",
+    "latitude": 42.855335,
+    "longitude": -2.6642665
+  },
+  {
+    "nameEs": "Calle de Nuestra Señora del Cabello",
+    "nameEu": "Adatseko Andre Mariaren kalea",
+    "latitude": 42.8463326,
+    "longitude": -2.6713372
+  },
+  {
+    "nameEs": "Calle de San Ignacio de Loyola",
+    "nameEu": "San Ignacio Loiolakoaren kalea",
+    "latitude": 42.8526089,
+    "longitude": -2.6716396
+  },
+  {
+    "nameEs": "Calle del Cubo",
+    "nameEu": "Antepara kalea",
+    "latitude": 42.8521662,
+    "longitude": -2.6720673
+  },
+  {
+    "nameEs": "Calle Diego de Rojas",
+    "nameEu": "Diego de Rojas kalea",
+    "latitude": 42.8561219,
+    "longitude": -2.6710961
+  },
+  {
+    "nameEs": "Calle Diego Martínez de Álava",
+    "nameEu": "Diego Martinez de Alava kalea",
+    "latitude": 42.8460376,
+    "longitude": -2.6642275
+  },
+  {
+    "nameEs": "Calle Doce de Octubre",
+    "nameEu": "Urriaren Hamabiaren kalea",
+    "latitude": 42.84460743333333,
+    "longitude": -2.665052766666667
+  },
+  {
+    "nameEs": "Calle Domingo Beltrán de Otazu",
+    "nameEu": "Domingo Beltran de Otazu kalea",
+    "latitude": 42.853336399999996,
+    "longitude": -2.6768833
+  },
+  {
+    "nameEs": "Calle Domingo Martínez de Aragón",
+    "nameEu": "Domingo Martinez de Aragon kalea",
+    "latitude": 42.837297975000006,
+    "longitude": -2.672234325
+  },
+  {
+    "nameEs": "Calle Doneaspidea",
+    "nameEu": "Doneaspidea kalea",
+    "latitude": 42.87793365,
+    "longitude": -2.65859595
+  },
+  {
+    "nameEs": "Calle Donostia-San Sebastián",
+    "nameEu": "Donostia kalea",
+    "latitude": 42.8635832,
+    "longitude": -2.68973196875
+  },
+  {
+    "nameEs": "Calle Doris Lessing",
+    "nameEu": "Doris Lessing kalea",
+    "latitude": 42.848037,
+    "longitude": -2.6464993333333333
+  },
+  {
+    "nameEs": "Calle Dublín",
+    "nameEu": "Dublin kalea",
+    "latitude": 42.8542038,
+    "longitude": -2.6564428
+  },
+  {
+    "nameEs": "Calle Dulzaina",
+    "nameEu": "Dultzaina kalea",
+    "latitude": 42.8397874,
+    "longitude": -2.6659625
+  },
+  {
+    "nameEs": "Calle Duque de Wellington",
+    "nameEu": "Wellingtongo dukearen kalea",
+    "latitude": 42.86251445,
+    "longitude": -2.6939050250000007
+  },
+  {
+    "nameEs": "Calle Düsseldorf",
+    "nameEu": "Düsseldorf kalea",
+    "latitude": 42.8544766,
+    "longitude": -2.71023845
+  },
+  {
+    "nameEs": "Calle Ecuador",
+    "nameEu": "Ekuador kalea",
+    "latitude": 42.85436924,
+    "longitude": -2.68645012
+  },
+  {
+    "nameEs": "Calle Eduardo Dato",
+    "nameEu": "Eduardo Dato kalea",
+    "latitude": 42.8419641,
+    "longitude": -2.6726006
+  },
+  {
+    "nameEs": "Calle Eduardo Velasco",
+    "nameEu": "Eduardo Belasko kalea",
+    "latitude": 42.843184750000006,
+    "longitude": -2.6635185999999997
+  },
+  {
+    "nameEs": "Calle Éibar",
+    "nameEu": "Eibar kalea",
+    "latitude": 42.8594058,
+    "longitude": -2.6575548
+  },
+  {
+    "nameEs": "Calle el Calce",
+    "nameEu": "El Calce kalea",
+    "latitude": 42.8740958,
+    "longitude": -2.6766314
+  },
+  {
+    "nameEs": "Calle el Caserío",
+    "nameEu": "Etxalde kalea",
+    "latitude": 42.83649375,
+    "longitude": -2.6768061
+  },
+  {
+    "nameEs": "Calle el Cristo",
+    "nameEu": "Kristo kalea",
+    "latitude": 42.876605475,
+    "longitude": -2.680984675
+  },
+  {
+    "nameEs": "Calle el Salvador",
+    "nameEu": "Salvador kalea",
+    "latitude": 42.8579523,
+    "longitude": -2.6748003
+  },
+  {
+    "nameEs": "Calle Elejalde",
+    "nameEu": "Elexalde kalea",
+    "latitude": 42.85407765,
+    "longitude": -2.7026988000000003
+  },
+  {
+    "nameEs": "Calle Elgoibar",
+    "nameEu": "Elgoibar kalea",
+    "latitude": 42.8598037,
+    "longitude": -2.6550705
+  },
+  {
+    "nameEs": "Calle Elgueta",
+    "nameEu": "Elgeta kalea",
+    "latitude": 42.8613826,
+    "longitude": -2.654248
+  },
+  {
+    "nameEs": "Calle Elorribarra",
+    "nameEu": "Elorribarra kalea",
+    "latitude": 42.8457416,
+    "longitude": -2.7564055
+  },
+  {
+    "nameEs": "Calle Elorrio",
+    "nameEu": "Elorrio kalea",
+    "latitude": 42.862580124999994,
+    "longitude": -2.6553633
+  },
+  {
+    "nameEs": "Calle Elvira Zulueta",
+    "nameEu": "Elvira Zulueta kalea",
+    "latitude": 42.84212325,
+    "longitude": -2.683116675
+  },
+  {
+    "nameEs": "Calle Emilia Pardo Bazán",
+    "nameEu": "Emilia Pardo Bazan kalea",
+    "latitude": 42.833746,
+    "longitude": -2.6980653500000003
+  },
+  {
+    "nameEs": "Calle Enrique de Eguren",
+    "nameEu": "Enrique Eguren kalea",
+    "latitude": 42.8515532,
+    "longitude": -2.6838539
+  },
+  {
+    "nameEs": "Calle Entzia",
+    "nameEu": "Entzia kalea",
+    "latitude": 42.827115,
+    "longitude": -2.7535133
+  },
+  {
+    "nameEs": "Calle Erea",
+    "nameEu": "Erea kalea",
+    "latitude": 42.8270736,
+    "longitude": -2.7537553
+  },
+  {
+    "nameEs": "Calle Erentxun",
+    "nameEu": "Erentxun kalea",
+    "latitude": 42.8270232,
+    "longitude": -2.6760731
+  },
+  {
+    "nameEs": "Calle Ermua",
+    "nameEu": "Ermua kalea",
+    "latitude": 42.8634135,
+    "longitude": -2.6540039
+  },
+  {
+    "nameEs": "Calle Errekaleor",
+    "nameEu": "Errekaleor kalea",
+    "latitude": 42.835747875,
+    "longitude": -2.650815725
+  },
+  {
+    "nameEs": "Calle Errekartea",
+    "nameEu": "Errakartea kalea",
+    "latitude": 42.8491316,
+    "longitude": -2.7278729
+  },
+  {
+    "nameEs": "Calle Errekatxiki",
+    "nameEu": "Errekatxiki kalea",
+    "latitude": 42.8469836,
+    "longitude": -2.6603492
+  },
+  {
+    "nameEs": "Calle Errotalde",
+    "nameEu": "Errotalde kalea",
+    "latitude": 42.8106581,
+    "longitude": -2.7089586
+  },
+  {
+    "nameEs": "Calle Errotamendia",
+    "nameEu": "Errotamendia kalea",
+    "latitude": 42.8706992,
+    "longitude": -2.6855703
+  },
+  {
+    "nameEs": "Calle Errotaura",
+    "nameEu": "Errotaura kalea",
+    "latitude": 42.8513741,
+    "longitude": -2.7316102
+  },
+  {
+    "nameEs": "Calle Escoriaza",
+    "nameEu": "Eskoriatza kalea",
+    "latitude": 42.8582277,
+    "longitude": -2.6559728
+  },
+  {
+    "nameEs": "Calle Escultor Carlos Ymbert",
+    "nameEu": "Carlos Ymbert eskultorearen kalea",
+    "latitude": 42.8391395,
+    "longitude": -2.6830193
+  },
+  {
+    "nameEs": "Calle Escultor Isaac Díez",
+    "nameEu": "Isaac Diez eskultorearen kalea",
+    "latitude": 42.8377179,
+    "longitude": -2.679272
+  },
+  {
+    "nameEs": "Calle Escultor Joaquín Lucarini",
+    "nameEu": "Joaquin Lucarini eskultorearen kalea",
+    "latitude": 42.8382723,
+    "longitude": -2.6824436
+  },
+  {
+    "nameEs": "Calle Escultor Lorenzo Fernández de Viana",
+    "nameEu": "Lorenzo Fernández de Viana eskultorearen kalea",
+    "latitude": 42.8381068,
+    "longitude": -2.6814374
+  },
+  {
+    "nameEs": "Calle Eskalmendi",
+    "nameEu": "Eskalmendi kalea",
+    "latitude": 42.8730883,
+    "longitude": -2.6439557
+  },
+  {
+    "nameEs": "Calle Espoz y Mina",
+    "nameEu": "Espoz y Mina kalea",
+    "latitude": 42.85837655,
+    "longitude": -2.69478245
+  },
+  {
+    "nameEs": "Calle Estatuto de Gernika",
+    "nameEu": "Gernikako Estatutuaren kalea",
+    "latitude": 42.846571049999994,
+    "longitude": -2.6710588
+  },
+  {
+    "nameEs": "Calle Estella",
+    "nameEu": "Lizarra kalea",
+    "latitude": 42.8604095,
+    "longitude": -2.6962696
+  },
+  {
+    "nameEs": "Calle Estocolmo",
+    "nameEu": "Stockholm kalea",
+    "latitude": 42.8559419,
+    "longitude": -2.6529088
+  },
+  {
+    "nameEs": "Calle Etura",
+    "nameEu": "Etura kalea",
+    "latitude": 42.8335869,
+    "longitude": -2.67463005
+  },
+  {
+    "nameEs": "Calle Etxezarra",
+    "nameEu": "Etxezarra kalea",
+    "latitude": 42.844518324999996,
+    "longitude": -2.691642725
+  },
+  {
+    "nameEs": "Calle Eulogio Serdán",
+    "nameEu": "Eulogio Serdan kalea",
+    "latitude": 42.85267025,
+    "longitude": -2.6754913499999997
+  },
+  {
+    "nameEs": "Calle Extremadura",
+    "nameEu": "Extremadura kalea",
+    "latitude": 42.8496202,
+    "longitude": -2.66005404
+  },
+  {
+    "nameEs": "Calle Federico Baraibar",
+    "nameEu": "Federico Baraibar kalea",
+    "latitude": 42.84239315,
+    "longitude": -2.6616803
+  },
+  {
+    "nameEs": "Calle Félix González Petite",
+    "nameEu": "Felix Gonzalez Petite kalea",
+    "latitude": 42.8340257,
+    "longitude": -2.67603405
+  },
+  {
+    "nameEs": "Calle Félix María Samaniego",
+    "nameEu": "Félix María Samaniego kalea",
+    "latitude": 42.8480653,
+    "longitude": -2.6773583
+  },
+  {
+    "nameEs": "Calle Ferdinand Zeppelin",
+    "nameEu": "Ferdinand Zeppelin kalea",
+    "latitude": 42.9128599,
+    "longitude": -2.6609446
+  },
+  {
+    "nameEs": "Calle Fermín Lasuen",
+    "nameEu": "Fermin Lasuen kalea",
+    "latitude": 42.856131266666665,
+    "longitude": -2.6690114333333335
+  },
+  {
+    "nameEs": "Calle Fernán González",
+    "nameEu": "Fernán González kalea",
+    "latitude": 42.8548887,
+    "longitude": -2.6648239
+  },
+  {
+    "nameEs": "Calle Ferrocarril",
+    "nameEu": "Trenbide kalea",
+    "latitude": 42.8402356,
+    "longitude": -2.667732
+  },
+  {
+    "nameEs": "Calle Ferrocarril del Norte",
+    "nameEu": "Norteko trenbidearen kalea",
+    "latitude": 42.8418074,
+    "longitude": -2.6500094
+  },
+  {
+    "nameEs": "Calle Flandes",
+    "nameEu": "Flandria kalea",
+    "latitude": 42.838848,
+    "longitude": -2.6695873
+  },
+  {
+    "nameEs": "Calle Florida",
+    "nameEu": "Florida kalea",
+    "latitude": 42.84187466666666,
+    "longitude": -2.66247574
+  },
+  {
+    "nameEs": "Calle Francia",
+    "nameEu": "Frantzia kalea",
+    "latitude": 42.8494921,
+    "longitude": -2.6689068
+  },
+  {
+    "nameEs": "Calle Francisco Javier de Landaburu",
+    "nameEu": "Frantzisko Xabier Landaburu kalea",
+    "latitude": 42.86341895,
+    "longitude": -2.6805077624999996
+  },
+  {
+    "nameEs": "Calle Francisco Leandro de Viana",
+    "nameEu": "Francisco Leandro Viana kalea",
+    "latitude": 42.853634549999995,
+    "longitude": -2.69166635
+  },
+  {
+    "nameEs": "Calle Francisco Longa",
+    "nameEu": "Francisco Longa kalea",
+    "latitude": 42.8591402,
+    "longitude": -2.6935945
+  },
+  {
+    "nameEs": "Calle Francisco Tomás y Valiente",
+    "nameEu": "Francisco Tomas y Valiente kalea",
+    "latitude": 42.83935926666666,
+    "longitude": -2.6701075666666667
+  },
+  {
+    "nameEs": "Calle Fray Zacarías Martínez",
+    "nameEu": "Frai Zacarias Martinez kalea",
+    "latitude": 42.84939249999999,
+    "longitude": -2.67283
+  },
+  {
+    "nameEs": "Calle Fuente de la Salud",
+    "nameEu": "Osasun Iturri kalea",
+    "latitude": 42.84111445,
+    "longitude": -2.6622202
+  },
+  {
+    "nameEs": "Calle Fuentecillas",
+    "nameEu": "Fuentecillas kalea",
+    "latitude": 42.84295,
+    "longitude": -2.7572716
+  },
+  {
+    "nameEs": "Calle Fueros",
+    "nameEu": "Foru kalea",
+    "latitude": 42.842312128571436,
+    "longitude": -2.6702693
+  },
+  {
+    "nameEs": "Calle Fundadora de las Siervas de Jesús",
+    "nameEu": "Jesusen Zerbitzarien Fundatzailearen kalea",
+    "latitude": 42.851497499999994,
+    "longitude": -2.6738354999999996
+  },
+  {
+    "nameEs": "Calle Gabriel Aresti",
+    "nameEu": "Gabriel Aresti kalea",
+    "latitude": 42.8621232,
+    "longitude": -2.6873105500000003
+  },
+  {
+    "nameEs": "Calle Gabriel Celaya",
+    "nameEu": "Gabriel Zelaia kalea",
+    "latitude": 42.860128950000004,
+    "longitude": -2.6873206124999998
+  },
+  {
+    "nameEs": "Calle Gabriel Martínez de Aragón Urbiztondo",
+    "nameEu": "Gabriel Martinez de Aragon Urbiztondo kalea",
+    "latitude": 42.84651528,
+    "longitude": -2.63835328
+  },
+  {
+    "nameEs": "Calle Galarreta",
+    "nameEu": "Galarreta kalea",
+    "latitude": 42.82337854,
+    "longitude": -2.67789416
+  },
+  {
+    "nameEs": "Calle Galicia",
+    "nameEu": "Galizia kalea",
+    "latitude": 42.8495208,
+    "longitude": -2.6587638
+  },
+  {
+    "nameEs": "Calle Galileo",
+    "nameEu": "Galileo kalea",
+    "latitude": 42.84578440000001,
+    "longitude": -2.6558360999999997
+  },
+  {
+    "nameEs": "Calle Gamarrartea",
+    "nameEu": "Gamarrartea kalea",
+    "latitude": 42.87786445,
+    "longitude": -2.6564365499999996
+  },
+  {
+    "nameEs": "Calle Garalbide",
+    "nameEu": "Garalbide kalea",
+    "latitude": 42.8569993,
+    "longitude": -2.6771622
+  },
+  {
+    "nameEs": "Calle Gasteiz",
+    "nameEu": "Gasteiz kalea",
+    "latitude": 42.8496375,
+    "longitude": -2.672324
+  },
+  {
+    "nameEs": "Calle General Álava",
+    "nameEu": "Alaba Jeneralaren kalea",
+    "latitude": 42.84513255,
+    "longitude": -2.6730342499999997
+  },
+  {
+    "nameEs": "Calle Gerezpea",
+    "nameEu": "Gerezpea kalea",
+    "latitude": 42.8382061,
+    "longitude": -2.7295444
+  },
+  {
+    "nameEs": "Calle Gertrudis Gómez de Avellaneda",
+    "nameEu": "Gertrudis Gomez de Avellaneda kalea",
+    "latitude": 42.838600899999996,
+    "longitude": -2.6922902333333334
+  },
+  {
+    "nameEs": "Calle Gipuzkoa",
+    "nameEu": "Gipuzkoa kalea",
+    "latitude": 42.8380942,
+    "longitude": -2.6767295
+  },
+  {
+    "nameEs": "Calle Goiena",
+    "nameEu": "Goiena kalea",
+    "latitude": 42.818408649999995,
+    "longitude": -2.69207175
+  },
+  {
+    "nameEs": "Calle Goikoberaza",
+    "nameEu": "Goikoberaza kalea",
+    "latitude": 42.83030065,
+    "longitude": -2.73373535
+  },
+  {
+    "nameEs": "Calle Gorbea",
+    "nameEu": "Gorbeia kalea",
+    "latitude": 42.85138342,
+    "longitude": -2.67960822
+  },
+  {
+    "nameEs": "Calle Gordoa",
+    "nameEu": "Gordoa kalea",
+    "latitude": 42.83188595,
+    "longitude": -2.67045605
+  },
+  {
+    "nameEs": "Calle Guatemala",
+    "nameEu": "Guatemala kalea",
+    "latitude": 42.8598206,
+    "longitude": -2.6756152
+  },
+  {
+    "nameEs": "Calle Gurutzelarre",
+    "nameEu": "Gurutzelarre kalea",
+    "latitude": 42.834744,
+    "longitude": -2.7050781
+  },
+  {
+    "nameEs": "Calle Hans Christian Andersen",
+    "nameEu": "Hans Christian Andersen kalea",
+    "latitude": 42.85170589999999,
+    "longitude": -2.6990443
+  },
+  {
+    "nameEs": "Calle Harria",
+    "nameEu": "Harria kalea",
+    "latitude": 42.8498744,
+    "longitude": -2.7406328
+  },
+  {
+    "nameEs": "Calle Harrobi",
+    "nameEu": "Harrobi kalea",
+    "latitude": 42.86372816666667,
+    "longitude": -2.655496633333333
+  },
+  {
+    "nameEs": "Calle Helsinki",
+    "nameEu": "Helsinki kalea",
+    "latitude": 42.85700295,
+    "longitude": -2.6530141
+  },
+  {
+    "nameEs": "Calle Henry Morton Stanley",
+    "nameEu": "Henry Morton Stanley kalea",
+    "latitude": 42.851056916666664,
+    "longitude": -2.6990895
+  },
+  {
+    "nameEs": "Calle Heraclio Alfaro",
+    "nameEu": "Heraclio Alfaro kalea",
+    "latitude": 42.8531979,
+    "longitude": -2.6561036
+  },
+  {
+    "nameEs": "Calle Heraclio Fournier",
+    "nameEu": "Heraclio Fournier kalea",
+    "latitude": 42.83655685555556,
+    "longitude": -2.662303255555555
+  },
+  {
+    "nameEs": "Calle Hermanos Lumière",
+    "nameEu": "Lumière anaien kalea",
+    "latitude": 42.913289739999996,
+    "longitude": -2.6635529
+  },
+  {
+    "nameEs": "Calle Herminio Madinaveitia",
+    "nameEu": "Herminio Madinabeitia kalea",
+    "latitude": 42.83706726666667,
+    "longitude": -2.6717187333333334
+  },
+  {
+    "nameEs": "Calle Herrería",
+    "nameEu": "Errementari kalea",
+    "latitude": 42.847989150000004,
+    "longitude": -2.6741332499999997
+  },
+  {
+    "nameEs": "Calle Hondarribia",
+    "nameEu": "Hondarribia kalea",
+    "latitude": 42.865568200000006,
+    "longitude": -2.6951204333333334
+  },
+  {
+    "nameEs": "Calle Honduras",
+    "nameEu": "Honduras kalea",
+    "latitude": 42.8570780125,
+    "longitude": -2.6808809750000004
+  },
+  {
+    "nameEs": "Calle Hortaleza",
+    "nameEu": "Hortaleza kalea",
+    "latitude": 42.85238504,
+    "longitude": -2.66508876
+  },
+  {
+    "nameEs": "Calle Ibarredi",
+    "nameEu": "Ibarredi kalea",
+    "latitude": 42.8434024,
+    "longitude": -2.7301669
+  },
+  {
+    "nameEs": "Calle Ignacio Ruiz de Luzuriaga",
+    "nameEu": "Ignacio Ruiz de Luzuriaga kalea",
+    "latitude": 42.8506687,
+    "longitude": -2.6959636
+  },
+  {
+    "nameEs": "Calle Ihurraldea",
+    "nameEu": "Ihurraldea kalea",
+    "latitude": 42.868054300000004,
+    "longitude": -2.6857653999999997
+  },
+  {
+    "nameEs": "Calle Independencia",
+    "nameEu": "Independentzia kalea",
+    "latitude": 42.8443781,
+    "longitude": -2.6688876500000003
+  },
+  {
+    "nameEs": "Calle Ingeniero Alejandro Mendizábal",
+    "nameEu": "Alejandro Mendizabal ingeniariaren kalea",
+    "latitude": 42.840261133333335,
+    "longitude": -2.6520176
+  },
+  {
+    "nameEs": "Calle Irati",
+    "nameEu": "Irati kalea",
+    "latitude": 42.8615676,
+    "longitude": -2.6921108499999997
+  },
+  {
+    "nameEs": "Calle Iruraiz-Gauna",
+    "nameEu": "Iruraitz-Gauna kalea",
+    "latitude": 42.833822000000005,
+    "longitude": -2.6706287600000005
+  },
+  {
+    "nameEs": "Calle Isaac Albéniz",
+    "nameEu": "Isaac Albeniz kalea",
+    "latitude": 42.8420607,
+    "longitude": -2.6675873
+  },
+  {
+    "nameEs": "Calle Isaac Puente Amestoy",
+    "nameEu": "Isaac Puente Amestoy kalea",
+    "latitude": 42.841856775,
+    "longitude": -2.64710865
+  },
+  {
+    "nameEs": "Calle Itinerario de Antonino",
+    "nameEu": "Antonino ibilbidearen kalea",
+    "latitude": 42.84110425,
+    "longitude": -2.6518343
+  },
+  {
+    "nameEs": "Calle Iturbide",
+    "nameEu": "Iturbide kalea",
+    "latitude": 42.8173617,
+    "longitude": -2.6930276
+  },
+  {
+    "nameEs": "Calle Iturgana",
+    "nameEu": "Iturgana kalea",
+    "latitude": 42.877431800000004,
+    "longitude": -2.657516166666667
+  },
+  {
+    "nameEs": "Calle Iturgutxi",
+    "nameEu": "Iturgutxi kalea",
+    "latitude": 42.8308399,
+    "longitude": -2.7031173
+  },
+  {
+    "nameEs": "Calle Iturriaga",
+    "nameEu": "Iturriaga kalea",
+    "latitude": 42.8123238,
+    "longitude": -2.7107018
+  },
+  {
+    "nameEs": "Calle Iturritxu",
+    "nameEu": "Iturritxu kalea",
+    "latitude": 42.834700392857144,
+    "longitude": -2.664742442857143
+  },
+  {
+    "nameEs": "Calle Iturrizabala",
+    "nameEu": "Iturrizabala kalea",
+    "latitude": 42.87572876666667,
+    "longitude": -2.6786852
+  },
+  {
+    "nameEs": "Calle Iturrizulo",
+    "nameEu": "Iturrizulo kalea",
+    "latitude": 42.81896055,
+    "longitude": -2.68721765
+  },
+  {
+    "nameEs": "Calle Itxinaga",
+    "nameEu": "Itxinaga kalea",
+    "latitude": 42.81955925,
+    "longitude": -2.6900387500000003
+  },
+  {
+    "nameEs": "Calle Izkiz",
+    "nameEu": "Izki kalea",
+    "latitude": 42.82844385,
+    "longitude": -2.753485
+  },
+  {
+    "nameEs": "Calle Jacinto Benavente",
+    "nameEu": "Jacinto Benavente kalea",
+    "latitude": 42.84108837894737,
+    "longitude": -2.6585842473684207
+  },
+  {
+    "nameEs": "Calle Jacinto Quincoces",
+    "nameEu": "Jacinto Quincoces kalea",
+    "latitude": 42.835936025,
+    "longitude": -2.6964198250000004
+  },
+  {
+    "nameEs": "Calle Javier",
+    "nameEu": "Xabier kalea",
+    "latitude": 42.865598500000004,
+    "longitude": -2.6985128
+  },
+  {
+    "nameEs": "Calle Jerónimo Roure",
+    "nameEu": "Jeronimo Roure kalea",
+    "latitude": 42.85019975,
+    "longitude": -2.6951743500000003
+  },
+  {
+    "nameEs": "Calle Jesús Guridi",
+    "nameEu": "Jesus Guridi kalea",
+    "latitude": 42.844009400000004,
+    "longitude": -2.6674715666666664
+  },
+  {
+    "nameEs": "Calle Joaquín Collar",
+    "nameEu": "Joaquin Collar kalea",
+    "latitude": 42.85042910000001,
+    "longitude": -2.65558935
+  },
+  {
+    "nameEs": "Calle Jorge Fernández Ibarra",
+    "nameEu": "Jorge Fernandez Ibarra kalea",
+    "latitude": 42.8451948,
+    "longitude": -2.6395771
+  },
+  {
+    "nameEs": "Calle José Achótegui",
+    "nameEu": "Jose Atxotegi kalea",
+    "latitude": 42.85519815000001,
+    "longitude": -2.687922025
+  },
+  {
+    "nameEs": "Calle José de Antxieta",
+    "nameEu": "Jose Antxieta kalea",
+    "latitude": 42.8482845,
+    "longitude": -2.6617052
+  },
+  {
+    "nameEs": "Calle José de San Martín",
+    "nameEu": "Jose San Martin kalea",
+    "latitude": 42.8490538,
+    "longitude": -2.6617744
+  },
+  {
+    "nameEs": "Calle José Joaquín Landázuri",
+    "nameEu": "Jose Joaquin Landazuri kalea",
+    "latitude": 42.8476625,
+    "longitude": -2.6775003
+  },
+  {
+    "nameEs": "Calle José Lejarreta",
+    "nameEu": "Jose Lejarreta kalea",
+    "latitude": 42.843305,
+    "longitude": -2.6626038
+  },
+  {
+    "nameEs": "Calle José Luis Isasi",
+    "nameEu": "Jose Luis Isasi kalea",
+    "latitude": 42.83150315,
+    "longitude": -2.6581057
+  },
+  {
+    "nameEs": "Calle José Mardones",
+    "nameEu": "Jose Mardones kalea",
+    "latitude": 42.846450725000004,
+    "longitude": -2.6641429
+  },
+  {
+    "nameEs": "Calle José María Cagigal",
+    "nameEu": "Jose Maria Cajigal kalea",
+    "latitude": 42.8357798,
+    "longitude": -2.6981502
+  },
+  {
+    "nameEs": "Calle José María Díaz de Mendívil",
+    "nameEu": "Jose Maria Diaz de Mendibil kalea",
+    "latitude": 42.8677093,
+    "longitude": -2.6816951
+  },
+  {
+    "nameEs": "Calle José María Iparraguirre",
+    "nameEu": "Jose Maria Iparragirre kalea",
+    "latitude": 42.83909131,
+    "longitude": -2.6616712399999995
+  },
+  {
+    "nameEs": "Calle José Miguel Barandiaran",
+    "nameEu": "Jose Miguel Barandiaran kalea",
+    "latitude": 42.85137921249999,
+    "longitude": -2.6863790749999996
+  },
+  {
+    "nameEs": "Calle José Uruñuela",
+    "nameEu": "Jose Uruñuela kalea",
+    "latitude": 42.8395937,
+    "longitude": -2.6666214
+  },
+  {
+    "nameEs": "Calle Juan Bautista Gámiz",
+    "nameEu": "Juan Bautista Gamiz kalea",
+    "latitude": 42.8386108,
+    "longitude": -2.6643552
+  },
+  {
+    "nameEs": "Calle Juan Crisóstomo de Arriaga",
+    "nameEu": "Juan Crisostomo Arriaga kalea",
+    "latitude": 42.87170883333332,
+    "longitude": -2.684416033333333
+  },
+  {
+    "nameEs": "Calle Juan de Garay",
+    "nameEu": "Juan Garai kalea",
+    "latitude": 42.86062594615384,
+    "longitude": -2.6767216153846154
+  },
+  {
+    "nameEs": "Calle Juan de la Cierva",
+    "nameEu": "Juan de la Cierva kalea",
+    "latitude": 42.91010115,
+    "longitude": -2.6661965
+  },
+  {
+    "nameEs": "Calle Juan Gris",
+    "nameEu": "Juan Gris kalea",
+    "latitude": 42.8455452,
+    "longitude": -2.705373
+  },
+  {
+    "nameEs": "Calle Juan Ibáñez de Santo Domingo",
+    "nameEu": "Juan Ibañez de Santo Domingo kalea",
+    "latitude": 42.84073806666667,
+    "longitude": -2.674696566666667
+  },
+  {
+    "nameEs": "Calle Juan Pablo Bengoetxea",
+    "nameEu": "Juan Pablo Bengoetxea kalea",
+    "latitude": 42.81194756666667,
+    "longitude": -2.7095331333333337
+  },
+  {
+    "nameEs": "Calle Juan XXIII",
+    "nameEu": "Juan XXIII.aren kalea",
+    "latitude": 42.8426979,
+    "longitude": -2.6656105
+  },
+  {
+    "nameEs": "Calle Juana Jugán",
+    "nameEu": "Jeanne Jugan kalea",
+    "latitude": 42.856171849999996,
+    "longitude": -2.68510255
+  },
+  {
+    "nameEs": "Calle Juanito Oiarzabal",
+    "nameEu": "Juanito Oiarzabal kalea",
+    "latitude": 42.8343324,
+    "longitude": -2.6937248
+  },
+  {
+    "nameEs": "Calle Jubileo",
+    "nameEu": "Jubileu kalea",
+    "latitude": 42.8334823,
+    "longitude": -2.70649215
+  },
+  {
+    "nameEs": "Calle Julián de Apraiz",
+    "nameEu": "Julian Apraiz kalea",
+    "latitude": 42.85383590000001,
+    "longitude": -2.67429545
+  },
+  {
+    "nameEs": "Calle Julián de Arrese",
+    "nameEu": "Julian Arrese kalea",
+    "latitude": 42.8672557,
+    "longitude": -2.6837095
+  },
+  {
+    "nameEs": "Calle Júndiz",
+    "nameEu": "Jundiz kalea",
+    "latitude": 42.840989147368425,
+    "longitude": -2.7374702894736846
+  },
+  {
+    "nameEs": "Calle Juntas Generales",
+    "nameEu": "Biltzar Nagusien kalea",
+    "latitude": 42.86495081428571,
+    "longitude": -2.6804439142857137
+  },
+  {
+    "nameEs": "Calle Justo Vélez de Elorriaga",
+    "nameEu": "Justo Velez de Elorriaga kalea",
+    "latitude": 42.83999754285714,
+    "longitude": -2.6716794285714287
+  },
+  {
+    "nameEs": "Calle Kapelamendi",
+    "nameEu": "Kapelamendi kalea",
+    "latitude": 42.869333850000004,
+    "longitude": -2.6441168833333335
+  },
+  {
+    "nameEs": "Calle Kapildui",
+    "nameEu": "Kapildui kalea",
+    "latitude": 42.8290681,
+    "longitude": -2.6554637
+  },
+  {
+    "nameEs": "Calle Koldo Mitxelena",
+    "nameEu": "Koldo Mitxelena kalea",
+    "latitude": 42.8449782,
+    "longitude": -2.6802965
+  },
+  {
+    "nameEs": "Calle la Almena",
+    "nameEu": "Almena kalea",
+    "latitude": 42.8190096,
+    "longitude": -2.6526722
+  },
+  {
+    "nameEs": "Calle la Baranda",
+    "nameEu": "Baranda kalea",
+    "latitude": 42.8692412,
+    "longitude": -2.6829906250000004
+  },
+  {
+    "nameEs": "Calle la Dehesa",
+    "nameEu": "Dehesa kalea",
+    "latitude": 42.831858966666665,
+    "longitude": -2.702485433333333
+  },
+  {
+    "nameEs": "Calle la Iglesia",
+    "nameEu": "Eliza kalea",
+    "latitude": 42.8762644,
+    "longitude": -2.68202825
+  },
+  {
+    "nameEs": "Calle la Libertad",
+    "nameEu": "Askatasun kalea",
+    "latitude": 42.8480937,
+    "longitude": -2.6664374000000004
+  },
+  {
+    "nameEs": "Calle la Paloma",
+    "nameEu": "La Paloma kalea",
+    "latitude": 42.8495183,
+    "longitude": -2.6667298
+  },
+  {
+    "nameEs": "Calle la Paz",
+    "nameEu": "Bake kalea",
+    "latitude": 42.84530248,
+    "longitude": -2.66816002
+  },
+  {
+    "nameEs": "Calle la Peña",
+    "nameEu": "Haitz kalea",
+    "latitude": 42.8689811,
+    "longitude": -2.6663949
+  },
+  {
+    "nameEs": "Calle la Presa",
+    "nameEu": "Presa kalea",
+    "latitude": 42.8737282,
+    "longitude": -2.6792555
+  },
+  {
+    "nameEs": "Calle la Ribera",
+    "nameEu": "Ibaialde kalea",
+    "latitude": 42.874161900000004,
+    "longitude": -2.67615
+  },
+  {
+    "nameEs": "Calle la Salceda",
+    "nameEu": "Salceda kalea",
+    "latitude": 42.8193385,
+    "longitude": -2.6528833
+  },
+  {
+    "nameEs": "Calle Labastida",
+    "nameEu": "Bastida kalea",
+    "latitude": 42.84440086,
+    "longitude": -2.7035477000000006
+  },
+  {
+    "nameEs": "Calle Lakuaburua",
+    "nameEu": "Lakuaburua kalea",
+    "latitude": 42.8705274,
+    "longitude": -2.6848927
+  },
+  {
+    "nameEs": "Calle Lambarría",
+    "nameEu": "Lanbarria kalea",
+    "latitude": 42.8704228,
+    "longitude": -2.6862821
+  },
+  {
+    "nameEs": "Calle Landa",
+    "nameEu": "Landa kalea",
+    "latitude": 42.8313848,
+    "longitude": -2.7022512
+  },
+  {
+    "nameEs": "Calle Landaberde",
+    "nameEu": "Landaberde kalea",
+    "latitude": 42.86715678571428,
+    "longitude": -2.696009528571429
+  },
+  {
+    "nameEs": "Calle Landabiña",
+    "nameEu": "Landabiña kalea",
+    "latitude": 42.8485383,
+    "longitude": -2.745337
+  },
+  {
+    "nameEs": "Calle Landaluzea",
+    "nameEu": "Landaluzea kalea",
+    "latitude": 42.8421594,
+    "longitude": -2.7294796
+  },
+  {
+    "nameEs": "Calle Larrabazterra",
+    "nameEu": "Larrabazterra kalea",
+    "latitude": 42.8709169,
+    "longitude": -2.685008
+  },
+  {
+    "nameEs": "Calle Larragana",
+    "nameEu": "Larragana kalea",
+    "latitude": 42.8672168,
+    "longitude": -2.6495317000000003
+  },
+  {
+    "nameEs": "Calle Larrangoiti",
+    "nameEu": "Larrangoiti kalea",
+    "latitude": 42.8310877,
+    "longitude": -2.7529316
+  },
+  {
+    "nameEs": "Calle Larrea",
+    "nameEu": "Larrea kalea",
+    "latitude": 42.828848333333326,
+    "longitude": -2.6727589333333337
+  },
+  {
+    "nameEs": "Calle Larrimbe",
+    "nameEu": "Larrinbe kalea",
+    "latitude": 42.8154631,
+    "longitude": -2.6520674
+  },
+  {
+    "nameEs": "Calle Larrimpea",
+    "nameEu": "Larrinpea kalea",
+    "latitude": 42.8140111,
+    "longitude": -2.709271
+  },
+  {
+    "nameEs": "Calle Larrínzar",
+    "nameEu": "Larrintzar kalea",
+    "latitude": 42.8327064,
+    "longitude": -2.7001995
+  },
+  {
+    "nameEs": "Calle las Acacias",
+    "nameEu": "Akazia kalea",
+    "latitude": 42.8751322,
+    "longitude": -2.6801571
+  },
+  {
+    "nameEs": "Calle las Arenas",
+    "nameEu": "Areeta kalea",
+    "latitude": 42.8500755,
+    "longitude": -2.71606455
+  },
+  {
+    "nameEs": "Calle las Escuelas",
+    "nameEu": "Eskola kalea",
+    "latitude": 42.849549033333325,
+    "longitude": -2.6721111
+  },
+  {
+    "nameEs": "Calle las Roturas",
+    "nameEu": "Las Roturas kalea",
+    "latitude": 42.8529412,
+    "longitude": -2.7041386
+  },
+  {
+    "nameEs": "Calle las Trianas",
+    "nameEu": "Triana kalea",
+    "latitude": 42.84026637777777,
+    "longitude": -2.663374988888889
+  },
+  {
+    "nameEs": "Calle Lascaray",
+    "nameEu": "Laskarai kalea",
+    "latitude": 42.8438738,
+    "longitude": -2.68157992
+  },
+  {
+    "nameEs": "Calle Legumbe",
+    "nameEu": "Legunbe kalea",
+    "latitude": 42.8297666,
+    "longitude": -2.6556818
+  },
+  {
+    "nameEs": "Calle León",
+    "nameEu": "Leon kalea",
+    "latitude": 42.851140525,
+    "longitude": -2.660466575
+  },
+  {
+    "nameEs": "Calle Leonardo da Vinci",
+    "nameEu": "Leonardo da Vinci kalea",
+    "latitude": 42.909193675,
+    "longitude": -2.667141325
+  },
+  {
+    "nameEs": "Calle Leoncio Garnier",
+    "nameEu": "Leoncio Garnier kalea",
+    "latitude": 42.8511618,
+    "longitude": -2.6593976
+  },
+  {
+    "nameEs": "Calle Lermandabidea",
+    "nameEu": "Lermandabidea kalea",
+    "latitude": 42.84813179090909,
+    "longitude": -2.7341162
+  },
+  {
+    "nameEs": "Calle Leza",
+    "nameEu": "Leza kalea",
+    "latitude": 42.8377701,
+    "longitude": -2.7094923
+  },
+  {
+    "nameEs": "Calle Lisboa",
+    "nameEu": "Lisboa kalea",
+    "latitude": 42.8541082,
+    "longitude": -2.6555296
+  },
+  {
+    "nameEs": "Calle Logroño",
+    "nameEu": "Logroño kalea",
+    "latitude": 42.849276599999996,
+    "longitude": -2.6645773000000004
+  },
+  {
+    "nameEs": "Calle Lope de Larrea",
+    "nameEu": "Lope de Larrea kalea",
+    "latitude": 42.8422074,
+    "longitude": -2.6686569
+  },
+  {
+    "nameEs": "Calle Lorenzo Prestamero",
+    "nameEu": "Lorenzo Prestamero kalea",
+    "latitude": 42.85570265,
+    "longitude": -2.6710122
+  },
+  {
+    "nameEs": "Calle Loreto de Arriola",
+    "nameEu": "Loreto Arriola kalea",
+    "latitude": 42.856177833333334,
+    "longitude": -2.6931779833333334
+  },
+  {
+    "nameEs": "Calle los Arámburu",
+    "nameEu": "Aranburutarren kalea",
+    "latitude": 42.842863699999995,
+    "longitude": -2.66213355
+  },
+  {
+    "nameEs": "Calle los Astrónomos",
+    "nameEu": "Astronomo kalea",
+    "latitude": 42.845593875,
+    "longitude": -2.6561529
+  },
+  {
+    "nameEs": "Calle los Buesa",
+    "nameEu": "Buesatarren kalea",
+    "latitude": 42.8366974,
+    "longitude": -2.6744211
+  },
+  {
+    "nameEs": "Calle los Herrán",
+    "nameEu": "Herrandarren kalea",
+    "latitude": 42.849253899999994,
+    "longitude": -2.6658463375
+  },
+  {
+    "nameEs": "Calle los Manteli",
+    "nameEu": "Mantelitarren kalea",
+    "latitude": 42.8467871,
+    "longitude": -2.6652503
+  },
+  {
+    "nameEs": "Calle los Molinos",
+    "nameEu": "Errota kalea",
+    "latitude": 42.8360507,
+    "longitude": -2.663662
+  },
+  {
+    "nameEs": "Calle los Nogales",
+    "nameEu": "Intxaurrondo kalea",
+    "latitude": 42.877347900000004,
+    "longitude": -2.6840144
+  },
+  {
+    "nameEs": "Calle los Tilos",
+    "nameEu": "Ezki kalea",
+    "latitude": 42.8770839,
+    "longitude": -2.6833794
+  },
+  {
+    "nameEs": "Calle Luis Heintz",
+    "nameEu": "Louis Heintz kalea",
+    "latitude": 42.84530753333333,
+    "longitude": -2.6787944333333336
+  },
+  {
+    "nameEs": "Calle Luis María Uriarte",
+    "nameEu": "Luis Maria Uriarte kalea",
+    "latitude": 42.8319916,
+    "longitude": -2.6970797
+  },
+  {
+    "nameEs": "Calle Luis Olariaga",
+    "nameEu": "Luis Olariaga kalea",
+    "latitude": 42.86816967058824,
+    "longitude": -2.6827501117647063
+  },
+  {
+    "nameEs": "Calle Lukurumendi",
+    "nameEu": "Lukurumendi kalea",
+    "latitude": 42.8188974,
+    "longitude": -2.6535233
+  },
+  {
+    "nameEs": "Calle Luxemburgo",
+    "nameEu": "Luxenburgo kalea",
+    "latitude": 42.8536958,
+    "longitude": -2.6529593
+  },
+  {
+    "nameEs": "Calle Luzurio",
+    "nameEu": "Luzurio kalea",
+    "latitude": 42.849989199999996,
+    "longitude": -2.73513875
+  },
+  {
+    "nameEs": "Calle Madre Teresa de Calcuta",
+    "nameEu": "Kalkutako Teresa kalea",
+    "latitude": 42.8475013,
+    "longitude": -2.69232315
+  },
+  {
+    "nameEs": "Calle Madre Vedruna",
+    "nameEu": "Ama Vedruna kalea",
+    "latitude": 42.845958100000004,
+    "longitude": -2.68112558
+  },
+  {
+    "nameEs": "Calle Madrid",
+    "nameEu": "Madril kalea",
+    "latitude": 42.85284914761904,
+    "longitude": -2.658644985714286
+  },
+  {
+    "nameEs": "Calle Magdalena",
+    "nameEu": "Magdalena kalea",
+    "latitude": 42.84592405000001,
+    "longitude": -2.677332925
+  },
+  {
+    "nameEs": "Calle Mahatma Ghandi",
+    "nameEu": "Mahatma Ghandi kalea",
+    "latitude": 42.83789923333333,
+    "longitude": -2.703994
+  },
+  {
+    "nameEs": "Calle Maite Zúñiga",
+    "nameEu": "Maite Zuñiga kalea",
+    "latitude": 42.833814200000006,
+    "longitude": -2.690840966666667
+  },
+  {
+    "nameEs": "Calle Maliz",
+    "nameEu": "Maliz kalea",
+    "latitude": 42.83162525,
+    "longitude": -2.70151265
+  },
+  {
+    "nameEs": "Calle Malizhaeza",
+    "nameEu": "Malizhaeza kalea",
+    "latitude": 42.8287269,
+    "longitude": -2.6991785
+  },
+  {
+    "nameEs": "Calle Manuel Díaz de Arcaya",
+    "nameEu": "Manuel Diaz de Arkaia kalea",
+    "latitude": 42.8516956,
+    "longitude": -2.6746926
+  },
+  {
+    "nameEs": "Calle Manuel Iradier",
+    "nameEu": "Manuel Iradier kalea",
+    "latitude": 42.841691775,
+    "longitude": -2.6686536499999995
+  },
+  {
+    "nameEs": "Calle Mar Báltico",
+    "nameEu": "Itsaso Baltikoaren kalea",
+    "latitude": 42.8522536,
+    "longitude": -2.7066315
+  },
+  {
+    "nameEs": "Calle Mar del Norte",
+    "nameEu": "Ipar itsasoaren kalea",
+    "latitude": 42.8523794,
+    "longitude": -2.7054424
+  },
+  {
+    "nameEs": "Calle Mar Tirreno",
+    "nameEu": "Tirreniar itsasoaren kalea",
+    "latitude": 42.8534689,
+    "longitude": -2.7074545
+  },
+  {
+    "nameEs": "Calle Margarita Nelken",
+    "nameEu": "Margarita Nelken kalea",
+    "latitude": 42.8485152,
+    "longitude": -2.7012195
+  },
+  {
+    "nameEs": "Calle María Teresa León",
+    "nameEu": "Maria Teresa Leon kalea",
+    "latitude": 42.8614817,
+    "longitude": -2.6891552
+  },
+  {
+    "nameEs": "Calle Mariana Pineda Muñoz",
+    "nameEu": "Mariana Pineda Muñoz kalea",
+    "latitude": 42.8402533,
+    "longitude": -2.6454586
+  },
+  {
+    "nameEs": "Calle Marie Curie",
+    "nameEu": "Marie Curie kalea",
+    "latitude": 42.9080368,
+    "longitude": -2.6706808
+  },
+  {
+    "nameEs": "Calle Martín de Saracibar",
+    "nameEu": "Martin Sarazibar kalea",
+    "latitude": 42.856142000000006,
+    "longitude": -2.6922641
+  },
+  {
+    "nameEs": "Calle Martín Fiz",
+    "nameEu": "Martin Fiz kalea",
+    "latitude": 42.83447555,
+    "longitude": -2.691605875
+  },
+  {
+    "nameEs": "Calle Martin Luther King",
+    "nameEu": "Martin Luther King kalea",
+    "latitude": 42.84024896666667,
+    "longitude": -2.699688366666667
+  },
+  {
+    "nameEs": "Calle Martín Olave",
+    "nameEu": "Martin Olabe kalea",
+    "latitude": 42.8564024,
+    "longitude": -2.6728397
+  },
+  {
+    "nameEs": "Calle Martín Susaeta",
+    "nameEu": "Martin Susaeta kalea",
+    "latitude": 42.8579801,
+    "longitude": -2.6963217
+  },
+  {
+    "nameEs": "Calle Masparra",
+    "nameEu": "Masparra kalea",
+    "latitude": 42.8478877,
+    "longitude": -2.7521577
+  },
+  {
+    "nameEs": "Calle Mateo Benigno de Moraza",
+    "nameEu": "Mateo Benigno Moraza kalea",
+    "latitude": 42.84695035,
+    "longitude": -2.67249165
+  },
+  {
+    "nameEs": "Calle Maturana",
+    "nameEu": "Matura kalea",
+    "latitude": 42.8279189,
+    "longitude": -2.6741271
+  },
+  {
+    "nameEs": "Calle Mayor",
+    "nameEu": "Kale Nagusia",
+    "latitude": 42.819125899999996,
+    "longitude": -2.69126212
+  },
+  {
+    "nameEs": "Calle Médico Tornay",
+    "nameEu": "Tornay medikuaren kalea",
+    "latitude": 42.846708,
+    "longitude": -2.6622166
+  },
+  {
+    "nameEs": "Calle Mendaro",
+    "nameEu": "Mendaro kalea",
+    "latitude": 42.8582813,
+    "longitude": -2.6541407
+  },
+  {
+    "nameEs": "Calle Mendi",
+    "nameEu": "Mendi kalea",
+    "latitude": 42.8175557,
+    "longitude": -2.6530238
+  },
+  {
+    "nameEs": "Calle Mendia",
+    "nameEu": "Mendia kalea",
+    "latitude": 42.8180093,
+    "longitude": -2.6929163249999997
+  },
+  {
+    "nameEs": "Calle Mendibe",
+    "nameEu": "Mendibe kalea",
+    "latitude": 42.8329512,
+    "longitude": -2.699529566666667
+  },
+  {
+    "nameEs": "Calle Mendigorritxu",
+    "nameEu": "Mendigorritxu kalea",
+    "latitude": 42.8388371,
+    "longitude": -2.7464563625
+  },
+  {
+    "nameEs": "Calle Mendigularra",
+    "nameEu": "Mendigularra kalea",
+    "latitude": 42.8492796,
+    "longitude": -2.7267999
+  },
+  {
+    "nameEs": "Calle Mendiko bidea",
+    "nameEu": "Mendiko bidea",
+    "latitude": 42.8344029,
+    "longitude": -2.7050171
+  },
+  {
+    "nameEs": "Calle Mendizabala",
+    "nameEu": "Mendizabala kalea",
+    "latitude": 42.8365104,
+    "longitude": -2.6827507
+  },
+  {
+    "nameEs": "Calle Mendoza",
+    "nameEu": "Mendoza kalea",
+    "latitude": 42.85991805555556,
+    "longitude": -2.668605822222222
+  },
+  {
+    "nameEs": "Calle México",
+    "nameEu": "Mexiko kalea",
+    "latitude": 42.852227066666664,
+    "longitude": -2.687803216666667
+  },
+  {
+    "nameEs": "Calle Micaela Portilla",
+    "nameEu": "Micaela Portilla kalea",
+    "latitude": 42.84340016666666,
+    "longitude": -2.6812883666666667
+  },
+  {
+    "nameEs": "Calle Miguel Hernández",
+    "nameEu": "Miguel Hernández kalea",
+    "latitude": 42.86098,
+    "longitude": -2.6891008
+  },
+  {
+    "nameEs": "Calle Miguel Latourneur",
+    "nameEu": "Miguel Latourneur kalea",
+    "latitude": 42.8425306,
+    "longitude": -2.6454865
+  },
+  {
+    "nameEs": "Calle Miguel Mieg",
+    "nameEu": "Miguel Mieg kalea",
+    "latitude": 42.8353895,
+    "longitude": -2.6677853
+  },
+  {
+    "nameEs": "Calle Miranda de Ebro",
+    "nameEu": "Miranda de Ebro kalea",
+    "latitude": 42.8471232,
+    "longitude": -2.6625124
+  },
+  {
+    "nameEs": "Calle Miravalles",
+    "nameEu": "Miravalles kalea",
+    "latitude": 42.869826599999996,
+    "longitude": -2.64062235
+  },
+  {
+    "nameEs": "Calle Miren Martínez Sáez del Burgo",
+    "nameEu": "Miren Martínez Sáez del Burgo kalea",
+    "latitude": 42.8469319,
+    "longitude": -2.6927269999999996
+  },
+  {
+    "nameEs": "Calle Monasterio de Leire",
+    "nameEu": "Leireko monasterioaren kalea",
+    "latitude": 42.8647182,
+    "longitude": -2.6967242
+  },
+  {
+    "nameEs": "Calle Mondragón",
+    "nameEu": "Arrasate kalea",
+    "latitude": 42.85859965,
+    "longitude": -2.65569365
+  },
+  {
+    "nameEs": "Calle Monseñor Cadena y Eleta",
+    "nameEu": "Cadena y Eleta apezpikuaren kalea",
+    "latitude": 42.844685125,
+    "longitude": -2.6771762999999993
+  },
+  {
+    "nameEs": "Calle Monseñor Estenaga",
+    "nameEu": "Estenaga apezpikuaren kalea",
+    "latitude": 42.852218824999994,
+    "longitude": -2.666931525
+  },
+  {
+    "nameEs": "Calle Monseñor Mateo Múgica",
+    "nameEu": "Mateo Muxika Apezpikuaren kalea",
+    "latitude": 42.8522016,
+    "longitude": -2.6832565
+  },
+  {
+    "nameEs": "Calle Montes de Vitoria",
+    "nameEu": "Gasteizko Mendien kalea",
+    "latitude": 42.8275989,
+    "longitude": -2.7527051
+  },
+  {
+    "nameEs": "Calle Mundigalay",
+    "nameEu": "Mendigalai kalea",
+    "latitude": 42.8539764,
+    "longitude": -2.7025825
+  },
+  {
+    "nameEs": "Calle Músico Mariano San Miguel",
+    "nameEu": "Mariano San Migel musikariaren kalea",
+    "latitude": 42.8470693,
+    "longitude": -2.6608753
+  },
+  {
+    "nameEs": "Calle Nadine Gordimer",
+    "nameEu": "Nadine Gordimer kalea",
+    "latitude": 42.84638834999999,
+    "longitude": -2.645100616666667
+  },
+  {
+    "nameEs": "Calle Navarra",
+    "nameEu": "Nafarroa kalea",
+    "latitude": 42.837796966666666,
+    "longitude": -2.6782557333333337
+  },
+  {
+    "nameEs": "Calle Navarro Villoslada",
+    "nameEu": "Navarro Villoslada kalea",
+    "latitude": 42.8534969,
+    "longitude": -2.6783578
+  },
+  {
+    "nameEs": "Calle Nelson Mandela",
+    "nameEu": "Nelson Mandela kalea",
+    "latitude": 42.839787,
+    "longitude": -2.701894
+  },
+  {
+    "nameEs": "Calle Nicaragua",
+    "nameEu": "Nikaragua kalea",
+    "latitude": 42.8561397,
+    "longitude": -2.677473
+  },
+  {
+    "nameEs": "Calle Nicosia",
+    "nameEu": "Nikosia kalea",
+    "latitude": 42.84665641428571,
+    "longitude": -2.648143
+  },
+  {
+    "nameEs": "Calle Nieves Cano",
+    "nameEu": "Nieves Cano kalea",
+    "latitude": 42.838762777777774,
+    "longitude": -2.672439111111111
+  },
+  {
+    "nameEs": "Calle Nuestra Señora del Carmen",
+    "nameEu": "Karmengo Ama Birjina kalea",
+    "latitude": 42.8319551,
+    "longitude": -2.6161955
+  },
+  {
+    "nameEs": "Calle Nueva Dentro-Judería",
+    "nameEu": "Barnekale Berria",
+    "latitude": 42.84767145,
+    "longitude": -2.6697035
+  },
+  {
+    "nameEs": "Calle Nueva Fuera",
+    "nameEu": "Kanpokale Berria",
+    "latitude": 42.847636300000005,
+    "longitude": -2.66930075
+  },
+  {
+    "nameEs": "Calle Obispo Ballester",
+    "nameEu": "Ballester apezpikuaren kalea",
+    "latitude": 42.85420698,
+    "longitude": -2.66478863
+  },
+  {
+    "nameEs": "Calle Obispo Bivere",
+    "nameEu": "Bivere apezpikuaren kalea",
+    "latitude": 42.8338235,
+    "longitude": -2.6954231
+  },
+  {
+    "nameEs": "Calle Ocáriz",
+    "nameEu": "Okariz kalea",
+    "latitude": 42.82646893333333,
+    "longitude": -2.674082633333333
+  },
+  {
+    "nameEs": "Calle Océano Atlántico",
+    "nameEu": "Ozeano Atlantikoaren kalea",
+    "latitude": 42.850083,
+    "longitude": -2.7013348
+  },
+  {
+    "nameEs": "Calle Océano Pacífico",
+    "nameEu": "Ozeano Barearen kalea",
+    "latitude": 42.84926443333333,
+    "longitude": -2.6988801166666665
+  },
+  {
+    "nameEs": "Calle Oilamendi",
+    "nameEu": "Oilamendi kalea",
+    "latitude": 42.84861775,
+    "longitude": -2.73999175
+  },
+  {
+    "nameEs": "Calle Olaguíbel",
+    "nameEu": "Olagibel kalea",
+    "latitude": 42.84591515714287,
+    "longitude": -2.666233342857143
+  },
+  {
+    "nameEs": "Calle Oñate",
+    "nameEu": "Oñati kalea",
+    "latitude": 42.8571624,
+    "longitude": -2.65757585
+  },
+  {
+    "nameEs": "Calle Oreitiasolo",
+    "nameEu": "Oreitiasolo kalea",
+    "latitude": 42.83829996666666,
+    "longitude": -2.6566148333333333
+  },
+  {
+    "nameEs": "Calle Ori",
+    "nameEu": "Ori kalea",
+    "latitude": 42.8627406,
+    "longitude": -2.6915916
+  },
+  {
+    "nameEs": "Calle Ortuoste",
+    "nameEu": "Ortuoste kalea",
+    "latitude": 42.85025808,
+    "longitude": -2.7292195599999998
+  },
+  {
+    "nameEs": "Calle Osinagea",
+    "nameEu": "Osinagea kalea",
+    "latitude": 42.8694971,
+    "longitude": -2.6544518
+  },
+  {
+    "nameEs": "Calle Oyón",
+    "nameEu": "Oion kalea",
+    "latitude": 42.84024003333334,
+    "longitude": -2.7058601333333336
+  },
+  {
+    "nameEs": "Calle Pablo de Xérica",
+    "nameEu": "Pablo Xerica kalea",
+    "latitude": 42.835507766666666,
+    "longitude": -2.6688495333333333
+  },
+  {
+    "nameEs": "Calle Pablo Morillo",
+    "nameEu": "Pablo Morillo kalea",
+    "latitude": 42.8576647,
+    "longitude": -2.6976668
+  },
+  {
+    "nameEs": "Calle Pablo Neruda",
+    "nameEu": "Pablo Neruda kalea",
+    "latitude": 42.852921575,
+    "longitude": -2.6899979000000003
+  },
+  {
+    "nameEs": "Calle Paduleta",
+    "nameEu": "Paduleta kalea",
+    "latitude": 42.83034641,
+    "longitude": -2.74441336
+  },
+  {
+    "nameEs": "Calle Paduragoia",
+    "nameEu": "Paduragoia kalea",
+    "latitude": 42.8623563,
+    "longitude": -2.6568828
+  },
+  {
+    "nameEs": "Calle Palacio",
+    "nameEu": "Jauregi kalea",
+    "latitude": 42.8488047,
+    "longitude": -2.672655
+  },
+  {
+    "nameEs": "Calle Palencia",
+    "nameEu": "Palentzia kalea",
+    "latitude": 42.851388,
+    "longitude": -2.6638327
+  },
+  {
+    "nameEs": "Calle Palogán",
+    "nameEu": "Pagogan kalea",
+    "latitude": 42.8290466,
+    "longitude": -2.6532748
+  },
+  {
+    "nameEs": "Calle Pamplona",
+    "nameEu": "Iruñea kalea",
+    "latitude": 42.863946516666665,
+    "longitude": -2.6992725833333338
+  },
+  {
+    "nameEs": "Calle Panamá",
+    "nameEu": "Panama kalea",
+    "latitude": 42.858716,
+    "longitude": -2.6761981
+  },
+  {
+    "nameEs": "Calle Paraguay",
+    "nameEu": "Paraguai kalea",
+    "latitude": 42.8571462,
+    "longitude": -2.6784129
+  },
+  {
+    "nameEs": "Calle Paula Montal",
+    "nameEu": "Paula Montal kalea",
+    "latitude": 42.85578683333333,
+    "longitude": -2.7010742333333333
+  },
+  {
+    "nameEs": "Calle Pedro Asúa",
+    "nameEu": "Pedro Asua kalea",
+    "latitude": 42.84844608260869,
+    "longitude": -2.6896574869565217
+  },
+  {
+    "nameEs": "Calle Pedro Orbea",
+    "nameEu": "Pedro Orbea kalea",
+    "latitude": 42.8510433,
+    "longitude": -2.66829
+  },
+  {
+    "nameEs": "Calle Pedro Salinas",
+    "nameEu": "Pedro Salinas kalea",
+    "latitude": 42.86039505,
+    "longitude": -2.689926025
+  },
+  {
+    "nameEs": "Calle Perretagana",
+    "nameEu": "Perretagana kalea",
+    "latitude": 42.8499235,
+    "longitude": -2.726212
+  },
+  {
+    "nameEs": "Calle Perretxin",
+    "nameEu": "Perretxin kalea",
+    "latitude": 42.8533147,
+    "longitude": -2.70293935
+  },
+  {
+    "nameEs": "Calle Perú",
+    "nameEu": "Peru kalea",
+    "latitude": 42.8561202,
+    "longitude": -2.6741573999999995
+  },
+  {
+    "nameEs": "Calle Pintor Adrián Aldecoa",
+    "nameEu": "Adrian Aldekoa margolariaren kalea",
+    "latitude": 42.8438553,
+    "longitude": -2.6846283
+  },
+  {
+    "nameEs": "Calle Pintor Clemente Arraiz",
+    "nameEu": "Clemente Arraiz margolariaren kalea",
+    "latitude": 42.850465299999996,
+    "longitude": -2.68588825
+  },
+  {
+    "nameEs": "Calle Pintor Gustavo de Maestu",
+    "nameEu": "Gustavo Maeztu margolariaren kalea",
+    "latitude": 42.8500438,
+    "longitude": -2.6870297
+  },
+  {
+    "nameEs": "Calle Pintor Ignacio Díaz Ruiz de Olano",
+    "nameEu": "Ignacio Diaz Ruiz de Olano margolariaren kalea",
+    "latitude": 42.8445829,
+    "longitude": -2.6846524799999996
+  },
+  {
+    "nameEs": "Calle Pintor Jesús Apellániz",
+    "nameEu": "Jesus Apellaniz margolariaren kalea",
+    "latitude": 42.8471852,
+    "longitude": -2.6852402
+  },
+  {
+    "nameEs": "Calle Pintor Juan Ángel Sáez",
+    "nameEu": "Juan Angel Saez margolariaren kalea",
+    "latitude": 42.8443377,
+    "longitude": -2.68526235
+  },
+  {
+    "nameEs": "Calle Pintor Mauro Ortiz de Urbina",
+    "nameEu": "Mauro Ortiz de Urbina margolariaren kalea",
+    "latitude": 42.8499195,
+    "longitude": -2.68668675
+  },
+  {
+    "nameEs": "Calle Pintor Mauro Ortíz de Urbina",
+    "nameEu": "Mauro Ortiz de Urbina margolariaren kalea",
+    "latitude": 42.849867149999994,
+    "longitude": -2.6860615
+  },
+  {
+    "nameEs": "Calle Pintor Pablo Uranga",
+    "nameEu": "Pablo Uranga margolariaren kalea",
+    "latitude": 42.8460164,
+    "longitude": -2.6855689
+  },
+  {
+    "nameEs": "Calle Pintor Teodoro Dublang",
+    "nameEu": "Teodoro Dublang margolariaren kalea",
+    "latitude": 42.844348930769236,
+    "longitude": -2.688081453846153
+  },
+  {
+    "nameEs": "Calle Pintor Vicente Abreu",
+    "nameEu": "Vicente Abreu margolariaren kalea",
+    "latitude": 42.8490956,
+    "longitude": -2.6843903
+  },
+  {
+    "nameEs": "Calle Pintorería",
+    "nameEu": "Pintore kalea",
+    "latitude": 42.84935899999999,
+    "longitude": -2.6707743666666666
+  },
+  {
+    "nameEs": "Calle Pío XII",
+    "nameEu": "Pio XII.aren kalea",
+    "latitude": 42.844368575000004,
+    "longitude": -2.6656354
+  },
+  {
+    "nameEs": "Calle Polvorín Viejo",
+    "nameEu": "Sutaustegi Zaharreko kalea",
+    "latitude": 42.846144,
+    "longitude": -2.6599018
+  },
+  {
+    "nameEs": "Calle Postas",
+    "nameEu": "Posta kalea",
+    "latitude": 42.84538835,
+    "longitude": -2.6668019
+  },
+  {
+    "nameEs": "Calle Pozoa",
+    "nameEu": "Pozoa kalea",
+    "latitude": 42.867029,
+    "longitude": -2.6765327
+  },
+  {
+    "nameEs": "Calle Pozoaldea",
+    "nameEu": "Pozoaldea kalea",
+    "latitude": 42.8756239,
+    "longitude": -2.6844881
+  },
+  {
+    "nameEs": "Calle Prado",
+    "nameEu": "Prado kalea",
+    "latitude": 42.84597555,
+    "longitude": -2.6748365
+  },
+  {
+    "nameEs": "Calle Presagana",
+    "nameEu": "Presagana kalea",
+    "latitude": 42.8791235,
+    "longitude": -2.6606634
+  },
+  {
+    "nameEs": "Calle Próspero Mérimée",
+    "nameEu": "Prosper Mérimée kalea",
+    "latitude": 42.8506274,
+    "longitude": -2.70214475
+  },
+  {
+    "nameEs": "Calle Prudencio María Verastegui",
+    "nameEu": "Prudencio Maria Berastegi kalea",
+    "latitude": 42.8491656,
+    "longitude": -2.6662159
+  },
+  {
+    "nameEs": "Calle Puente Alto",
+    "nameEu": "Zubigarai kalea",
+    "latitude": 42.828921533333336,
+    "longitude": -2.6517103
+  },
+  {
+    "nameEs": "Calle Puerto de Altube",
+    "nameEu": "Altube mendatearen kalea",
+    "latitude": 42.8590878,
+    "longitude": -2.670318
+  },
+  {
+    "nameEs": "Calle Puerto de Arlabán",
+    "nameEu": "Arlaban mendatearen kalea",
+    "latitude": 42.8585163,
+    "longitude": -2.6702865
+  },
+  {
+    "nameEs": "Calle Puerto de Azáceta",
+    "nameEu": "Azazeta mendatearen kalea",
+    "latitude": 42.85959115,
+    "longitude": -2.67237075
+  },
+  {
+    "nameEs": "Calle Puerto de Barázar",
+    "nameEu": "Barazar mendatearen kalea",
+    "latitude": 42.8596785,
+    "longitude": -2.6713281
+  },
+  {
+    "nameEs": "Calle Puerto de Herrera",
+    "nameEu": "Herrera mendatearen kalea",
+    "latitude": 42.8599894,
+    "longitude": -2.6720267
+  },
+  {
+    "nameEs": "Calle Puerto de Herrera",
+    "nameEu": "Herrerako mendatearen kalea",
+    "latitude": 42.8601818,
+    "longitude": -2.6700724
+  },
+  {
+    "nameEs": "Calle Puerto de Urkiola",
+    "nameEu": "Urkiola mendatearen kalea",
+    "latitude": 42.8609395,
+    "longitude": -2.6710521
+  },
+  {
+    "nameEs": "Calle Puerto Rico",
+    "nameEu": "Puerto Rico kalea",
+    "latitude": 42.85738485,
+    "longitude": -2.6794408
+  },
+  {
+    "nameEs": "Calle Rafael Alberti",
+    "nameEu": "Rafael Alberti kalea",
+    "latitude": 42.859593999999994,
+    "longitude": -2.684980133333333
+  },
+  {
+    "nameEs": "Calle Raimundo Olabide",
+    "nameEu": "Erraimun Olabide kalea",
+    "latitude": 42.837371649999994,
+    "longitude": -2.6620291
+  },
+  {
+    "nameEs": "Calle Ramiro de Maeztu",
+    "nameEu": "Ramiro Maeztu kalea",
+    "latitude": 42.8482327,
+    "longitude": -2.6785927
+  },
+  {
+    "nameEs": "Calle Ramón Ortiz de Zárate",
+    "nameEu": "Ramón Ortiz de Zarate kalea",
+    "latitude": 42.8433297,
+    "longitude": -2.6699775
+  },
+  {
+    "nameEs": "Calle Ramón Rubial",
+    "nameEu": "Ramon Rubial kalea",
+    "latitude": 42.8550628,
+    "longitude": -2.6940703999999998
+  },
+  {
+    "nameEs": "Calle Reyes Católicos",
+    "nameEu": "Errege-erregina katolikoen kalea",
+    "latitude": 42.85445455,
+    "longitude": -2.66821625
+  },
+  {
+    "nameEs": "Calle Reyes de Navarra",
+    "nameEu": "Nafarroako Errege-Erreginen kalea",
+    "latitude": 42.857906312500006,
+    "longitude": -2.668455875
+  },
+  {
+    "nameEs": "Calle Ricardo Buesa",
+    "nameEu": "Ricardo Buesa kalea",
+    "latitude": 42.8482893,
+    "longitude": -2.6794647
+  },
+  {
+    "nameEs": "Calle Ricardo Puga",
+    "nameEu": "Ricardo Puga kalea",
+    "latitude": 42.84412665,
+    "longitude": -2.6597298499999997
+  },
+  {
+    "nameEs": "Calle Río Ayuda",
+    "nameEu": "Uda ibaiaren kalea",
+    "latitude": 42.8678483,
+    "longitude": -2.7009567
+  },
+  {
+    "nameEs": "Calle Río Barrundia",
+    "nameEu": "Barrundia ibaiaren kalea",
+    "latitude": 42.8662456,
+    "longitude": -2.7020818
+  },
+  {
+    "nameEs": "Calle Río Bayas",
+    "nameEu": "Baia ibaiaren kalea",
+    "latitude": 42.869215725000004,
+    "longitude": -2.694462825
+  },
+  {
+    "nameEs": "Calle Río Berrón",
+    "nameEu": "Berron ibaiaren kalea",
+    "latitude": 42.8698118,
+    "longitude": -2.6959299
+  },
+  {
+    "nameEs": "Calle Río Ega",
+    "nameEu": "Ega ibaiaren kalea",
+    "latitude": 42.8685785,
+    "longitude": -2.6990895
+  },
+  {
+    "nameEs": "Calle Río Inglares",
+    "nameEu": "Inglares ibaiaren kalea",
+    "latitude": 42.8709839,
+    "longitude": -2.6938612
+  },
+  {
+    "nameEs": "Calle Río Istora",
+    "nameEu": "Istora ibaiaren kalea",
+    "latitude": 42.8710748,
+    "longitude": -2.6935138
+  },
+  {
+    "nameEs": "Calle Río Iturrizabaleta",
+    "nameEu": "Iturrizabaleta ibaiaren kalea",
+    "latitude": 42.8698206,
+    "longitude": -2.6967272
+  },
+  {
+    "nameEs": "Calle Río Izkiz",
+    "nameEu": "Izki ibaiaren kalea",
+    "latitude": 42.870858,
+    "longitude": -2.6940723
+  },
+  {
+    "nameEs": "Calle Río Nervión",
+    "nameEu": "Nerbioi ibaiaren kalea",
+    "latitude": 42.8674556,
+    "longitude": -2.7019774
+  },
+  {
+    "nameEs": "Calle Río Omecillo",
+    "nameEu": "Omecillo ibaiaren kalea",
+    "latitude": 42.8691187,
+    "longitude": -2.6977356
+  },
+  {
+    "nameEs": "Calle Río Uragana",
+    "nameEu": "Uragana ibaiaren kalea",
+    "latitude": 42.8692106,
+    "longitude": -2.6966427
+  },
+  {
+    "nameEs": "Calle Río Urederra",
+    "nameEu": "Urederra ibaiaren kalea",
+    "latitude": 42.86852240000001,
+    "longitude": -2.7001347571428576
+  },
+  {
+    "nameEs": "Calle Río Zaia",
+    "nameEu": "Zaia ibaiaren kalea",
+    "latitude": 42.8668041,
+    "longitude": -2.7027414
+  },
+  {
+    "nameEs": "Calle Río Zubialde",
+    "nameEu": "Zubialde ibaiaren kalea",
+    "latitude": 42.8679364,
+    "longitude": -2.6998239
+  },
+  {
+    "nameEs": "Calle Rioja",
+    "nameEu": "Errioxa kalea",
+    "latitude": 42.84215006000001,
+    "longitude": -2.66830398
+  },
+  {
+    "nameEs": "Calle Rosalía de Castro",
+    "nameEu": "Rosalia de Castro kalea",
+    "latitude": 42.83904880000001,
+    "longitude": -2.689340428571428
+  },
+  {
+    "nameEs": "Calle Salbatierrabide",
+    "nameEu": "Salbaterrabide kalea",
+    "latitude": 42.8380474375,
+    "longitude": -2.684659825
+  },
+  {
+    "nameEs": "Calle Salvador Dalí",
+    "nameEu": "Salvador Dali kalea",
+    "latitude": 42.8466811,
+    "longitude": -2.7064628
+  },
+  {
+    "nameEs": "Calle Salvador García del Diestro",
+    "nameEu": "Salvador Garcia del Diestro kalea",
+    "latitude": 42.8418236,
+    "longitude": -2.6735684
+  },
+  {
+    "nameEs": "Calle San Andrés",
+    "nameEu": "San Andres kalea",
+    "latitude": 42.8768894,
+    "longitude": -2.6590543
+  },
+  {
+    "nameEs": "Calle San Antonio",
+    "nameEu": "San Antonio kalea",
+    "latitude": 42.8423844,
+    "longitude": -2.6744956
+  },
+  {
+    "nameEs": "Calle San Francisco",
+    "nameEu": "San Frantzisko kalea",
+    "latitude": 42.8471975,
+    "longitude": -2.6701682333333334
+  },
+  {
+    "nameEs": "Calle San Ildefonso",
+    "nameEu": "San Ildefontso kalea",
+    "latitude": 42.85018925,
+    "longitude": -2.66986765
+  },
+  {
+    "nameEs": "Calle San José",
+    "nameEu": "Done Joxepe kalea",
+    "latitude": 42.8310609,
+    "longitude": -2.6167307
+  },
+  {
+    "nameEs": "Calle San Juan",
+    "nameEu": "Donibane kalea",
+    "latitude": 42.831938,
+    "longitude": -2.6178087
+  },
+  {
+    "nameEs": "Calle San Juan el Grande",
+    "nameEu": "San Juan Handiaren kalea",
+    "latitude": 42.8160654,
+    "longitude": -2.65115395
+  },
+  {
+    "nameEs": "Calle San Juan Txiki",
+    "nameEu": "San Juan Txikiaren kalea",
+    "latitude": 42.816744,
+    "longitude": -2.6514355
+  },
+  {
+    "nameEs": "Calle San Julián",
+    "nameEu": "San Julian kalea",
+    "latitude": 42.8323208,
+    "longitude": -2.6993471
+  },
+  {
+    "nameEs": "Calle San Lucas",
+    "nameEu": "Done Lukas kalea",
+    "latitude": 42.8321483,
+    "longitude": -2.6145567
+  },
+  {
+    "nameEs": "Calle San Manuel",
+    "nameEu": "Done Manuel kalea",
+    "latitude": 42.8310602,
+    "longitude": -2.6156235
+  },
+  {
+    "nameEs": "Calle San Marcos",
+    "nameEu": "Done Markos kalea",
+    "latitude": 42.8319278,
+    "longitude": -2.6188712
+  },
+  {
+    "nameEs": "Calle San Mateo",
+    "nameEu": "Done Mateo kalea",
+    "latitude": 42.8319846,
+    "longitude": -2.6135519
+  },
+  {
+    "nameEs": "Calle San Miguel de Acha",
+    "nameEu": "San Migel Atxakoaren kalea",
+    "latitude": 42.864621699999994,
+    "longitude": -2.7074009571428577
+  },
+  {
+    "nameEs": "Calle San Millán",
+    "nameEu": "Donemiliaga kalea",
+    "latitude": 42.83371483333334,
+    "longitude": -2.6739618999999997
+  },
+  {
+    "nameEs": "Calle San Salvador",
+    "nameEu": "Done Salbatzaile kalea",
+    "latitude": 42.8312274,
+    "longitude": -2.6161773
+  },
+  {
+    "nameEs": "Calle San Saturio",
+    "nameEu": "San Saturio kalea",
+    "latitude": 42.831918,
+    "longitude": -2.6980355
+  },
+  {
+    "nameEs": "Calle San Valentín de Berriotxoa",
+    "nameEu": "Balentin Berriotxoakoa kalea",
+    "latitude": 42.84595223333333,
+    "longitude": -2.6919955666666664
+  },
+  {
+    "nameEs": "Calle San Viator",
+    "nameEu": "San Viator kalea",
+    "latitude": 42.85556773333333,
+    "longitude": -2.6820906666666664
+  },
+  {
+    "nameEs": "Calle San Vicente de Paúl",
+    "nameEu": "San Bizente Paulekoaren kalea",
+    "latitude": 42.850108466666676,
+    "longitude": -2.6704201666666667
+  },
+  {
+    "nameEs": "Calle Sancho el Sabio",
+    "nameEu": "Antso Jakitunaren kalea",
+    "latitude": 42.848172,
+    "longitude": -2.6802233
+  },
+  {
+    "nameEs": "Calle Sansomendi",
+    "nameEu": "Sansomendi kalea",
+    "latitude": 42.8545116,
+    "longitude": -2.6987123
+  },
+  {
+    "nameEs": "Calle Santa Catalina",
+    "nameEu": "Santa Katalina kalea",
+    "latitude": 42.8456185,
+    "longitude": -2.742612
+  },
+  {
+    "nameEs": "Calle Santa Espina",
+    "nameEu": "Arantza Santua kalea",
+    "latitude": 42.8139405,
+    "longitude": -2.7103952
+  },
+  {
+    "nameEs": "Calle Santa Eulalia",
+    "nameEu": "Santa Eulalia kalea",
+    "latitude": 42.8107273,
+    "longitude": -2.7108919
+  },
+  {
+    "nameEs": "Calle Santa Isabel",
+    "nameEu": "Santa Isabel kalea",
+    "latitude": 42.855997,
+    "longitude": -2.672378833333333
+  },
+  {
+    "nameEs": "Calle Santa Lucía",
+    "nameEu": "Santa Luzia kalea",
+    "latitude": 42.84662645,
+    "longitude": -2.66051285
+  },
+  {
+    "nameEs": "Calle Santa María",
+    "nameEu": "Santa Maria kalea",
+    "latitude": 42.849289850000005,
+    "longitude": -2.6724494
+  },
+  {
+    "nameEs": "Calle Santa María Josefa del Corazón de Jesús",
+    "nameEu": "Jesusen Bihotzeko Santa Maria Josefa kalea",
+    "latitude": 42.8470054,
+    "longitude": -2.6933029
+  },
+  {
+    "nameEs": "Calle Santiago Ramón y Cajal",
+    "nameEu": "Santiago Ramon y Cajal kalea",
+    "latitude": 42.84378190000001,
+    "longitude": -2.6773189333333334
+  },
+  {
+    "nameEs": "Calle Santo Domingo",
+    "nameEu": "Santo Domingo kalea",
+    "latitude": 42.85182195,
+    "longitude": -2.67278465
+  },
+  {
+    "nameEs": "Calle Sarburua",
+    "nameEu": "Sarburua kalea",
+    "latitude": 42.8310671,
+    "longitude": -2.6989238
+  },
+  {
+    "nameEs": "Calle Sarluze",
+    "nameEu": "Sarluze kalea",
+    "latitude": 42.8153669,
+    "longitude": -2.70453465
+  },
+  {
+    "nameEs": "Calle Sebastián Fernández de Leceta",
+    "nameEu": "Sebastian Fernandez de Lezeta kalea",
+    "latitude": 42.8509904,
+    "longitude": -2.6825662
+  },
+  {
+    "nameEs": "Calle Serafín Ajuria",
+    "nameEu": "Serafin Ajuria kalea",
+    "latitude": 42.849523,
+    "longitude": -2.6849402
+  },
+  {
+    "nameEs": "Calle Sierra de Andía",
+    "nameEu": "Andia mendiaren kalea",
+    "latitude": 42.865003933333334,
+    "longitude": -2.6880546333333335
+  },
+  {
+    "nameEs": "Calle Sierra de Aralar",
+    "nameEu": "Aralar mendiaren kalea",
+    "latitude": 42.86320331428571,
+    "longitude": -2.695152685714286
+  },
+  {
+    "nameEs": "Calle Sierra de Urbasa",
+    "nameEu": "Urbasa mendiaren kalea",
+    "latitude": 42.86405945,
+    "longitude": -2.7020061249999996
+  },
+  {
+    "nameEs": "Calle Sierras Alavesas",
+    "nameEu": "Sierras Alavesas kalea",
+    "latitude": 42.8515803,
+    "longitude": -2.6650056
+  },
+  {
+    "nameEs": "Calle Simón de Anda",
+    "nameEu": "Simon de Anda kalea",
+    "latitude": 42.854775399999994,
+    "longitude": -2.67545395
+  },
+  {
+    "nameEs": "Calle Sociedad Bascongada de los Amigos del País",
+    "nameEu": "Euskal Herriaren adiskideen elkartearen kalea",
+    "latitude": 42.849653,
+    "longitude": -2.6727509
+  },
+  {
+    "nameEs": "Calle Soraluze",
+    "nameEu": "Soraluze kalea",
+    "latitude": 42.8587957,
+    "longitude": -2.6548325
+  },
+  {
+    "nameEs": "Calle Stuttgart",
+    "nameEu": "Stuttgart kalea",
+    "latitude": 42.85508315,
+    "longitude": -2.7099138
+  },
+  {
+    "nameEs": "Calle Tanis Aguirrebengoa",
+    "nameEu": "Tanis Agirrebengoa kalea",
+    "latitude": 42.8366443,
+    "longitude": -2.6948021
+  },
+  {
+    "nameEs": "Calle Tarazona",
+    "nameEu": "Tarazona kalea",
+    "latitude": 42.8307002,
+    "longitude": -2.6977541
+  },
+  {
+    "nameEs": "Calle Tarragona",
+    "nameEu": "Tarragona kalea",
+    "latitude": 42.8679911,
+    "longitude": -2.6890566
+  },
+  {
+    "nameEs": "Calle Telesforo de Aranzadi",
+    "nameEu": "Telesforo Aranzadi kalea",
+    "latitude": 42.8515429,
+    "longitude": -2.6853509
+  },
+  {
+    "nameEs": "Calle Tenerías",
+    "nameEu": "Larrugile kalea",
+    "latitude": 42.8538423,
+    "longitude": -2.6747759
+  },
+  {
+    "nameEs": "Calle Teodoro González de Zárate",
+    "nameEu": "Teodoro Gonzalez de Zarate kalea",
+    "latitude": 42.84134735,
+    "longitude": -2.69540705
+  },
+  {
+    "nameEs": "Calle Teodoro Olarte Aizpuru",
+    "nameEu": "Teodoro Olarte Aizpuru kalea",
+    "latitude": 42.84485983333334,
+    "longitude": -2.6424723666666665
+  },
+  {
+    "nameEs": "Calle Tomás Alfaro",
+    "nameEu": "Tomas Alfaro kalea",
+    "latitude": 42.848929,
+    "longitude": -2.6824443
+  },
+  {
+    "nameEs": "Calle Toni Morrison",
+    "nameEu": "Toni Morrison kalea",
+    "latitude": 42.846369620000004,
+    "longitude": -2.64725694
+  },
+  {
+    "nameEs": "Calle Tratado de Kioto",
+    "nameEu": "Kiotoko Ituna kalea",
+    "latitude": 42.8167878,
+    "longitude": -2.7880278
+  },
+  {
+    "nameEs": "Calle Tratado de Montreal",
+    "nameEu": "Montrealeko Ituna kalea",
+    "latitude": 42.81889090000001,
+    "longitude": -2.7847980666666667
+  },
+  {
+    "nameEs": "Calle Tratado de París",
+    "nameEu": "Parisko Itunaren kalea",
+    "latitude": 42.817432700000005,
+    "longitude": -2.7858669333333332
+  },
+  {
+    "nameEs": "Calle Tullonio",
+    "nameEu": "Tullonio kalea",
+    "latitude": 42.8387871,
+    "longitude": -2.6524757
+  },
+  {
+    "nameEs": "Calle Txalaparta",
+    "nameEu": "Txalaparta kalea",
+    "latitude": 42.8372293,
+    "longitude": -2.6655457
+  },
+  {
+    "nameEs": "Calle Txarrakea",
+    "nameEu": "Txarrakea kalea",
+    "latitude": 42.8759996,
+    "longitude": -2.68190345
+  },
+  {
+    "nameEs": "Calle Txikia",
+    "nameEu": "Kale Txikia",
+    "latitude": 42.8344912,
+    "longitude": -2.7062368
+  },
+  {
+    "nameEs": "Calle Txiribia",
+    "nameEu": "Txiribia kalea",
+    "latitude": 42.8486368,
+    "longitude": -2.660442
+  },
+  {
+    "nameEs": "Calle Txirpia",
+    "nameEu": "Txirpia kalea",
+    "latitude": 42.862845033333336,
+    "longitude": -2.654101166666667
+  },
+  {
+    "nameEs": "Calle Txirula",
+    "nameEu": "Txirula kalea",
+    "latitude": 42.8374063,
+    "longitude": -2.6657649
+  },
+  {
+    "nameEs": "Calle Txistularis",
+    "nameEu": "Txistulari kalea",
+    "latitude": 42.8399675,
+    "longitude": -2.6656238666666665
+  },
+  {
+    "nameEs": "Calle Uleta",
+    "nameEu": "Uleta kalea",
+    "latitude": 42.8334547,
+    "longitude": -2.696105733333333
+  },
+  {
+    "nameEs": "Calle Ultreya",
+    "nameEu": "Ultreya kalea",
+    "latitude": 42.8316181,
+    "longitude": -2.704552
+  },
+  {
+    "nameEs": "Calle Urartea",
+    "nameEu": "Urartea kalea",
+    "latitude": 42.860612282352946,
+    "longitude": -2.7097844470588233
+  },
+  {
+    "nameEs": "Calle Uribeguela",
+    "nameEu": "Uribegela kalea",
+    "latitude": 42.875112099999996,
+    "longitude": -2.67694195
+  },
+  {
+    "nameEs": "Calle Urkilla",
+    "nameEu": "Urkilla kalea",
+    "latitude": 42.82916685,
+    "longitude": -2.7535100000000003
+  },
+  {
+    "nameEs": "Calle Urkitza",
+    "nameEu": "Urkitza kalea",
+    "latitude": 42.8282023,
+    "longitude": -2.7518282
+  },
+  {
+    "nameEs": "Calle Urrundi",
+    "nameEu": "Urrundi kalea",
+    "latitude": 42.8687171,
+    "longitude": -2.6476784
+  },
+  {
+    "nameEs": "Calle Urrutxaga",
+    "nameEu": "Urrutxaga kalea",
+    "latitude": 42.8766136,
+    "longitude": -2.6586207
+  },
+  {
+    "nameEs": "Calle Uruguay",
+    "nameEu": "Uruguai kalea",
+    "latitude": 42.85729875,
+    "longitude": -2.67660835
+  },
+  {
+    "nameEs": "Calle Usakerra",
+    "nameEu": "Usakerra kalea",
+    "latitude": 42.8162375,
+    "longitude": -2.6932061
+  },
+  {
+    "nameEs": "Calle Uzbina",
+    "nameEu": "Uzbina kalea",
+    "latitude": 42.8333801,
+    "longitude": -2.7426573
+  },
+  {
+    "nameEs": "Calle Valladolid",
+    "nameEu": "Valladolid kalea",
+    "latitude": 42.852098187500005,
+    "longitude": -2.6596117375000006
+  },
+  {
+    "nameEs": "Calle Venezuela",
+    "nameEu": "Venezuela kalea",
+    "latitude": 42.8582234,
+    "longitude": -2.67731925
+  },
+  {
+    "nameEs": "Calle Venta de la Estrella",
+    "nameEu": "Izarbenta kalea",
+    "latitude": 42.8366922,
+    "longitude": -2.6573507400000005
+  },
+  {
+    "nameEs": "Calle Vicente Aleixandre",
+    "nameEu": "Vicente Aleixandre kalea",
+    "latitude": 42.842758950000004,
+    "longitude": -2.6568388
+  },
+  {
+    "nameEs": "Calle Vicente Goicoechea",
+    "nameEu": "Vicente Goikoetxea kalea",
+    "latitude": 42.84702659999999,
+    "longitude": -2.6762948333333334
+  },
+  {
+    "nameEs": "Calle Vicente Gonzalez de Echávarri",
+    "nameEu": "Vicente Gonzalez de Etxabarri kalea",
+    "latitude": 42.8526135,
+    "longitude": -2.6855164
+  },
+  {
+    "nameEs": "Calle Vicente Manterola",
+    "nameEu": "Vicente Manterola kalea",
+    "latitude": 42.8564262,
+    "longitude": -2.6698379
+  },
+  {
+    "nameEs": "Calle Victoria Kent",
+    "nameEu": "Victoria Kent kalea",
+    "latitude": 42.8504636,
+    "longitude": -2.7077038
+  },
+  {
+    "nameEs": "Calle Viena",
+    "nameEu": "Viena kalea",
+    "latitude": 42.8522447,
+    "longitude": -2.6483753500000002
+  },
+  {
+    "nameEs": "Calle Virgen Blanca",
+    "nameEu": "Andra Mari Zuria kalea",
+    "latitude": 42.831552,
+    "longitude": -2.6161858
+  },
+  {
+    "nameEs": "Calle Virgen de Angosto",
+    "nameEu": "Angostoko Ama Birjina kalea",
+    "latitude": 42.833188899999996,
+    "longitude": -2.61619585
+  },
+  {
+    "nameEs": "Calle Virgen de Aránzazu",
+    "nameEu": "Arantzazuko Ama Birjina kalea",
+    "latitude": 42.8303333,
+    "longitude": -2.616435
+  },
+  {
+    "nameEs": "Calle Virgen de Begoña",
+    "nameEu": "Begoñako Ama Birjina kalea",
+    "latitude": 42.8307437,
+    "longitude": -2.6162361
+  },
+  {
+    "nameEs": "Calle Virgen de Estíbaliz",
+    "nameEu": "Estibalizko Ama Birjina kalea",
+    "latitude": 42.8311432,
+    "longitude": -2.6162093
+  },
+  {
+    "nameEs": "Calle Virgen de la Encina",
+    "nameEu": "Entzinako Ama Birjina kalea",
+    "latitude": 42.833579400000005,
+    "longitude": -2.6162215
+  },
+  {
+    "nameEs": "Calle Virgen del Pilar",
+    "nameEu": "Pilarreko Ama Birjina kalea",
+    "latitude": 42.83236225,
+    "longitude": -2.6161957
+  },
+  {
+    "nameEs": "Calle Virgen del Rosario",
+    "nameEu": "Errosarioko Ama Birjina kalea",
+    "latitude": 42.832773,
+    "longitude": -2.6161997
+  },
+  {
+    "nameEs": "Calle Vitoriabidea",
+    "nameEu": "Bitoriabidea",
+    "latitude": 42.86176433333333,
+    "longitude": -2.7088287333333336
+  },
+  {
+    "nameEs": "Calle Vitorialanda",
+    "nameEu": "Bitorialanda kalea",
+    "latitude": 42.858920033333334,
+    "longitude": -2.7068448000000003
+  },
+  {
+    "nameEs": "Calle Vizcaya",
+    "nameEu": "Bizkai kalea",
+    "latitude": 42.8381122,
+    "longitude": -2.6767237
+  },
+  {
+    "nameEs": "Calle Voluntaria Entrega",
+    "nameEu": "Voluntaria Entrega kalea",
+    "latitude": 42.86597864375,
+    "longitude": -2.6816261375
+  },
+  {
+    "nameEs": "Calle Zalburu",
+    "nameEu": "Zalburu kalea",
+    "latitude": 42.8507573,
+    "longitude": -2.6594241
+  },
+  {
+    "nameEs": "Calle Zalduendo",
+    "nameEu": "Zalduondo kalea",
+    "latitude": 42.828549775,
+    "longitude": -2.6737155999999995
+  },
+  {
+    "nameEs": "Calle Zapardiel",
+    "nameEu": "Zapardiel kalea",
+    "latitude": 42.83662255,
+    "longitude": -2.67565385
+  },
+  {
+    "nameEs": "Calle Zapatería",
+    "nameEu": "Zapatari kalea",
+    "latitude": 42.8493515,
+    "longitude": -2.6737357
+  },
+  {
+    "nameEs": "Calle Zaramaga",
+    "nameEu": "Zaramaga kalea",
+    "latitude": 42.86076004615384,
+    "longitude": -2.668996423076923
+  },
+  {
+    "nameEs": "Calle Zarauz",
+    "nameEu": "Zarautz kalea",
+    "latitude": 42.86734095,
+    "longitude": -2.689540825
+  },
+  {
+    "nameEs": "Calle Zaroa",
+    "nameEu": "Zaroa kalea",
+    "latitude": 42.8483733,
+    "longitude": -2.7431591
+  },
+  {
+    "nameEs": "Calle Zearsoloeta",
+    "nameEu": "Zearsoloeta kalea",
+    "latitude": 42.8474848,
+    "longitude": -2.7524814
+  },
+  {
+    "nameEs": "Calle Zendaguren",
+    "nameEu": "Zendaguren kalea",
+    "latitude": 42.8387134,
+    "longitude": -2.6679174
+  },
+  {
+    "nameEs": "Calle Zorrolleta",
+    "nameEu": "Zorrolleta kalea",
+    "latitude": 42.84707473333333,
+    "longitude": -2.7308190999999997
+  },
+  {
+    "nameEs": "Calle Zorrostea",
+    "nameEu": "Zorrostea kalea",
+    "latitude": 42.86560793333333,
+    "longitude": -2.70525075
+  },
+  {
+    "nameEs": "Calle Zubibarri",
+    "nameEu": "Zubibarri kalea",
+    "latitude": 42.8720781,
+    "longitude": -2.6623393
+  },
+  {
+    "nameEs": "Calle Zubitaga",
+    "nameEu": "Zubitaga kalea",
+    "latitude": 42.81850915,
+    "longitude": -2.68999395
+  },
+  {
+    "nameEs": "Calle Zumabide",
+    "nameEu": "Zumabide kalea",
+    "latitude": 42.83499065000001,
+    "longitude": -2.6744316875000003
+  },
+  {
+    "nameEs": "Calle Zurrupitieta",
+    "nameEu": "Zurrupitieta kalea",
+    "latitude": 42.85065963913043,
+    "longitude": -2.726389839130435
+  },
+  {
+    "nameEs": "Camino de Armentia",
+    "nameEu": "Armentiabidea",
+    "latitude": 42.834724939999994,
+    "longitude": -2.70360764
+  },
+  {
+    "nameEs": "Camino de Mendiola",
+    "nameEu": "Mendiolabidea",
+    "latitude": 42.835080175,
+    "longitude": -2.662720525
+  },
+  {
+    "nameEs": "Camino de Pauseta",
+    "nameEu": "Pausetako bidea",
+    "latitude": 42.8181955,
+    "longitude": -2.65066965
+  },
+  {
+    "nameEs": "Camino de Santa Teresa",
+    "nameEu": "Santa Teresa bidea",
+    "latitude": 42.848640950000004,
+    "longitude": -2.69141315
+  },
+  {
+    "nameEs": "Camino del Alto del Prado",
+    "nameEu": "Larraganbidea",
+    "latitude": 42.8377533,
+    "longitude": -2.6915031
+  },
+  {
+    "nameEs": "Cantón de las Carnicerías",
+    "nameEu": "Harategi kantoia",
+    "latitude": 42.849955533333336,
+    "longitude": -2.673361566666667
+  },
+  {
+    "nameEs": "Cantón de San Francisco Javier",
+    "nameEu": "San Frantzisko Xabierkoaren kantoia",
+    "latitude": 42.849001900000005,
+    "longitude": -2.6699705500000004
+  },
+  {
+    "nameEs": "Cantón de Santa Ana",
+    "nameEu": "Santa Ana kantoia",
+    "latitude": 42.8497816,
+    "longitude": -2.6713365
+  },
+  {
+    "nameEs": "Cantón de Santa María",
+    "nameEu": "Santa Maria kantoia",
+    "latitude": 42.85148726666667,
+    "longitude": -2.6713128000000004
+  },
+  {
+    "nameEs": "Carretera de Abetxuko",
+    "nameEu": "Abetxukobidea",
+    "latitude": 42.873534799999995,
+    "longitude": -2.6819600555555554
+  },
+  {
+    "nameEs": "Carretera de Bergara",
+    "nameEu": "Bergarako errepidea",
+    "latitude": 42.8772206,
+    "longitude": -2.6432827
+  },
+  {
+    "nameEs": "Carretera de Eskibel",
+    "nameEu": "Eskibelgo bidea",
+    "latitude": 42.8241614,
+    "longitude": -2.7148936999999997
+  },
+  {
+    "nameEs": "Carretera de Gamarra",
+    "nameEu": "Carretera de Gamarra",
+    "latitude": 42.8833262,
+    "longitude": -2.6636036
+  },
+  {
+    "nameEs": "Cuesta de San Vicente",
+    "nameEu": "San Bizente aldapa",
+    "latitude": 42.847413599999996,
+    "longitude": -2.6711065
+  },
+  {
+    "nameEs": "Entrada Academia Ertzaintza",
+    "nameEu": "Entrada Academia Ertzaintza",
+    "latitude": 42.8569722,
+    "longitude": -2.61815885
+  },
+  {
+    "nameEs": "Ermua kalea",
+    "nameEu": "Ermua kalea",
+    "latitude": 42.8628832,
+    "longitude": -2.6540606
+  },
+  {
+    "nameEs": "Gamarra plaza",
+    "nameEu": "Gamarra plaza",
+    "latitude": 42.8746978,
+    "longitude": -2.6589684
+  },
+  {
+    "nameEs": "Gamartea kalea",
+    "nameEu": "Gamartea kalea",
+    "latitude": 42.8771286,
+    "longitude": -2.6571223
+  },
+  {
+    "nameEs": "Goikoberaza Kalea",
+    "nameEu": "Goikoberaza Kalea",
+    "latitude": 42.832763,
+    "longitude": -2.7262251
+  },
+  {
+    "nameEs": "Jauregilanda kalea",
+    "nameEu": "Jauregilanda kalea",
+    "latitude": 42.8286183,
+    "longitude": -2.6675709
+  },
+  {
+    "nameEs": "Kapelamendi kalea",
+    "nameEu": "Kapelamendi kalea",
+    "latitude": 42.867722,
+    "longitude": -2.6454544
+  },
+  {
+    "nameEs": "Kontzeju kalea",
+    "nameEu": "Kontzeju kalea",
+    "latitude": 42.8663976,
+    "longitude": -2.64059635
+  },
+  {
+    "nameEs": "Larragana kalea",
+    "nameEu": "Larragana kalea",
+    "latitude": 42.8669664,
+    "longitude": -2.64619545
+  },
+  {
+    "nameEs": "Luzurio kalea",
+    "nameEu": "Luzurio kalea",
+    "latitude": 42.8495599,
+    "longitude": -2.7351062
+  },
+  {
+    "nameEs": "Maite Zuñiga Kalea",
+    "nameEu": "Maite Zuñiga Kalea",
+    "latitude": 42.8344924,
+    "longitude": -2.696345
+  },
+  {
+    "nameEs": "McDrive",
+    "nameEu": "McDrive",
+    "latitude": 42.8636666,
+    "longitude": -2.6607079
+  },
+  {
+    "nameEs": "Parque Vicente Núñez Rabaz",
+    "nameEu": "Vicente Núñez Rabaz parkea",
+    "latitude": 42.8751953,
+    "longitude": -2.6783254
+  },
+  {
+    "nameEs": "Pasaje de Oreitiasolo",
+    "nameEu": "Oreitiasoloko pasabidea",
+    "latitude": 42.8398273,
+    "longitude": -2.6555997
+  },
+  {
+    "nameEs": "Pasaje del Áncora",
+    "nameEu": "El Ancora pasabidea",
+    "latitude": 42.8754356,
+    "longitude": -2.6829284
+  },
+  {
+    "nameEs": "Pasaje José Joaquín Landázuri",
+    "nameEu": "Joaquin Jose Landazuri pasabidea",
+    "latitude": 42.847593200000006,
+    "longitude": -2.6778898333333334
+  },
+  {
+    "nameEs": "Pasaje Ramiro de Maeztu",
+    "nameEu": "Ramiro Maeztu pasabidea",
+    "latitude": 42.84944672499999,
+    "longitude": -2.678682675
+  },
+  {
+    "nameEs": "Paseo de Cervantes",
+    "nameEu": "Cervantes ibilbidea",
+    "latitude": 42.83822682857143,
+    "longitude": -2.6886283
+  },
+  {
+    "nameEs": "Paseo de la Biosfera",
+    "nameEu": "Biosferaren ibilbidea",
+    "latitude": 42.86312058,
+    "longitude": -2.64284282
+  },
+  {
+    "nameEs": "Paseo de la Fuente",
+    "nameEu": "Iturbidea",
+    "latitude": 42.8306527,
+    "longitude": -2.70015055
+  },
+  {
+    "nameEs": "Paseo de la Ilíada",
+    "nameEu": "Iliada ibilbidea",
+    "latitude": 42.84448043461539,
+    "longitude": -2.645793803846154
+  },
+  {
+    "nameEs": "Paseo de la Larra",
+    "nameEu": "Larra ibilbidea",
+    "latitude": 42.8314405,
+    "longitude": -2.7035886
+  },
+  {
+    "nameEs": "Paseo de la Música",
+    "nameEu": "Musikaren ibilbidea",
+    "latitude": 42.8430309,
+    "longitude": -2.6797287
+  },
+  {
+    "nameEs": "Paseo de la Senda",
+    "nameEu": "Senda ibilbidea",
+    "latitude": 42.842544383333326,
+    "longitude": -2.6767383833333334
+  },
+  {
+    "nameEs": "Paseo de la Universidad",
+    "nameEu": "Unibertsitateko ibilbidea",
+    "latitude": 42.84096443333334,
+    "longitude": -2.6728613666666665
+  },
+  {
+    "nameEs": "Paseo de la Zumaquera",
+    "nameEu": "Zumakadi ibilbidea",
+    "latitude": 42.83613855,
+    "longitude": -2.66782625
+  },
+  {
+    "nameEs": "Paseo de los Humedales",
+    "nameEu": "Hezeguneen ibilbidea",
+    "latitude": 42.8608008,
+    "longitude": -2.6506083
+  },
+  {
+    "nameEs": "Paseo del Batán",
+    "nameEu": "Batan ibilbidea",
+    "latitude": 42.838321699999995,
+    "longitude": -2.680524966666667
+  },
+  {
+    "nameEs": "Paseo del Mirador",
+    "nameEu": "Begiratokiko ibilbidea",
+    "latitude": 42.8740669,
+    "longitude": -2.6795027
+  },
+  {
+    "nameEs": "Paseo del Peregrino",
+    "nameEu": "Erromesen ibilbidea",
+    "latitude": 42.8327001,
+    "longitude": -2.70571725
+  },
+  {
+    "nameEs": "Paseo Fray Francisco de Vitoria",
+    "nameEu": "Frai Francisco Vitoria ibilbidea",
+    "latitude": 42.84068933333333,
+    "longitude": -2.6828510666666667
+  },
+  {
+    "nameEs": "Plaza Adana",
+    "nameEu": "Adana plaza",
+    "latitude": 42.8271475,
+    "longitude": -2.6765168
+  },
+  {
+    "nameEs": "Plaza Alfonso Parada",
+    "nameEu": "Alfonso Parada plaza",
+    "latitude": 42.8639019,
+    "longitude": -2.6828704
+  },
+  {
+    "nameEs": "Plaza de Alejandro Dumas",
+    "nameEu": "Alexandre Dumas plaza",
+    "latitude": 42.8492709,
+    "longitude": -2.69991315
+  },
+  {
+    "nameEs": "Plaza de América Latina",
+    "nameEu": "Latinoamerika plaza",
+    "latitude": 42.8591328111111,
+    "longitude": -2.681741
+  },
+  {
+    "nameEs": "Plaza de Aranzabela",
+    "nameEu": "Arantzabela plaza",
+    "latitude": 42.8490115,
+    "longitude": -2.6592126
+  },
+  {
+    "nameEs": "Plaza de Gamarra",
+    "nameEu": "Gamarra plaza",
+    "latitude": 42.874168233333336,
+    "longitude": -2.657684433333333
+  },
+  {
+    "nameEs": "Plaza de la Antonia",
+    "nameEu": "Antoniareneko plaza",
+    "latitude": 42.8380972,
+    "longitude": -2.696798757142857
+  },
+  {
+    "nameEs": "Plaza de la Constitución",
+    "nameEu": "Konstituzio plaza",
+    "latitude": 42.85649225,
+    "longitude": -2.6800726
+  },
+  {
+    "nameEs": "Plaza de la Cooperativa",
+    "nameEu": "Kooperatiba plaza",
+    "latitude": 42.875696149999996,
+    "longitude": -2.6816988
+  },
+  {
+    "nameEs": "Plaza de la Unión",
+    "nameEu": "Europar Batasunaren plaza",
+    "latitude": 42.850439825,
+    "longitude": -2.65069815
+  },
+  {
+    "nameEs": "Plaza de la Virgen Blanca",
+    "nameEu": "Andre Maria Zuriaren plaza",
+    "latitude": 42.846609,
+    "longitude": -2.6734903
+  },
+  {
+    "nameEs": "Plaza de las Provincias Vascongadas",
+    "nameEu": "Hiru Probintzien plaza",
+    "latitude": 42.85171143076923,
+    "longitude": -2.6612134538461536
+  },
+  {
+    "nameEs": "Plaza de Lovaina",
+    "nameEu": "Lovaina plaza",
+    "latitude": 42.846461528571425,
+    "longitude": -2.6792904
+  },
+  {
+    "nameEs": "Plaza de Santa Bárbara",
+    "nameEu": "Santa Barbara plaza",
+    "latitude": 42.844612525,
+    "longitude": -2.6673054
+  },
+  {
+    "nameEs": "Plaza de Santa María",
+    "nameEu": "Santa Maria plaza",
+    "latitude": 42.85025775,
+    "longitude": -2.67261485
+  },
+  {
+    "nameEs": "Plaza de Zaramaga",
+    "nameEu": "Zaramaga plaza",
+    "latitude": 42.8578029,
+    "longitude": -2.6638462
+  },
+  {
+    "nameEs": "Plaza del Emperador Carlos I",
+    "nameEu": "Karlos I enperadorearen plaza",
+    "latitude": 42.85429745000001,
+    "longitude": -2.667233916666667
+  },
+  {
+    "nameEs": "Plaza del Pueblo",
+    "nameEu": "Herriko plaza",
+    "latitude": 42.8765142,
+    "longitude": -2.6578327
+  },
+  {
+    "nameEs": "Plaza del Río Santo Tomás",
+    "nameEu": "Santo Tomas ibaiko plaza",
+    "latitude": 42.86930805,
+    "longitude": -2.6589006166666667
+  },
+  {
+    "nameEs": "Plaza Etxauri",
+    "nameEu": "Etxauri plaza",
+    "latitude": 42.8478063,
+    "longitude": -2.6719251
+  },
+  {
+    "nameEs": "Plaza Francisco Juan de Ayala",
+    "nameEu": "Francisco Juan Aiala plaza",
+    "latitude": 42.8481079,
+    "longitude": -2.6787852
+  },
+  {
+    "nameEs": "Plaza Gregorio Altube",
+    "nameEu": "Gregorio Altube plaza",
+    "latitude": 42.8552816,
+    "longitude": -2.6634848
+  },
+  {
+    "nameEs": "Plaza Guillermo Elio Molinuevo",
+    "nameEu": "Guillermo Elio Molinuevo plaza",
+    "latitude": 42.83825796666667,
+    "longitude": -2.6515762833333336
+  },
+  {
+    "nameEs": "Plaza Gustavo Doré",
+    "nameEu": "Gustave Doré plaza",
+    "latitude": 42.84831986666668,
+    "longitude": -2.6953324333333333
+  },
+  {
+    "nameEs": "Plaza Heraclio Fournier",
+    "nameEu": "Heraclio Fournier plaza",
+    "latitude": 42.8373111,
+    "longitude": -2.6639675
+  },
+  {
+    "nameEs": "Plaza Ignacio Aldecoa",
+    "nameEu": "Ignacio Aldekoa plaza",
+    "latitude": 42.861999499999996,
+    "longitude": -2.68649175
+  },
+  {
+    "nameEs": "Plaza Mayor",
+    "nameEu": "Plaza Nagusia",
+    "latitude": 42.8763516,
+    "longitude": -2.677937
+  },
+  {
+    "nameEs": "Plaza Venta de la Caña",
+    "nameEu": "Kañabenta plaza",
+    "latitude": 42.87399025,
+    "longitude": -2.68160825
+  },
+  {
+    "nameEs": "Plaza Vicente Beltrán de Heredia",
+    "nameEu": "Vicente Beltrán de Heredia plaza",
+    "latitude": 42.8654893,
+    "longitude": -2.6785919
+  },
+  {
+    "nameEs": "Plazuela de Aldabe",
+    "nameEu": "Aldabe plazatxoa",
+    "latitude": 42.850537333333335,
+    "longitude": -2.675205066666667
+  },
+  {
+    "nameEs": "Plazuela de la Estación",
+    "nameEu": "Geltoki plazatxoa",
+    "latitude": 42.8417221,
+    "longitude": -2.6727013
+  },
+  {
+    "nameEs": "Plazuela de la Zumaquera",
+    "nameEu": "Zumakadi plazatxoa",
+    "latitude": 42.836079399999996,
+    "longitude": -2.6703674666666664
+  },
+  {
+    "nameEs": "Plazuela de los Goros",
+    "nameEu": "Goro plazatxoa",
+    "latitude": 42.853793475,
+    "longitude": -2.69750465
+  },
+  {
+    "nameEs": "Plazuela de los Naipes",
+    "nameEu": "Karta plazatxoa",
+    "latitude": 42.8379277,
+    "longitude": -2.6635927
+  },
+  {
+    "nameEs": "Portal de Arriaga",
+    "nameEu": "Arriagako atea",
+    "latitude": 42.859786421428566,
+    "longitude": -2.6754971428571426
+  },
+  {
+    "nameEs": "Portal de Bergara",
+    "nameEu": "Bergarako atea",
+    "latitude": 42.870259838461536,
+    "longitude": -2.6490844615384614
+  },
+  {
+    "nameEs": "Portal de Bergara Kalea",
+    "nameEu": "Portal de Bergara Kalea",
+    "latitude": 42.8682275,
+    "longitude": -2.6497756
+  },
+  {
+    "nameEs": "Portal de Betoño",
+    "nameEu": "Betoñuko atea",
+    "latitude": 42.86048858,
+    "longitude": -2.65867702
+  },
+  {
+    "nameEs": "Portal de Castilla",
+    "nameEu": "Gaztelako atea",
+    "latitude": 42.84228997058825,
+    "longitude": -2.6838096411764703
+  },
+  {
+    "nameEs": "Portal de Elorriaga",
+    "nameEu": "Elorriagako atea",
+    "latitude": 42.84870070625,
+    "longitude": -2.65323656875
+  },
+  {
+    "nameEs": "Portal de Foronda",
+    "nameEu": "Forondako atea",
+    "latitude": 42.865579634615386,
+    "longitude": -2.6862318230769233
+  },
+  {
+    "nameEs": "Portal de Gamarra",
+    "nameEu": "Gamarrako atea",
+    "latitude": 42.864727145833335,
+    "longitude": -2.6608706208333337
+  },
+  {
+    "nameEs": "Portal de Lasarte",
+    "nameEu": "Lasarteko atea",
+    "latitude": 42.836652488235295,
+    "longitude": -2.6853503882352943
+  },
+  {
+    "nameEs": "Portal de Legutiano",
+    "nameEu": "Legutianoko atea",
+    "latitude": 42.85504514285714,
+    "longitude": -2.6662804857142857
+  },
+  {
+    "nameEs": "Portal de Zuazo",
+    "nameEu": "Zuhatzuko atea",
+    "latitude": 42.844701799999996,
+    "longitude": -2.7073878000000002
+  },
+  {
+    "nameEs": "Portal de Zurbano",
+    "nameEu": "Zurbaoko atea",
+    "latitude": 42.865022475,
+    "longitude": -2.644131275
+  },
+  {
+    "nameEs": "Portal del Rey",
+    "nameEu": "Errege atea",
+    "latitude": 42.8470167,
+    "longitude": -2.6685052
+  },
+  {
+    "nameEs": "Puente de San Cristóbal",
+    "nameEu": "San Kristobalgo zubia",
+    "latitude": 42.8404582,
+    "longitude": -2.6673438750000003
+  },
+  {
+    "nameEs": "Santo Tomasen ubideko kalea",
+    "nameEu": "Santo Tomasen ubideko kalea",
+    "latitude": 42.8646512,
+    "longitude": -2.6557425
+  },
+  {
+    "nameEs": "Senda de los Canónigos",
+    "nameEu": "Kalonjeen zidorra",
+    "latitude": 42.8534571,
+    "longitude": -2.6676163
+  },
+  {
+    "nameEs": "Senda del Río Ali",
+    "nameEu": "Ehari ibaiaren zidorra",
+    "latitude": 42.84304015,
+    "longitude": -2.6960429
+  },
+  {
+    "nameEs": "Senda el Caserío",
+    "nameEu": "Etxaldebidea",
+    "latitude": 42.80698645,
+    "longitude": -2.7107138500000003
+  },
+  {
+    "nameEs": "Senda Valentín de Foronda",
+    "nameEu": "Valentin de Foronda zidorra",
+    "latitude": 42.85812555,
+    "longitude": -2.6921460250000004
+  },
+  {
+    "nameEs": "Turismo",
+    "nameEu": "Turismo",
+    "latitude": 42.8773468,
+    "longitude": -2.7132005
+  },
+  {
+    "nameEs": "Zuazobidea",
+    "nameEu": "Zuazobidea",
+    "latitude": 42.84331345714286,
+    "longitude": -2.730273728571429
+  }
+]

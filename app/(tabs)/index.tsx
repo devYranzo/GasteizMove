@@ -1,52 +1,52 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Keyboard, TouchableOpacity } from "react-native";
-import MapView from "react-native-maps";
-
 import BottomSheet from "@gorhom/bottom-sheet";
 import * as Location from "expo-location";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Keyboard, TouchableOpacity } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 
 import { View } from "@/components/Themed";
 import { StopBottomSheet } from "@/components/bottom-sheet/StopBottomSheet";
 import { BusStops, Stop } from "@/components/map/BusStops";
 import { LiveBuses } from "@/components/map/LiveBuses";
 import { RouteLines } from "@/components/map/RouteLines";
-
 import { SearchBar } from "@/components/map/SearchBar";
-import { SearchResults } from "@/components/map/SearchResults";
+import { SearchResult, SearchResults } from "@/components/map/SearchResults";
+
 import stops from "@/data/gtfs/stops.json";
+import streets from "@/data/streets.json";
 
 export default function TabOneScreen() {
   const [search, setSearch] = useState("");
   const [selectedStop, setSelectedStop] = useState<Stop | null>(null);
   const [selectedRouteId, setSelectedRouteId] = useState<string | null>(null);
+  const [buses, setBuses] = useState<any[]>([]);
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [selectedStreet, setSelectedStreet] = useState<{
+    latitude: number;
+    longitude: number;
+    name: string;
+  } | null>(null);
+
   const [visibleRegion, setVisibleRegion] = useState<{
     latitude: number;
     longitude: number;
     latitudeDelta: number;
     longitudeDelta: number;
   } | null>(null);
-  const [searchResults, setSearchResults] = useState<
-    {
-      id: string;
-      name: string;
-    }[]
-  >([]);
-  const [buses, setBuses] = useState<any[]>([]);
 
-  const mapRef = useRef<MapView>(null);
-  const bottomSheetRef = useRef<BottomSheet>(null);
-  const [sheetIndex, setSheetIndex] = useState(-1);
-
-  // INITIAL REGION CONTROLADO
-  const [initialRegion, setInitialRegion] = useState<null | {
+  const [initialRegion, setInitialRegion] = useState<{
     latitude: number;
     longitude: number;
     latitudeDelta: number;
     longitudeDelta: number;
-  }>(null);
+  } | null>(null);
 
-  // Obtener ubicación al cargar
+  const mapRef = useRef<MapView>(null);
+  const bottomSheetRef = useRef<BottomSheet>(null);
+
+  const [sheetIndex, setSheetIndex] = useState(-1);
+
   useEffect(() => {
     async function getLocation() {
       const { status } = await Location.requestForegroundPermissionsAsync();
@@ -64,7 +64,6 @@ export default function TabOneScreen() {
         return;
       }
 
-      // fallback Vitoria
       setInitialRegion({
         latitude: 42.846,
         longitude: -2.673,
@@ -76,7 +75,6 @@ export default function TabOneScreen() {
     getLocation();
   }, []);
 
-  // User Location (CENTRAR)
   async function centerOnUser() {
     const { status } = await Location.requestForegroundPermissionsAsync();
 
@@ -118,26 +116,45 @@ export default function TabOneScreen() {
   }, [selectedRouteId, visibleRegion]);
 
   useEffect(() => {
-    if (!search.trim()) {
+    const query = search.trim().toLowerCase();
+
+    if (!query) {
       setSearchResults([]);
       return;
     }
 
-    const results = stops
-      .filter((stop) => stop.name.toLowerCase().includes(search.toLowerCase()))
-      .slice(0, 15)
+    const stopResults: SearchResult[] = stops
+      .filter((stop) => stop.name.toLowerCase().includes(query))
+      .slice(0, 10)
       .map((stop) => ({
         id: stop.id,
         name: stop.name,
+        type: "stop",
       }));
 
-    setSearchResults(results);
+    const streetResults: SearchResult[] = streets
+      .filter(
+        (street) =>
+          street.nameEs.toLowerCase().includes(query) || street.nameEu.toLowerCase().includes(query)
+      )
+      .slice(0, 10)
+      .map((street) => ({
+        id: `street-${street.latitude}-${street.longitude}`,
+        name: street.nameEs,
+        type: "street",
+        latitude: street.latitude,
+        longitude: street.longitude,
+      }));
+
+    setSearchResults([...stopResults, ...streetResults]);
   }, [search]);
 
-  // Handlers
   function handleStopPress(stop: Stop) {
+    Keyboard.dismiss();
+
     setSelectedStop(stop);
     setSelectedRouteId(null);
+    setSelectedStreet(null);
 
     bottomSheetRef.current?.snapToIndex(0);
   }
@@ -147,6 +164,7 @@ export default function TabOneScreen() {
 
     setSelectedRouteId(routeId);
     setSearch("");
+    setSelectedStreet(null);
   }
 
   function handleClearRoute() {
@@ -156,10 +174,12 @@ export default function TabOneScreen() {
 
   function handleSheetChange(index: number) {
     setSheetIndex(index);
+
     if (index === -1) {
       setSelectedRouteId(null);
       setSelectedStop(null);
       setSearch("");
+      setSelectedStreet(null);
     }
   }
 
@@ -167,7 +187,6 @@ export default function TabOneScreen() {
     bottomSheetRef.current?.close();
   }
 
-  // Fetch buses every 6 seconds when a route is selected
   useEffect(() => {
     if (!selectedRouteId) {
       setBuses([]);
@@ -185,11 +204,10 @@ export default function TabOneScreen() {
         if (Array.isArray(data)) {
           setBuses(data);
         } else {
-          console.warn("API no devolvió array:", data);
           setBuses([]);
         }
-      } catch (e) {
-        console.log("Error buses:", e);
+      } catch (error) {
+        console.log("Error buses:", error);
         setBuses([]);
       }
     };
@@ -201,37 +219,71 @@ export default function TabOneScreen() {
     return () => clearInterval(interval);
   }, [selectedRouteId]);
 
-  // IMPORTANTE: no renderizar mapa sin región
+  function handleSearchResultPress(result: SearchResult) {
+    Keyboard.dismiss();
+
+    if (result.type === "stop") {
+      const stop = stops.find((s) => s.id === result.id);
+
+      if (!stop) return;
+
+      setSelectedStreet(null);
+
+      mapRef.current?.animateToRegion(
+        {
+          latitude: stop.latitude,
+          longitude: stop.longitude,
+          latitudeDelta: 0.003,
+          longitudeDelta: 0.003,
+        },
+        500
+      );
+
+      setSelectedStop(stop);
+      setSearch("");
+
+      bottomSheetRef.current?.snapToIndex(0);
+
+      return;
+    }
+
+    if (
+      result.type === "street" &&
+      result.latitude !== undefined &&
+      result.longitude !== undefined
+    ) {
+      setSelectedStreet({
+        latitude: result.latitude,
+        longitude: result.longitude,
+        name: result.name,
+      });
+
+      mapRef.current?.animateToRegion(
+        {
+          latitude: result.latitude,
+          longitude: result.longitude,
+          latitudeDelta: 0.006,
+          longitudeDelta: 0.006,
+        },
+        500
+      );
+
+      setSelectedStop(null);
+      setSelectedRouteId(null);
+      setSearch("");
+    }
+  }
+
   if (!initialRegion) {
     return <View style={{ flex: 1 }} />;
   }
 
-  function handleSearchResultPress(result: { id: string; name: string }) {
-    const stop = stops.find((s) => s.id === result.id);
-
-    if (!stop) return;
-
-    Keyboard.dismiss();
-
-    mapRef.current?.animateToRegion(
-      {
-        latitude: stop.latitude,
-        longitude: stop.longitude,
-        latitudeDelta: 0.003,
-        longitudeDelta: 0.003,
-      },
-      500
-    );
-
-    setSelectedStop(stop);
-    setSearch("");
-
-    bottomSheetRef.current?.snapToIndex(0);
-  }
+  console.log("selectedStreet:", selectedStreet);
 
   return (
     <View style={{ flex: 1 }}>
       <SearchBar value={search} onChangeText={setSearch} />
+
       <SearchResults
         visible={search.trim().length > 0}
         results={searchResults}
@@ -239,21 +291,34 @@ export default function TabOneScreen() {
       />
 
       <MapView
+        ref={mapRef}
         style={{ flex: 1 }}
         initialRegion={initialRegion}
-        ref={mapRef}
         showsUserLocation
         onPress={() => Keyboard.dismiss()}
         onRegionChangeComplete={(region) => setVisibleRegion(region)}
       >
         <RouteLines selectedRouteId={selectedRouteId} />
+
         <BusStops
           stops={stops}
           visibleStopIds={visibleStopIds}
           selectedStopId={selectedStop?.id ?? null}
           onStopPress={handleStopPress}
         />
+
         <LiveBuses buses={buses} />
+
+        {selectedStreet && (
+          <Marker
+            coordinate={{
+              latitude: selectedStreet.latitude,
+              longitude: selectedStreet.longitude,
+            }}
+          >
+            <MaterialIcons name="location-pin" size={40} color="red" />
+          </Marker>
+        )}
       </MapView>
 
       <TouchableOpacity

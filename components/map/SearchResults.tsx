@@ -1,14 +1,18 @@
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FlatList, Pressable, Text, View } from "react-native";
 
-interface Result {
+export type SearchResult = {
   id: string;
   name: string;
-}
+  type: "stop" | "street";
+  latitude?: number;
+  longitude?: number;
+};
 
 interface Props {
   visible: boolean;
-  results: Result[];
-  onPress: (result: Result) => void;
+  results: SearchResult[];
+  onPress: (result: SearchResult) => void;
 }
 
 export function SearchResults({ visible, results, onPress }: Props) {
@@ -36,7 +40,7 @@ export function SearchResults({ visible, results, onPress }: Props) {
       <FlatList
         keyboardShouldPersistTaps="handled"
         data={results}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => `${item.type}-${item.id}`}
         renderItem={({ item }) => (
           <Pressable
             onPress={() => onPress(item)}
@@ -47,13 +51,21 @@ export function SearchResults({ visible, results, onPress }: Props) {
               borderBottomColor: "#f3f4f6",
             }}
           >
-            <Text
+            <View
               style={{
-                fontSize: 16,
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 8,
               }}
             >
-              {item.name}
-            </Text>
+              {item.type === "stop" ? (
+                <MaterialCommunityIcons name="bus-stop" size={16} color="#3e5d58" />
+              ) : (
+                <MaterialCommunityIcons name="map-marker-outline" size={16} color="#6b7280" />
+              )}
+
+              <Text style={{ fontSize: 16 }}>{item.name}</Text>
+            </View>
           </Pressable>
         )}
       />
