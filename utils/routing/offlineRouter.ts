@@ -31,7 +31,7 @@ export type RouteStep = WalkStep | BusStep;
 // Rutas que NO deben usarse en el router diurno
 const EXCLUDED_ROUTE_PREFIXES = ["G"];
 // Rutas exprés con cobertura muy limitada — solo usar si hay conexión directa real
-const EXPRESS_ROUTES = ["E1", "E7", "A", "B", "1", "8"];
+const EXPRESS_ROUTES = ["E1", "E7"];
 
 function isNightRoute(routeId: string) {
   return EXCLUDED_ROUTE_PREFIXES.some((p) => routeId.startsWith(p));
@@ -164,6 +164,11 @@ function usableRoutes(routeIds: Set<string>, preferMain = true): string[] {
   ];
 }
 
+type RouteCandidate = {
+  score: number;
+  steps: RouteStep[];
+};
+
 export function findRoute(
   originLat: number,
   originLng: number,
@@ -186,9 +191,11 @@ export function findRoute(
     ];
   }
 
-  // Candidatos de parada origen y destino (solo rutas diurnas, hasta 3 más cercanas)
-  const originCandidates = nearestUsableStops(originLat, originLng, 3);
-  const destCandidates = nearestUsableStops(destLat, destLng, 3);
+  // Candidatos de parada origen y destino
+  const originCandidates = nearestUsableStops(originLat, originLng, 8);
+  const destCandidates = nearestUsableStops(destLat, destLng, 8);
+
+  const candidates: RouteCandidate[] = [];
 
   // ─── DIRECTO ────────────────────────────────────────────────────────────────
   for (const { stop: oStop } of originCandidates) {
@@ -199,27 +206,37 @@ export function findRoute(
         if (!dRouteIds.has(routeId)) continue;
         const dir = resolveDirection(routeId, oStop.id, dStop.id);
         if (!dir) continue;
-        return [
-          {
-            type: "walk",
-            fromLat: originLat,
-            fromLng: originLng,
-            toLat: oStop.latitude,
-            toLng: oStop.longitude,
-            toName: oStop.name,
-            distanceMeters: haversine(originLat, originLng, oStop.latitude, oStop.longitude),
-          },
-          buildBusStep(routeId, oStop.id, dStop.id, dir.directionId, dir.fromIdx, dir.toIdx),
-          {
-            type: "walk",
-            fromLat: dStop.latitude,
-            fromLng: dStop.longitude,
-            fromName: dStop.name,
-            toLat: destLat,
-            toLng: destLng,
-            distanceMeters: haversine(dStop.latitude, dStop.longitude, destLat, destLng),
-          },
-        ];
+
+        const walkToBus = haversine(originLat, originLng, oStop.latitude, oStop.longitude);
+
+        const walkFromBus = haversine(dStop.latitude, dStop.longitude, destLat, destLng);
+
+        const stopPenalty = (dir.toIdx - dir.fromIdx) * 40;
+
+        candidates.push({
+          score: walkToBus + walkFromBus + stopPenalty,
+          steps: [
+            {
+              type: "walk",
+              fromLat: originLat,
+              fromLng: originLng,
+              toLat: oStop.latitude,
+              toLng: oStop.longitude,
+              toName: oStop.name,
+              distanceMeters: walkToBus,
+            },
+            buildBusStep(routeId, oStop.id, dStop.id, dir.directionId, dir.fromIdx, dir.toIdx),
+            {
+              type: "walk",
+              fromLat: dStop.latitude,
+              fromLng: dStop.longitude,
+              fromName: dStop.name,
+              toLat: destLat,
+              toLng: destLng,
+              distanceMeters: walkFromBus,
+            },
+          ],
+        });
       }
     }
   }
@@ -281,54 +298,80 @@ export function findRoute(
         }
         if (!secondRouteId || !secondDir) continue;
 
-        return [
-          {
-            type: "walk",
-            fromLat: originLat,
-            fromLng: originLng,
-            toLat: oStop.latitude,
-            toLng: oStop.longitude,
-            toName: oStop.name,
-            distanceMeters: haversine(originLat, originLng, oStop.latitude, oStop.longitude),
-          },
-          buildBusStep(
-            firstRouteId,
-            oStop.id,
-            transferStop.id,
-            firstDir.directionId,
-            firstDir.fromIdx,
-            firstDir.toIdx
-          ),
-          {
-            type: "walk",
-            fromLat: transferStop.latitude,
-            fromLng: transferStop.longitude,
-            fromName: transferStop.name,
-            toLat: transferStop.latitude,
-            toLng: transferStop.longitude,
-            toName: transferStop.name,
-            distanceMeters: 0,
-          },
-          buildBusStep(
-            secondRouteId,
-            transferStop.id,
-            dStop.id,
-            secondDir.directionId,
-            secondDir.fromIdx,
-            secondDir.toIdx
-          ),
-          {
-            type: "walk",
-            fromLat: dStop.latitude,
-            fromLng: dStop.longitude,
-            fromName: dStop.name,
-            toLat: destLat,
-            toLng: destLng,
-            distanceMeters: haversine(dStop.latitude, dStop.longitude, destLat, destLng),
-          },
-        ];
+        const walkToBus = haversine(originLat, originLng, oStop.latitude, oStop.longitude);
+
+        const walkFromBus = haversine(dStop.latitude, dStop.longitude, destLat, destLng);
+
+        const transferPenalty = 500;
+
+        const stopPenalty =
+          (firstDir.toIdx - firstDir.fromIdx) * 40 + (secondDir.toIdx - secondDir.fromIdx) * 40;
+
+        candidates.push({
+          score: walkToBus + walkFromBus + transferPenalty + stopPenalty,
+          steps: [
+            {
+              type: "walk",
+              fromLat: originLat,
+              fromLng: originLng,
+              toLat: oStop.latitude,
+              toLng: oStop.longitude,
+              toName: oStop.name,
+              distanceMeters: walkToBus,
+            },
+            buildBusStep(
+              firstRouteId,
+              oStop.id,
+              transferStop.id,
+              firstDir.directionId,
+              firstDir.fromIdx,
+              firstDir.toIdx
+            ),
+            {
+              type: "walk",
+              fromLat: transferStop.latitude,
+              fromLng: transferStop.longitude,
+              fromName: transferStop.name,
+              toLat: transferStop.latitude,
+              toLng: transferStop.longitude,
+              toName: transferStop.name,
+              distanceMeters: 0,
+            },
+            buildBusStep(
+              secondRouteId,
+              transferStop.id,
+              dStop.id,
+              secondDir.directionId,
+              secondDir.fromIdx,
+              secondDir.toIdx
+            ),
+            {
+              type: "walk",
+              fromLat: dStop.latitude,
+              fromLng: dStop.longitude,
+              fromName: dStop.name,
+              toLat: destLat,
+              toLng: destLng,
+              distanceMeters: walkFromBus,
+            },
+          ],
+        });
       }
     }
+  }
+
+  if (candidates.length > 0) {
+    candidates.sort((a, b) => a.score - b.score);
+
+    console.log(
+      "Top rutas:",
+      candidates.slice(0, 5).map((c) => ({
+        score: c.score,
+        buses: c.steps.filter((s) => s.type === "bus").map((s: any) => s.routeId),
+      }))
+    );
+
+    return candidates[0].steps;
   }
 
   // Fallback: walk directo
