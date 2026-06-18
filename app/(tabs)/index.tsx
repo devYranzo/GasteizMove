@@ -13,6 +13,7 @@ import { RouteLines } from "@/components/map/RouteLines";
 import { SearchBar } from "@/components/map/SearchBar";
 import { SearchResult, SearchResults } from "@/components/map/SearchResults";
 
+import routesData from "@/data/gtfs/routes.json";
 import stops from "@/data/gtfs/stops.json";
 import streets from "@/data/streets.json";
 
@@ -115,6 +116,16 @@ export default function TabOneScreen() {
     return new Set(ids);
   }, [selectedRouteId, visibleRegion]);
 
+  const routeColorMap = useMemo(() => {
+    const map: Record<string, string> = {};
+
+    routesData.forEach((route) => {
+      map[route.routeId] = `#${route.color}`;
+    });
+
+    return map;
+  }, []);
+
   useEffect(() => {
     const query = search.trim().toLowerCase();
 
@@ -126,11 +137,20 @@ export default function TabOneScreen() {
     const stopResults: SearchResult[] = stops
       .filter((stop) => stop.name.toLowerCase().includes(query))
       .slice(0, 10)
-      .map((stop) => ({
-        id: stop.id,
-        name: stop.name,
-        type: "stop",
-      }));
+      .map((stop) => {
+        const uniqueRoutes = Array.from(new Map(stop.routes.map((r) => [r.id, r])).values());
+
+        return {
+          id: stop.id,
+          name: stop.name,
+          type: "stop",
+          routes: uniqueRoutes.map((r) => ({
+            id: r.id,
+            name: r.name,
+            color: routeColorMap[r.id] ?? "#9ca3af",
+          })),
+        };
+      });
 
     const streetResults: SearchResult[] = streets
       .filter(
@@ -277,8 +297,6 @@ export default function TabOneScreen() {
   if (!initialRegion) {
     return <View style={{ flex: 1 }} />;
   }
-
-  console.log("selectedStreet:", selectedStreet);
 
   return (
     <View style={{ flex: 1 }}>
