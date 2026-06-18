@@ -388,3 +388,24 @@ export function findRoute(
     },
   ];
 }
+
+const WALK_SPEED_M_S = 1.35;
+const BUS_STOP_TIME_S = 70;
+
+export function estimateRouteMinutes(candidate: RouteCandidate): number {
+  let seconds = 0;
+
+  for (const step of candidate.steps) {
+    if (step.type === "walk") {
+      seconds += (step.distanceMeters ?? 0) / WALK_SPEED_M_S;
+    } else {
+      seconds += step.stopCount * BUS_STOP_TIME_S;
+    }
+  }
+
+  return Math.round(seconds / 60);
+}
+
+export function countTransfers(candidate: RouteCandidate): number {
+  return candidate.steps.filter((step) => step.type === "bus").length - 1;
+}

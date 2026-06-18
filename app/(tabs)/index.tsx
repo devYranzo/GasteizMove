@@ -55,6 +55,8 @@ export default function TabOneScreen() {
   const routeSheetRef = useRef<BottomSheet>(null);
 
   const [sheetIndex, setSheetIndex] = useState(-1);
+  const [navigationActive, setNavigationActive] = useState(false);
+  const closingAfterSelectionRef = useRef(false);
 
   useEffect(() => {
     async function getLocation() {
@@ -177,6 +179,19 @@ export default function TabOneScreen() {
     setSearchResults([...stopResults, ...streetResults]);
   }, [search]);
 
+  const navigationStopIds = useMemo(() => {
+    const ids = new Set<string>();
+
+    routePlan.forEach((step) => {
+      if (step.type === "bus") {
+        ids.add(step.fromStopId);
+        ids.add(step.toStopId);
+      }
+    });
+
+    return ids;
+  }, [routePlan]);
+
   function handleStopPress(stop: Stop) {
     Keyboard.dismiss();
 
@@ -196,8 +211,11 @@ export default function TabOneScreen() {
   }
 
   function handleClearRoute() {
+    setNavigationActive(false);
+    setRoutePlan([]);
+    setRouteOptions([]);
     setSelectedRouteId(null);
-    setSearch("");
+    setSelectedStreet(null);
   }
 
   function handleSheetChange(index: number) {
@@ -208,6 +226,9 @@ export default function TabOneScreen() {
       setSelectedStop(null);
       setSearch("");
       setSelectedStreet(null);
+      setRoutePlan([]);
+      setRouteOptions([]);
+      setNavigationActive(false);
     }
   }
 
@@ -270,11 +291,6 @@ export default function TabOneScreen() {
       setSelectedStop(stop);
       setSearch("");
 
-      calculateRoute({
-        latitude: stop.latitude,
-        longitude: stop.longitude,
-      });
-
       bottomSheetRef.current?.snapToIndex(0);
 
       return;
@@ -317,6 +333,10 @@ export default function TabOneScreen() {
   }
 
   async function calculateRoute(destination: { latitude: number; longitude: number }) {
+    setRoutePlan([]);
+    setRouteOptions([]);
+    setSelectedRouteId(null);
+
     const location = await Location.getCurrentPositionAsync({});
 
     const routes = findRoute(
@@ -329,14 +349,15 @@ export default function TabOneScreen() {
     if (!routes.length) return;
 
     setRouteOptions(routes);
-
     setRoutePlan(routes[0].steps);
+    setNavigationActive(true);
 
     routeSheetRef.current?.snapToIndex(0);
   }
 
   function handleSelectRoute(route: RouteCandidate) {
     setRoutePlan(route.steps);
+    setNavigationActive(true);
 
     const firstBus = route.steps.find(
       (s): s is Extract<RouteStep, { type: "bus" }> => s.type === "bus"
@@ -345,6 +366,33 @@ export default function TabOneScreen() {
     if (firstBus) {
       setSelectedRouteId(firstBus.routeId);
     }
+
+    const points = route.steps.flatMap((step) =>
+      step.type === "bus"
+        ? step.shapeCoords
+        : [
+            {
+              latitude: step.fromLat,
+              longitude: step.fromLng,
+            },
+            {
+              latitude: step.toLat,
+              longitude: step.toLng,
+            },
+          ]
+    );
+
+    mapRef.current?.fitToCoordinates(points, {
+      edgePadding: {
+        top: 120,
+        right: 60,
+        bottom: 250,
+        left: 60,
+      },
+      animated: true,
+    });
+
+    closingAfterSelectionRef.current = true;
 
     routeSheetRef.current?.close();
   }
@@ -367,16 +415,16 @@ export default function TabOneScreen() {
         onPress={() => Keyboard.dismiss()}
         onRegionChangeComplete={(region) => setVisibleRegion(region)}
       >
-        <RouteLines selectedRouteId={routePlan.length > 0 ? null : selectedRouteId} />
+        <RouteLines selectedRouteId={navigationActive ? null : selectedRouteId} />
 
         <BusStops
           stops={stops}
-          visibleStopIds={visibleStopIds}
+          visibleStopIds={navigationActive ? navigationStopIds : visibleStopIds}
           selectedStopId={selectedStop?.id ?? null}
           onStopPress={handleStopPress}
         />
 
-        <RoutePlanOverlay routePlan={routePlan} />
+        {navigationActive && <RoutePlanOverlay routePlan={routePlan} />}
 
         <LiveBuses buses={buses} />
 
@@ -427,6 +475,14 @@ export default function TabOneScreen() {
         ref={routeSheetRef}
         routes={routeOptions}
         onSelectRoute={handleSelectRoute}
+        onClose={() => {
+          if (closingAfterSelectionRef.current) {
+            closingAfterSelectionRef.current = false;
+            return;
+          }
+
+          handleClearRoute();
+        }}
       />
     </View>
   );

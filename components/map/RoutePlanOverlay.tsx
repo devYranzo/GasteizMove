@@ -23,11 +23,12 @@ export function RoutePlanOverlay({ routePlan }: Props) {
       {routePlan.map((step: RouteStep, index: number) => {
         if (step.type === "walk") {
           const walkStep = step as WalkStep;
-          // No dibujar walk de transbordo (distancia 0)
           if (walkStep.distanceMeters === 0) return null;
+
           return (
             <Polyline
-              key={`walk-${index}`}
+              // Clave única basada en coordenadas para forzar re-renderizado
+              key={`walk-${index}-${walkStep.fromLat}-${walkStep.toLat}`}
               coordinates={[
                 { latitude: walkStep.fromLat, longitude: walkStep.fromLng },
                 { latitude: walkStep.toLat, longitude: walkStep.toLng },
@@ -43,9 +44,11 @@ export function RoutePlanOverlay({ routePlan }: Props) {
           const busStep = step as BusStep;
           if (!busStep.shapeCoords?.length) return null;
           const color = routeColorMap[busStep.routeId] ?? "#2563eb";
+
           return (
             <Polyline
-              key={`bus-${index}`}
+              // Clave única basada en la ruta para forzar re-renderizado
+              key={`bus-${index}-${busStep.routeId}-${busStep.shapeCoords[0].latitude}`}
               coordinates={busStep.shapeCoords}
               strokeColor={color}
               strokeWidth={5}
