@@ -17,6 +17,9 @@ import routesData from "@/data/gtfs/routes.json";
 import stops from "@/data/gtfs/stops.json";
 import streets from "@/data/streets.json";
 
+import { RoutePlanOverlay } from "@/components/map/RoutePlanOverlay";
+import { findRoute } from "@/utils/routing/offlineRouter";
+
 export default function TabOneScreen() {
   const [search, setSearch] = useState("");
   const [selectedStop, setSelectedStop] = useState<Stop | null>(null);
@@ -42,6 +45,8 @@ export default function TabOneScreen() {
     latitudeDelta: number;
     longitudeDelta: number;
   } | null>(null);
+
+  const [routePlan, setRoutePlan] = useState<any[]>([]);
 
   const mapRef = useRef<MapView>(null);
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -262,6 +267,11 @@ export default function TabOneScreen() {
       setSelectedStop(stop);
       setSearch("");
 
+      calculateRoute({
+        latitude: stop.latitude,
+        longitude: stop.longitude,
+      });
+
       bottomSheetRef.current?.snapToIndex(0);
 
       return;
@@ -291,11 +301,35 @@ export default function TabOneScreen() {
       setSelectedStop(null);
       setSelectedRouteId(null);
       setSearch("");
+
+      calculateRoute({
+        latitude: result.latitude!,
+        longitude: result.longitude!,
+      });
     }
   }
 
   if (!initialRegion) {
     return <View style={{ flex: 1 }} />;
+  }
+
+  async function calculateRoute(destination: { latitude: number; longitude: number }) {
+    const location = await Location.getCurrentPositionAsync({});
+
+    const route = findRoute(
+      location.coords.latitude,
+      location.coords.longitude,
+      destination.latitude,
+      destination.longitude
+    );
+
+    setRoutePlan(route);
+
+    const firstBus = route.find((s) => s.type === "bus");
+
+    if (firstBus) {
+      setSelectedRouteId(firstBus.routeId);
+    }
   }
 
   return (
@@ -324,6 +358,8 @@ export default function TabOneScreen() {
           selectedStopId={selectedStop?.id ?? null}
           onStopPress={handleStopPress}
         />
+
+        <RoutePlanOverlay routePlan={routePlan} />
 
         <LiveBuses buses={buses} />
 
