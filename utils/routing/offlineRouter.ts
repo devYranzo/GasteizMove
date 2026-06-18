@@ -28,6 +28,11 @@ export type BusStep = {
 
 export type RouteStep = WalkStep | BusStep;
 
+export type RouteCandidate = {
+  score: number;
+  steps: RouteStep[];
+};
+
 // Rutas que NO deben usarse en el router diurno
 const EXCLUDED_ROUTE_PREFIXES = ["G"];
 // Rutas exprés con cobertura muy limitada — solo usar si hay conexión directa real
@@ -92,7 +97,7 @@ function getShapeSlice(
 ): { latitude: number; longitude: number }[] {
   const shapeId = (routeShapes as Record<string, Record<string, string>>)[routeId]?.[directionId];
   if (!shapeId) return [];
-  const pts: [number, number][] = (shapesData as Record<string, [number, number][]>)[shapeId] ?? [];
+  const pts = (shapesData as Record<string, number[][]>)[shapeId] ?? [];
   if (!pts.length) return [];
 
   let fromClosestIdx = 0;
@@ -164,29 +169,29 @@ function usableRoutes(routeIds: Set<string>, preferMain = true): string[] {
   ];
 }
 
-type RouteCandidate = {
-  score: number;
-  steps: RouteStep[];
-};
-
 export function findRoute(
   originLat: number,
   originLng: number,
   destLat: number,
   destLng: number
-): RouteStep[] {
+): RouteCandidate[] {
   const directDist = haversine(originLat, originLng, destLat, destLng);
 
   // Distancia a pie directa
   if (directDist < 400) {
     return [
       {
-        type: "walk",
-        fromLat: originLat,
-        fromLng: originLng,
-        toLat: destLat,
-        toLng: destLng,
-        distanceMeters: directDist,
+        score: directDist,
+        steps: [
+          {
+            type: "walk",
+            fromLat: originLat,
+            fromLng: originLng,
+            toLat: destLat,
+            toLng: destLng,
+            distanceMeters: directDist,
+          },
+        ],
       },
     ];
   }
@@ -363,26 +368,23 @@ export function findRoute(
   if (candidates.length > 0) {
     candidates.sort((a, b) => a.score - b.score);
 
-    console.log(
-      "Top rutas:",
-      candidates.slice(0, 5).map((c) => ({
-        score: c.score,
-        buses: c.steps.filter((s) => s.type === "bus").map((s: any) => s.routeId),
-      }))
-    );
-
-    return candidates[0].steps;
+    return candidates;
   }
 
   // Fallback: walk directo
   return [
     {
-      type: "walk",
-      fromLat: originLat,
-      fromLng: originLng,
-      toLat: destLat,
-      toLng: destLng,
-      distanceMeters: directDist,
+      score: directDist,
+      steps: [
+        {
+          type: "walk",
+          fromLat: originLat,
+          fromLng: originLng,
+          toLat: destLat,
+          toLng: destLng,
+          distanceMeters: directDist,
+        },
+      ],
     },
   ];
 }

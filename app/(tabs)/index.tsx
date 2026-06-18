@@ -17,8 +17,9 @@ import routesData from "@/data/gtfs/routes.json";
 import stops from "@/data/gtfs/stops.json";
 import streets from "@/data/streets.json";
 
+import { RouteOptionsBottomSheet } from "@/components/bottom-sheet/RouteOptionsBottomSheet";
 import { RoutePlanOverlay } from "@/components/map/RoutePlanOverlay";
-import { findRoute } from "@/utils/routing/offlineRouter";
+import { findRoute, RouteCandidate, RouteStep } from "@/utils/routing/offlineRouter";
 
 export default function TabOneScreen() {
   const [search, setSearch] = useState("");
@@ -46,10 +47,12 @@ export default function TabOneScreen() {
     longitudeDelta: number;
   } | null>(null);
 
-  const [routePlan, setRoutePlan] = useState<any[]>([]);
+  const [routeOptions, setRouteOptions] = useState<RouteCandidate[]>([]);
+  const [routePlan, setRoutePlan] = useState<RouteStep[]>([]);
 
   const mapRef = useRef<MapView>(null);
   const bottomSheetRef = useRef<BottomSheet>(null);
+  const routeSheetRef = useRef<BottomSheet>(null);
 
   const [sheetIndex, setSheetIndex] = useState(-1);
 
@@ -316,20 +319,34 @@ export default function TabOneScreen() {
   async function calculateRoute(destination: { latitude: number; longitude: number }) {
     const location = await Location.getCurrentPositionAsync({});
 
-    const route = findRoute(
+    const routes = findRoute(
       location.coords.latitude,
       location.coords.longitude,
       destination.latitude,
       destination.longitude
     );
 
-    setRoutePlan(route);
+    if (!routes.length) return;
 
-    const firstBus = route.find((s) => s.type === "bus");
+    setRouteOptions(routes);
+
+    setRoutePlan(routes[0].steps);
+
+    routeSheetRef.current?.snapToIndex(0);
+  }
+
+  function handleSelectRoute(route: RouteCandidate) {
+    setRoutePlan(route.steps);
+
+    const firstBus = route.steps.find(
+      (s): s is Extract<RouteStep, { type: "bus" }> => s.type === "bus"
+    );
 
     if (firstBus) {
       setSelectedRouteId(firstBus.routeId);
     }
+
+    routeSheetRef.current?.close();
   }
 
   return (
@@ -350,7 +367,7 @@ export default function TabOneScreen() {
         onPress={() => Keyboard.dismiss()}
         onRegionChangeComplete={(region) => setVisibleRegion(region)}
       >
-        <RouteLines selectedRouteId={selectedRouteId} />
+        <RouteLines selectedRouteId={routePlan.length > 0 ? null : selectedRouteId} />
 
         <BusStops
           stops={stops}
@@ -404,6 +421,12 @@ export default function TabOneScreen() {
         onClearRoute={handleClearRoute}
         onClose={handleCloseSheet}
         selectedRouteId={selectedRouteId}
+      />
+
+      <RouteOptionsBottomSheet
+        ref={routeSheetRef}
+        routes={routeOptions}
+        onSelectRoute={handleSelectRoute}
       />
     </View>
   );
