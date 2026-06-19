@@ -62,7 +62,7 @@ export function ActiveRouteBottomSheet({ route, onClearRoute }: Props) {
             onPress={onClearRoute}
             style={{
               backgroundColor: "#ef4444",
-              paddingHorizontal: 18,
+              paddingHorizontal: 10,
               paddingVertical: 10,
               borderRadius: 24,
               flexDirection: "row",
@@ -74,7 +74,6 @@ export function ActiveRouteBottomSheet({ route, onClearRoute }: Props) {
             }}
           >
             <MaterialIcons name="close" size={18} color="white" />
-            <Text style={{ color: "white", fontWeight: "700", marginLeft: 6 }}>Salir</Text>
           </TouchableOpacity>
         </View>
 
@@ -87,17 +86,42 @@ export function ActiveRouteBottomSheet({ route, onClearRoute }: Props) {
 
           {route.steps.map((step, index) => {
             if (step.type === "walk") {
+              const distance = Math.round(step.distanceMeters ?? 0);
+              const transferStopName = step.fromName ?? step.toName;
+
+              if (distance === 0 && transferStopName) {
+                return (
+                  <View key={index} style={{ gap: 2 }}>
+                    <Text style={{ color: "#374151", fontWeight: "700", fontSize: 14 }}>
+                      Transbordo en {transferStopName}
+                    </Text>
+                    <Text style={{ color: "#6b7280", fontSize: 13 }}>
+                      Baja aqui y vuelve a subir en esta parada.
+                    </Text>
+                  </View>
+                );
+              }
+
               return (
-                <Text key={index} style={{ color: "#4b5563", fontSize: 14 }}>
-                  Caminar {Math.round(step.distanceMeters ?? 0)} metros.
-                </Text>
+                <View key={index} style={{ gap: 2 }}>
+                  <Text style={{ color: "#4b5563", fontSize: 14 }}>
+                    Caminar {distance} metros{step.toName ? ` hasta ${step.toName}` : ""}.
+                  </Text>
+                </View>
               );
             }
 
             return (
-              <Text key={index} style={{ color: "#2563eb", fontWeight: "600", fontSize: 14 }}>
-                Subir a linea {step.routeId} ({step.stopCount} paradas).
-              </Text>
+              <View key={index} style={{ gap: 2 }}>
+                <Text style={{ color: "#2563eb", fontWeight: "700", fontSize: 14 }}>
+                  Subir a linea {step.routeId}
+                  {step.fromStopName ? ` en ${step.fromStopName}` : ""}
+                </Text>
+                <Text style={{ color: "#4b5563", fontSize: 13 }}>
+                  Bajar en {step.toStopName ?? "la parada indicada"} tras {step.stopCount}{" "}
+                  {step.stopCount === 1 ? "parada" : "paradas"}.
+                </Text>
+              </View>
             );
           })}
         </View>
