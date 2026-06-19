@@ -17,6 +17,7 @@ import routesData from "@/data/gtfs/routes.json";
 import stops from "@/data/gtfs/stops.json";
 import streets from "@/data/streets.json";
 
+import { ActiveRouteBottomSheet } from "@/components/bottom-sheet/ActiveRouteBottomSheet";
 import { RouteOptionsBottomSheet } from "@/components/bottom-sheet/RouteOptionsBottomSheet";
 import { RoutePlanOverlay } from "@/components/map/RoutePlanOverlay";
 import { findRoute, RouteCandidate, RouteStep } from "@/utils/routing/offlineRouter";
@@ -53,6 +54,8 @@ export default function TabOneScreen() {
   const mapRef = useRef<MapView>(null);
   const bottomSheetRef = useRef<BottomSheet>(null);
   const routeSheetRef = useRef<BottomSheet>(null);
+
+  const [selectedRoute, setSelectedRoute] = useState<RouteCandidate | null>(null);
 
   const [sheetIndex, setSheetIndex] = useState(-1);
   const [navigationActive, setNavigationActive] = useState(false);
@@ -211,11 +214,16 @@ export default function TabOneScreen() {
   }
 
   function handleClearRoute() {
+    closingAfterSelectionRef.current = false;
+    setSelectedRoute(null);
+
     setNavigationActive(false);
     setRoutePlan([]);
     setRouteOptions([]);
     setSelectedRouteId(null);
     setSelectedStreet(null);
+
+    routeSheetRef.current?.close();
   }
 
   function handleSheetChange(index: number) {
@@ -336,6 +344,7 @@ export default function TabOneScreen() {
     setRoutePlan([]);
     setRouteOptions([]);
     setSelectedRouteId(null);
+    setSelectedRoute(null);
 
     const location = await Location.getCurrentPositionAsync({});
 
@@ -356,6 +365,7 @@ export default function TabOneScreen() {
   }
 
   function handleSelectRoute(route: RouteCandidate) {
+    setSelectedRoute(route);
     setRoutePlan(route.steps);
     setNavigationActive(true);
 
@@ -484,6 +494,10 @@ export default function TabOneScreen() {
           handleClearRoute();
         }}
       />
+
+      {selectedRoute && (
+        <ActiveRouteBottomSheet route={selectedRoute} onClearRoute={handleClearRoute} />
+      )}
     </View>
   );
 }
