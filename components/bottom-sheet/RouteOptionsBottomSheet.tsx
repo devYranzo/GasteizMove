@@ -17,7 +17,8 @@ interface Props {
 
 export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
   ({ routes, onSelectRoute, onClose }, ref) => {
-    const snapPoints = useMemo(() => ["30%", "60%"], []);
+    const snapPoints = useMemo(() => ["38%", "68%"], []);
+    const bestRoutes = useMemo(() => routes.slice(0, 3), [routes]);
 
     return (
       <BottomSheet
@@ -33,102 +34,204 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
       >
         <View
           style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingHorizontal: 16,
-            paddingVertical: 12,
+            paddingHorizontal: 20,
+            paddingTop: 8,
+            paddingBottom: 12,
             borderBottomWidth: 1,
             borderBottomColor: "#f3f4f6",
+            backgroundColor: "white",
           }}
         >
-          <Text
+          <View
             style={{
-              fontSize: 18,
-              fontWeight: "600",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
-            Rutas disponibles
-          </Text>
+            <View style={{ flex: 1, paddingRight: 12 }}>
+              <Text style={{ fontSize: 21, fontWeight: "800", color: "#111827" }}>
+                Elige ruta
+              </Text>
+              <Text style={{ marginTop: 2, color: "#6b7280", fontSize: 13, fontWeight: "500" }}>
+                Las {bestRoutes.length} mejores opciones encontradas
+              </Text>
+            </View>
 
-          <TouchableOpacity
-            onPress={() => {
-              if (ref && typeof ref !== "function") {
-                ref.current?.close();
-              }
-            }}
-          >
-            <MaterialIcons name="close" size={24} color="#6b7280" />
-          </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                if (ref && typeof ref !== "function") {
+                  ref.current?.close();
+                }
+              }}
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 20,
+                backgroundColor: "#ef4444",
+                justifyContent: "center",
+                alignItems: "center",
+                elevation: 2,
+                shadowColor: "#000",
+                shadowOpacity: 0.1,
+                shadowRadius: 3,
+              }}
+            >
+              <MaterialIcons name="close" size={20} color="white" />
+            </TouchableOpacity>
+          </View>
         </View>
+
         <BottomSheetFlatList
-          data={routes}
-          keyExtractor={(_, index) => String(index)}
+          data={bestRoutes}
+          keyExtractor={(_, index) => `route-option-${index}`}
+          contentContainerStyle={{ padding: 16, gap: 12 }}
           renderItem={({ item, index }) => {
-            const buses = item.steps.filter((s) => s.type === "bus").map((s) => s.routeId);
+            const buses = item.steps
+              .filter((step) => step.type === "bus")
+              .map((step) => step.routeId);
             const duration = estimateRouteMinutes(item);
             const transfers = countTransfers(item);
+            const walkMeters = item.steps
+              .filter((step) => step.type === "walk")
+              .reduce((total, step) => total + (step.distanceMeters ?? 0), 0);
 
             return (
               <Pressable
                 onPress={() => onSelectRoute(item)}
-                style={{
+                style={({ pressed }) => ({
                   padding: 16,
-                  borderBottomWidth: 1,
-                  borderBottomColor: "#eee",
-                }}
+                  borderRadius: 16,
+                  borderWidth: 1,
+                  borderColor: index === 0 ? "#bfdbfe" : "#e5e7eb",
+                  backgroundColor: pressed ? "#f9fafb" : "white",
+                  shadowColor: "#000",
+                  shadowOpacity: 0.08,
+                  shadowRadius: 8,
+                  shadowOffset: { width: 0, height: 3 },
+                  elevation: 2,
+                })}
               >
                 <View
                   style={{
                     flexDirection: "row",
-                    alignItems: "center",
-                    marginBottom: 6,
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                    gap: 12,
                   }}
                 >
-                  {index === 0 && (
-                    <Text
+                  <View style={{ flex: 1 }}>
+                    <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+                      <Text
+                        numberOfLines={1}
+                        style={{ fontSize: 22, fontWeight: "800", color: "#111827" }}
+                      >
+                        {duration} min
+                      </Text>
+
+                      {index === 0 && (
+                        <View
+                          style={{
+                            paddingHorizontal: 8,
+                            paddingVertical: 4,
+                            borderRadius: 12,
+                            backgroundColor: "#dcfce7",
+                          }}
+                        >
+                          <Text style={{ color: "#166534", fontSize: 12, fontWeight: "800" }}>
+                            Recomendada
+                          </Text>
+                        </View>
+                      )}
+                    </View>
+
+                    <View
                       style={{
-                        color: "#16a34a",
-                        fontWeight: "700",
-                        marginRight: 8,
+                        flexDirection: "row",
+                        flexWrap: "wrap",
+                        gap: 6,
+                        marginTop: 10,
                       }}
                     >
-                      Recomendada
-                    </Text>
-                  )}
+                      {buses.length > 0 ? (
+                        buses.map((routeId, busIndex) => (
+                          <View
+                            key={`${routeId}-${busIndex}`}
+                            style={{
+                              paddingHorizontal: 10,
+                              paddingVertical: 5,
+                              borderRadius: 14,
+                              backgroundColor: "#eff6ff",
+                              borderWidth: 1,
+                              borderColor: "#dbeafe",
+                            }}
+                          >
+                            <Text style={{ color: "#1d4ed8", fontWeight: "800", fontSize: 13 }}>
+                              Linea {routeId}
+                            </Text>
+                          </View>
+                        ))
+                      ) : (
+                        <View
+                          style={{
+                            paddingHorizontal: 10,
+                            paddingVertical: 5,
+                            borderRadius: 14,
+                            backgroundColor: "#f3f4f6",
+                          }}
+                        >
+                          <Text style={{ color: "#374151", fontWeight: "700", fontSize: 13 }}>
+                            A pie
+                          </Text>
+                        </View>
+                      )}
+                    </View>
 
-                  <Text style={{ fontWeight: "600" }}>{buses.join(" → ")}</Text>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        gap: 12,
+                        flexWrap: "wrap",
+                        marginTop: 12,
+                      }}
+                    >
+                      <View style={{ flexDirection: "row", alignItems: "center", gap: 5 }}>
+                        <MaterialIcons name="sync-alt" size={16} color="#6b7280" />
+                        <Text style={{ color: "#4b5563", fontSize: 13, fontWeight: "600" }}>
+                          {transfers === 0
+                            ? "Sin transbordos"
+                            : `${transfers} ${transfers === 1 ? "transbordo" : "transbordos"}`}
+                        </Text>
+                      </View>
+
+                      <View style={{ flexDirection: "row", alignItems: "center", gap: 5 }}>
+                        <MaterialIcons name="directions-walk" size={16} color="#6b7280" />
+                        <Text style={{ color: "#4b5563", fontSize: 13, fontWeight: "600" }}>
+                          {Math.round(walkMeters)} m a pie
+                        </Text>
+                      </View>
+                    </View>
+
+                    <View style={{ marginTop: 10, gap: 6 }}>
+                      {item.steps
+                        .filter((step) => step.type === "bus")
+                        .map((step, stepIndex) => (
+                          <Text
+                            key={stepIndex}
+                            numberOfLines={2}
+                            style={{ color: "#6b7280", fontSize: 13 }}
+                          >
+                            Linea {step.routeId}: {step.fromStopName ?? "origen"}
+                            {" -> "}
+                            {step.toStopName ?? "destino"}
+                          </Text>
+                        ))}
+                    </View>
+                  </View>
+
+                  <MaterialIcons name="chevron-right" size={26} color="#9ca3af" />
                 </View>
 
-                <View
-                  style={{
-                    marginTop: 6,
-                    gap: 4,
-                  }}
-                >
-                  {item.steps.map((step, idx) => {
-                    if (step.type === "walk") {
-                      return <Text key={idx}>🚶 {Math.round(step.distanceMeters ?? 0)} m</Text>;
-                    }
-
-                    return (
-                      <Text key={idx}>
-                        🚌 Línea {step.routeId} ({step.stopCount} paradas)
-                      </Text>
-                    );
-                  })}
-
-                  <Text
-                    style={{
-                      marginTop: 8,
-                      color: "#2563eb",
-                      fontWeight: "600",
-                    }}
-                  >
-                    ⏱ {duration} min
-                    {transfers > 0 ? ` · ${transfers} transbordo` : ""}
-                  </Text>
-                </View>
               </Pressable>
             );
           }}
