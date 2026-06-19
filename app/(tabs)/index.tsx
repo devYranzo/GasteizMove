@@ -50,6 +50,7 @@ export default function TabOneScreen() {
 
   const [routeOptions, setRouteOptions] = useState<RouteCandidate[]>([]);
   const [routePlan, setRoutePlan] = useState<RouteStep[]>([]);
+  const [routePlanVersion, setRoutePlanVersion] = useState(0);
 
   const mapRef = useRef<MapView>(null);
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -219,9 +220,11 @@ export default function TabOneScreen() {
 
     setNavigationActive(false);
     setRoutePlan([]);
+    setRoutePlanVersion((version) => version + 1);
     setRouteOptions([]);
     setSelectedRouteId(null);
     setSelectedStreet(null);
+    setBuses([]);
 
     routeSheetRef.current?.close();
   }
@@ -342,9 +345,11 @@ export default function TabOneScreen() {
 
   async function calculateRoute(destination: { latitude: number; longitude: number }) {
     setRoutePlan([]);
+    setRoutePlanVersion((version) => version + 1);
     setRouteOptions([]);
     setSelectedRouteId(null);
     setSelectedRoute(null);
+    setBuses([]);
 
     const location = await Location.getCurrentPositionAsync({});
 
@@ -359,6 +364,7 @@ export default function TabOneScreen() {
 
     setRouteOptions(routes);
     setRoutePlan(routes[0].steps);
+    setRoutePlanVersion((version) => version + 1);
     setNavigationActive(true);
 
     routeSheetRef.current?.snapToIndex(0);
@@ -367,6 +373,7 @@ export default function TabOneScreen() {
   function handleSelectRoute(route: RouteCandidate) {
     setSelectedRoute(route);
     setRoutePlan(route.steps);
+    setRoutePlanVersion((version) => version + 1);
     setNavigationActive(true);
 
     const firstBus = route.steps.find(
@@ -434,7 +441,13 @@ export default function TabOneScreen() {
           onStopPress={handleStopPress}
         />
 
-        {navigationActive && <RoutePlanOverlay routePlan={routePlan} />}
+        {navigationActive && (
+          <RoutePlanOverlay
+            key={`route-plan-${routePlanVersion}`}
+            routePlan={routePlan}
+            version={routePlanVersion}
+          />
+        )}
 
         <LiveBuses buses={buses} />
 

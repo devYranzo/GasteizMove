@@ -5,9 +5,10 @@ import { Polyline } from "react-native-maps";
 
 interface Props {
   routePlan: RouteStep[];
+  version: number;
 }
 
-export function RoutePlanOverlay({ routePlan }: Props) {
+export function RoutePlanOverlay({ routePlan, version }: Props) {
   const routeColorMap = useMemo(() => {
     const map: Record<string, string> = {};
     routesData.forEach((route) => {
@@ -28,7 +29,7 @@ export function RoutePlanOverlay({ routePlan }: Props) {
           return (
             <Polyline
               // Clave única basada en coordenadas para forzar re-renderizado
-              key={`walk-${index}-${walkStep.fromLat}-${walkStep.toLat}`}
+              key={`route-plan-${version}-walk-${index}-${walkStep.fromLat}-${walkStep.fromLng}-${walkStep.toLat}-${walkStep.toLng}`}
               coordinates={[
                 { latitude: walkStep.fromLat, longitude: walkStep.fromLng },
                 { latitude: walkStep.toLat, longitude: walkStep.toLng },
@@ -48,7 +49,7 @@ export function RoutePlanOverlay({ routePlan }: Props) {
           return (
             <Polyline
               // Clave única basada en la ruta para forzar re-renderizado
-              key={`bus-${index}-${busStep.routeId}-${busStep.shapeCoords[0].latitude}`}
+              key={`route-plan-${version}-bus-${index}-${busStep.routeId}-${busStep.fromStopId}-${busStep.toStopId}-${busStep.shapeCoords.length}`}
               coordinates={busStep.shapeCoords}
               strokeColor={color}
               strokeWidth={5}
