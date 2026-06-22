@@ -3,6 +3,70 @@ import routeStopSequences from "@/data/gtfs/route_stop_sequences.json";
 import shapesData from "@/data/gtfs/shapes.json";
 import stops from "@/data/gtfs/stops.json";
 import timetablesData from "@/data/gtfs/timetables.json";
+import { isServiceActiveWithOvernight, isServiceAvailable } from "./serviceAvailability";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CONFIGURACIÓN DE MODOS DE TRANSPORTE
+// Para añadir un nuevo modo (ej: tranvía), basta con añadir una entrada aquí.
+// El router no necesita ningún otro cambio.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type VehicleType = "bus" | "tram" | "night_bus";
+// Cuando añadas tranvía: añade "tram" y su configuración abajo.
+
+type RouteMode = {
+  /** Tipo de vehículo que se mostrará en la UI */
+  vehicle: VehicleType;
+  /**
+   * Prefijos de routeId que pertenecen a este modo.
+   * Ej: ["G"] para autobuses nocturnos, ["T"] para tranvía.
+   */
+  routePrefixes: string[];
+  /**
+   * Si está definido, este modo solo está activo cuando el serviceId
+   * correspondiente está disponible en la fecha dada (con lógica overnight).
+   * Si es undefined, el modo está siempre activo.
+   */
+  nightServiceId?: string;
+  /**
+   * Penalización por parada en segundos equivalentes para el scoring.
+   * Menor = más rápido = se prefiere sobre otros modos.
+   */
+  stopPenaltySeconds: number;
+  /**
+   * Si true, este modo no se usa como primer tramo en transbordos
+   * (rutas exprés o de cobertura limitada).
+   */
+  expressOnly?: boolean;
+};
+
+const ROUTE_MODES: RouteMode[] = [
+  {
+    vehicle: "bus",
+    routePrefixes: [], // rutas sin prefijo especial = bus diurno normal
+    stopPenaltySeconds: 40,
+  },
+  {
+    vehicle: "night_bus",
+    routePrefixes: ["G"],
+    nightServiceId: "Gautxori", // solo activo en madrugadas de fin de semana
+    stopPenaltySeconds: 40,
+  },
+  // ── Ejemplo: cuando tengas tranvía, descomenta y ajusta: ──────────────────
+  // {
+  //   vehicle: "tram",
+  //   routePrefixes: ["T"],
+  //   stopPenaltySeconds: 25, // más rápido que el bus
+  // },
+  // ─────────────────────────────────────────────────────────────────────────
+];
+
+/** Rutas que solo deben usarse si hay conexión directa real (no como primer tramo de transbordo) */
+const EXPRESS_ROUTE_IDS = ["E1", "E7"];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TIPOS
+// ─────────────────────────────────────────────────────────────────────────────
 
 export type WalkStep = {
   type: "walk";
@@ -15,8 +79,9 @@ export type WalkStep = {
   distanceMeters?: number;
 };
 
-export type BusStep = {
-  type: "bus";
+export type TransitStep = {
+  type: "transit";
+  vehicle: VehicleType;
   routeId: string;
   directionId: string;
   fromStopId: string;
@@ -27,7 +92,7 @@ export type BusStep = {
   stopCount: number;
 };
 
-export type RouteStep = WalkStep | BusStep;
+export type RouteStep = WalkStep | TransitStep;
 
 export type RouteCandidate = {
   score: number;
@@ -40,7 +105,7 @@ export type TimedWalkStep = WalkStep & {
   durationMinutes: number;
 };
 
-export type TimedBusStep = BusStep & {
+export type TimedTransitStep = TransitStep & {
   readyTimeSeconds: number;
   departureTimeSeconds: number | null;
   arrivalTimeSeconds: number | null;
@@ -48,7 +113,7 @@ export type TimedBusStep = BusStep & {
   durationMinutes: number;
 };
 
-export type TimedRouteStep = TimedWalkStep | TimedBusStep;
+export type TimedRouteStep = TimedWalkStep | TimedTransitStep;
 
 export type RouteTiming = {
   steps: TimedRouteStep[];
@@ -57,16 +122,51 @@ export type RouteTiming = {
   totalMinutes: number;
 };
 
-// Rutas que NO deben usarse en el router diurno
-const EXCLUDED_ROUTE_PREFIXES = ["G"];
-// Rutas exprés con cobertura muy limitada — solo usar si hay conexión directa real
-const EXPRESS_ROUTES = ["E1", "E7"];
+// ─────────────────────────────────────────────────────────────────────────────
+// HELPERS DE CONFIGURACIÓN
+// ─────────────────────────────────────────────────────────────────────────────
 
-function isNightRoute(routeId: string) {
-  return EXCLUDED_ROUTE_PREFIXES.some((p) => routeId.startsWith(p));
+/**
+ * Dado un routeId, devuelve el RouteMode al que pertenece.
+ * Si no coincide ningún prefijo especial, devuelve el modo "bus" base.
+ */
+function getModeForRoute(routeId: string): RouteMode {
+  for (const mode of ROUTE_MODES) {
+    if (mode.routePrefixes.some((prefix) => routeId.startsWith(prefix))) {
+      return mode;
+    }
+  }
+  // Fallback al primer modo sin prefijos (bus diurno)
+  return ROUTE_MODES.find((m) => m.routePrefixes.length === 0) ?? ROUTE_MODES[0];
 }
 
-function haversine(lat1: number, lon1: number, lat2: number, lon2: number) {
+/**
+ * Devuelve true si el modo está disponible en la fecha dada.
+ */
+function isModeActive(mode: RouteMode, date: Date): boolean {
+  if (!mode.nightServiceId) return true; // siempre activo
+  return isServiceActiveWithOvernight(mode.nightServiceId, date);
+}
+
+/**
+ * Devuelve true si el routeId está disponible en la fecha dada.
+ */
+function isRouteActive(routeId: string, date: Date): boolean {
+  return isModeActive(getModeForRoute(routeId), date);
+}
+
+/**
+ * Devuelve la penalización por parada para un routeId concreto.
+ */
+function getStopPenalty(routeId: string): number {
+  return getModeForRoute(routeId).stopPenaltySeconds;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// UTILIDADES
+// ─────────────────────────────────────────────────────────────────────────────
+
+function haversine(lat1: number, lon1: number, lat2: number, lon2: number): number {
   const R = 6371e3;
   const toRad = (x: number) => (x * Math.PI) / 180;
   const dLat = toRad(lat2 - lat1);
@@ -82,17 +182,38 @@ for (const s of stops) {
   stopMap[s.id] = s;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// PARADAS Y RUTAS CANDIDATAS
+// ─────────────────────────────────────────────────────────────────────────────
+
 /**
- * Paradas candidatas para origen/destino: excluye las que solo tienen rutas nocturnas.
- * Ordena por distancia y devuelve las N más cercanas.
+ * Paradas candidatas para origen/destino.
+ * Solo incluye paradas con al menos una ruta activa en la fecha dada.
  */
-function nearestUsableStops(lat: number, lng: number, maxResults = 5) {
+function nearestUsableStops(lat: number, lng: number, maxResults = 5, date: Date = new Date()) {
   return stops
-    .filter((s) => s.routes.some((r) => !isNightRoute(r.id)))
+    .filter((s) => s.routes.some((r) => isRouteActive(r.id, date)))
     .map((s) => ({ stop: s, dist: haversine(lat, lng, s.latitude, s.longitude) }))
     .sort((a, b) => a.dist - b.dist)
     .slice(0, maxResults);
 }
+
+/**
+ * Filtra y ordena los routeIds utilizables de una parada según la fecha.
+ * Si preferMain=true, pone las rutas exprés al final.
+ */
+function usableRoutes(routeIds: Set<string>, preferMain = true, date: Date = new Date()): string[] {
+  const filtered = [...routeIds].filter((r) => isRouteActive(r, date));
+  if (!preferMain) return filtered;
+  return [
+    ...filtered.filter((r) => !EXPRESS_ROUTE_IDS.includes(r)),
+    ...filtered.filter((r) => EXPRESS_ROUTE_IDS.includes(r)),
+  ];
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CONSTRUCCIÓN DE PASOS
+// ─────────────────────────────────────────────────────────────────────────────
 
 function resolveDirection(
   routeId: string,
@@ -148,14 +269,14 @@ function getShapeSlice(
   return pts.slice(startIdx, endIdx + 1).map(([lat, lng]) => ({ latitude: lat, longitude: lng }));
 }
 
-function buildBusStep(
+function buildTransitStep(
   routeId: string,
   fromStopId: string,
   toStopId: string,
   directionId: string,
   fromIdx: number,
   toIdx: number
-): BusStep {
+): TransitStep {
   const fromStop = stopMap[fromStopId];
   const toStop = stopMap[toStopId];
   const shapeCoords = getShapeSlice(
@@ -167,7 +288,8 @@ function buildBusStep(
     toStop?.longitude ?? 0
   );
   return {
-    type: "bus",
+    type: "transit",
+    vehicle: getModeForRoute(routeId).vehicle,
     routeId,
     directionId,
     fromStopId,
@@ -179,25 +301,16 @@ function buildBusStep(
   };
 }
 
-/**
- * Dado un conjunto de routeIds de una parada, devuelve solo los diurnos
- * ordenando primero los no-exprés (más cobertura).
- */
-function usableRoutes(routeIds: Set<string>, preferMain = true): string[] {
-  const filtered = [...routeIds].filter((r) => !isNightRoute(r));
-  if (!preferMain) return filtered;
-  // Líneas principales primero, exprés al final
-  return [
-    ...filtered.filter((r) => !EXPRESS_ROUTES.includes(r)),
-    ...filtered.filter((r) => EXPRESS_ROUTES.includes(r)),
-  ];
-}
+// ─────────────────────────────────────────────────────────────────────────────
+// ROUTER PRINCIPAL
+// ─────────────────────────────────────────────────────────────────────────────
 
 export function findRoute(
   originLat: number,
   originLng: number,
   destLat: number,
-  destLng: number
+  destLng: number,
+  date: Date = new Date()
 ): RouteCandidate[] {
   const directDist = haversine(originLat, originLng, destLat, destLng);
 
@@ -220,15 +333,14 @@ export function findRoute(
     ];
   }
 
-  // Candidatos de parada origen y destino
-  const originCandidates = nearestUsableStops(originLat, originLng, 8);
-  const destCandidates = nearestUsableStops(destLat, destLng, 8);
+  const originCandidates = nearestUsableStops(originLat, originLng, 8, date);
+  const destCandidates = nearestUsableStops(destLat, destLng, 8, date);
 
   const candidates: RouteCandidate[] = [];
 
-  // ─── DIRECTO ────────────────────────────────────────────────────────────────
+  // ─── DIRECTO ──────────────────────────────────────────────────────────────
   for (const { stop: oStop } of originCandidates) {
-    const oRoutes = usableRoutes(new Set(oStop.routes.map((r) => r.id)));
+    const oRoutes = usableRoutes(new Set(oStop.routes.map((r) => r.id)), true, date);
     for (const { stop: dStop } of destCandidates) {
       const dRouteIds = new Set(dStop.routes.map((r) => r.id));
       for (const routeId of oRoutes) {
@@ -237,10 +349,8 @@ export function findRoute(
         if (!dir) continue;
 
         const walkToBus = haversine(originLat, originLng, oStop.latitude, oStop.longitude);
-
         const walkFromBus = haversine(dStop.latitude, dStop.longitude, destLat, destLng);
-
-        const stopPenalty = (dir.toIdx - dir.fromIdx) * 40;
+        const stopPenalty = (dir.toIdx - dir.fromIdx) * getStopPenalty(routeId);
 
         candidates.push({
           score: walkToBus + walkFromBus + stopPenalty,
@@ -254,7 +364,7 @@ export function findRoute(
               toName: oStop.name,
               distanceMeters: walkToBus,
             },
-            buildBusStep(routeId, oStop.id, dStop.id, dir.directionId, dir.fromIdx, dir.toIdx),
+            buildTransitStep(routeId, oStop.id, dStop.id, dir.directionId, dir.fromIdx, dir.toIdx),
             {
               type: "walk",
               fromLat: dStop.latitude,
@@ -270,36 +380,28 @@ export function findRoute(
     }
   }
 
-  // ─── 1 TRANSBORDO ───────────────────────────────────────────────────────────
-  // Paradas de transbordo: excluye nocturnas, ordena por cercanía al punto medio,
-  // penaliza las que estén más lejos del eje origen-destino
+  // ─── 1 TRANSBORDO ─────────────────────────────────────────────────────────
   const midLat = (originLat + destLat) / 2;
   const midLng = (originLng + destLng) / 2;
 
   const transferCandidates = stops
-    .filter((s) => {
-      // Debe tener al menos una ruta diurna
-      return s.routes.some((r) => !isNightRoute(r.id));
-    })
-    .map((s) => ({
-      stop: s,
-      dist: haversine(midLat, midLng, s.latitude, s.longitude),
-    }))
+    .filter((s) => s.routes.some((r) => isRouteActive(r.id, date)))
+    .map((s) => ({ stop: s, dist: haversine(midLat, midLng, s.latitude, s.longitude) }))
     .sort((a, b) => a.dist - b.dist)
     .slice(0, 60)
     .map((x) => x.stop);
 
   for (const { stop: oStop } of originCandidates) {
-    const oRoutes = usableRoutes(new Set(oStop.routes.map((r) => r.id)));
+    const oRoutes = usableRoutes(new Set(oStop.routes.map((r) => r.id)), true, date);
 
     for (const transferStop of transferCandidates) {
       if (transferStop.id === oStop.id) continue;
-      const tRoutes = usableRoutes(new Set(transferStop.routes.map((r) => r.id)), false);
+      const tRoutes = usableRoutes(new Set(transferStop.routes.map((r) => r.id)), false, date);
 
-      // Primer tramo: origen -> transbordo (solo rutas principales, no exprés)
+      // Primer tramo: origen -> transbordo (sin rutas exprés)
       let firstRouteId: string | null = null;
       let firstDir: { directionId: string; fromIdx: number; toIdx: number } | null = null;
-      for (const routeId of oRoutes.filter((r) => !EXPRESS_ROUTES.includes(r))) {
+      for (const routeId of oRoutes.filter((r) => !EXPRESS_ROUTE_IDS.includes(r))) {
         if (!tRoutes.includes(routeId)) continue;
         const dir = resolveDirection(routeId, oStop.id, transferStop.id);
         if (dir) {
@@ -317,7 +419,7 @@ export function findRoute(
         let secondDir: { directionId: string; fromIdx: number; toIdx: number } | null = null;
         for (const routeId of tRoutes) {
           if (!dRouteIds.has(routeId)) continue;
-          if (routeId === firstRouteId) continue; // evitar misma ruta en transbordo inútil
+          if (routeId === firstRouteId) continue;
           const dir = resolveDirection(routeId, transferStop.id, dStop.id);
           if (dir) {
             secondRouteId = routeId;
@@ -328,13 +430,11 @@ export function findRoute(
         if (!secondRouteId || !secondDir) continue;
 
         const walkToBus = haversine(originLat, originLng, oStop.latitude, oStop.longitude);
-
         const walkFromBus = haversine(dStop.latitude, dStop.longitude, destLat, destLng);
-
         const transferPenalty = 500;
-
         const stopPenalty =
-          (firstDir.toIdx - firstDir.fromIdx) * 40 + (secondDir.toIdx - secondDir.fromIdx) * 40;
+          (firstDir.toIdx - firstDir.fromIdx) * getStopPenalty(firstRouteId) +
+          (secondDir.toIdx - secondDir.fromIdx) * getStopPenalty(secondRouteId);
 
         candidates.push({
           score: walkToBus + walkFromBus + transferPenalty + stopPenalty,
@@ -348,7 +448,7 @@ export function findRoute(
               toName: oStop.name,
               distanceMeters: walkToBus,
             },
-            buildBusStep(
+            buildTransitStep(
               firstRouteId,
               oStop.id,
               transferStop.id,
@@ -366,7 +466,7 @@ export function findRoute(
               toName: transferStop.name,
               distanceMeters: 0,
             },
-            buildBusStep(
+            buildTransitStep(
               secondRouteId,
               transferStop.id,
               dStop.id,
@@ -391,7 +491,6 @@ export function findRoute(
 
   if (candidates.length > 0) {
     candidates.sort((a, b) => a.score - b.score);
-
     return candidates;
   }
 
@@ -413,12 +512,17 @@ export function findRoute(
   ];
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// TIMING
+// ─────────────────────────────────────────────────────────────────────────────
+
 const WALK_SPEED_M_S = 1.35;
 const BUS_STOP_TIME_S = 70;
 const SECONDS_IN_DAY = 24 * 60 * 60;
 
 type TimetableTrip = {
   tripId: string;
+  serviceId: string;
   stops: [string, number, number][];
 };
 
@@ -426,7 +530,6 @@ const timetables = timetablesData as Record<string, Record<string, TimetableTrip
 
 export function estimateRouteMinutes(candidate: RouteCandidate): number {
   let seconds = 0;
-
   for (const step of candidate.steps) {
     if (step.type === "walk") {
       seconds += (step.distanceMeters ?? 0) / WALK_SPEED_M_S;
@@ -434,39 +537,38 @@ export function estimateRouteMinutes(candidate: RouteCandidate): number {
       seconds += step.stopCount * BUS_STOP_TIME_S;
     }
   }
-
   return Math.round(seconds / 60);
 }
 
 export function countTransfers(candidate: RouteCandidate): number {
-  return candidate.steps.filter((step) => step.type === "bus").length - 1;
+  return candidate.steps.filter((step) => step.type === "transit").length - 1;
 }
 
-export function secondsSinceStartOfDay(date = new Date()) {
+export function secondsSinceStartOfDay(date = new Date()): number {
   return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
 }
 
-export function formatRouteTime(seconds: number | null) {
+export function formatRouteTime(seconds: number | null): string {
   if (seconds === null) return "--:--";
-
   const normalized = ((seconds % SECONDS_IN_DAY) + SECONDS_IN_DAY) % SECONDS_IN_DAY;
   const hours = Math.floor(normalized / 3600);
   const minutes = Math.floor((normalized % 3600) / 60);
-
   return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
 }
 
-function findNextBusTiming(step: BusStep, readyTimeSeconds: number) {
+function findNextBusTiming(step: TransitStep, readyTimeSeconds: number, date: Date = new Date()) {
   const trips = timetables[step.routeId]?.[step.directionId] ?? [];
   let bestTiming: { departureTimeSeconds: number; arrivalTimeSeconds: number } | null = null;
 
   for (const trip of trips) {
+    if (!isServiceAvailable(trip.serviceId, date)) continue;
+
     const fromIndex = trip.stops.findIndex(([stopId]) => stopId === step.fromStopId);
     if (fromIndex === -1) continue;
 
-    const toIndex = trip.stops.findIndex(([stopId], index) => {
-      return index > fromIndex && stopId === step.toStopId;
-    });
+    const toIndex = trip.stops.findIndex(
+      ([stopId], index) => index > fromIndex && stopId === step.toStopId
+    );
     if (toIndex === -1) continue;
 
     const fromStop = trip.stops[fromIndex];
@@ -482,11 +584,7 @@ function findNextBusTiming(step: BusStep, readyTimeSeconds: number) {
       arrivalTimeSeconds += SECONDS_IN_DAY;
     }
 
-    const timing = {
-      departureTimeSeconds,
-      arrivalTimeSeconds,
-    };
-
+    const timing = { departureTimeSeconds, arrivalTimeSeconds };
     if (!bestTiming || timing.departureTimeSeconds < bestTiming.departureTimeSeconds) {
       bestTiming = timing;
     }
@@ -495,7 +593,10 @@ function findNextBusTiming(step: BusStep, readyTimeSeconds: number) {
   return bestTiming;
 }
 
-export function getRouteTiming(candidate: RouteCandidate, startDate = new Date()): RouteTiming {
+export function getRouteTiming(
+  candidate: RouteCandidate,
+  startDate: Date = new Date()
+): RouteTiming {
   const departureTimeSeconds = secondsSinceStartOfDay(startDate);
   let currentTimeSeconds = departureTimeSeconds;
 
@@ -505,7 +606,6 @@ export function getRouteTiming(candidate: RouteCandidate, startDate = new Date()
       const startTimeSeconds = currentTimeSeconds;
       const endTimeSeconds = currentTimeSeconds + durationSeconds;
       currentTimeSeconds = endTimeSeconds;
-
       return {
         ...step,
         startTimeSeconds,
@@ -515,13 +615,12 @@ export function getRouteTiming(candidate: RouteCandidate, startDate = new Date()
     }
 
     const readyTimeSeconds = currentTimeSeconds;
-    const scheduledTiming = findNextBusTiming(step, readyTimeSeconds);
+    const scheduledTiming = findNextBusTiming(step, readyTimeSeconds, startDate);
 
     if (scheduledTiming) {
       const durationSeconds =
         scheduledTiming.arrivalTimeSeconds - scheduledTiming.departureTimeSeconds;
       currentTimeSeconds = scheduledTiming.arrivalTimeSeconds;
-
       return {
         ...step,
         readyTimeSeconds,
@@ -537,7 +636,6 @@ export function getRouteTiming(candidate: RouteCandidate, startDate = new Date()
 
     const fallbackDurationSeconds = step.stopCount * BUS_STOP_TIME_S;
     currentTimeSeconds += fallbackDurationSeconds;
-
     return {
       ...step,
       readyTimeSeconds,

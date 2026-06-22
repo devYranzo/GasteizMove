@@ -3,20 +3,20 @@ import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { useMemo, useRef } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-import {
-  RouteCandidate,
-  formatRouteTime,
-  getRouteTiming,
-} from "@/utils/routing/offlineRouter";
+import { RouteCandidate, formatRouteTime, getRouteTiming } from "@/utils/routing/offlineRouter";
 
 interface Props {
   route: RouteCandidate;
   onClearRoute: () => void;
+  // Fecha capturada cuando se calculó la ruta. Se pasa a getRouteTiming
+  // para que los horarios sean coherentes con el momento del cálculo,
+  // no con la hora real del sistema en el momento del render.
+  routeDate?: Date;
 }
 
-export function ActiveRouteBottomSheet({ route, onClearRoute }: Props) {
+export function ActiveRouteBottomSheet({ route, onClearRoute, routeDate }: Props) {
   const snapPoints = useMemo(() => ["22%", "50%"], []);
-  const timing = useMemo(() => getRouteTiming(route), [route]);
+  const timing = useMemo(() => getRouteTiming(route, routeDate ?? new Date()), [route, routeDate]);
   const hasOpenedRef = useRef(false);
 
   return (
@@ -57,7 +57,7 @@ export function ActiveRouteBottomSheet({ route, onClearRoute }: Props) {
             </Text>
             <Text style={{ color: "#6b7280", fontWeight: "500", marginTop: 2 }}>
               {route.steps
-                .filter((step) => step.type === "bus")
+                .filter((step) => step.type === "transit")
                 .map((step) => `Linea ${step.routeId}`)
                 .join(" -> ") || "Trayecto a pie"}
             </Text>
@@ -111,8 +111,8 @@ export function ActiveRouteBottomSheet({ route, onClearRoute }: Props) {
               }
 
               return (
-                  <View key={index} style={{ gap: 2 }}>
-                    <Text style={{ color: "#4b5563", fontSize: 14 }}>
+                <View key={index} style={{ gap: 2 }}>
+                  <Text style={{ color: "#4b5563", fontSize: 14 }}>
                     Caminar {step.durationMinutes} min ({distance} m)
                     {step.toName ? ` hasta ${step.toName}` : ""}.
                   </Text>
@@ -120,10 +120,24 @@ export function ActiveRouteBottomSheet({ route, onClearRoute }: Props) {
               );
             }
 
+            // step.type === "transit"
+            const vehicleLabel =
+              step.vehicle === "tram"
+                ? "tranvía"
+                : step.vehicle === "night_bus"
+                  ? "bus nocturno"
+                  : "bus";
+
             return (
               <View key={index} style={{ gap: 2 }}>
-                <Text style={{ color: "#2563eb", fontWeight: "700", fontSize: 14 }}>
-                  Subir a linea {step.routeId}
+                <Text
+                  style={{
+                    color: step.vehicle === "night_bus" ? "#4338ca" : "#2563eb",
+                    fontWeight: "700",
+                    fontSize: 14,
+                  }}
+                >
+                  Subir al {vehicleLabel} {step.routeId}
                   {step.fromStopName ? ` en ${step.fromStopName}` : ""}
                 </Text>
                 <Text style={{ color: "#4b5563", fontSize: 13 }}>

@@ -6,6 +6,7 @@ type TripRow = {
   route_id: string;
   trip_id: string;
   direction_id: string;
+  service_id: string;
 };
 
 type StopTimeRow = {
@@ -18,6 +19,7 @@ type StopTimeRow = {
 
 type TimetableTrip = {
   tripId: string;
+  serviceId: string;
   stops: [string, number, number][];
 };
 
@@ -49,7 +51,10 @@ async function main() {
     tripInfo.set(trip.trip_id, trip);
   }
 
-  const stopsByTrip = new Map<string, { stopId: string; arrival: number; departure: number; sequence: number }[]>();
+  const stopsByTrip = new Map<
+    string,
+    { stopId: string; arrival: number; departure: number; sequence: number }[]
+  >();
 
   for (const stopTime of stopTimes) {
     if (!stopsByTrip.has(stopTime.trip_id)) {
@@ -75,6 +80,7 @@ async function main() {
 
     timetables[trip.route_id][trip.direction_id].push({
       tripId,
+      serviceId: trip.service_id,
       stops: stops
         .sort((a, b) => a.sequence - b.sequence)
         .map((stop) => [stop.stopId, stop.arrival, stop.departure]),

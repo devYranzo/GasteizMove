@@ -14,10 +14,13 @@ interface Props {
   routes: RouteCandidate[];
   onSelectRoute: (route: RouteCandidate) => void;
   onClose: () => void;
+  // Fecha capturada cuando se calculó la ruta, para que getRouteTiming
+  // use el mismo instante que findRoute y no la hora actual del render.
+  routeDate?: Date;
 }
 
 export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
-  ({ routes, onSelectRoute, onClose }, ref) => {
+  ({ routes, onSelectRoute, onClose, routeDate }, ref) => {
     const snapPoints = useMemo(() => ["38%", "68%"], []);
     const bestRoutes = useMemo(() => routes.slice(0, 3), [routes]);
 
@@ -51,9 +54,7 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
             }}
           >
             <View style={{ flex: 1, paddingRight: 12 }}>
-              <Text style={{ fontSize: 21, fontWeight: "800", color: "#111827" }}>
-                Elige ruta
-              </Text>
+              <Text style={{ fontSize: 21, fontWeight: "800", color: "#111827" }}>Elige ruta</Text>
               <Text style={{ marginTop: 2, color: "#6b7280", fontSize: 13, fontWeight: "500" }}>
                 Las {bestRoutes.length} mejores opciones encontradas
               </Text>
@@ -88,11 +89,9 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
           keyExtractor={(_, index) => `route-option-${index}`}
           contentContainerStyle={{ padding: 16, gap: 12 }}
           renderItem={({ item, index }) => {
-            const buses = item.steps
-              .filter((step) => step.type === "bus")
-              .map((step) => step.routeId);
-            const timing = getRouteTiming(item);
-            const firstBusStep = timing.steps.find((step) => step.type === "bus");
+            const transitSteps = item.steps.filter((step) => step.type === "transit");
+            const timing = getRouteTiming(item, routeDate ?? new Date());
+            const firstTransitStep = timing.steps.find((step) => step.type === "transit");
             const duration = timing.totalMinutes;
             const transfers = countTransfers(item);
             const walkMeters = item.steps
@@ -156,21 +155,27 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
                         marginTop: 10,
                       }}
                     >
-                      {buses.length > 0 ? (
-                        buses.map((routeId, busIndex) => (
+                      {transitSteps.length > 0 ? (
+                        transitSteps.map((step, busIndex) => (
                           <View
-                            key={`${routeId}-${busIndex}`}
+                            key={`${step.routeId}-${busIndex}`}
                             style={{
                               paddingHorizontal: 10,
                               paddingVertical: 5,
                               borderRadius: 14,
-                              backgroundColor: "#eff6ff",
+                              backgroundColor: step.vehicle === "night_bus" ? "#1e1b4b" : "#eff6ff",
                               borderWidth: 1,
-                              borderColor: "#dbeafe",
+                              borderColor: step.vehicle === "night_bus" ? "#3730a3" : "#dbeafe",
                             }}
                           >
-                            <Text style={{ color: "#1d4ed8", fontWeight: "800", fontSize: 13 }}>
-                              Linea {routeId}
+                            <Text
+                              style={{
+                                color: step.vehicle === "night_bus" ? "#c7d2fe" : "#1d4ed8",
+                                fontWeight: "800",
+                                fontSize: 13,
+                              }}
+                            >
+                              Linea {step.routeId}
                             </Text>
                           </View>
                         ))
@@ -216,11 +221,12 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
                     </View>
 
                     <View style={{ marginTop: 8, gap: 4 }}>
-                      {firstBusStep?.type === "bus" && (
+                      {firstTransitStep?.type === "transit" && (
                         <Text style={{ color: "#374151", fontSize: 13, fontWeight: "700" }}>
-                          Primer bus {formatRouteTime(firstBusStep.departureTimeSeconds)}
-                          {firstBusStep.waitMinutes !== null
-                            ? ` · espera ${firstBusStep.waitMinutes} min`
+                          Primer {firstTransitStep.vehicle === "tram" ? "tranvía" : "bus"}{" "}
+                          {formatRouteTime(firstTransitStep.departureTimeSeconds)}
+                          {firstTransitStep.waitMinutes !== null
+                            ? ` · espera ${firstTransitStep.waitMinutes} min`
                             : ""}
                         </Text>
                       )}
@@ -231,7 +237,7 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
 
                     <View style={{ marginTop: 10, gap: 6 }}>
                       {item.steps
-                        .filter((step) => step.type === "bus")
+                        .filter((step) => step.type === "transit")
                         .map((step, stepIndex) => (
                           <Text
                             key={stepIndex}
@@ -248,7 +254,6 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
 
                   <MaterialIcons name="chevron-right" size={26} color="#9ca3af" />
                 </View>
-
               </Pressable>
             );
           }}

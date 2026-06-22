@@ -20,7 +20,7 @@ import streets from "@/data/streets.json";
 import { ActiveRouteBottomSheet } from "@/components/bottom-sheet/ActiveRouteBottomSheet";
 import { RouteOptionsBottomSheet } from "@/components/bottom-sheet/RouteOptionsBottomSheet";
 import { RoutePlanOverlay } from "@/components/map/RoutePlanOverlay";
-import { findRoute, RouteCandidate, RouteStep } from "@/utils/routing/offlineRouter";
+import { findRoute, RouteCandidate, RouteStep, TransitStep } from "@/utils/routing/offlineRouter";
 
 export default function TabOneScreen() {
   const [search, setSearch] = useState("");
@@ -183,11 +183,12 @@ export default function TabOneScreen() {
     setSearchResults([...stopResults, ...streetResults]);
   }, [search]);
 
+  // Paradas de origen/destino de cada tramo de tránsito para mostrarlas en el mapa
   const navigationStopIds = useMemo(() => {
     const ids = new Set<string>();
 
     routePlan.forEach((step) => {
-      if (step.type === "bus") {
+      if (step.type === "transit") {
         ids.add(step.fromStopId);
         ids.add(step.toStopId);
       }
@@ -376,26 +377,20 @@ export default function TabOneScreen() {
     setRoutePlanVersion((version) => version + 1);
     setNavigationActive(true);
 
-    const firstBus = route.steps.find(
-      (s): s is Extract<RouteStep, { type: "bus" }> => s.type === "bus"
-    );
+    // Activar buses en vivo para el primer tramo de tránsito
+    const firstTransit = route.steps.find((s): s is TransitStep => s.type === "transit");
 
-    if (firstBus) {
-      setSelectedRouteId(firstBus.routeId);
+    if (firstTransit) {
+      setSelectedRouteId(firstTransit.routeId);
     }
 
+    // Recoger todas las coordenadas de la ruta para hacer zoom
     const points = route.steps.flatMap((step) =>
-      step.type === "bus"
+      step.type === "transit"
         ? step.shapeCoords
         : [
-            {
-              latitude: step.fromLat,
-              longitude: step.fromLng,
-            },
-            {
-              latitude: step.toLat,
-              longitude: step.toLng,
-            },
+            { latitude: step.fromLat, longitude: step.fromLng },
+            { latitude: step.toLat, longitude: step.toLng },
           ]
     );
 

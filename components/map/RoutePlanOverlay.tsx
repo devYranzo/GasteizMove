@@ -1,5 +1,5 @@
 import routesData from "@/data/gtfs/routes.json";
-import { BusStep, RouteStep, WalkStep } from "@/utils/routing/offlineRouter";
+import { RouteStep, TransitStep, WalkStep } from "@/utils/routing/offlineRouter";
 import { useMemo } from "react";
 import { Polyline } from "react-native-maps";
 
@@ -25,10 +25,8 @@ export function RoutePlanOverlay({ routePlan, version }: Props) {
         if (step.type === "walk") {
           const walkStep = step as WalkStep;
           if (walkStep.distanceMeters === 0) return null;
-
           return (
             <Polyline
-              // Clave única basada en coordenadas para forzar re-renderizado
               key={`route-plan-${version}-walk-${index}-${walkStep.fromLat}-${walkStep.fromLng}-${walkStep.toLat}-${walkStep.toLng}`}
               coordinates={[
                 { latitude: walkStep.fromLat, longitude: walkStep.fromLng },
@@ -41,16 +39,14 @@ export function RoutePlanOverlay({ routePlan, version }: Props) {
           );
         }
 
-        if (step.type === "bus") {
-          const busStep = step as BusStep;
-          if (!busStep.shapeCoords?.length) return null;
-          const color = routeColorMap[busStep.routeId] ?? "#2563eb";
-
+        if (step.type === "transit") {
+          const transitStep = step as TransitStep;
+          if (!transitStep.shapeCoords?.length) return null;
+          const color = routeColorMap[transitStep.routeId] ?? "#2563eb";
           return (
             <Polyline
-              // Clave única basada en la ruta para forzar re-renderizado
-              key={`route-plan-${version}-bus-${index}-${busStep.routeId}-${busStep.fromStopId}-${busStep.toStopId}-${busStep.shapeCoords.length}`}
-              coordinates={busStep.shapeCoords}
+              key={`route-plan-${version}-transit-${index}-${transitStep.routeId}-${transitStep.fromStopId}-${transitStep.toStopId}-${transitStep.shapeCoords.length}`}
+              coordinates={transitStep.shapeCoords}
               strokeColor={color}
               strokeWidth={5}
             />
