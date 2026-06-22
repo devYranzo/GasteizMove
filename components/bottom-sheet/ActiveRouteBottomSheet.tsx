@@ -3,7 +3,11 @@ import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { useMemo, useRef } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-import { RouteCandidate, estimateRouteMinutes } from "@/utils/routing/offlineRouter";
+import {
+  RouteCandidate,
+  formatRouteTime,
+  getRouteTiming,
+} from "@/utils/routing/offlineRouter";
 
 interface Props {
   route: RouteCandidate;
@@ -12,6 +16,7 @@ interface Props {
 
 export function ActiveRouteBottomSheet({ route, onClearRoute }: Props) {
   const snapPoints = useMemo(() => ["22%", "50%"], []);
+  const timing = useMemo(() => getRouteTiming(route), [route]);
   const hasOpenedRef = useRef(false);
 
   return (
@@ -48,13 +53,16 @@ export function ActiveRouteBottomSheet({ route, onClearRoute }: Props) {
         >
           <View style={{ flex: 1, paddingRight: 12 }}>
             <Text style={{ fontSize: 22, fontWeight: "800", color: "#111827" }}>
-              {estimateRouteMinutes(route)} min
+              {timing.totalMinutes} min
             </Text>
             <Text style={{ color: "#6b7280", fontWeight: "500", marginTop: 2 }}>
               {route.steps
                 .filter((step) => step.type === "bus")
                 .map((step) => `Linea ${step.routeId}`)
                 .join(" -> ") || "Trayecto a pie"}
+            </Text>
+            <Text style={{ color: "#374151", fontWeight: "700", marginTop: 4 }}>
+              Llegada {formatRouteTime(timing.arrivalTimeSeconds)}
             </Text>
           </View>
 
@@ -84,7 +92,7 @@ export function ActiveRouteBottomSheet({ route, onClearRoute }: Props) {
             Indicaciones de la ruta:
           </Text>
 
-          {route.steps.map((step, index) => {
+          {timing.steps.map((step, index) => {
             if (step.type === "walk") {
               const distance = Math.round(step.distanceMeters ?? 0);
               const transferStopName = step.fromName ?? step.toName;
@@ -103,9 +111,10 @@ export function ActiveRouteBottomSheet({ route, onClearRoute }: Props) {
               }
 
               return (
-                <View key={index} style={{ gap: 2 }}>
-                  <Text style={{ color: "#4b5563", fontSize: 14 }}>
-                    Caminar {distance} metros{step.toName ? ` hasta ${step.toName}` : ""}.
+                  <View key={index} style={{ gap: 2 }}>
+                    <Text style={{ color: "#4b5563", fontSize: 14 }}>
+                    Caminar {step.durationMinutes} min ({distance} m)
+                    {step.toName ? ` hasta ${step.toName}` : ""}.
                   </Text>
                 </View>
               );
@@ -118,7 +127,12 @@ export function ActiveRouteBottomSheet({ route, onClearRoute }: Props) {
                   {step.fromStopName ? ` en ${step.fromStopName}` : ""}
                 </Text>
                 <Text style={{ color: "#4b5563", fontSize: 13 }}>
-                  Bajar en {step.toStopName ?? "la parada indicada"} tras {step.stopCount}{" "}
+                  Sale a las {formatRouteTime(step.departureTimeSeconds)}
+                  {step.waitMinutes !== null ? ` (${step.waitMinutes} min de espera)` : ""}.
+                </Text>
+                <Text style={{ color: "#4b5563", fontSize: 13 }}>
+                  Bajar en {step.toStopName ?? "la parada indicada"} a las{" "}
+                  {formatRouteTime(step.arrivalTimeSeconds)} tras {step.stopCount}{" "}
                   {step.stopCount === 1 ? "parada" : "paradas"}.
                 </Text>
               </View>

@@ -2,6 +2,7 @@ import routeShapes from "@/data/gtfs/route_shapes.json";
 import routeStopSequences from "@/data/gtfs/route_stop_sequences.json";
 import shapesData from "@/data/gtfs/shapes.json";
 import stops from "@/data/gtfs/stops.json";
+import timetablesData from "@/data/gtfs/timetables.json";
 
 export type WalkStep = {
   type: "walk";
@@ -31,6 +32,29 @@ export type RouteStep = WalkStep | BusStep;
 export type RouteCandidate = {
   score: number;
   steps: RouteStep[];
+};
+
+export type TimedWalkStep = WalkStep & {
+  startTimeSeconds: number;
+  endTimeSeconds: number;
+  durationMinutes: number;
+};
+
+export type TimedBusStep = BusStep & {
+  readyTimeSeconds: number;
+  departureTimeSeconds: number | null;
+  arrivalTimeSeconds: number | null;
+  waitMinutes: number | null;
+  durationMinutes: number;
+};
+
+export type TimedRouteStep = TimedWalkStep | TimedBusStep;
+
+export type RouteTiming = {
+  steps: TimedRouteStep[];
+  departureTimeSeconds: number;
+  arrivalTimeSeconds: number;
+  totalMinutes: number;
 };
 
 // Rutas que NO deben usarse en el router diurno
@@ -391,6 +415,14 @@ export function findRoute(
 
 const WALK_SPEED_M_S = 1.35;
 const BUS_STOP_TIME_S = 70;
+const SECONDS_IN_DAY = 24 * 60 * 60;
+
+type TimetableTrip = {
+  tripId: string;
+  stops: [string, number, number][];
+};
+
+const timetables = timetablesData as Record<string, Record<string, TimetableTrip[]>>;
 
 export function estimateRouteMinutes(candidate: RouteCandidate): number {
   let seconds = 0;
@@ -408,4 +440,118 @@ export function estimateRouteMinutes(candidate: RouteCandidate): number {
 
 export function countTransfers(candidate: RouteCandidate): number {
   return candidate.steps.filter((step) => step.type === "bus").length - 1;
+}
+
+export function secondsSinceStartOfDay(date = new Date()) {
+  return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
+}
+
+export function formatRouteTime(seconds: number | null) {
+  if (seconds === null) return "--:--";
+
+  const normalized = ((seconds % SECONDS_IN_DAY) + SECONDS_IN_DAY) % SECONDS_IN_DAY;
+  const hours = Math.floor(normalized / 3600);
+  const minutes = Math.floor((normalized % 3600) / 60);
+
+  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+}
+
+function findNextBusTiming(step: BusStep, readyTimeSeconds: number) {
+  const trips = timetables[step.routeId]?.[step.directionId] ?? [];
+  let bestTiming: { departureTimeSeconds: number; arrivalTimeSeconds: number } | null = null;
+
+  for (const trip of trips) {
+    const fromIndex = trip.stops.findIndex(([stopId]) => stopId === step.fromStopId);
+    if (fromIndex === -1) continue;
+
+    const toIndex = trip.stops.findIndex(([stopId], index) => {
+      return index > fromIndex && stopId === step.toStopId;
+    });
+    if (toIndex === -1) continue;
+
+    const fromStop = trip.stops[fromIndex];
+    const toStop = trip.stops[toIndex];
+
+    let departureTimeSeconds = fromStop[2];
+    while (departureTimeSeconds < readyTimeSeconds) {
+      departureTimeSeconds += SECONDS_IN_DAY;
+    }
+
+    let arrivalTimeSeconds = toStop[1] + (departureTimeSeconds - fromStop[2]);
+    if (arrivalTimeSeconds < departureTimeSeconds) {
+      arrivalTimeSeconds += SECONDS_IN_DAY;
+    }
+
+    const timing = {
+      departureTimeSeconds,
+      arrivalTimeSeconds,
+    };
+
+    if (!bestTiming || timing.departureTimeSeconds < bestTiming.departureTimeSeconds) {
+      bestTiming = timing;
+    }
+  }
+
+  return bestTiming;
+}
+
+export function getRouteTiming(candidate: RouteCandidate, startDate = new Date()): RouteTiming {
+  const departureTimeSeconds = secondsSinceStartOfDay(startDate);
+  let currentTimeSeconds = departureTimeSeconds;
+
+  const steps = candidate.steps.map((step): TimedRouteStep => {
+    if (step.type === "walk") {
+      const durationSeconds = Math.round((step.distanceMeters ?? 0) / WALK_SPEED_M_S);
+      const startTimeSeconds = currentTimeSeconds;
+      const endTimeSeconds = currentTimeSeconds + durationSeconds;
+      currentTimeSeconds = endTimeSeconds;
+
+      return {
+        ...step,
+        startTimeSeconds,
+        endTimeSeconds,
+        durationMinutes: Math.round(durationSeconds / 60),
+      };
+    }
+
+    const readyTimeSeconds = currentTimeSeconds;
+    const scheduledTiming = findNextBusTiming(step, readyTimeSeconds);
+
+    if (scheduledTiming) {
+      const durationSeconds =
+        scheduledTiming.arrivalTimeSeconds - scheduledTiming.departureTimeSeconds;
+      currentTimeSeconds = scheduledTiming.arrivalTimeSeconds;
+
+      return {
+        ...step,
+        readyTimeSeconds,
+        departureTimeSeconds: scheduledTiming.departureTimeSeconds,
+        arrivalTimeSeconds: scheduledTiming.arrivalTimeSeconds,
+        waitMinutes: Math.max(
+          0,
+          Math.round((scheduledTiming.departureTimeSeconds - readyTimeSeconds) / 60)
+        ),
+        durationMinutes: Math.max(1, Math.round(durationSeconds / 60)),
+      };
+    }
+
+    const fallbackDurationSeconds = step.stopCount * BUS_STOP_TIME_S;
+    currentTimeSeconds += fallbackDurationSeconds;
+
+    return {
+      ...step,
+      readyTimeSeconds,
+      departureTimeSeconds: null,
+      arrivalTimeSeconds: null,
+      waitMinutes: null,
+      durationMinutes: Math.max(1, Math.round(fallbackDurationSeconds / 60)),
+    };
+  });
+
+  return {
+    steps,
+    departureTimeSeconds,
+    arrivalTimeSeconds: currentTimeSeconds,
+    totalMinutes: Math.max(0, Math.round((currentTimeSeconds - departureTimeSeconds) / 60)),
+  };
 }

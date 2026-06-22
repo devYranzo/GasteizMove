@@ -6,7 +6,8 @@ import { Pressable, Text, TouchableOpacity, View } from "react-native";
 import {
   RouteCandidate,
   countTransfers,
-  estimateRouteMinutes,
+  formatRouteTime,
+  getRouteTiming,
 } from "@/utils/routing/offlineRouter";
 
 interface Props {
@@ -90,7 +91,9 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
             const buses = item.steps
               .filter((step) => step.type === "bus")
               .map((step) => step.routeId);
-            const duration = estimateRouteMinutes(item);
+            const timing = getRouteTiming(item);
+            const firstBusStep = timing.steps.find((step) => step.type === "bus");
+            const duration = timing.totalMinutes;
             const transfers = countTransfers(item);
             const walkMeters = item.steps
               .filter((step) => step.type === "walk")
@@ -210,6 +213,20 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
                           {Math.round(walkMeters)} m a pie
                         </Text>
                       </View>
+                    </View>
+
+                    <View style={{ marginTop: 8, gap: 4 }}>
+                      {firstBusStep?.type === "bus" && (
+                        <Text style={{ color: "#374151", fontSize: 13, fontWeight: "700" }}>
+                          Primer bus {formatRouteTime(firstBusStep.departureTimeSeconds)}
+                          {firstBusStep.waitMinutes !== null
+                            ? ` · espera ${firstBusStep.waitMinutes} min`
+                            : ""}
+                        </Text>
+                      )}
+                      <Text style={{ color: "#374151", fontSize: 13, fontWeight: "700" }}>
+                        Llegada {formatRouteTime(timing.arrivalTimeSeconds)}
+                      </Text>
                     </View>
 
                     <View style={{ marginTop: 10, gap: 6 }}>
