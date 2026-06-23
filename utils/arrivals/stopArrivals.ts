@@ -46,14 +46,25 @@ function secondsSinceStartOfDay(date = new Date()): number {
   return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
 }
 
+export function formatArrivalTime(seconds: number): string {
+  const normalized = ((seconds % SECONDS_IN_DAY) + SECONDS_IN_DAY) % SECONDS_IN_DAY;
+
+  const hours = Math.floor(normalized / 3600);
+  const minutes = Math.floor((normalized % 3600) / 60);
+
+  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+}
+
 export function getNextArrivalsForStop(
   stopId: string,
-  limit = 10,
+  limit = 5,
   date = new Date()
 ): StopArrival[] {
   const nowSeconds = secondsSinceStartOfDay(date);
 
   const arrivals: StopArrival[] = [];
+
+  const seen = new Set<string>();
 
   for (const routeId of Object.keys(timetables)) {
     const directions = timetables[routeId];
@@ -61,8 +72,7 @@ export function getNextArrivalsForStop(
     for (const directionId of Object.keys(directions)) {
       const trips = directions[directionId];
 
-      let bestDeparture: number | null = null;
-      let bestDestination = "";
+      const routeInfo = routes.find((r) => r.routeId === routeId && r.directionId === directionId);
 
       for (const trip of trips) {
         if (!isServiceActiveWithOvernight(trip.serviceId, date)) {
@@ -83,31 +93,29 @@ export function getNextArrivalsForStop(
           nextDeparture += SECONDS_IN_DAY;
         }
 
+        const uniqueKey = `${routeId}-${directionId}-${nextDeparture}`;
+
+        if (seen.has(uniqueKey)) {
+          continue;
+        }
+
+        seen.add(uniqueKey);
+
         const lastStopId = trip.stops[trip.stops.length - 1][0];
 
-        const destination = stops.find((s) => s.id === lastStopId)?.name ?? "Destino";
+        const destination =
+          routeInfo?.headsign ?? stops.find((s) => s.id === lastStopId)?.name ?? "Destino";
 
-        if (bestDeparture === null || nextDeparture < bestDeparture) {
-          bestDeparture = nextDeparture;
-          bestDestination = destination;
-        }
+        arrivals.push({
+          routeId,
+          routeName: routeInfo?.shortName ?? routeId,
+          routeColor: routeInfo?.color ? `#${routeInfo.color}` : "#9ca3af",
+          destination,
+          directionId,
+          departureTimeSeconds: nextDeparture,
+          waitMinutes: Math.max(0, Math.round((nextDeparture - nowSeconds) / 60)),
+        });
       }
-
-      if (bestDeparture === null) {
-        continue;
-      }
-
-      const routeInfo = routes.find((r) => r.routeId === routeId && r.directionId === directionId);
-
-      arrivals.push({
-        routeId,
-        routeName: routeInfo?.shortName ?? routeId,
-        routeColor: routeInfo?.color ? `#${routeInfo.color}` : "#9ca3af",
-        destination: routeInfo?.headsign ?? bestDestination,
-        directionId,
-        departureTimeSeconds: bestDeparture,
-        waitMinutes: Math.max(0, Math.round((bestDeparture - nowSeconds) / 60)),
-      });
     }
   }
 

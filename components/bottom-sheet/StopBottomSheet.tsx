@@ -2,7 +2,7 @@ import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { forwardRef, useMemo, useState } from "react";
 import { Pressable, Text, TouchableOpacity, View } from "react-native";
 
-import { StopArrival } from "@/utils/arrivals/stopArrivals";
+import { StopArrival, formatArrivalTime } from "@/utils/arrivals/stopArrivals";
 
 type Stop = {
   id: string;
@@ -136,7 +136,7 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
                 )}
 
                 {arrivals.map((arrival) => {
-                  const id = `${arrival.routeId}-${arrival.directionId}`;
+                  const id = `${arrival.routeId}-${arrival.directionId}-${arrival.departureTimeSeconds}`;
                   const isPressed = pressedId === id;
 
                   return (
@@ -197,16 +197,32 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
                           </Text>
                         </View>
 
-                        <Text
+                        <View
                           style={{
-                            fontSize: 16,
-                            fontWeight: "700",
-                            color: "#2563eb",
+                            alignItems: "flex-end",
                             marginLeft: 12,
                           }}
                         >
-                          {arrival.waitMinutes} min
-                        </Text>
+                          <Text
+                            style={{
+                              fontSize: 16,
+                              fontWeight: "700",
+                              color: "#2563eb",
+                            }}
+                          >
+                            {arrival.waitMinutes <= 0 ? "Llegando" : `${arrival.waitMinutes} min`}
+                          </Text>
+
+                          <Text
+                            style={{
+                              fontSize: 12,
+                              color: "#6b7280",
+                              marginTop: 2,
+                            }}
+                          >
+                            {formatArrivalTime(arrival.departureTimeSeconds)}
+                          </Text>
+                        </View>
                       </View>
                     </Pressable>
                   );
