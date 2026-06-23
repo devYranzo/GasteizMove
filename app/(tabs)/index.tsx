@@ -20,6 +20,7 @@ import streets from "@/data/streets.json";
 import { ActiveRouteBottomSheet } from "@/components/bottom-sheet/ActiveRouteBottomSheet";
 import { RouteOptionsBottomSheet } from "@/components/bottom-sheet/RouteOptionsBottomSheet";
 import { RoutePlanOverlay } from "@/components/map/RoutePlanOverlay";
+import { getNextArrivalsForStop, StopArrival } from "@/utils/arrivals/stopArrivals";
 import { findRoute, RouteCandidate, RouteStep, TransitStep } from "@/utils/routing/offlineRouter";
 
 export default function TabOneScreen() {
@@ -61,6 +62,8 @@ export default function TabOneScreen() {
   const [sheetIndex, setSheetIndex] = useState(-1);
   const [navigationActive, setNavigationActive] = useState(false);
   const closingAfterSelectionRef = useRef(false);
+
+  const [arrivals, setArrivals] = useState<StopArrival[]>([]);
 
   useEffect(() => {
     async function getLocation() {
@@ -203,6 +206,8 @@ export default function TabOneScreen() {
     setSelectedStop(stop);
     setSelectedRouteId(null);
     setSelectedStreet(null);
+
+    setArrivals(getNextArrivalsForStop(stop.id));
 
     bottomSheetRef.current?.snapToIndex(0);
   }
@@ -482,6 +487,7 @@ export default function TabOneScreen() {
       <StopBottomSheet
         ref={bottomSheetRef}
         stop={selectedStop}
+        arrivals={arrivals}
         onChange={handleSheetChange}
         onRoutePress={handleRoutePress}
         onClearRoute={handleClearRoute}
