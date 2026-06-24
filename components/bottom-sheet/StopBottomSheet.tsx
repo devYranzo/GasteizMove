@@ -2,7 +2,10 @@ import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { forwardRef, useMemo, useState } from "react";
 import { Pressable, Text, TouchableOpacity, View } from "react-native";
 
+import { useFavorites } from "@/hooks/useFavorites";
 import { StopArrival, formatArrivalTime } from "@/utils/arrivals/stopArrivals";
+import { MaterialIcons } from "@expo/vector-icons";
+import { FavoriteButton } from "../FavoriteButton";
 
 type Stop = {
   id: string;
@@ -28,8 +31,15 @@ interface Props {
 export const StopBottomSheet = forwardRef<BottomSheet, Props>(
   ({ stop, arrivals, onChange, onRoutePress, onClearRoute, onClose, selectedRouteId }, ref) => {
     const snapPoints = useMemo(() => ["25%", "50%"], []);
-
     const [pressedId, setPressedId] = useState<string | null>(null);
+
+    const { favorites, addFavorite, removeFavorite } = useFavorites();
+
+    const isFavorite = useMemo(() => {
+      if (!stop) return false;
+
+      return favorites.some((f) => f.type === "stop" && f.refId === stop.id);
+    }, [favorites, stop]);
 
     return (
       <BottomSheet
@@ -48,6 +58,7 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
         >
           {stop && (
             <>
+              {/* HEADER */}
               <View
                 style={{
                   flexDirection: "row",
@@ -65,6 +76,10 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
                   {stop.name}
                 </Text>
 
+                {/* ⭐ FAVORITO */}
+                <FavoriteButton id={stop.id} title={stop.name} type="stop" />
+
+                {/* ↺ limpiar ruta */}
                 {selectedRouteId && (
                   <TouchableOpacity
                     onPress={onClearRoute}
@@ -74,7 +89,7 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
                       borderRadius: 18,
                       justifyContent: "center",
                       alignItems: "center",
-                      marginRight: 4,
+                      marginRight: 6,
                     }}
                   >
                     <Text
@@ -89,28 +104,27 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
                   </TouchableOpacity>
                 )}
 
+                {/* ❌ cerrar */}
                 <TouchableOpacity
                   onPress={onClose}
                   style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: 18,
-                    justifyContent: "center",
+                    backgroundColor: "#ef4444",
+                    paddingHorizontal: 10,
+                    paddingVertical: 10,
+                    borderRadius: 24,
+                    flexDirection: "row",
                     alignItems: "center",
+                    elevation: 2,
+                    shadowColor: "#000",
+                    shadowOpacity: 0.1,
+                    shadowRadius: 3,
                   }}
                 >
-                  <Text
-                    style={{
-                      fontSize: 24,
-                      fontWeight: "600",
-                      color: "#6b7280",
-                    }}
-                  >
-                    ×
-                  </Text>
+                  <MaterialIcons name="close" size={18} color="white" />
                 </TouchableOpacity>
               </View>
 
+              {/* RESTO IGUAL */}
               <Text
                 style={{
                   fontSize: 14,
@@ -181,11 +195,7 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
                           </Text>
                         </View>
 
-                        <View
-                          style={{
-                            flex: 1,
-                          }}
-                        >
+                        <View style={{ flex: 1 }}>
                           <Text
                             numberOfLines={1}
                             style={{

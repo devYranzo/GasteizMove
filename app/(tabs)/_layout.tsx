@@ -21,8 +21,6 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
       }}
     >
@@ -39,7 +37,7 @@ export default function TabLayout() {
         options={{
           title: "Favoritos",
           tabBarIcon: ({ color }) => <TabBarIcon name="star" color={color} />,
-          headerShown: useClientOnlyValue(false, true),
+          headerShown: false,
         }}
       />
     </Tabs>

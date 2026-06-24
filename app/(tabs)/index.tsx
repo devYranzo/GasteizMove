@@ -1,6 +1,7 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
 import * as Location from "expo-location";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Keyboard, TouchableOpacity } from "react-native";
 import MapView, { Marker } from "react-native-maps";
@@ -24,6 +25,9 @@ import { getNextArrivalsForStop, StopArrival } from "@/utils/arrivals/stopArriva
 import { findRoute, RouteCandidate, RouteStep, TransitStep } from "@/utils/routing/offlineRouter";
 
 export default function TabOneScreen() {
+  const { stopId } = useLocalSearchParams<{ stopId?: string }>();
+  const router = useRouter();
+
   const [search, setSearch] = useState("");
   const [selectedStop, setSelectedStop] = useState<Stop | null>(null);
   const [selectedRouteId, setSelectedRouteId] = useState<string | null>(null);
@@ -58,12 +62,39 @@ export default function TabOneScreen() {
   const routeSheetRef = useRef<BottomSheet>(null);
 
   const [selectedRoute, setSelectedRoute] = useState<RouteCandidate | null>(null);
-
   const [sheetIndex, setSheetIndex] = useState(-1);
   const [navigationActive, setNavigationActive] = useState(false);
   const closingAfterSelectionRef = useRef(false);
-
   const [arrivals, setArrivals] = useState<StopArrival[]>([]);
+
+  // ── Navegar a parada desde favoritos ──────────────────────────────────────
+  useEffect(() => {
+    if (!stopId || !initialRegion) return;
+
+    const stop = stops.find((s) => s.id === stopId);
+    if (!stop) return;
+
+    // Limpiar el param para que no se re-ejecute si el usuario vuelve a la tab
+    router.setParams({ stopId: "" });
+
+    mapRef.current?.animateToRegion(
+      {
+        latitude: stop.latitude,
+        longitude: stop.longitude,
+        latitudeDelta: 0.003,
+        longitudeDelta: 0.003,
+      },
+      600
+    );
+
+    setSelectedStop(stop);
+    setSelectedRouteId(null);
+    setSelectedStreet(null);
+    setArrivals(getNextArrivalsForStop(stop.id));
+
+    bottomSheetRef.current?.snapToIndex(0);
+  }, [stopId, initialRegion]);
+  // ─────────────────────────────────────────────────────────────────────────
 
   useEffect(() => {
     async function getLocation() {
@@ -95,7 +126,6 @@ export default function TabOneScreen() {
 
   async function centerOnUser() {
     const { status } = await Location.requestForegroundPermissionsAsync();
-
     if (status !== "granted") return;
 
     const location = await Location.getCurrentPositionAsync({});
@@ -135,11 +165,9 @@ export default function TabOneScreen() {
 
   const routeColorMap = useMemo(() => {
     const map: Record<string, string> = {};
-
     routesData.forEach((route) => {
       map[route.routeId] = `#${route.color}`;
     });
-
     return map;
   }, []);
 
@@ -186,35 +214,28 @@ export default function TabOneScreen() {
     setSearchResults([...stopResults, ...streetResults]);
   }, [search]);
 
-  // Paradas de origen/destino de cada tramo de tránsito para mostrarlas en el mapa
   const navigationStopIds = useMemo(() => {
     const ids = new Set<string>();
-
     routePlan.forEach((step) => {
       if (step.type === "transit") {
         ids.add(step.fromStopId);
         ids.add(step.toStopId);
       }
     });
-
     return ids;
   }, [routePlan]);
 
   function handleStopPress(stop: Stop) {
     Keyboard.dismiss();
-
     setSelectedStop(stop);
     setSelectedRouteId(null);
     setSelectedStreet(null);
-
     setArrivals(getNextArrivalsForStop(stop.id));
-
     bottomSheetRef.current?.snapToIndex(0);
   }
 
   function handleRoutePress(routeId: string) {
     Keyboard.dismiss();
-
     setSelectedRouteId(routeId);
     setSearch("");
     setSelectedStreet(null);
@@ -223,7 +244,6 @@ export default function TabOneScreen() {
   function handleClearRoute() {
     closingAfterSelectionRef.current = false;
     setSelectedRoute(null);
-
     setNavigationActive(false);
     setRoutePlan([]);
     setRoutePlanVersion((version) => version + 1);
@@ -231,7 +251,6 @@ export default function TabOneScreen() {
     setSelectedRouteId(null);
     setSelectedStreet(null);
     setBuses([]);
-
     routeSheetRef.current?.close();
   }
 
@@ -264,9 +283,7 @@ export default function TabOneScreen() {
     const fetchBuses = async () => {
       try {
         const res = await fetch(`http://192.168.50.10:3000/api/buses?routeId=${selectedRouteId}`);
-
         const data = await res.json();
-
         if (Array.isArray(data)) {
           setBuses(data);
         } else {
@@ -279,9 +296,7 @@ export default function TabOneScreen() {
     };
 
     fetchBuses();
-
     interval = setInterval(fetchBuses, 6000);
-
     return () => clearInterval(interval);
   }, [selectedRouteId]);
 
@@ -290,7 +305,6 @@ export default function TabOneScreen() {
 
     if (result.type === "stop") {
       const stop = stops.find((s) => s.id === result.id);
-
       if (!stop) return;
 
       setSelectedStreet(null);
@@ -307,9 +321,7 @@ export default function TabOneScreen() {
 
       setSelectedStop(stop);
       setSearch("");
-
       bottomSheetRef.current?.snapToIndex(0);
-
       return;
     }
 
@@ -382,14 +394,11 @@ export default function TabOneScreen() {
     setRoutePlanVersion((version) => version + 1);
     setNavigationActive(true);
 
-    // Activar buses en vivo para el primer tramo de tránsito
     const firstTransit = route.steps.find((s): s is TransitStep => s.type === "transit");
-
     if (firstTransit) {
       setSelectedRouteId(firstTransit.routeId);
     }
 
-    // Recoger todas las coordenadas de la ruta para hacer zoom
     const points = route.steps.flatMap((step) =>
       step.type === "transit"
         ? step.shapeCoords
@@ -400,17 +409,11 @@ export default function TabOneScreen() {
     );
 
     mapRef.current?.fitToCoordinates(points, {
-      edgePadding: {
-        top: 120,
-        right: 60,
-        bottom: 250,
-        left: 60,
-      },
+      edgePadding: { top: 120, right: 60, bottom: 250, left: 60 },
       animated: true,
     });
 
     closingAfterSelectionRef.current = true;
-
     routeSheetRef.current?.close();
   }
 
@@ -504,7 +507,6 @@ export default function TabOneScreen() {
             closingAfterSelectionRef.current = false;
             return;
           }
-
           handleClearRoute();
         }}
       />
