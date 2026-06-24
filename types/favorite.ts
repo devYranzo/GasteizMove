@@ -6,4 +6,11 @@ export type Favorite = {
   title: string;
   refId?: string;
   createdAt: number;
+  metadata?: {
+    originLat: number;
+    originLng: number;
+    destLat: number;
+    destLng: number;
+    destName: string;
+  };
 };

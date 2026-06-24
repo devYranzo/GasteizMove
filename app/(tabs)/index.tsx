@@ -7,10 +7,13 @@ import { Keyboard, TouchableOpacity } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
 import { View } from "@/components/Themed";
+import { ActiveRouteBottomSheet } from "@/components/bottom-sheet/ActiveRouteBottomSheet";
+import { RouteOptionsBottomSheet } from "@/components/bottom-sheet/RouteOptionsBottomSheet";
 import { StopBottomSheet } from "@/components/bottom-sheet/StopBottomSheet";
 import { BusStops, Stop } from "@/components/map/BusStops";
 import { LiveBuses } from "@/components/map/LiveBuses";
 import { RouteLines } from "@/components/map/RouteLines";
+import { RoutePlanOverlay } from "@/components/map/RoutePlanOverlay";
 import { SearchBar } from "@/components/map/SearchBar";
 import { SearchResult, SearchResults } from "@/components/map/SearchResults";
 
@@ -18,14 +21,16 @@ import routesData from "@/data/gtfs/routes.json";
 import stops from "@/data/gtfs/stops.json";
 import streets from "@/data/streets.json";
 
-import { ActiveRouteBottomSheet } from "@/components/bottom-sheet/ActiveRouteBottomSheet";
-import { RouteOptionsBottomSheet } from "@/components/bottom-sheet/RouteOptionsBottomSheet";
-import { RoutePlanOverlay } from "@/components/map/RoutePlanOverlay";
 import { getNextArrivalsForStop, StopArrival } from "@/utils/arrivals/stopArrivals";
 import { findRoute, RouteCandidate, RouteStep, TransitStep } from "@/utils/routing/offlineRouter";
 
 export default function TabOneScreen() {
-  const { stopId } = useLocalSearchParams<{ stopId?: string }>();
+  const { stopId, routeDestLat, routeDestLng, routeDestName } = useLocalSearchParams<{
+    stopId?: string;
+    routeDestLat?: string;
+    routeDestLng?: string;
+    routeDestName?: string;
+  }>();
   const router = useRouter();
 
   const [search, setSearch] = useState("");
@@ -56,6 +61,11 @@ export default function TabOneScreen() {
   const [routeOptions, setRouteOptions] = useState<RouteCandidate[]>([]);
   const [routePlan, setRoutePlan] = useState<RouteStep[]>([]);
   const [routePlanVersion, setRoutePlanVersion] = useState(0);
+  const [activeRouteDest, setActiveRouteDest] = useState<{
+    lat: number;
+    lng: number;
+    name: string;
+  } | null>(null);
 
   const mapRef = useRef<MapView>(null);
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -70,13 +80,10 @@ export default function TabOneScreen() {
   // ── Navegar a parada desde favoritos ──────────────────────────────────────
   useEffect(() => {
     if (!stopId || !initialRegion) return;
-
     const stop = stops.find((s) => s.id === stopId);
     if (!stop) return;
 
-    // Limpiar el param para que no se re-ejecute si el usuario vuelve a la tab
     router.setParams({ stopId: "" });
-
     mapRef.current?.animateToRegion(
       {
         latitude: stop.latitude,
@@ -86,33 +93,42 @@ export default function TabOneScreen() {
       },
       600
     );
-
     setSelectedStop(stop);
     setSelectedRouteId(null);
     setSelectedStreet(null);
     setArrivals(getNextArrivalsForStop(stop.id));
-
     bottomSheetRef.current?.snapToIndex(0);
   }, [stopId, initialRegion]);
+
+  // ── Recalcular ruta desde favoritos ───────────────────────────────────────
+  useEffect(() => {
+    if (!routeDestLat || !routeDestLng || !initialRegion) return;
+    const destLat = parseFloat(routeDestLat);
+    const destLng = parseFloat(routeDestLng);
+    if (isNaN(destLat) || isNaN(destLng)) return;
+
+    router.setParams({ routeDestLat: "", routeDestLng: "", routeDestName: "" });
+    calculateRoute({
+      latitude: destLat,
+      longitude: destLng,
+      name: routeDestName ?? "",
+    });
+  }, [routeDestLat, routeDestLng, initialRegion]);
   // ─────────────────────────────────────────────────────────────────────────
 
   useEffect(() => {
     async function getLocation() {
       const { status } = await Location.requestForegroundPermissionsAsync();
-
       if (status === "granted") {
         const location = await Location.getCurrentPositionAsync({});
-
         setInitialRegion({
           latitude: location.coords.latitude,
           longitude: location.coords.longitude,
           latitudeDelta: 0.006,
           longitudeDelta: 0.006,
         });
-
         return;
       }
-
       setInitialRegion({
         latitude: 42.846,
         longitude: -2.673,
@@ -120,16 +136,13 @@ export default function TabOneScreen() {
         longitudeDelta: 0.05,
       });
     }
-
     getLocation();
   }, []);
 
   async function centerOnUser() {
     const { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") return;
-
     const location = await Location.getCurrentPositionAsync({});
-
     mapRef.current?.animateToRegion(
       {
         latitude: location.coords.latitude,
@@ -144,22 +157,15 @@ export default function TabOneScreen() {
   const visibleStopIds = useMemo(() => {
     const ids = stops
       .filter((stop) => {
-        if (selectedRouteId) {
-          return stop.routes.some((r) => r.id === selectedRouteId);
-        }
-
+        if (selectedRouteId) return stop.routes.some((r) => r.id === selectedRouteId);
         if (!visibleRegion) return false;
-
         const latOk =
           Math.abs(stop.latitude - visibleRegion.latitude) < visibleRegion.latitudeDelta / 2;
-
         const lngOk =
           Math.abs(stop.longitude - visibleRegion.longitude) < visibleRegion.longitudeDelta / 2;
-
         return latOk && lngOk;
       })
       .map((s) => s.id);
-
     return new Set(ids);
   }, [selectedRouteId, visibleRegion]);
 
@@ -173,7 +179,6 @@ export default function TabOneScreen() {
 
   useEffect(() => {
     const query = search.trim().toLowerCase();
-
     if (!query) {
       setSearchResults([]);
       return;
@@ -184,7 +189,6 @@ export default function TabOneScreen() {
       .slice(0, 10)
       .map((stop) => {
         const uniqueRoutes = Array.from(new Map(stop.routes.map((r) => [r.id, r])).values());
-
         return {
           id: stop.id,
           name: stop.name,
@@ -246,17 +250,17 @@ export default function TabOneScreen() {
     setSelectedRoute(null);
     setNavigationActive(false);
     setRoutePlan([]);
-    setRoutePlanVersion((version) => version + 1);
+    setRoutePlanVersion((v) => v + 1);
     setRouteOptions([]);
     setSelectedRouteId(null);
     setSelectedStreet(null);
+    setActiveRouteDest(null);
     setBuses([]);
     routeSheetRef.current?.close();
   }
 
   function handleSheetChange(index: number) {
     setSheetIndex(index);
-
     if (index === -1) {
       setSelectedRouteId(null);
       setSelectedStop(null);
@@ -277,24 +281,16 @@ export default function TabOneScreen() {
       setBuses([]);
       return;
     }
-
     let interval: any;
-
     const fetchBuses = async () => {
       try {
         const res = await fetch(`http://192.168.50.10:3000/api/buses?routeId=${selectedRouteId}`);
         const data = await res.json();
-        if (Array.isArray(data)) {
-          setBuses(data);
-        } else {
-          setBuses([]);
-        }
-      } catch (error) {
-        console.log("Error buses:", error);
+        setBuses(Array.isArray(data) ? data : []);
+      } catch {
         setBuses([]);
       }
     };
-
     fetchBuses();
     interval = setInterval(fetchBuses, 6000);
     return () => clearInterval(interval);
@@ -302,13 +298,10 @@ export default function TabOneScreen() {
 
   function handleSearchResultPress(result: SearchResult) {
     Keyboard.dismiss();
-
     if (result.type === "stop") {
       const stop = stops.find((s) => s.id === result.id);
       if (!stop) return;
-
       setSelectedStreet(null);
-
       mapRef.current?.animateToRegion(
         {
           latitude: stop.latitude,
@@ -318,13 +311,11 @@ export default function TabOneScreen() {
         },
         500
       );
-
       setSelectedStop(stop);
       setSearch("");
       bottomSheetRef.current?.snapToIndex(0);
       return;
     }
-
     if (
       result.type === "street" &&
       result.latitude !== undefined &&
@@ -335,7 +326,6 @@ export default function TabOneScreen() {
         longitude: result.longitude,
         name: result.name,
       });
-
       mapRef.current?.animateToRegion(
         {
           latitude: result.latitude,
@@ -345,59 +335,56 @@ export default function TabOneScreen() {
         },
         500
       );
-
       setSelectedStop(null);
       setSelectedRouteId(null);
       setSearch("");
-
-      calculateRoute({
-        latitude: result.latitude!,
-        longitude: result.longitude!,
-      });
+      calculateRoute({ latitude: result.latitude, longitude: result.longitude, name: result.name });
     }
   }
 
-  if (!initialRegion) {
-    return <View style={{ flex: 1 }} />;
-  }
+  if (!initialRegion) return <View style={{ flex: 1 }} />;
 
-  async function calculateRoute(destination: { latitude: number; longitude: number }) {
+  async function calculateRoute(destination: {
+    latitude: number;
+    longitude: number;
+    name: string;
+  }) {
     setRoutePlan([]);
-    setRoutePlanVersion((version) => version + 1);
+    setRoutePlanVersion((v) => v + 1);
     setRouteOptions([]);
     setSelectedRouteId(null);
     setSelectedRoute(null);
     setBuses([]);
+    setActiveRouteDest({
+      lat: destination.latitude,
+      lng: destination.longitude,
+      name: destination.name,
+    });
 
     const location = await Location.getCurrentPositionAsync({});
-
     const routes = findRoute(
       location.coords.latitude,
       location.coords.longitude,
       destination.latitude,
       destination.longitude
     );
-
     if (!routes.length) return;
 
     setRouteOptions(routes);
     setRoutePlan(routes[0].steps);
-    setRoutePlanVersion((version) => version + 1);
+    setRoutePlanVersion((v) => v + 1);
     setNavigationActive(true);
-
     routeSheetRef.current?.snapToIndex(0);
   }
 
   function handleSelectRoute(route: RouteCandidate) {
     setSelectedRoute(route);
     setRoutePlan(route.steps);
-    setRoutePlanVersion((version) => version + 1);
+    setRoutePlanVersion((v) => v + 1);
     setNavigationActive(true);
 
     const firstTransit = route.steps.find((s): s is TransitStep => s.type === "transit");
-    if (firstTransit) {
-      setSelectedRouteId(firstTransit.routeId);
-    }
+    if (firstTransit) setSelectedRouteId(firstTransit.routeId);
 
     const points = route.steps.flatMap((step) =>
       step.type === "transit"
@@ -407,7 +394,6 @@ export default function TabOneScreen() {
             { latitude: step.toLat, longitude: step.toLng },
           ]
     );
-
     mapRef.current?.fitToCoordinates(points, {
       edgePadding: { top: 120, right: 60, bottom: 250, left: 60 },
       animated: true,
@@ -420,7 +406,6 @@ export default function TabOneScreen() {
   return (
     <View style={{ flex: 1 }}>
       <SearchBar value={search} onChangeText={setSearch} />
-
       <SearchResults
         visible={search.trim().length > 0}
         results={searchResults}
@@ -436,14 +421,12 @@ export default function TabOneScreen() {
         onRegionChangeComplete={(region) => setVisibleRegion(region)}
       >
         <RouteLines selectedRouteId={navigationActive ? null : selectedRouteId} />
-
         <BusStops
           stops={stops}
           visibleStopIds={navigationActive ? navigationStopIds : visibleStopIds}
           selectedStopId={selectedStop?.id ?? null}
           onStopPress={handleStopPress}
         />
-
         {navigationActive && (
           <RoutePlanOverlay
             key={`route-plan-${routePlanVersion}`}
@@ -451,15 +434,10 @@ export default function TabOneScreen() {
             version={routePlanVersion}
           />
         )}
-
         <LiveBuses buses={buses} />
-
         {selectedStreet && (
           <Marker
-            coordinate={{
-              latitude: selectedStreet.latitude,
-              longitude: selectedStreet.longitude,
-            }}
+            coordinate={{ latitude: selectedStreet.latitude, longitude: selectedStreet.longitude }}
           >
             <MaterialIcons name="location-pin" size={40} color="red" />
           </Marker>
@@ -511,8 +489,14 @@ export default function TabOneScreen() {
         }}
       />
 
-      {selectedRoute && (
-        <ActiveRouteBottomSheet route={selectedRoute} onClearRoute={handleClearRoute} />
+      {selectedRoute && activeRouteDest && (
+        <ActiveRouteBottomSheet
+          route={selectedRoute}
+          onClearRoute={handleClearRoute}
+          destLat={activeRouteDest.lat}
+          destLng={activeRouteDest.lng}
+          destName={activeRouteDest.name}
+        />
       )}
     </View>
   );

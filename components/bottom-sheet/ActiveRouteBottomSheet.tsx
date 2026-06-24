@@ -1,23 +1,79 @@
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import * as Location from "expo-location";
 import { useMemo, useRef } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
+import { useFavorites } from "@/hooks/useFavorites";
 import { RouteCandidate, formatRouteTime, getRouteTiming } from "@/utils/routing/offlineRouter";
 
 interface Props {
   route: RouteCandidate;
   onClearRoute: () => void;
-  // Fecha capturada cuando se calculó la ruta. Se pasa a getRouteTiming
-  // para que los horarios sean coherentes con el momento del cálculo,
-  // no con la hora real del sistema en el momento del render.
   routeDate?: Date;
+  destLat: number;
+  destLng: number;
+  destName: string;
 }
 
-export function ActiveRouteBottomSheet({ route, onClearRoute, routeDate }: Props) {
+export function ActiveRouteBottomSheet({
+  route,
+  onClearRoute,
+  routeDate,
+  destLat,
+  destLng,
+  destName,
+}: Props) {
   const snapPoints = useMemo(() => ["22%", "50%"], []);
   const timing = useMemo(() => getRouteTiming(route, routeDate ?? new Date()), [route, routeDate]);
   const hasOpenedRef = useRef(false);
+  const { favorites, addFavorite, removeFavorite } = useFavorites();
+
+  const routeFavId = useMemo(() => {
+    const transitIds = route.steps
+      .filter((s) => s.type === "transit")
+      .map((s) => s.routeId)
+      .join("-");
+    return transitIds || "walk";
+  }, [route]);
+
+  // Título del favorito: líneas usadas + destino
+  const routeFavTitle = useMemo(() => {
+    const lines = route.steps
+      .filter((s) => s.type === "transit")
+      .map((s) => `L${s.routeId}`)
+      .join(", ");
+    return lines ? `${lines} → ${destName}` : `A pie → ${destName}`;
+  }, [route, destName]);
+
+  const isFav = favorites.some((f) => f.type === "route" && f.refId === routeFavId);
+
+  async function toggleFavorite() {
+    if (isFav) {
+      await removeFavorite("route", routeFavId);
+    } else {
+      let originLat = 42.846;
+      let originLng = -2.673;
+      try {
+        const loc = await Location.getCurrentPositionAsync({});
+        originLat = loc.coords.latitude;
+        originLng = loc.coords.longitude;
+      } catch {}
+
+      await addFavorite({
+        id: `route-${routeFavId}`,
+        type: "route",
+        title: routeFavTitle,
+        refId: routeFavId,
+        createdAt: Date.now(),
+        metadata: { originLat, originLng, destLat, destLng, destName },
+      });
+    }
+  }
+
+  const lineLabels = route.steps
+    .filter((s) => s.type === "transit")
+    .map((s) => ({ routeId: s.routeId, vehicle: s.vehicle }));
 
   return (
     <BottomSheet
@@ -30,59 +86,94 @@ export function ActiveRouteBottomSheet({ route, onClearRoute, routeDate }: Props
           hasOpenedRef.current = true;
           return;
         }
-
-        if (hasOpenedRef.current) {
-          onClearRoute();
-        }
+        if (hasOpenedRef.current) onClearRoute();
       }}
     >
       <BottomSheetView
-        style={{
-          flex: 1,
-          paddingHorizontal: 20,
-          paddingVertical: 10,
-          backgroundColor: "white",
-        }}
+        style={{ flex: 1, paddingHorizontal: 20, paddingVertical: 10, backgroundColor: "white" }}
       >
         <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
+          style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}
         >
           <View style={{ flex: 1, paddingRight: 12 }}>
             <Text style={{ fontSize: 22, fontWeight: "800", color: "#111827" }}>
               {timing.totalMinutes} min
             </Text>
-            <Text style={{ color: "#6b7280", fontWeight: "500", marginTop: 2 }}>
-              {route.steps
-                .filter((step) => step.type === "transit")
-                .map((step) => `Linea ${step.routeId}`)
-                .join(" -> ") || "Trayecto a pie"}
-            </Text>
-            <Text style={{ color: "#374151", fontWeight: "700", marginTop: 4 }}>
+
+            {/* Líneas usadas */}
+            {lineLabels.length > 0 && (
+              <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: 6 }}>
+                {lineLabels.map(({ routeId, vehicle }) => (
+                  <View
+                    key={routeId}
+                    style={{
+                      backgroundColor:
+                        vehicle === "night_bus"
+                          ? "#4338ca"
+                          : vehicle === "tram"
+                            ? "#0891b2"
+                            : "#2563eb",
+                      borderRadius: 6,
+                      paddingHorizontal: 8,
+                      paddingVertical: 3,
+                    }}
+                  >
+                    <Text style={{ color: "white", fontWeight: "700", fontSize: 13 }}>
+                      {routeId}
+                    </Text>
+                  </View>
+                ))}
+                <View style={{ justifyContent: "center" }}>
+                  <Text style={{ color: "#6b7280", fontSize: 13 }}>→ {destName}</Text>
+                </View>
+              </View>
+            )}
+
+            <Text style={{ color: "#374151", fontWeight: "700", marginTop: 6 }}>
               Llegada {formatRouteTime(timing.arrivalTimeSeconds)}
             </Text>
           </View>
 
-          <TouchableOpacity
-            onPress={onClearRoute}
-            style={{
-              backgroundColor: "#ef4444",
-              paddingHorizontal: 10,
-              paddingVertical: 10,
-              borderRadius: 24,
-              flexDirection: "row",
-              alignItems: "center",
-              elevation: 2,
-              shadowColor: "#000",
-              shadowOpacity: 0.1,
-              shadowRadius: 3,
-            }}
-          >
-            <MaterialIcons name="close" size={18} color="white" />
-          </TouchableOpacity>
+          <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+            {/* ⭐ Favorito */}
+            <TouchableOpacity
+              onPress={toggleFavorite}
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 20,
+                backgroundColor: isFav ? "#fefce8" : "#f9fafb",
+                justifyContent: "center",
+                alignItems: "center",
+                borderWidth: 1,
+                borderColor: isFav ? "#fde68a" : "#e5e7eb",
+              }}
+            >
+              <MaterialCommunityIcons
+                name={isFav ? "star" : "star-outline"}
+                size={22}
+                color={isFav ? "#facc15" : "#9ca3af"}
+              />
+            </TouchableOpacity>
+
+            {/* ❌ Cerrar */}
+            <TouchableOpacity
+              onPress={onClearRoute}
+              style={{
+                backgroundColor: "#ef4444",
+                padding: 10,
+                borderRadius: 24,
+                alignItems: "center",
+                justifyContent: "center",
+                elevation: 2,
+                shadowColor: "#000",
+                shadowOpacity: 0.1,
+                shadowRadius: 3,
+              }}
+            >
+              <MaterialIcons name="close" size={18} color="white" />
+            </TouchableOpacity>
+          </View>
         </View>
 
         <View style={{ height: 1, backgroundColor: "#f3f4f6", marginVertical: 16 }} />
@@ -104,7 +195,7 @@ export function ActiveRouteBottomSheet({ route, onClearRoute, routeDate }: Props
                       Transbordo en {transferStopName}
                     </Text>
                     <Text style={{ color: "#6b7280", fontSize: 13 }}>
-                      Baja aqui y vuelve a subir en esta parada.
+                      Baja aquí y vuelve a subir en esta parada.
                     </Text>
                   </View>
                 );
@@ -120,7 +211,6 @@ export function ActiveRouteBottomSheet({ route, onClearRoute, routeDate }: Props
               );
             }
 
-            // step.type === "transit"
             const vehicleLabel =
               step.vehicle === "tram"
                 ? "tranvía"

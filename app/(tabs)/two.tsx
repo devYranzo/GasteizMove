@@ -9,24 +9,9 @@ const TYPE_CONFIG: Record<
   Favorite["type"],
   { icon: string; label: string; color: string; bg: string }
 > = {
-  stop: {
-    icon: "bus-stop",
-    label: "Parada",
-    color: "#2563eb",
-    bg: "#eff6ff",
-  },
-  line: {
-    icon: "bus",
-    label: "Línea",
-    color: "#16a34a",
-    bg: "#f0fdf4",
-  },
-  route: {
-    icon: "map-marker-path",
-    label: "Ruta",
-    color: "#9333ea",
-    bg: "#faf5ff",
-  },
+  stop: { icon: "bus-stop", label: "Parada", color: "#2563eb", bg: "#eff6ff" },
+  line: { icon: "bus", label: "Línea", color: "#16a34a", bg: "#f0fdf4" },
+  route: { icon: "map-marker-path", label: "Ruta", color: "#9333ea", bg: "#faf5ff" },
 };
 
 export default function FavoritesScreen() {
@@ -36,6 +21,16 @@ export default function FavoritesScreen() {
   const handlePress = (fav: Favorite) => {
     if (fav.type === "stop") {
       router.push({ pathname: "/", params: { stopId: fav.refId } });
+    }
+    if (fav.type === "route" && fav.metadata) {
+      router.push({
+        pathname: "/",
+        params: {
+          routeDestLat: String(fav.metadata.destLat),
+          routeDestLng: String(fav.metadata.destLng),
+          routeDestName: fav.metadata.destName,
+        },
+      });
     }
   };
 
@@ -57,7 +52,14 @@ export default function FavoritesScreen() {
   const renderItem = ({ item }: { item: Favorite }) => {
     const config = TYPE_CONFIG[item.type] ?? TYPE_CONFIG.stop;
     const isDeleting = deletingId === item.id;
-    const isNavigable = item.type === "stop";
+    const isNavigable = item.type === "stop" || (item.type === "route" && !!item.metadata);
+
+    // Subtítulo según tipo
+    const subtitle = item.type === "route" && item.metadata ? item.metadata.destName : config.label;
+
+    // Líneas de la ruta para mostrar como badges
+    const routeLines =
+      item.type === "route" ? item.refId.split("-").filter((r) => r && r !== "walk") : [];
 
     return (
       <TouchableOpacity
@@ -99,18 +101,52 @@ export default function FavoritesScreen() {
 
         {/* Texto */}
         <View style={{ flex: 1 }}>
-          <Text numberOfLines={1} style={{ fontSize: 15, fontWeight: "600", color: "#111827" }}>
-            {item.title}
-          </Text>
-          <View style={{ flexDirection: "row", alignItems: "center", marginTop: 2, gap: 4 }}>
-            <Text style={{ fontSize: 12, color: "#9ca3af" }}>{config.label}</Text>
-            {isNavigable && (
-              <>
-                <Text style={{ fontSize: 12, color: "#d1d5db" }}>·</Text>
-                <Text style={{ fontSize: 12, color: "#2563eb" }}>Ir a la parada</Text>
-              </>
+          {/* Badges de línea para rutas, nombre para el resto */}
+          {routeLines.length > 0 ? (
+            <View style={{ flexDirection: "row", gap: 6, flexWrap: "wrap", marginBottom: 4 }}>
+              {routeLines.map((lineId) => (
+                <View
+                  key={lineId}
+                  style={{
+                    backgroundColor: "#2563eb",
+                    borderRadius: 6,
+                    paddingHorizontal: 7,
+                    paddingVertical: 2,
+                  }}
+                >
+                  <Text style={{ color: "white", fontWeight: "700", fontSize: 12 }}>{lineId}</Text>
+                </View>
+              ))}
+            </View>
+          ) : (
+            <Text numberOfLines={1} style={{ fontSize: 15, fontWeight: "600", color: "#111827" }}>
+              {item.title}
+            </Text>
+          )}
+
+          {/* Destino o tipo */}
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 4,
+              marginTop: routeLines.length > 0 ? 0 : 2,
+            }}
+          >
+            {item.type === "route" && (
+              <MaterialCommunityIcons name="map-marker" size={12} color="#9ca3af" />
             )}
+            <Text numberOfLines={1} style={{ fontSize: 12, color: "#9ca3af", flex: 1 }}>
+              {subtitle}
+            </Text>
           </View>
+
+          {/* Hint de acción */}
+          {isNavigable && (
+            <Text style={{ fontSize: 11, color: config.color, marginTop: 3 }}>
+              {item.type === "route" ? "Recalcular ruta" : "Ver en mapa"}
+            </Text>
+          )}
         </View>
 
         {/* Estrella + borrar */}
@@ -138,7 +174,6 @@ export default function FavoritesScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: "#f8fafc" }}>
-      {/* Header */}
       <View
         style={{
           paddingTop: 60,
