@@ -21,6 +21,8 @@ import routesData from "@/data/gtfs/routes.json";
 import stops from "@/data/gtfs/stops.json";
 import streets from "@/data/streets.json";
 
+import { HomeWorkLocation, subscribeHomeWork, loadHomeWork } from "@/storage/homeWorkStorage";
+
 import { getNextArrivalsForStop, StopArrival } from "@/utils/arrivals/stopArrivals";
 import { findRoute, RouteCandidate, RouteStep, TransitStep } from "@/utils/routing/offlineRouter";
 
@@ -43,6 +45,9 @@ export default function TabOneScreen() {
     longitude: number;
     name: string;
   } | null>(null);
+
+  const [homeLoc, setHomeLoc] = useState<HomeWorkLocation | undefined>(undefined);
+  const [workLoc, setWorkLoc] = useState<HomeWorkLocation | undefined>(undefined);
 
   const [visibleRegion, setVisibleRegion] = useState<{
     latitude: number;
@@ -76,6 +81,23 @@ export default function TabOneScreen() {
   const [navigationActive, setNavigationActive] = useState(false);
   const closingAfterSelectionRef = useRef(false);
   const [arrivals, setArrivals] = useState<StopArrival[]>([]);
+
+  useEffect(() => {
+    // Nos suscribimos al store para escuchar cambios en tiempo real
+    const unsubscribe = subscribeHomeWork((store) => {
+      setHomeLoc(store.home);
+      setWorkLoc(store.work);
+    });
+
+    // Forzamos la primera lectura del almacenamiento local por si la caché está vacía
+    loadHomeWork().then((store) => {
+      setHomeLoc(store.home);
+      setWorkLoc(store.work);
+    });
+
+    // Al salir de la pestaña, limpiamos la suscripción para evitar fugas de memoria
+    return () => unsubscribe();
+  }, []);
 
   // ── Navegar a parada desde favoritos ──────────────────────────────────────
   useEffect(() => {
@@ -342,6 +364,29 @@ export default function TabOneScreen() {
     }
   }
 
+  // 🚀 NUEVO: Función para gestionar el clic directo de las cápsulas Casa / Trabajo
+  function handleQuickLocationPress(location: HomeWorkLocation) {
+    setSelectedStreet({
+      latitude: location.lat,
+      longitude: location.lng,
+      name: location.name,
+    });
+    mapRef.current?.animateToRegion(
+      {
+        latitude: location.lat,
+        longitude: location.lng,
+        latitudeDelta: 0.006,
+        longitudeDelta: 0.006,
+      },
+      500
+    );
+    setSelectedStop(null);
+    setSelectedRouteId(null);
+    setSearch("");
+    // Ejecuta la misma lógica exacta que calcula la ruta de tus favoritos
+    calculateRoute({ latitude: location.lat, longitude: location.lng, name: location.name });
+  }
+
   if (!initialRegion) return <View style={{ flex: 1 }} />;
 
   async function calculateRoute(destination: {
@@ -405,7 +450,15 @@ export default function TabOneScreen() {
 
   return (
     <View style={{ flex: 1 }}>
-      <SearchBar value={search} onChangeText={setSearch} />
+      {/* 🚀 NUEVO: Pasamos las propiedades extendidas a la barra de búsqueda */}
+      <SearchBar
+        value={search}
+        onChangeText={setSearch}
+        homeLocation={homeLoc}
+        workLocation={workLoc}
+        onPressLocation={handleQuickLocationPress}
+      />
+
       <SearchResults
         visible={search.trim().length > 0}
         results={searchResults}
