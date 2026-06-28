@@ -80,21 +80,28 @@ export default function TabOneScreen() {
   const [navigationActive, setNavigationActive] = useState(false);
   const closingAfterSelectionRef = useRef(false);
   const [arrivals, setArrivals] = useState<StopArrival[]>([]);
+  const [arrivalsLoading, setArrivalsLoading] = useState(false);
+
+  // ── Helper para cargar llegadas (evita duplicar lógica async) ─────────────
+  async function loadArrivals(stop: Stop) {
+    setArrivalsLoading(true);
+    try {
+      const data = await getNextArrivalsForStop(stop.id);
+      setArrivals(data);
+    } finally {
+      setArrivalsLoading(false);
+    }
+  }
 
   useEffect(() => {
-    // Nos suscribimos al store para escuchar cambios en tiempo real
     const unsubscribe = subscribeHomeWork((store) => {
       setHomeLoc(store.home);
       setWorkLoc(store.work);
     });
-
-    // Forzamos la primera lectura del almacenamiento local por si la caché está vacía
     loadHomeWork().then((store) => {
       setHomeLoc(store.home);
       setWorkLoc(store.work);
     });
-
-    // Al salir de la pestaña, limpiamos la suscripción para evitar fugas de memoria
     return () => unsubscribe();
   }, []);
 
@@ -117,7 +124,7 @@ export default function TabOneScreen() {
     setSelectedStop(stop);
     setSelectedRouteId(null);
     setSelectedStreet(null);
-    setArrivals(getNextArrivalsForStop(stop.id));
+    loadArrivals(stop);
     bottomSheetRef.current?.snapToIndex(0);
   }, [stopId, initialRegion]);
 
@@ -135,7 +142,6 @@ export default function TabOneScreen() {
       name: routeDestName ?? "",
     });
   }, [routeDestLat, routeDestLng, initialRegion]);
-  // ─────────────────────────────────────────────────────────────────────────
 
   useEffect(() => {
     async function getLocation() {
@@ -255,7 +261,8 @@ export default function TabOneScreen() {
     setSelectedStop(stop);
     setSelectedRouteId(null);
     setSelectedStreet(null);
-    setArrivals(getNextArrivalsForStop(stop.id));
+    setArrivals([]);
+    loadArrivals(stop);
     bottomSheetRef.current?.snapToIndex(0);
   }
 
@@ -334,6 +341,8 @@ export default function TabOneScreen() {
       );
       setSelectedStop(stop);
       setSearch("");
+      setArrivals([]);
+      loadArrivals(stop);
       bottomSheetRef.current?.snapToIndex(0);
       return;
     }
@@ -363,7 +372,6 @@ export default function TabOneScreen() {
     }
   }
 
-  // 🚀 NUEVO: Función para gestionar el clic directo de las cápsulas Casa / Trabajo
   function handleQuickLocationPress(location: HomeWorkLocation) {
     setSelectedStreet({
       latitude: location.lat,
@@ -382,7 +390,6 @@ export default function TabOneScreen() {
     setSelectedStop(null);
     setSelectedRouteId(null);
     setSearch("");
-    // Ejecuta la misma lógica exacta que calcula la ruta de tus favoritos
     calculateRoute({ latitude: location.lat, longitude: location.lng, name: location.name });
   }
 
@@ -449,7 +456,6 @@ export default function TabOneScreen() {
 
   return (
     <View style={{ flex: 1 }}>
-      {/* 🚀 NUEVO: Pasamos las propiedades extendidas a la barra de búsqueda */}
       <SearchBar
         value={search}
         onChangeText={setSearch}
@@ -521,6 +527,7 @@ export default function TabOneScreen() {
         ref={bottomSheetRef}
         stop={selectedStop}
         arrivals={arrivals}
+        arrivalsLoading={arrivalsLoading}
         onChange={handleSheetChange}
         onRoutePress={handleRoutePress}
         onClearRoute={handleClearRoute}

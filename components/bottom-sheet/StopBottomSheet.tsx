@@ -1,6 +1,6 @@
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { forwardRef, useMemo, useState } from "react";
-import { Pressable, Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Pressable, Text, TouchableOpacity, View } from "react-native";
 
 import { useFavorites } from "@/hooks/useFavorites";
 import { StopArrival, formatArrivalTime } from "@/utils/arrivals/stopArrivals";
@@ -21,6 +21,7 @@ type Stop = {
 interface Props {
   stop: Stop | null;
   arrivals: StopArrival[];
+  arrivalsLoading?: boolean;
   onChange?: (index: number) => void;
   onRoutePress?: (routeId: string) => void;
   onClearRoute?: () => void;
@@ -29,15 +30,26 @@ interface Props {
 }
 
 export const StopBottomSheet = forwardRef<BottomSheet, Props>(
-  ({ stop, arrivals, onChange, onRoutePress, onClearRoute, onClose, selectedRouteId }, ref) => {
+  (
+    {
+      stop,
+      arrivals,
+      arrivalsLoading = false,
+      onChange,
+      onRoutePress,
+      onClearRoute,
+      onClose,
+      selectedRouteId,
+    },
+    ref
+  ) => {
     const snapPoints = useMemo(() => ["25%", "50%"], []);
     const [pressedId, setPressedId] = useState<string | null>(null);
 
-    const { favorites, addFavorite, removeFavorite } = useFavorites();
+    const { favorites } = useFavorites();
 
     const isFavorite = useMemo(() => {
       if (!stop) return false;
-
       return favorites.some((f) => f.type === "stop" && f.refId === stop.id);
     }, [favorites, stop]);
 
@@ -49,37 +61,15 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
         enablePanDownToClose
         onChange={onChange}
       >
-        <BottomSheetView
-          style={{
-            flex: 1,
-            paddingHorizontal: 20,
-            paddingTop: 12,
-          }}
-        >
+        <BottomSheetView style={{ flex: 1, paddingHorizontal: 20, paddingTop: 12 }}>
           {stop && (
             <>
               {/* HEADER */}
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  marginBottom: 18,
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: 22,
-                    fontWeight: "600",
-                    flex: 1,
-                  }}
-                >
-                  {stop.name}
-                </Text>
+              <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 18 }}>
+                <Text style={{ fontSize: 22, fontWeight: "600", flex: 1 }}>{stop.name}</Text>
 
-                {/* ⭐ FAVORITO */}
                 <FavoriteButton id={stop.id} title={stop.name} type="stop" />
 
-                {/* ↺ limpiar ruta */}
                 {selectedRouteId && (
                   <TouchableOpacity
                     onPress={onClearRoute}
@@ -92,19 +82,10 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
                       marginRight: 6,
                     }}
                   >
-                    <Text
-                      style={{
-                        fontSize: 20,
-                        fontWeight: "700",
-                        color: "#2563eb",
-                      }}
-                    >
-                      ↺
-                    </Text>
+                    <Text style={{ fontSize: 20, fontWeight: "700", color: "#2563eb" }}>↺</Text>
                   </TouchableOpacity>
                 )}
 
-                {/* ❌ cerrar */}
                 <TouchableOpacity
                   onPress={onClose}
                   style={{
@@ -124,120 +105,158 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
                 </TouchableOpacity>
               </View>
 
-              {/* RESTO IGUAL */}
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: "#6b7280",
-                  marginBottom: 12,
-                  fontWeight: "500",
-                }}
+              {/* PRÓXIMAS LLEGADAS */}
+              <View
+                style={{ flexDirection: "row", alignItems: "center", marginBottom: 12, gap: 8 }}
               >
-                Próximas llegadas
-              </Text>
-
-              <View>
-                {arrivals.length === 0 && (
-                  <Text
+                <Text style={{ fontSize: 14, color: "#6b7280", fontWeight: "500" }}>
+                  Próximas llegadas
+                </Text>
+                {/* Indicador en vivo — solo si hay al menos un dato real */}
+                {!arrivalsLoading && arrivals.some((a) => a.isRealtime) && (
+                  <View
                     style={{
-                      color: "#6b7280",
-                      textAlign: "center",
-                      marginTop: 20,
+                      flexDirection: "row",
+                      alignItems: "center",
+                      backgroundColor: "#f0fdf4",
+                      borderRadius: 6,
+                      paddingHorizontal: 6,
+                      paddingVertical: 2,
+                      gap: 4,
                     }}
                   >
-                    No hay próximas salidas disponibles
-                  </Text>
+                    <View
+                      style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: "#16a34a" }}
+                    />
+                    <Text style={{ fontSize: 11, color: "#16a34a", fontWeight: "600" }}>
+                      En vivo
+                    </Text>
+                  </View>
                 )}
+              </View>
 
-                {arrivals.map((arrival) => {
-                  const id = `${arrival.routeId}-${arrival.directionId}-${arrival.departureTimeSeconds}`;
-                  const isPressed = pressedId === id;
+              {/* LOADING */}
+              {arrivalsLoading ? (
+                <View style={{ alignItems: "center", paddingTop: 32 }}>
+                  <ActivityIndicator size="small" color="#2563eb" />
+                  <Text style={{ color: "#9ca3af", fontSize: 13, marginTop: 8 }}>
+                    Cargando horarios…
+                  </Text>
+                </View>
+              ) : arrivals.length === 0 ? (
+                <Text style={{ color: "#6b7280", textAlign: "center", marginTop: 20 }}>
+                  No hay próximas salidas disponibles
+                </Text>
+              ) : (
+                <View>
+                  {arrivals.map((arrival) => {
+                    const id = `${arrival.routeId}-${arrival.directionId}-${arrival.departureTimeSeconds}`;
+                    const isPressed = pressedId === id;
+                    const delayColor =
+                      arrival.isRealtime && arrival.delayMinutes !== undefined
+                        ? arrival.delayMinutes > 1
+                          ? "#ef4444"
+                          : arrival.delayMinutes < 0
+                            ? "#16a34a"
+                            : "#6b7280"
+                        : "#6b7280";
 
-                  return (
-                    <Pressable
-                      key={id}
-                      onPress={() => onRoutePress?.(arrival.routeId)}
-                      onPressIn={() => setPressedId(id)}
-                      onPressOut={() => setPressedId(null)}
-                      style={{
-                        paddingVertical: 14,
-                        paddingHorizontal: 14,
-                        marginBottom: 12,
-                        borderRadius: 12,
-                        borderWidth: 1,
-                        borderColor: "#eee",
-                        backgroundColor: isPressed ? "#f3f4f6" : "white",
-                      }}
-                    >
-                      <View
+                    return (
+                      <Pressable
+                        key={id}
+                        onPress={() => onRoutePress?.(arrival.routeId)}
+                        onPressIn={() => setPressedId(id)}
+                        onPressOut={() => setPressedId(null)}
                         style={{
-                          flexDirection: "row",
-                          alignItems: "center",
+                          paddingVertical: 14,
+                          paddingHorizontal: 14,
+                          marginBottom: 12,
+                          borderRadius: 12,
+                          borderWidth: 1,
+                          borderColor: "#eee",
+                          backgroundColor: isPressed ? "#f3f4f6" : "white",
                         }}
                       >
-                        <View
-                          style={{
-                            backgroundColor: arrival.routeColor,
-                            borderRadius: 8,
-                            paddingHorizontal: 10,
-                            paddingVertical: 5,
-                            marginRight: 12,
-                          }}
-                        >
-                          <Text
+                        <View style={{ flexDirection: "row", alignItems: "center" }}>
+                          {/* Badge línea */}
+                          <View
                             style={{
-                              color: "white",
-                              fontWeight: "700",
-                              fontSize: 14,
+                              backgroundColor: arrival.routeColor,
+                              borderRadius: 8,
+                              paddingHorizontal: 10,
+                              paddingVertical: 5,
+                              marginRight: 12,
                             }}
                           >
-                            {arrival.routeName}
-                          </Text>
-                        </View>
+                            <Text style={{ color: "white", fontWeight: "700", fontSize: 14 }}>
+                              {arrival.routeName}
+                            </Text>
+                          </View>
 
-                        <View style={{ flex: 1 }}>
-                          <Text
-                            numberOfLines={1}
-                            style={{
-                              fontSize: 15,
-                              fontWeight: "500",
-                            }}
-                          >
-                            {arrival.destination}
-                          </Text>
-                        </View>
+                          {/* Destino */}
+                          <View style={{ flex: 1 }}>
+                            <Text numberOfLines={1} style={{ fontSize: 15, fontWeight: "500" }}>
+                              {arrival.destination}
+                            </Text>
+                          </View>
 
-                        <View
-                          style={{
-                            alignItems: "flex-end",
-                            marginLeft: 12,
-                          }}
-                        >
-                          <Text
-                            style={{
-                              fontSize: 16,
-                              fontWeight: "700",
-                              color: "#2563eb",
-                            }}
-                          >
-                            {arrival.waitMinutes <= 0 ? "Llegando" : `${arrival.waitMinutes} min`}
-                          </Text>
+                          {/* Tiempo */}
+                          <View style={{ alignItems: "flex-end", marginLeft: 12 }}>
+                            {/* Minutos restantes */}
+                            <Text style={{ fontSize: 16, fontWeight: "700", color: "#2563eb" }}>
+                              {arrival.waitMinutes <= 0 ? "Llegando" : `${arrival.waitMinutes} min`}
+                            </Text>
 
-                          <Text
-                            style={{
-                              fontSize: 12,
-                              color: "#6b7280",
-                              marginTop: 2,
-                            }}
-                          >
-                            {formatArrivalTime(arrival.departureTimeSeconds)}
-                          </Text>
+                            {/* Fila de horas */}
+                            <View
+                              style={{
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: 4,
+                                marginTop: 2,
+                              }}
+                            >
+                              {/* Hora teórica tachada — solo si hay delay */}
+                              {arrival.isRealtime &&
+                                arrival.delayMinutes !== undefined &&
+                                arrival.delayMinutes !== 0 &&
+                                arrival.scheduledTimeSeconds !== undefined && (
+                                  <Text
+                                    style={{
+                                      fontSize: 11,
+                                      color: "#9ca3af",
+                                      textDecorationLine: "line-through",
+                                    }}
+                                  >
+                                    {formatArrivalTime(arrival.scheduledTimeSeconds)}
+                                  </Text>
+                                )}
+
+                              {/* Hora real (o teórica si no hay realtime) */}
+                              <Text
+                                style={{
+                                  fontSize: 12,
+                                  color: delayColor,
+                                  fontWeight: arrival.isRealtime ? "600" : "400",
+                                }}
+                              >
+                                {formatArrivalTime(arrival.departureTimeSeconds)}
+                              </Text>
+                            </View>
+
+                            {/* "A tiempo" si es realtime sin delay */}
+                            {arrival.isRealtime && arrival.delayMinutes === 0 && (
+                              <Text style={{ fontSize: 10, color: "#16a34a", marginTop: 1 }}>
+                                A tiempo
+                              </Text>
+                            )}
+                          </View>
                         </View>
-                      </View>
-                    </Pressable>
-                  );
-                })}
-              </View>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              )}
             </>
           )}
         </BottomSheetView>
