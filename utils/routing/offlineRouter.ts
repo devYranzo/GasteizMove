@@ -150,6 +150,8 @@ function isModeActive(mode: RouteMode, date: Date): boolean {
 
 /**
  * Devuelve true si el routeId está disponible en la fecha dada.
+ * Solo comprueba el día (service_dates), no la hora.
+ * Para filtrar por hora usa getWaitSeconds().
  */
 function isRouteActive(routeId: string, date: Date): boolean {
   return isModeActive(getModeForRoute(routeId), date);
@@ -160,6 +162,25 @@ function isRouteActive(routeId: string, date: Date): boolean {
  */
 function getStopPenalty(routeId: string): number {
   return getModeForRoute(routeId).stopPenaltySeconds;
+}
+
+/**
+ * Devuelve los segundos de espera hasta el próximo bus de `routeId` en `stopId`.
+ * Devuelve null si no hay servicio en las próximas MAX_WAIT_SECONDS (ruta descartable).
+ *
+ * Se llama una sola vez por candidato durante findRoute para incluir
+ * la espera real en el score y descartar rutas sin servicio inmediato.
+ */
+function getWaitSeconds(routeId: string, stopId: string, date: Date): number | null {
+  // getNextDepartureSeconds se define más abajo junto al resto de helpers de timing,
+  // pero en JS/TS las funciones declaradas con `function` se elevan (hoisting),
+  // así que podemos llamarla aquí sin problema.
+  const readyTime = secondsSinceStartOfDay(date);
+  const next = getNextDepartureSeconds(routeId, stopId, readyTime, date);
+  if (next === null) return null;
+  const wait = next - readyTime;
+  if (wait > MAX_WAIT_SECONDS) return null; // demasiado tiempo, descartamos
+  return wait;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -348,12 +369,16 @@ export function findRoute(
         const dir = resolveDirection(routeId, oStop.id, dStop.id);
         if (!dir) continue;
 
+        // Descartar si el próximo bus tarda más de MAX_WAIT_SECONDS
+        const waitSeconds = getWaitSeconds(routeId, oStop.id, date);
+        if (waitSeconds === null) continue;
+
         const walkToBus = haversine(originLat, originLng, oStop.latitude, oStop.longitude);
         const walkFromBus = haversine(dStop.latitude, dStop.longitude, destLat, destLng);
         const stopPenalty = (dir.toIdx - dir.fromIdx) * getStopPenalty(routeId);
 
         candidates.push({
-          score: walkToBus + walkFromBus + stopPenalty,
+          score: walkToBus + walkFromBus + stopPenalty + waitSeconds,
           steps: [
             {
               type: "walk",
@@ -401,14 +426,17 @@ export function findRoute(
       // Primer tramo: origen -> transbordo (sin rutas exprés)
       let firstRouteId: string | null = null;
       let firstDir: { directionId: string; fromIdx: number; toIdx: number } | null = null;
+      let firstWaitSeconds = 0;
       for (const routeId of oRoutes.filter((r) => !EXPRESS_ROUTE_IDS.includes(r))) {
         if (!tRoutes.includes(routeId)) continue;
         const dir = resolveDirection(routeId, oStop.id, transferStop.id);
-        if (dir) {
-          firstRouteId = routeId;
-          firstDir = dir;
-          break;
-        }
+        if (!dir) continue;
+        const wait = getWaitSeconds(routeId, oStop.id, date);
+        if (wait === null) continue; // sin servicio en la hora actual
+        firstRouteId = routeId;
+        firstDir = dir;
+        firstWaitSeconds = wait;
+        break;
       }
       if (!firstRouteId || !firstDir) continue;
 
@@ -417,15 +445,18 @@ export function findRoute(
         const dRouteIds = new Set(dStop.routes.map((r) => r.id));
         let secondRouteId: string | null = null;
         let secondDir: { directionId: string; fromIdx: number; toIdx: number } | null = null;
+        let secondWaitSeconds = 0;
         for (const routeId of tRoutes) {
           if (!dRouteIds.has(routeId)) continue;
           if (routeId === firstRouteId) continue;
           const dir = resolveDirection(routeId, transferStop.id, dStop.id);
-          if (dir) {
-            secondRouteId = routeId;
-            secondDir = dir;
-            break;
-          }
+          if (!dir) continue;
+          const wait = getWaitSeconds(routeId, transferStop.id, date);
+          if (wait === null) continue; // sin servicio en la hora actual
+          secondRouteId = routeId;
+          secondDir = dir;
+          secondWaitSeconds = wait;
+          break;
         }
         if (!secondRouteId || !secondDir) continue;
 
@@ -437,7 +468,13 @@ export function findRoute(
           (secondDir.toIdx - secondDir.fromIdx) * getStopPenalty(secondRouteId);
 
         candidates.push({
-          score: walkToBus + walkFromBus + transferPenalty + stopPenalty,
+          score:
+            walkToBus +
+            walkFromBus +
+            transferPenalty +
+            stopPenalty +
+            firstWaitSeconds +
+            secondWaitSeconds,
           steps: [
             {
               type: "walk",
@@ -520,6 +557,12 @@ const WALK_SPEED_M_S = 1.35;
 const BUS_STOP_TIME_S = 70;
 const SECONDS_IN_DAY = 24 * 60 * 60;
 
+/**
+ * Si el próximo bus de una ruta en una parada tarda más de este umbral,
+ * la ruta se descarta como candidata durante la búsqueda.
+ */
+const MAX_WAIT_SECONDS = 60 * 60; // 60 minutos
+
 type TimetableTrip = {
   tripId: string;
   serviceId: string;
@@ -527,6 +570,46 @@ type TimetableTrip = {
 };
 
 const timetables = timetablesData as Record<string, Record<string, TimetableTrip[]>>;
+
+/**
+ * Devuelve los segundos desde inicio de día hasta el próximo servicio real
+ * de `routeId` en `stopId` a partir de `readyTimeSeconds`.
+ * Devuelve null si no hay ningún servicio disponible en la fecha dada.
+ *
+ * Esta función se llama durante findRoute para descartar rutas sin servicio
+ * en la hora actual (ej: bus nocturno a las 14:00).
+ */
+function getNextDepartureSeconds(
+  routeId: string,
+  stopId: string,
+  readyTimeSeconds: number,
+  date: Date
+): number | null {
+  const routeDirections = timetables[routeId];
+  if (!routeDirections) return null;
+
+  let earliest: number | null = null;
+
+  for (const trips of Object.values(routeDirections)) {
+    for (const trip of trips) {
+      if (!isServiceAvailable(trip.serviceId, date)) continue;
+
+      const stopEntry = trip.stops.find(([sid]) => sid === stopId);
+      if (!stopEntry) continue;
+
+      // stopEntry[2] = scheduled departure seconds since midnight
+      let dep = stopEntry[2];
+      // Si el departure ya pasó, buscamos la misma frecuencia al día siguiente
+      // (no aplica: los horarios no se repiten al día siguiente automáticamente,
+      //  solo avanzamos dentro del mismo bloque de horarios extendidos)
+      if (dep < readyTimeSeconds) continue;
+
+      if (earliest === null || dep < earliest) earliest = dep;
+    }
+  }
+
+  return earliest;
+}
 
 export function estimateRouteMinutes(candidate: RouteCandidate): number {
   let seconds = 0;
