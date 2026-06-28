@@ -1,8 +1,8 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Tabs } from "expo-router";
 import React from "react";
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
@@ -10,19 +10,21 @@ function TabBarIcon(props: {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
+function TabBarIconMaterial(props: {
+  name: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
+  color: string;
+}) {
+  return <MaterialCommunityIcons size={28} style={{ marginBottom: -3 }} {...props} />;
+}
+
 export default function TabLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
+    <Tabs screenOptions={{ headerShown: false }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: "Mapa",
-          tabBarIcon: ({ color }) => <TabBarIcon name="map" color={color} />,
-          headerShown: false,
+          title: "Inicio",
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
       />
       <Tabs.Screen
@@ -30,7 +32,13 @@ export default function TabLayout() {
         options={{
           title: "Favoritos",
           tabBarIcon: ({ color }) => <TabBarIcon name="star" color={color} />,
-          headerShown: false,
+        }}
+      />
+      <Tabs.Screen
+        name="three"
+        options={{
+          title: "Alertas",
+          tabBarIcon: ({ color }) => <TabBarIconMaterial name="bell" color={color} />,
         }}
       />
     </Tabs>
