@@ -110,7 +110,7 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
                 style={{ flexDirection: "row", alignItems: "center", marginBottom: 12, gap: 8 }}
               >
                 <Text style={{ fontSize: 14, color: "#6b7280", fontWeight: "500" }}>
-                  Próximas llegadas
+                  Próximas salidas
                 </Text>
                 {/* Indicador en vivo — solo si hay al menos un dato real */}
                 {!arrivalsLoading && arrivals.some((a) => a.isRealtime) && (

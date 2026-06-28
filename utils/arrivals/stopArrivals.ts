@@ -52,6 +52,7 @@ export type StopArrival = {
 type RealtimeArrival = {
   tripId: string;
   routeId: string;
+  directionId?: string;
   arrival: {
     scheduled: number | null; // Unix timestamp segundos
     delay: number;
@@ -143,20 +144,27 @@ function realtimeToStopArrival(
   const waitMinutes = Math.max(0, Math.round((liveUnix - Date.now() / 1000) / 60));
   const delayMinutes = Math.round((arrival.departure.delay ?? arrival.arrival.delay) / 60);
 
-  // Buscar info de ruta en los datos estáticos
-  const routeInfo = routes.find((r) => r.routeId === arrival.routeId);
+  // Buscar info de ruta filtrando también por directionId para no coger el sentido contrario
+  const directionId = arrival.directionId ?? "0";
+  const routeInfo =
+    routes.find((r) => r.routeId === arrival.routeId && r.directionId === directionId) ??
+    routes.find((r) => r.routeId === arrival.routeId);
 
-  // Buscar destino desde timetables si tenemos el tripId
+  // Buscar destino desde el trip concreto en timetables (última parada = destino real)
   let destination = routeInfo?.headsign ?? "Destino";
   if (arrival.tripId) {
     const directions = timetables[arrival.routeId];
     if (directions) {
-      outer: for (const trips of Object.values(directions)) {
+      outer: for (const [dir, trips] of Object.entries(directions)) {
         for (const trip of trips) {
           if (trip.tripId === arrival.tripId) {
             const lastStopId = trip.stops[trip.stops.length - 1][0];
+            // Buscar routeInfo con la dirección exacta del trip
+            const tripRouteInfo = routes.find(
+              (r) => r.routeId === arrival.routeId && r.directionId === dir
+            );
             destination =
-              routeInfo?.headsign ?? stops.find((s) => s.id === lastStopId)?.name ?? "Destino";
+              tripRouteInfo?.headsign ?? stops.find((s) => s.id === lastStopId)?.name ?? "Destino";
             break outer;
           }
         }
@@ -169,7 +177,7 @@ function realtimeToStopArrival(
     routeName: routeInfo?.shortName ?? arrival.routeId,
     routeColor: routeInfo?.color ? `#${routeInfo.color}` : "#9ca3af",
     destination,
-    directionId: routeInfo?.directionId ?? "0",
+    directionId,
     departureTimeSeconds,
     scheduledTimeSeconds: arrival.departure.scheduled ?? undefined,
     waitMinutes,
