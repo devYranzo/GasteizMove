@@ -112,7 +112,7 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
                 <Text style={{ fontSize: 14, color: "#6b7280", fontWeight: "500" }}>
                   Próximas salidas
                 </Text>
-                {/* Indicador en vivo — solo si hay al menos un dato real */}
+                {/* Indicador online — solo si hay al menos un dato real */}
                 {!arrivalsLoading && arrivals.some((a) => a.isRealtime) && (
                   <View
                     style={{
@@ -129,7 +129,7 @@ export const StopBottomSheet = forwardRef<BottomSheet, Props>(
                       style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: "#16a34a" }}
                     />
                     <Text style={{ fontSize: 11, color: "#16a34a", fontWeight: "600" }}>
-                      En vivo
+                      Online
                     </Text>
                   </View>
                 )}

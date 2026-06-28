@@ -33,12 +33,15 @@ export function FavoriteButton({
     <Pressable
       onPress={toggle}
       style={{
-        width: 36,
-        height: 36,
-        borderRadius: 18,
+        width: 40,
+        height: 40,
+        marginRight: 8,
+        borderRadius: 20,
+        backgroundColor: isFav ? "#fefce8" : "#f9fafb",
         justifyContent: "center",
         alignItems: "center",
-        marginRight: 6,
+        borderWidth: 1,
+        borderColor: isFav ? "#fde68a" : "#e5e7eb",
       }}
     >
       {isFav ? (
