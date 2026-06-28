@@ -3,10 +3,9 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import * as Location from "expo-location";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Keyboard, TouchableOpacity } from "react-native";
+import { Keyboard, TouchableOpacity, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
-import { View } from "@/components/Themed";
 import { ActiveRouteBottomSheet } from "@/components/bottom-sheet/ActiveRouteBottomSheet";
 import { RouteOptionsBottomSheet } from "@/components/bottom-sheet/RouteOptionsBottomSheet";
 import { StopBottomSheet } from "@/components/bottom-sheet/StopBottomSheet";
@@ -21,7 +20,7 @@ import routesData from "@/data/gtfs/routes.json";
 import stops from "@/data/gtfs/stops.json";
 import streets from "@/data/streets.json";
 
-import { HomeWorkLocation, subscribeHomeWork, loadHomeWork } from "@/storage/homeWorkStorage";
+import { HomeWorkLocation, loadHomeWork, subscribeHomeWork } from "@/storage/homeWorkStorage";
 
 import { getNextArrivalsForStop, StopArrival } from "@/utils/arrivals/stopArrivals";
 import { findRoute, RouteCandidate, RouteStep, TransitStep } from "@/utils/routing/offlineRouter";
