@@ -1,4 +1,4 @@
-import serviceDates from "@/data/gtfs/service_dates.json";
+import { getTransitServiceDates } from "@/services/transit/transitRepository";
 
 function formatDate(date: Date): string {
   const y = date.getFullYear();
@@ -8,7 +8,7 @@ function formatDate(date: Date): string {
 }
 
 export function isServiceAvailable(serviceId: string, date: Date = new Date()): boolean {
-  const serviceMap = serviceDates as Record<string, string[]>;
+  const serviceMap = getTransitServiceDates();
   const serviceDatesList = serviceMap[serviceId];
   if (!serviceDatesList) return false;
   return serviceDatesList.includes(formatDate(date));

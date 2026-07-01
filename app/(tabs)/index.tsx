@@ -16,16 +16,16 @@ import { RoutePlanOverlay } from "@/components/map/RoutePlanOverlay";
 import { SearchBar } from "@/components/map/SearchBar";
 import { SearchResult, SearchResults } from "@/components/map/SearchResults";
 
-import routesData from "@/data/gtfs/routes.json";
-import stops from "@/data/gtfs/stops.json";
 import streets from "@/data/streets.json";
 
+import { getTransitRouteColorMap, getTransitStops } from "@/services/transit/transitRepository";
 import { HomeWorkLocation, loadHomeWork, subscribeHomeWork } from "@/storage/homeWorkStorage";
 
 import { getNextArrivalsForStop, StopArrival } from "@/utils/arrivals/stopArrivals";
 import { findRoute, RouteCandidate, RouteStep, TransitStep } from "@/utils/routing/offlineRouter";
 
 export default function TabOneScreen() {
+  const stops = getTransitStops();
   const { stopId, routeDestLat, routeDestLng, routeDestName } = useLocalSearchParams<{
     stopId?: string;
     routeDestLat?: string;
@@ -197,11 +197,7 @@ export default function TabOneScreen() {
   }, [selectedRouteId, visibleRegion]);
 
   const routeColorMap = useMemo(() => {
-    const map: Record<string, string> = {};
-    routesData.forEach((route) => {
-      map[route.routeId] = `#${route.color}`;
-    });
-    return map;
+    return getTransitRouteColorMap();
   }, []);
 
   useEffect(() => {
@@ -368,7 +364,11 @@ export default function TabOneScreen() {
       setSelectedStop(null);
       setSelectedRouteId(null);
       setSearch("");
-      calculateRoute({ latitude: result.latitude, longitude: result.longitude, name: result.name });
+      calculateRoute({
+        latitude: result.latitude,
+        longitude: result.longitude,
+        name: result.name,
+      });
     }
   }
 
@@ -390,7 +390,11 @@ export default function TabOneScreen() {
     setSelectedStop(null);
     setSelectedRouteId(null);
     setSearch("");
-    calculateRoute({ latitude: location.lat, longitude: location.lng, name: location.name });
+    calculateRoute({
+      latitude: location.lat,
+      longitude: location.lng,
+      name: location.name,
+    });
   }
 
   if (!initialRegion) return <View style={{ flex: 1 }} />;
@@ -495,7 +499,10 @@ export default function TabOneScreen() {
         <LiveBuses buses={buses} />
         {selectedStreet && (
           <Marker
-            coordinate={{ latitude: selectedStreet.latitude, longitude: selectedStreet.longitude }}
+            coordinate={{
+              latitude: selectedStreet.latitude,
+              longitude: selectedStreet.longitude,
+            }}
           >
             <MaterialIcons name="location-pin" size={40} color="red" />
           </Marker>

@@ -1,8 +1,11 @@
-import routeShapes from "@/data/gtfs/route_shapes.json";
-import routeStopSequences from "@/data/gtfs/route_stop_sequences.json";
-import shapesData from "@/data/gtfs/shapes.json";
-import stops from "@/data/gtfs/stops.json";
-import timetablesData from "@/data/gtfs/timetables.json";
+import {
+  getTransitRouteShapes,
+  getTransitRouteStopSequences,
+  getTransitShapes,
+  getTransitStops,
+  getTransitTimetables,
+} from "@/services/transit/transitRepository";
+import { TransitStop } from "@/types/transit";
 import { isServiceActiveWithOvernight, isServiceAvailable } from "./serviceAvailability";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -198,7 +201,12 @@ function haversine(lat1: number, lon1: number, lat2: number, lon2: number): numb
   return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-const stopMap: Record<string, (typeof stops)[0]> = {};
+const stops = getTransitStops();
+const routeShapes = getTransitRouteShapes();
+const routeStopSequences = getTransitRouteStopSequences();
+const shapesData = getTransitShapes();
+
+const stopMap: Record<string, TransitStop> = {};
 for (const s of stops) {
   stopMap[s.id] = s;
 }
@@ -214,7 +222,10 @@ for (const s of stops) {
 function nearestUsableStops(lat: number, lng: number, maxResults = 5, date: Date = new Date()) {
   return stops
     .filter((s) => s.routes.some((r) => isRouteActive(r.id, date)))
-    .map((s) => ({ stop: s, dist: haversine(lat, lng, s.latitude, s.longitude) }))
+    .map((s) => ({
+      stop: s,
+      dist: haversine(lat, lng, s.latitude, s.longitude),
+    }))
     .sort((a, b) => a.dist - b.dist)
     .slice(0, maxResults);
 }
@@ -411,7 +422,10 @@ export function findRoute(
 
   const transferCandidates = stops
     .filter((s) => s.routes.some((r) => isRouteActive(r.id, date)))
-    .map((s) => ({ stop: s, dist: haversine(midLat, midLng, s.latitude, s.longitude) }))
+    .map((s) => ({
+      stop: s,
+      dist: haversine(midLat, midLng, s.latitude, s.longitude),
+    }))
     .sort((a, b) => a.dist - b.dist)
     .slice(0, 60)
     .map((x) => x.stop);
@@ -425,7 +439,11 @@ export function findRoute(
 
       // Primer tramo: origen -> transbordo (sin rutas exprés)
       let firstRouteId: string | null = null;
-      let firstDir: { directionId: string; fromIdx: number; toIdx: number } | null = null;
+      let firstDir: {
+        directionId: string;
+        fromIdx: number;
+        toIdx: number;
+      } | null = null;
       let firstWaitSeconds = 0;
       for (const routeId of oRoutes.filter((r) => !EXPRESS_ROUTE_IDS.includes(r))) {
         if (!tRoutes.includes(routeId)) continue;
@@ -444,7 +462,11 @@ export function findRoute(
       for (const { stop: dStop } of destCandidates) {
         const dRouteIds = new Set(dStop.routes.map((r) => r.id));
         let secondRouteId: string | null = null;
-        let secondDir: { directionId: string; fromIdx: number; toIdx: number } | null = null;
+        let secondDir: {
+          directionId: string;
+          fromIdx: number;
+          toIdx: number;
+        } | null = null;
         let secondWaitSeconds = 0;
         for (const routeId of tRoutes) {
           if (!dRouteIds.has(routeId)) continue;
@@ -563,13 +585,7 @@ const SECONDS_IN_DAY = 24 * 60 * 60;
  */
 const MAX_WAIT_SECONDS = 60 * 60; // 60 minutos
 
-type TimetableTrip = {
-  tripId: string;
-  serviceId: string;
-  stops: [string, number, number][];
-};
-
-const timetables = timetablesData as Record<string, Record<string, TimetableTrip[]>>;
+const timetables = getTransitTimetables();
 
 /**
  * Devuelve los segundos desde inicio de día hasta el próximo servicio real
@@ -641,7 +657,10 @@ export function formatRouteTime(seconds: number | null): string {
 
 function findNextBusTiming(step: TransitStep, readyTimeSeconds: number, date: Date = new Date()) {
   const trips = timetables[step.routeId]?.[step.directionId] ?? [];
-  let bestTiming: { departureTimeSeconds: number; arrivalTimeSeconds: number } | null = null;
+  let bestTiming: {
+    departureTimeSeconds: number;
+    arrivalTimeSeconds: number;
+  } | null = null;
 
   for (const trip of trips) {
     if (!isServiceAvailable(trip.serviceId, date)) continue;

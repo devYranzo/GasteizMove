@@ -1,6 +1,9 @@
-import routesData from "@/data/gtfs/routes.json";
-import stopsData from "@/data/gtfs/stops.json";
-import timetablesData from "@/data/gtfs/timetables.json";
+import {
+  getTransitRoutes,
+  getTransitStops,
+  getTransitTimetables,
+} from "@/services/transit/transitRepository";
+import { TransitRoute, TransitStop } from "@/types/transit";
 import { isServiceActiveWithOvernight } from "../routing/serviceAvailability";
 
 const SECONDS_IN_DAY = 24 * 60 * 60;
@@ -14,26 +17,6 @@ const API_BASE = __DEV__
 const REALTIME_TIMEOUT_MS = 4000;
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
-
-type TimetableTrip = {
-  tripId: string;
-  serviceId: string;
-  stops: [string, number, number][];
-};
-
-type RouteData = {
-  routeId: string;
-  directionId: string;
-  headsign: string;
-  shortName: string;
-  longName: string;
-  color: string;
-};
-
-type StopData = {
-  id: string;
-  name: string;
-};
 
 export type StopArrival = {
   routeId: string;
@@ -67,9 +50,9 @@ type RealtimeArrival = {
 
 // ─── Datos estáticos ──────────────────────────────────────────────────────────
 
-const routes = routesData as RouteData[];
-const stops = stopsData as StopData[];
-const timetables = timetablesData as Record<string, Record<string, TimetableTrip[]>>;
+const routes: TransitRoute[] = getTransitRoutes();
+const stops: TransitStop[] = getTransitStops();
+const timetables = getTransitTimetables();
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 

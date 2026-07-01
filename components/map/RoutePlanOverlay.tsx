@@ -1,5 +1,9 @@
-import routesData from "@/data/gtfs/routes.json";
-import { RouteStep, TransitStep, WalkStep } from "@/utils/routing/offlineRouter";
+import { getTransitRouteColorMap } from "@/services/transit/transitRepository";
+import {
+  RouteStep,
+  TransitStep,
+  WalkStep,
+} from "@/utils/routing/offlineRouter";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Polyline } from "react-native-maps";
 
@@ -60,7 +64,7 @@ async function fetchWalkGeometry(
   fromLat: number,
   fromLng: number,
   toLat: number,
-  toLng: number
+  toLng: number,
 ): Promise<Coord[] | null> {
   try {
     const body = JSON.stringify({
@@ -98,11 +102,7 @@ async function fetchWalkGeometry(
 
 export function RoutePlanOverlay({ routePlan, version }: Props) {
   const routeColorMap = useMemo(() => {
-    const map: Record<string, string> = {};
-    routesData.forEach((route) => {
-      map[route.routeId] = `#${route.color}`;
-    });
-    return map;
+    return getTransitRouteColorMap();
   }, []);
 
   // walkCoords[index] = coordenadas reales del tramo a pie en esa posición.
@@ -122,13 +122,21 @@ export function RoutePlanOverlay({ routePlan, version }: Props) {
 
     const walkSteps = routePlan
       .map((step, index) => ({ step, index }))
-      .filter(({ step }) => step.type === "walk" && (step as WalkStep).distanceMeters !== 0);
+      .filter(
+        ({ step }) =>
+          step.type === "walk" && (step as WalkStep).distanceMeters !== 0,
+      );
 
     if (!walkSteps.length) return;
 
     walkSteps.forEach(async ({ step, index }) => {
       const w = step as WalkStep;
-      const coords = await fetchWalkGeometry(w.fromLat, w.fromLng, w.toLat, w.toLng);
+      const coords = await fetchWalkGeometry(
+        w.fromLat,
+        w.fromLng,
+        w.toLat,
+        w.toLng,
+      );
 
       if (controller.signal.aborted) return;
 

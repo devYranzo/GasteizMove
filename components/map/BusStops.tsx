@@ -1,14 +1,9 @@
+import { TransitStop } from "@/types/transit";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { View } from "react-native";
 import { Marker } from "react-native-maps";
 
-export type Stop = {
-  id: string;
-  name: string;
-  latitude: number;
-  longitude: number;
-  routes: { id: string; name: string }[];
-};
+export type Stop = TransitStop;
 
 interface Props {
   stops: Stop[];
