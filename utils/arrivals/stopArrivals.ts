@@ -3,7 +3,8 @@ import {
   getTransitStops,
   getTransitTimetables,
 } from "@/services/transit/transitRepository";
-import { TransitRoute, TransitStop } from "@/types/transit";
+import { getTransitModeForRoute } from "@/services/transit/transitModes";
+import { TransitMode, TransitRoute, TransitStop } from "@/types/transit";
 import { isServiceActiveWithOvernight } from "../routing/serviceAvailability";
 
 const SECONDS_IN_DAY = 24 * 60 * 60;
@@ -22,6 +23,7 @@ export type StopArrival = {
   routeId: string;
   routeName: string;
   routeColor: string;
+  mode: TransitMode;
   destination: string;
   directionId: string;
   departureTimeSeconds: number; // Unix timestamp (realtime) o segundos desde medianoche (teórico)
@@ -75,7 +77,8 @@ export function formatArrivalTime(seconds: number): string {
   if (seconds > SECONDS_IN_DAY) {
     return formatArrivalTime(unixToSecondsInDay(seconds));
   }
-  const normalized = ((seconds % SECONDS_IN_DAY) + SECONDS_IN_DAY) % SECONDS_IN_DAY;
+  const normalized =
+    ((seconds % SECONDS_IN_DAY) + SECONDS_IN_DAY) % SECONDS_IN_DAY;
   const hours = Math.floor(normalized / 3600);
   const minutes = Math.floor((normalized % 3600) / 60);
   return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
@@ -89,15 +92,18 @@ export function formatArrivalTime(seconds: number): string {
  */
 async function fetchRealtimeArrivals(
   stopId: string,
-  limit: number
+  limit: number,
 ): Promise<RealtimeArrival[] | null> {
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), REALTIME_TIMEOUT_MS);
 
-    const res = await fetch(`${API_BASE}/api/stops/${stopId}/arrivals?limit=${limit}`, {
-      signal: controller.signal,
-    }).finally(() => clearTimeout(timeout));
+    const res = await fetch(
+      `${API_BASE}/api/stops/${stopId}/arrivals?limit=${limit}`,
+      {
+        signal: controller.signal,
+      },
+    ).finally(() => clearTimeout(timeout));
 
     if (!res.ok) return null;
     const data = await res.json();
@@ -114,7 +120,7 @@ async function fetchRealtimeArrivals(
 function realtimeToStopArrival(
   arrival: RealtimeArrival,
   nowSeconds: number,
-  date: Date
+  date: Date,
 ): StopArrival | null {
   const liveUnix = arrival.departure.live ?? arrival.arrival.live;
   if (liveUnix === null) return null;
@@ -124,14 +130,20 @@ function realtimeToStopArrival(
 
   // departureTimeSeconds guarda el Unix timestamp — formatArrivalTime lo convierte a hora local
   const departureTimeSeconds = liveUnix;
-  const waitMinutes = Math.max(0, Math.round((liveUnix - Date.now() / 1000) / 60));
-  const delayMinutes = Math.round((arrival.departure.delay ?? arrival.arrival.delay) / 60);
+  const waitMinutes = Math.max(
+    0,
+    Math.round((liveUnix - Date.now() / 1000) / 60),
+  );
+  const delayMinutes = Math.round(
+    (arrival.departure.delay ?? arrival.arrival.delay) / 60,
+  );
 
   // Buscar info de ruta filtrando también por directionId para no coger el sentido contrario
   const directionId = arrival.directionId ?? "0";
   const routeInfo =
-    routes.find((r) => r.routeId === arrival.routeId && r.directionId === directionId) ??
-    routes.find((r) => r.routeId === arrival.routeId);
+    routes.find(
+      (r) => r.routeId === arrival.routeId && r.directionId === directionId,
+    ) ?? routes.find((r) => r.routeId === arrival.routeId);
 
   // Buscar destino desde el trip concreto en timetables (última parada = destino real)
   let destination = routeInfo?.headsign ?? "Destino";
@@ -144,10 +156,12 @@ function realtimeToStopArrival(
             const lastStopId = trip.stops[trip.stops.length - 1][0];
             // Buscar routeInfo con la dirección exacta del trip
             const tripRouteInfo = routes.find(
-              (r) => r.routeId === arrival.routeId && r.directionId === dir
+              (r) => r.routeId === arrival.routeId && r.directionId === dir,
             );
             destination =
-              tripRouteInfo?.headsign ?? stops.find((s) => s.id === lastStopId)?.name ?? "Destino";
+              tripRouteInfo?.headsign ??
+              stops.find((s) => s.id === lastStopId)?.name ??
+              "Destino";
             break outer;
           }
         }
@@ -159,6 +173,7 @@ function realtimeToStopArrival(
     routeId: arrival.routeId,
     routeName: routeInfo?.shortName ?? arrival.routeId,
     routeColor: routeInfo?.color ? `#${routeInfo.color}` : "#9ca3af",
+    mode: routeInfo?.mode ?? getTransitModeForRoute(arrival.routeId),
     destination,
     directionId,
     departureTimeSeconds,
@@ -171,7 +186,11 @@ function realtimeToStopArrival(
 
 // ─── Horario teórico (fallback offline) ───────────────────────────────────────
 
-function getTheoreticalArrivals(stopId: string, limit: number, date: Date): StopArrival[] {
+function getTheoreticalArrivals(
+  stopId: string,
+  limit: number,
+  date: Date,
+): StopArrival[] {
   const nowSeconds = secondsSinceStartOfDay(date);
   const arrivals: StopArrival[] = [];
   const seen = new Set<string>();
@@ -180,7 +199,9 @@ function getTheoreticalArrivals(stopId: string, limit: number, date: Date): Stop
     const directions = timetables[routeId];
     for (const directionId of Object.keys(directions)) {
       const trips = directions[directionId];
-      const routeInfo = routes.find((r) => r.routeId === routeId && r.directionId === directionId);
+      const routeInfo = routes.find(
+        (r) => r.routeId === routeId && r.directionId === directionId,
+      );
 
       for (const trip of trips) {
         if (!isServiceActiveWithOvernight(trip.serviceId, date)) continue;
@@ -198,23 +219,31 @@ function getTheoreticalArrivals(stopId: string, limit: number, date: Date): Stop
 
         const lastStopId = trip.stops[trip.stops.length - 1][0];
         const destination =
-          routeInfo?.headsign ?? stops.find((s) => s.id === lastStopId)?.name ?? "Destino";
+          routeInfo?.headsign ??
+          stops.find((s) => s.id === lastStopId)?.name ??
+          "Destino";
 
         arrivals.push({
           routeId,
           routeName: routeInfo?.shortName ?? routeId,
           routeColor: routeInfo?.color ? `#${routeInfo.color}` : "#9ca3af",
+          mode: routeInfo?.mode ?? getTransitModeForRoute(routeId),
           destination,
           directionId,
           departureTimeSeconds: nextDeparture,
-          waitMinutes: Math.max(0, Math.round((nextDeparture - nowSeconds) / 60)),
+          waitMinutes: Math.max(
+            0,
+            Math.round((nextDeparture - nowSeconds) / 60),
+          ),
           isRealtime: false,
         });
       }
     }
   }
 
-  return arrivals.sort((a, b) => a.departureTimeSeconds - b.departureTimeSeconds).slice(0, limit);
+  return arrivals
+    .sort((a, b) => a.departureTimeSeconds - b.departureTimeSeconds)
+    .slice(0, limit);
 }
 
 // ─── Función principal ────────────────────────────────────────────────────────
@@ -230,7 +259,7 @@ function getTheoreticalArrivals(stopId: string, limit: number, date: Date): Stop
 export async function getNextArrivalsForStop(
   stopId: string,
   limit = 5,
-  date = new Date()
+  date = new Date(),
 ): Promise<StopArrival[]> {
   const nowSeconds = secondsSinceStartOfDay(date);
 

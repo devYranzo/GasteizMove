@@ -30,6 +30,16 @@ export type TransitRoute = {
   mode?: TransitMode;
 };
 
+export type TransitVehicle = {
+  id: string;
+  latitude: number;
+  longitude: number;
+  routeId: string;
+  bearing?: number;
+  mode?: TransitMode;
+  agencyId?: string;
+};
+
 export type TimetableTrip = {
   tripId: string;
   serviceId: string;
@@ -38,7 +48,10 @@ export type TimetableTrip = {
 
 export type TransitTimetables = Record<string, Record<string, TimetableTrip[]>>;
 export type TransitRouteShapes = Record<string, Record<string, string>>;
-export type TransitRouteStopSequences = Record<string, Record<string, string[]>>;
+export type TransitRouteStopSequences = Record<
+  string,
+  Record<string, string[]>
+>;
 export type TransitShapes = Record<string, number[][]>;
 export type TransitServiceDates = Record<string, string[]>;
 

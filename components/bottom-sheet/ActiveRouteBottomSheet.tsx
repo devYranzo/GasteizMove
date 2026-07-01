@@ -5,7 +5,15 @@ import { useMemo, useRef } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 import { useFavorites } from "@/hooks/useFavorites";
-import { RouteCandidate, formatRouteTime, getRouteTiming } from "@/utils/routing/offlineRouter";
+import {
+  getTransitModeColor,
+  getTransitModeLabel,
+} from "@/services/transit/transitModes";
+import {
+  RouteCandidate,
+  formatRouteTime,
+  getRouteTiming,
+} from "@/utils/routing/offlineRouter";
 
 interface Props {
   route: RouteCandidate;
@@ -25,7 +33,10 @@ export function ActiveRouteBottomSheet({
   destName,
 }: Props) {
   const snapPoints = useMemo(() => ["22%", "50%"], []);
-  const timing = useMemo(() => getRouteTiming(route, routeDate ?? new Date()), [route, routeDate]);
+  const timing = useMemo(
+    () => getRouteTiming(route, routeDate ?? new Date()),
+    [route, routeDate],
+  );
   const hasOpenedRef = useRef(false);
   const { favorites, addFavorite, removeFavorite } = useFavorites();
 
@@ -46,7 +57,9 @@ export function ActiveRouteBottomSheet({
     return lines ? `${lines} → ${destName}` : `A pie → ${destName}`;
   }, [route, destName]);
 
-  const isFav = favorites.some((f) => f.type === "route" && f.refId === routeFavId);
+  const isFav = favorites.some(
+    (f) => f.type === "route" && f.refId === routeFavId,
+  );
 
   async function toggleFavorite() {
     if (isFav) {
@@ -90,10 +103,19 @@ export function ActiveRouteBottomSheet({
       }}
     >
       <BottomSheetView
-        style={{ flex: 1, paddingHorizontal: 20, paddingVertical: 10, backgroundColor: "white" }}
+        style={{
+          flex: 1,
+          paddingHorizontal: 20,
+          paddingVertical: 10,
+          backgroundColor: "white",
+        }}
       >
         <View
-          style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
           <View style={{ flex: 1, paddingRight: 12 }}>
             <Text style={{ fontSize: 22, fontWeight: "800", color: "#111827" }}>
@@ -102,29 +124,39 @@ export function ActiveRouteBottomSheet({
 
             {/* Líneas usadas */}
             {lineLabels.length > 0 && (
-              <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: 6 }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  gap: 6,
+                  marginTop: 6,
+                }}
+              >
                 {lineLabels.map(({ routeId, vehicle }) => (
                   <View
                     key={routeId}
                     style={{
-                      backgroundColor:
-                        vehicle === "night_bus"
-                          ? "#4338ca"
-                          : vehicle === "tram"
-                            ? "#0891b2"
-                            : "#2563eb",
+                      backgroundColor: getTransitModeColor(vehicle),
                       borderRadius: 6,
                       paddingHorizontal: 8,
                       paddingVertical: 3,
                     }}
                   >
-                    <Text style={{ color: "white", fontWeight: "700", fontSize: 13 }}>
+                    <Text
+                      style={{
+                        color: "white",
+                        fontWeight: "700",
+                        fontSize: 13,
+                      }}
+                    >
                       {routeId}
                     </Text>
                   </View>
                 ))}
                 <View style={{ justifyContent: "center" }}>
-                  <Text style={{ color: "#6b7280", fontSize: 13 }}>→ {destName}</Text>
+                  <Text style={{ color: "#6b7280", fontSize: 13 }}>
+                    → {destName}
+                  </Text>
                 </View>
               </View>
             )}
@@ -176,7 +208,9 @@ export function ActiveRouteBottomSheet({
           </View>
         </View>
 
-        <View style={{ height: 1, backgroundColor: "#f3f4f6", marginVertical: 16 }} />
+        <View
+          style={{ height: 1, backgroundColor: "#f3f4f6", marginVertical: 16 }}
+        />
 
         <View style={{ gap: 12 }}>
           <Text style={{ fontWeight: "700", color: "#374151", fontSize: 15 }}>
@@ -191,7 +225,13 @@ export function ActiveRouteBottomSheet({
               if (distance === 0 && transferStopName) {
                 return (
                   <View key={index} style={{ gap: 2 }}>
-                    <Text style={{ color: "#374151", fontWeight: "700", fontSize: 14 }}>
+                    <Text
+                      style={{
+                        color: "#374151",
+                        fontWeight: "700",
+                        fontSize: 14,
+                      }}
+                    >
                       Transbordo en {transferStopName}
                     </Text>
                     <Text style={{ color: "#6b7280", fontSize: 13 }}>
@@ -218,11 +258,13 @@ export function ActiveRouteBottomSheet({
                   ? "bus nocturno"
                   : "bus";
 
+            const modeColor = getTransitModeColor(step.vehicle);
+
             return (
               <View key={index} style={{ gap: 2 }}>
                 <Text
                   style={{
-                    color: step.vehicle === "night_bus" ? "#4338ca" : "#2563eb",
+                    color: modeColor,
                     fontWeight: "700",
                     fontSize: 14,
                   }}
@@ -232,12 +274,16 @@ export function ActiveRouteBottomSheet({
                 </Text>
                 <Text style={{ color: "#4b5563", fontSize: 13 }}>
                   Sale a las {formatRouteTime(step.departureTimeSeconds)}
-                  {step.waitMinutes !== null ? ` (${step.waitMinutes} min de espera)` : ""}.
+                  {step.waitMinutes !== null
+                    ? ` (${step.waitMinutes} min de espera)`
+                    : ""}
+                  .
                 </Text>
                 <Text style={{ color: "#4b5563", fontSize: 13 }}>
                   Bajar en {step.toStopName ?? "la parada indicada"} a las{" "}
-                  {formatRouteTime(step.arrivalTimeSeconds)} tras {step.stopCount}{" "}
-                  {step.stopCount === 1 ? "parada" : "paradas"}.
+                  {formatRouteTime(step.arrivalTimeSeconds)} tras{" "}
+                  {step.stopCount} {step.stopCount === 1 ? "parada" : "paradas"}
+                  .
                 </Text>
               </View>
             );

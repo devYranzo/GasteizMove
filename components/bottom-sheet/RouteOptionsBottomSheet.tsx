@@ -9,6 +9,11 @@ import {
   formatRouteTime,
   getRouteTiming,
 } from "@/utils/routing/offlineRouter";
+import {
+  getTransitLineLabel,
+  getTransitModeColor,
+  getTransitModeLabel,
+} from "@/services/transit/transitModes";
 
 interface Props {
   routes: RouteCandidate[];
@@ -54,8 +59,19 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
             }}
           >
             <View style={{ flex: 1, paddingRight: 12 }}>
-              <Text style={{ fontSize: 21, fontWeight: "800", color: "#111827" }}>Elige ruta</Text>
-              <Text style={{ marginTop: 2, color: "#6b7280", fontSize: 13, fontWeight: "500" }}>
+              <Text
+                style={{ fontSize: 21, fontWeight: "800", color: "#111827" }}
+              >
+                Elige ruta
+              </Text>
+              <Text
+                style={{
+                  marginTop: 2,
+                  color: "#6b7280",
+                  fontSize: 13,
+                  fontWeight: "500",
+                }}
+              >
                 Las {bestRoutes.length} mejores opciones encontradas
               </Text>
             </View>
@@ -89,9 +105,13 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
           keyExtractor={(_, index) => `route-option-${index}`}
           contentContainerStyle={{ padding: 16, gap: 12 }}
           renderItem={({ item, index }) => {
-            const transitSteps = item.steps.filter((step) => step.type === "transit");
+            const transitSteps = item.steps.filter(
+              (step) => step.type === "transit",
+            );
             const timing = getRouteTiming(item, routeDate ?? new Date());
-            const firstTransitStep = timing.steps.find((step) => step.type === "transit");
+            const firstTransitStep = timing.steps.find(
+              (step) => step.type === "transit",
+            );
             const duration = timing.totalMinutes;
             const transfers = countTransfers(item);
             const walkMeters = item.steps
@@ -123,10 +143,20 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
                   }}
                 >
                   <View style={{ flex: 1 }}>
-                    <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: 8,
+                      }}
+                    >
                       <Text
                         numberOfLines={1}
-                        style={{ fontSize: 22, fontWeight: "800", color: "#111827" }}
+                        style={{
+                          fontSize: 22,
+                          fontWeight: "800",
+                          color: "#111827",
+                        }}
                       >
                         {duration} min
                       </Text>
@@ -140,7 +170,13 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
                             backgroundColor: "#dcfce7",
                           }}
                         >
-                          <Text style={{ color: "#166534", fontSize: 12, fontWeight: "800" }}>
+                          <Text
+                            style={{
+                              color: "#166534",
+                              fontSize: 12,
+                              fontWeight: "800",
+                            }}
+                          >
                             Recomendada
                           </Text>
                         </View>
@@ -156,29 +192,33 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
                       }}
                     >
                       {transitSteps.length > 0 ? (
-                        transitSteps.map((step, busIndex) => (
-                          <View
-                            key={`${step.routeId}-${busIndex}`}
-                            style={{
-                              paddingHorizontal: 10,
-                              paddingVertical: 5,
-                              borderRadius: 14,
-                              backgroundColor: step.vehicle === "night_bus" ? "#1e1b4b" : "#eff6ff",
-                              borderWidth: 1,
-                              borderColor: step.vehicle === "night_bus" ? "#3730a3" : "#dbeafe",
-                            }}
-                          >
-                            <Text
+                        transitSteps.map((step, transitIndex) => {
+                          const modeColor = getTransitModeColor(step.vehicle);
+                          return (
+                            <View
+                              key={`${step.routeId}-${transitIndex}`}
                               style={{
-                                color: step.vehicle === "night_bus" ? "#c7d2fe" : "#1d4ed8",
-                                fontWeight: "800",
-                                fontSize: 13,
+                                paddingHorizontal: 10,
+                                paddingVertical: 5,
+                                borderRadius: 14,
+                                backgroundColor: `${modeColor}14`,
+                                borderWidth: 1,
+                                borderColor: `${modeColor}33`,
                               }}
                             >
-                              Linea {step.routeId}
-                            </Text>
-                          </View>
-                        ))
+                              <Text
+                                style={{
+                                  color: modeColor,
+                                  fontWeight: "800",
+                                  fontSize: 13,
+                                }}
+                              >
+                                {getTransitLineLabel(step.vehicle)}{" "}
+                                {step.routeId}
+                              </Text>
+                            </View>
+                          );
+                        })
                       ) : (
                         <View
                           style={{
@@ -188,7 +228,13 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
                             backgroundColor: "#f3f4f6",
                           }}
                         >
-                          <Text style={{ color: "#374151", fontWeight: "700", fontSize: 13 }}>
+                          <Text
+                            style={{
+                              color: "#374151",
+                              fontWeight: "700",
+                              fontSize: 13,
+                            }}
+                          >
                             A pie
                           </Text>
                         </View>
@@ -203,18 +249,50 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
                         marginTop: 12,
                       }}
                     >
-                      <View style={{ flexDirection: "row", alignItems: "center", gap: 5 }}>
-                        <MaterialIcons name="sync-alt" size={16} color="#6b7280" />
-                        <Text style={{ color: "#4b5563", fontSize: 13, fontWeight: "600" }}>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          alignItems: "center",
+                          gap: 5,
+                        }}
+                      >
+                        <MaterialIcons
+                          name="sync-alt"
+                          size={16}
+                          color="#6b7280"
+                        />
+                        <Text
+                          style={{
+                            color: "#4b5563",
+                            fontSize: 13,
+                            fontWeight: "600",
+                          }}
+                        >
                           {transfers === 0
                             ? "Sin transbordos"
                             : `${transfers} ${transfers === 1 ? "transbordo" : "transbordos"}`}
                         </Text>
                       </View>
 
-                      <View style={{ flexDirection: "row", alignItems: "center", gap: 5 }}>
-                        <MaterialIcons name="directions-walk" size={16} color="#6b7280" />
-                        <Text style={{ color: "#4b5563", fontSize: 13, fontWeight: "600" }}>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          alignItems: "center",
+                          gap: 5,
+                        }}
+                      >
+                        <MaterialIcons
+                          name="directions-walk"
+                          size={16}
+                          color="#6b7280"
+                        />
+                        <Text
+                          style={{
+                            color: "#4b5563",
+                            fontSize: 13,
+                            fontWeight: "600",
+                          }}
+                        >
                           {Math.round(walkMeters)} m a pie
                         </Text>
                       </View>
@@ -222,15 +300,29 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
 
                     <View style={{ marginTop: 8, gap: 4 }}>
                       {firstTransitStep?.type === "transit" && (
-                        <Text style={{ color: "#374151", fontSize: 13, fontWeight: "700" }}>
-                          Primer {firstTransitStep.vehicle === "tram" ? "tranvía" : "bus"}{" "}
-                          {formatRouteTime(firstTransitStep.departureTimeSeconds)}
+                        <Text
+                          style={{
+                            color: "#374151",
+                            fontSize: 13,
+                            fontWeight: "700",
+                          }}
+                        >
+                          Primer {getTransitModeLabel(firstTransitStep.vehicle)}{" "}
+                          {formatRouteTime(
+                            firstTransitStep.departureTimeSeconds,
+                          )}
                           {firstTransitStep.waitMinutes !== null
                             ? ` · espera ${firstTransitStep.waitMinutes} min`
                             : ""}
                         </Text>
                       )}
-                      <Text style={{ color: "#374151", fontSize: 13, fontWeight: "700" }}>
+                      <Text
+                        style={{
+                          color: "#374151",
+                          fontSize: 13,
+                          fontWeight: "700",
+                        }}
+                      >
                         Llegada {formatRouteTime(timing.arrivalTimeSeconds)}
                       </Text>
                     </View>
@@ -244,7 +336,8 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
                             numberOfLines={2}
                             style={{ color: "#6b7280", fontSize: 13 }}
                           >
-                            Linea {step.routeId}: {step.fromStopName ?? "origen"}
+                            {getTransitLineLabel(step.vehicle)} {step.routeId}:{" "}
+                            {step.fromStopName ?? "origen"}
                             {" -> "}
                             {step.toStopName ?? "destino"}
                           </Text>
@@ -252,7 +345,11 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
                     </View>
                   </View>
 
-                  <MaterialIcons name="chevron-right" size={26} color="#9ca3af" />
+                  <MaterialIcons
+                    name="chevron-right"
+                    size={26}
+                    color="#9ca3af"
+                  />
                 </View>
               </Pressable>
             );
@@ -260,5 +357,5 @@ export const RouteOptionsBottomSheet = forwardRef<BottomSheet, Props>(
         />
       </BottomSheet>
     );
-  }
+  },
 );
