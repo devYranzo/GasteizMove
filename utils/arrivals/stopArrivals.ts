@@ -52,9 +52,13 @@ type RealtimeArrival = {
 
 // ─── Datos estáticos ──────────────────────────────────────────────────────────
 
-const routes: TransitRoute[] = getTransitRoutes();
-const stops: TransitStop[] = getTransitStops();
-const timetables = getTransitTimetables();
+function getCurrentTransitData() {
+  return {
+    routes: getTransitRoutes() as TransitRoute[],
+    stops: getTransitStops() as TransitStop[],
+    timetables: getTransitTimetables(),
+  };
+}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -122,6 +126,7 @@ function realtimeToStopArrival(
   nowSeconds: number,
   date: Date,
 ): StopArrival | null {
+  const { routes, stops, timetables } = getCurrentTransitData();
   const liveUnix = arrival.departure.live ?? arrival.arrival.live;
   if (liveUnix === null) return null;
 
@@ -191,6 +196,7 @@ function getTheoreticalArrivals(
   limit: number,
   date: Date,
 ): StopArrival[] {
+  const { routes, stops, timetables } = getCurrentTransitData();
   const nowSeconds = secondsSinceStartOfDay(date);
   const arrivals: StopArrival[] = [];
   const seen = new Set<string>();

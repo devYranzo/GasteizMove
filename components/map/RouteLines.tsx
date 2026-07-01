@@ -7,6 +7,7 @@ interface Props {
 
 export function RouteLines({ selectedRouteId }: Props) {
   if (!selectedRouteId) return null;
+
   const routes = getTransitRoutes();
 
   return (

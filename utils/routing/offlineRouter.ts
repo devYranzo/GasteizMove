@@ -654,7 +654,9 @@ const SECONDS_IN_DAY = 24 * 60 * 60;
  */
 const MAX_WAIT_SECONDS = 60 * 60; // 60 minutos
 
-const timetables = getTransitTimetables();
+function getCurrentTimetables() {
+  return getTransitTimetables();
+}
 
 /**
  * Devuelve los segundos desde inicio de día hasta el próximo servicio real
@@ -670,6 +672,7 @@ function getNextDepartureSeconds(
   readyTimeSeconds: number,
   date: Date,
 ): number | null {
+  const timetables = getCurrentTimetables();
   const routeDirections = timetables[routeId];
   if (!routeDirections) return null;
 
@@ -730,6 +733,7 @@ function findNextBusTiming(
   readyTimeSeconds: number,
   date: Date = new Date(),
 ) {
+  const timetables = getCurrentTimetables();
   const trips = timetables[step.routeId]?.[step.directionId] ?? [];
   let bestTiming: {
     departureTimeSeconds: number;

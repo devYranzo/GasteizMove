@@ -5,15 +5,15 @@ import serviceDatesData from "@/data/gtfs/service_dates.json";
 import shapesData from "@/data/gtfs/shapes.json";
 import stopsData from "@/data/gtfs/stops.json";
 import timetablesData from "@/data/gtfs/timetables.json";
-import { TransitDataset } from "@/types/transit";
+import { TransitDataset, TransitMode } from "@/types/transit";
 import { getTransitModeForRoute } from "./transitModes";
 
-const metadata = {
+const metadata: TransitDataset["metadata"] = {
   id: "vitoria-gasteiz-tuvisa",
   name: "Vitoria-Gasteiz",
   regionId: "vitoria-gasteiz",
   agencyId: "tuvisa",
-  modes: ["bus", "night_bus"] as const,
+  modes: ["bus", "night_bus"] as TransitMode[],
 };
 
 const routes = (routesData as TransitDataset["routes"]).map((route) => ({

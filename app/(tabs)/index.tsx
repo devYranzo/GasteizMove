@@ -21,6 +21,8 @@ import streets from "@/data/streets.json";
 import {
   getTransitRouteColorMap,
   getTransitStops,
+  loadTransitDataset,
+  resolveTransitRegionId,
 } from "@/services/transit/transitRepository";
 import {
   HomeWorkLocation,
@@ -41,7 +43,7 @@ import {
 } from "@/utils/routing/offlineRouter";
 
 export default function TabOneScreen() {
-  const stops = getTransitStops();
+  const [stops, setStops] = useState<Stop[]>(() => getTransitStops());
   const { stopId, routeDestLat, routeDestLng, routeDestName } =
     useLocalSearchParams<{
       stopId?: string;
@@ -128,6 +130,19 @@ export default function TabOneScreen() {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    async function loadDataset(regionId = "vitoria-gasteiz") {
+      try {
+        const dataset = await loadTransitDataset(regionId);
+        setStops(dataset.stops as Stop[]);
+      } catch {
+        setStops(getTransitStops(regionId));
+      }
+    }
+
+    loadDataset();
+  }, []);
+
   // ── Navegar a parada desde favoritos ──────────────────────────────────────
   useEffect(() => {
     if (!stopId || !initialRegion) return;
@@ -171,12 +186,18 @@ export default function TabOneScreen() {
       const { status } = await Location.requestForegroundPermissionsAsync();
       if (status === "granted") {
         const location = await Location.getCurrentPositionAsync({});
+        const regionId = resolveTransitRegionId(
+          location.coords.latitude,
+          location.coords.longitude,
+        );
         setInitialRegion({
           latitude: location.coords.latitude,
           longitude: location.coords.longitude,
           latitudeDelta: 0.006,
           longitudeDelta: 0.006,
         });
+        const dataset = await loadTransitDataset(regionId);
+        setStops(dataset.stops as Stop[]);
         return;
       }
       setInitialRegion({
