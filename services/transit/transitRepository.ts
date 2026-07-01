@@ -1,16 +1,16 @@
-import { staticTransitDataset } from "./staticTransitDataset";
-import { getTransitModeForRoute } from "./transitModes";
 import type {
   TransitDataset,
   TransitDatasetMetadata,
   TransitRoute,
-  TransitStop,
-  TransitTimetables,
   TransitRouteShapes,
   TransitRouteStopSequences,
-  TransitShapes,
   TransitServiceDates,
+  TransitShapes,
+  TransitStop,
+  TransitTimetables,
 } from "@/types/transit";
+import { staticTransitDataset } from "./staticTransitDataset";
+import { getTransitModeForRoute } from "./transitModes";
 
 const API_BASE =
   typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production"
@@ -23,7 +23,7 @@ let activeRegionId = "vitoria-gasteiz";
 export function resolveTransitRegionId(
   latitude: number,
   longitude: number,
-  fallbackRegionId = "vitoria-gasteiz",
+  fallbackRegionId = "vitoria-gasteiz"
 ): string {
   if (latitude >= 42.8 && latitude <= 43.4 && longitude >= -3.2 && longitude <= -2.0) {
     return "vitoria-gasteiz";
@@ -46,7 +46,7 @@ function buildDefaultTransitDataset(): TransitDataset {
 
 function createMetadataWithDefaults(
   metadata: Partial<TransitDatasetMetadata> | undefined,
-  fallbackRegionId: string,
+  fallbackRegionId: string
 ): TransitDatasetMetadata {
   const fallback = buildDefaultTransitDataset().metadata;
   return {
@@ -61,10 +61,10 @@ function createMetadataWithDefaults(
 function normalizeRoute(
   route: Partial<TransitRoute> & { routeId: string },
   fallbackRegionId: string,
-  fallbackAgencyId: string,
+  fallbackAgencyId: string
 ): TransitRoute {
   const defaultRoute = buildDefaultTransitDataset().routes.find(
-    (candidate) => candidate.routeId === route.routeId,
+    (candidate) => candidate.routeId === route.routeId
   );
 
   return {
@@ -75,8 +75,7 @@ function normalizeRoute(
     shortName: route.shortName ?? defaultRoute?.shortName ?? route.routeId,
     longName: route.longName ?? defaultRoute?.longName ?? route.routeId,
     color: route.color ?? defaultRoute?.color ?? "2563EB",
-    coordinates:
-      route.coordinates ?? defaultRoute?.coordinates ?? [],
+    coordinates: route.coordinates ?? defaultRoute?.coordinates ?? [],
     regionId: route.regionId ?? fallbackRegionId,
     agencyId: route.agencyId ?? fallbackAgencyId,
     mode: route.mode ?? defaultRoute?.mode ?? getTransitModeForRoute(route.routeId),
@@ -86,10 +85,10 @@ function normalizeRoute(
 function normalizeStop(
   stop: Partial<TransitStop> & { id: string },
   fallbackRegionId: string,
-  fallbackAgencyId: string,
+  fallbackAgencyId: string
 ): TransitStop {
   const defaultStop = buildDefaultTransitDataset().stops.find(
-    (candidate) => candidate.id === stop.id,
+    (candidate) => candidate.id === stop.id
   );
 
   return {
@@ -106,35 +105,32 @@ function normalizeStop(
 
 export function normalizeTransitDatasetPayload(
   payload: Partial<TransitDataset> | Record<string, unknown>,
-  fallbackRegionId: string,
+  fallbackRegionId: string
 ): TransitDataset {
   const fallbackDataset = buildDefaultTransitDataset();
   const metadata = createMetadataWithDefaults(
     (payload.metadata as Partial<TransitDatasetMetadata> | undefined) ?? undefined,
-    fallbackRegionId,
+    fallbackRegionId
   );
 
   const routes = Array.isArray(payload.routes)
     ? (payload.routes as Array<Partial<TransitRoute> & { routeId: string }>).map((route) =>
-        normalizeRoute(route, fallbackRegionId, metadata.agencyId),
+        normalizeRoute(route, fallbackRegionId, metadata.agencyId)
       )
     : fallbackDataset.routes;
 
   const stops = Array.isArray(payload.stops)
     ? (payload.stops as Array<Partial<TransitStop> & { id: string }>).map((stop) =>
-        normalizeStop(stop, fallbackRegionId, metadata.agencyId),
+        normalizeStop(stop, fallbackRegionId, metadata.agencyId)
       )
     : fallbackDataset.stops;
 
   const timetables =
-    (payload.timetables as TransitTimetables | undefined) ??
-    fallbackDataset.timetables;
+    (payload.timetables as TransitTimetables | undefined) ?? fallbackDataset.timetables;
   const serviceDates =
-    (payload.serviceDates as TransitServiceDates | undefined) ??
-    fallbackDataset.serviceDates;
+    (payload.serviceDates as TransitServiceDates | undefined) ?? fallbackDataset.serviceDates;
   const routeShapes =
-    (payload.routeShapes as TransitRouteShapes | undefined) ??
-    fallbackDataset.routeShapes;
+    (payload.routeShapes as TransitRouteShapes | undefined) ?? fallbackDataset.routeShapes;
   const routeStopSequences =
     (payload.routeStopSequences as TransitRouteStopSequences | undefined) ??
     fallbackDataset.routeStopSequences;

@@ -27,9 +27,7 @@ const stops = (stopsData as TransitDataset["stops"]).map((stop) => ({
   ...stop,
   regionId: metadata.regionId,
   agencyId: metadata.agencyId,
-  modes: Array.from(
-    new Set(stop.routes.map((route) => getTransitModeForRoute(route.id))),
-  ),
+  modes: Array.from(new Set(stop.routes.map((route) => getTransitModeForRoute(route.id)))),
 }));
 
 export const staticTransitDataset: TransitDataset = {
@@ -39,7 +37,6 @@ export const staticTransitDataset: TransitDataset = {
   timetables: timetablesData as unknown as TransitDataset["timetables"],
   serviceDates: serviceDatesData as TransitDataset["serviceDates"],
   routeShapes: routeShapesData as TransitDataset["routeShapes"],
-  routeStopSequences:
-    routeStopSequencesData as TransitDataset["routeStopSequences"],
+  routeStopSequences: routeStopSequencesData as TransitDataset["routeStopSequences"],
   shapes: shapesData as TransitDataset["shapes"],
 };

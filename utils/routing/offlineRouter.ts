@@ -1,3 +1,4 @@
+import { getTransitModeConfigForRoute } from "@/services/transit/transitModes";
 import {
   getTransitRouteShapes,
   getTransitRouteStopSequences,
@@ -5,12 +6,8 @@ import {
   getTransitStops,
   getTransitTimetables,
 } from "@/services/transit/transitRepository";
-import { getTransitModeConfigForRoute } from "@/services/transit/transitModes";
 import { TransitMode, TransitStop } from "@/types/transit";
-import {
-  isServiceActiveWithOvernight,
-  isServiceAvailable,
-} from "./serviceAvailability";
+import { isServiceActiveWithOvernight, isServiceAvailable } from "./serviceAvailability";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // CONFIGURACIÓN DE MODOS DE TRANSPORTE
@@ -178,11 +175,7 @@ function getStopPenalty(routeId: string): number {
  * Se llama una sola vez por candidato durante findRoute para incluir
  * la espera real en el score y descartar rutas sin servicio inmediato.
  */
-function getWaitSeconds(
-  routeId: string,
-  stopId: string,
-  date: Date,
-): number | null {
+function getWaitSeconds(routeId: string, stopId: string, date: Date): number | null {
   // getNextDepartureSeconds se define más abajo junto al resto de helpers de timing,
   // pero en JS/TS las funciones declaradas con `function` se elevan (hoisting),
   // así que podemos llamarla aquí sin problema.
@@ -198,12 +191,7 @@ function getWaitSeconds(
 // UTILIDADES
 // ─────────────────────────────────────────────────────────────────────────────
 
-function haversine(
-  lat1: number,
-  lon1: number,
-  lat2: number,
-  lon2: number,
-): number {
+function haversine(lat1: number, lon1: number, lat2: number, lon2: number): number {
   const R = 6371e3;
   const toRad = (x: number) => (x * Math.PI) / 180;
   const dLat = toRad(lat2 - lat1);
@@ -232,12 +220,7 @@ for (const s of stops) {
  * Paradas candidatas para origen/destino.
  * Solo incluye paradas con al menos una ruta activa en la fecha dada.
  */
-function nearestUsableStops(
-  lat: number,
-  lng: number,
-  maxResults = 5,
-  date: Date = new Date(),
-) {
+function nearestUsableStops(lat: number, lng: number, maxResults = 5, date: Date = new Date()) {
   return stops
     .filter((s) => s.routes.some((r) => isRouteActive(r.id, date)))
     .map((s) => ({
@@ -252,11 +235,7 @@ function nearestUsableStops(
  * Filtra y ordena los routeIds utilizables de una parada según la fecha.
  * Si preferMain=true, pone las rutas exprés al final.
  */
-function usableRoutes(
-  routeIds: Set<string>,
-  preferMain = true,
-  date: Date = new Date(),
-): string[] {
+function usableRoutes(routeIds: Set<string>, preferMain = true, date: Date = new Date()): string[] {
   const filtered = [...routeIds].filter((r) => isRouteActive(r, date));
   if (!preferMain) return filtered;
   return [
@@ -272,11 +251,9 @@ function usableRoutes(
 function resolveDirection(
   routeId: string,
   fromStopId: string,
-  toStopId: string,
+  toStopId: string
 ): { directionId: string; fromIdx: number; toIdx: number } | null {
-  const seqs = (routeStopSequences as Record<string, Record<string, string[]>>)[
-    routeId
-  ];
+  const seqs = (routeStopSequences as Record<string, Record<string, string[]>>)[routeId];
   if (!seqs) return null;
   for (const [directionId, stopIds] of Object.entries(seqs)) {
     const fromIdx = stopIds.indexOf(fromStopId);
@@ -294,11 +271,9 @@ function getShapeSlice(
   fromLat: number,
   fromLng: number,
   toLat: number,
-  toLng: number,
+  toLng: number
 ): { latitude: number; longitude: number }[] {
-  const shapeId = (routeShapes as Record<string, Record<string, string>>)[
-    routeId
-  ]?.[directionId];
+  const shapeId = (routeShapes as Record<string, Record<string, string>>)[routeId]?.[directionId];
   if (!shapeId) return [];
   const pts = (shapesData as Record<string, number[][]>)[shapeId] ?? [];
   if (!pts.length) return [];
@@ -324,9 +299,7 @@ function getShapeSlice(
 
   const startIdx = Math.min(fromClosestIdx, toClosestIdx);
   const endIdx = Math.max(fromClosestIdx, toClosestIdx);
-  return pts
-    .slice(startIdx, endIdx + 1)
-    .map(([lat, lng]) => ({ latitude: lat, longitude: lng }));
+  return pts.slice(startIdx, endIdx + 1).map(([lat, lng]) => ({ latitude: lat, longitude: lng }));
 }
 
 function buildTransitStep(
@@ -335,7 +308,7 @@ function buildTransitStep(
   toStopId: string,
   directionId: string,
   fromIdx: number,
-  toIdx: number,
+  toIdx: number
 ): TransitStep {
   const fromStop = stopMap[fromStopId];
   const toStop = stopMap[toStopId];
@@ -345,7 +318,7 @@ function buildTransitStep(
     fromStop?.latitude ?? 0,
     fromStop?.longitude ?? 0,
     toStop?.latitude ?? 0,
-    toStop?.longitude ?? 0,
+    toStop?.longitude ?? 0
   );
   return {
     type: "transit",
@@ -370,7 +343,7 @@ export function findRoute(
   originLng: number,
   destLat: number,
   destLng: number,
-  date: Date = new Date(),
+  date: Date = new Date()
 ): RouteCandidate[] {
   const directDist = haversine(originLat, originLng, destLat, destLng);
 
@@ -400,11 +373,7 @@ export function findRoute(
 
   // ─── DIRECTO ──────────────────────────────────────────────────────────────
   for (const { stop: oStop } of originCandidates) {
-    const oRoutes = usableRoutes(
-      new Set(oStop.routes.map((r) => r.id)),
-      true,
-      date,
-    );
+    const oRoutes = usableRoutes(new Set(oStop.routes.map((r) => r.id)), true, date);
     for (const { stop: dStop } of destCandidates) {
       const dRouteIds = new Set(dStop.routes.map((r) => r.id));
       for (const routeId of oRoutes) {
@@ -416,18 +385,8 @@ export function findRoute(
         const waitSeconds = getWaitSeconds(routeId, oStop.id, date);
         if (waitSeconds === null) continue;
 
-        const walkToBus = haversine(
-          originLat,
-          originLng,
-          oStop.latitude,
-          oStop.longitude,
-        );
-        const walkFromBus = haversine(
-          dStop.latitude,
-          dStop.longitude,
-          destLat,
-          destLng,
-        );
+        const walkToBus = haversine(originLat, originLng, oStop.latitude, oStop.longitude);
+        const walkFromBus = haversine(dStop.latitude, dStop.longitude, destLat, destLng);
         const stopPenalty = (dir.toIdx - dir.fromIdx) * getStopPenalty(routeId);
 
         candidates.push({
@@ -442,14 +401,7 @@ export function findRoute(
               toName: oStop.name,
               distanceMeters: walkToBus,
             },
-            buildTransitStep(
-              routeId,
-              oStop.id,
-              dStop.id,
-              dir.directionId,
-              dir.fromIdx,
-              dir.toIdx,
-            ),
+            buildTransitStep(routeId, oStop.id, dStop.id, dir.directionId, dir.fromIdx, dir.toIdx),
             {
               type: "walk",
               fromLat: dStop.latitude,
@@ -480,19 +432,11 @@ export function findRoute(
     .map((x) => x.stop);
 
   for (const { stop: oStop } of originCandidates) {
-    const oRoutes = usableRoutes(
-      new Set(oStop.routes.map((r) => r.id)),
-      true,
-      date,
-    );
+    const oRoutes = usableRoutes(new Set(oStop.routes.map((r) => r.id)), true, date);
 
     for (const transferStop of transferCandidates) {
       if (transferStop.id === oStop.id) continue;
-      const tRoutes = usableRoutes(
-        new Set(transferStop.routes.map((r) => r.id)),
-        false,
-        date,
-      );
+      const tRoutes = usableRoutes(new Set(transferStop.routes.map((r) => r.id)), false, date);
 
       // Primer tramo: origen -> transbordo (sin rutas exprés)
       let firstRouteId: string | null = null;
@@ -502,9 +446,7 @@ export function findRoute(
         toIdx: number;
       } | null = null;
       let firstWaitSeconds = 0;
-      for (const routeId of oRoutes.filter(
-        (r) => !EXPRESS_ROUTE_IDS.includes(r),
-      )) {
+      for (const routeId of oRoutes.filter((r) => !EXPRESS_ROUTE_IDS.includes(r))) {
         if (!tRoutes.includes(routeId)) continue;
         const dir = resolveDirection(routeId, oStop.id, transferStop.id);
         if (!dir) continue;
@@ -541,18 +483,8 @@ export function findRoute(
         }
         if (!secondRouteId || !secondDir) continue;
 
-        const walkToBus = haversine(
-          originLat,
-          originLng,
-          oStop.latitude,
-          oStop.longitude,
-        );
-        const walkFromBus = haversine(
-          dStop.latitude,
-          dStop.longitude,
-          destLat,
-          destLng,
-        );
+        const walkToBus = haversine(originLat, originLng, oStop.latitude, oStop.longitude);
+        const walkFromBus = haversine(dStop.latitude, dStop.longitude, destLat, destLng);
         const transferPenalty = 500;
         const stopPenalty =
           (firstDir.toIdx - firstDir.fromIdx) * getStopPenalty(firstRouteId) +
@@ -582,7 +514,7 @@ export function findRoute(
               transferStop.id,
               firstDir.directionId,
               firstDir.fromIdx,
-              firstDir.toIdx,
+              firstDir.toIdx
             ),
             {
               type: "walk",
@@ -600,7 +532,7 @@ export function findRoute(
               dStop.id,
               secondDir.directionId,
               secondDir.fromIdx,
-              secondDir.toIdx,
+              secondDir.toIdx
             ),
             {
               type: "walk",
@@ -670,7 +602,7 @@ function getNextDepartureSeconds(
   routeId: string,
   stopId: string,
   readyTimeSeconds: number,
-  date: Date,
+  date: Date
 ): number | null {
   const timetables = getCurrentTimetables();
   const routeDirections = timetables[routeId];
@@ -721,18 +653,13 @@ export function secondsSinceStartOfDay(date = new Date()): number {
 
 export function formatRouteTime(seconds: number | null): string {
   if (seconds === null) return "--:--";
-  const normalized =
-    ((seconds % SECONDS_IN_DAY) + SECONDS_IN_DAY) % SECONDS_IN_DAY;
+  const normalized = ((seconds % SECONDS_IN_DAY) + SECONDS_IN_DAY) % SECONDS_IN_DAY;
   const hours = Math.floor(normalized / 3600);
   const minutes = Math.floor((normalized % 3600) / 60);
   return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
 }
 
-function findNextBusTiming(
-  step: TransitStep,
-  readyTimeSeconds: number,
-  date: Date = new Date(),
-) {
+function findNextBusTiming(step: TransitStep, readyTimeSeconds: number, date: Date = new Date()) {
   const timetables = getCurrentTimetables();
   const trips = timetables[step.routeId]?.[step.directionId] ?? [];
   let bestTiming: {
@@ -743,13 +670,11 @@ function findNextBusTiming(
   for (const trip of trips) {
     if (!isServiceAvailable(trip.serviceId, date)) continue;
 
-    const fromIndex = trip.stops.findIndex(
-      ([stopId]) => stopId === step.fromStopId,
-    );
+    const fromIndex = trip.stops.findIndex(([stopId]) => stopId === step.fromStopId);
     if (fromIndex === -1) continue;
 
     const toIndex = trip.stops.findIndex(
-      ([stopId], index) => index > fromIndex && stopId === step.toStopId,
+      ([stopId], index) => index > fromIndex && stopId === step.toStopId
     );
     if (toIndex === -1) continue;
 
@@ -767,10 +692,7 @@ function findNextBusTiming(
     }
 
     const timing = { departureTimeSeconds, arrivalTimeSeconds };
-    if (
-      !bestTiming ||
-      timing.departureTimeSeconds < bestTiming.departureTimeSeconds
-    ) {
+    if (!bestTiming || timing.departureTimeSeconds < bestTiming.departureTimeSeconds) {
       bestTiming = timing;
     }
   }
@@ -780,16 +702,14 @@ function findNextBusTiming(
 
 export function getRouteTiming(
   candidate: RouteCandidate,
-  startDate: Date = new Date(),
+  startDate: Date = new Date()
 ): RouteTiming {
   const departureTimeSeconds = secondsSinceStartOfDay(startDate);
   let currentTimeSeconds = departureTimeSeconds;
 
   const steps = candidate.steps.map((step): TimedRouteStep => {
     if (step.type === "walk") {
-      const durationSeconds = Math.round(
-        (step.distanceMeters ?? 0) / WALK_SPEED_M_S,
-      );
+      const durationSeconds = Math.round((step.distanceMeters ?? 0) / WALK_SPEED_M_S);
       const startTimeSeconds = currentTimeSeconds;
       const endTimeSeconds = currentTimeSeconds + durationSeconds;
       currentTimeSeconds = endTimeSeconds;
@@ -802,16 +722,11 @@ export function getRouteTiming(
     }
 
     const readyTimeSeconds = currentTimeSeconds;
-    const scheduledTiming = findNextBusTiming(
-      step,
-      readyTimeSeconds,
-      startDate,
-    );
+    const scheduledTiming = findNextBusTiming(step, readyTimeSeconds, startDate);
 
     if (scheduledTiming) {
       const durationSeconds =
-        scheduledTiming.arrivalTimeSeconds -
-        scheduledTiming.departureTimeSeconds;
+        scheduledTiming.arrivalTimeSeconds - scheduledTiming.departureTimeSeconds;
       currentTimeSeconds = scheduledTiming.arrivalTimeSeconds;
       return {
         ...step,
@@ -820,9 +735,7 @@ export function getRouteTiming(
         arrivalTimeSeconds: scheduledTiming.arrivalTimeSeconds,
         waitMinutes: Math.max(
           0,
-          Math.round(
-            (scheduledTiming.departureTimeSeconds - readyTimeSeconds) / 60,
-          ),
+          Math.round((scheduledTiming.departureTimeSeconds - readyTimeSeconds) / 60)
         ),
         durationMinutes: Math.max(1, Math.round(durationSeconds / 60)),
       };
@@ -844,9 +757,6 @@ export function getRouteTiming(
     steps,
     departureTimeSeconds,
     arrivalTimeSeconds: currentTimeSeconds,
-    totalMinutes: Math.max(
-      0,
-      Math.round((currentTimeSeconds - departureTimeSeconds) / 60),
-    ),
+    totalMinutes: Math.max(0, Math.round((currentTimeSeconds - departureTimeSeconds) / 60)),
   };
 }

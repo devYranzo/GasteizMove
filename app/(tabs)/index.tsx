@@ -24,33 +24,20 @@ import {
   loadTransitDataset,
   resolveTransitRegionId,
 } from "@/services/transit/transitRepository";
-import {
-  HomeWorkLocation,
-  loadHomeWork,
-  subscribeHomeWork,
-} from "@/storage/homeWorkStorage";
+import { HomeWorkLocation, loadHomeWork, subscribeHomeWork } from "@/storage/homeWorkStorage";
 import { TransitVehicle } from "@/types/transit";
 
-import {
-  getNextArrivalsForStop,
-  StopArrival,
-} from "@/utils/arrivals/stopArrivals";
-import {
-  findRoute,
-  RouteCandidate,
-  RouteStep,
-  TransitStep,
-} from "@/utils/routing/offlineRouter";
+import { getNextArrivalsForStop, StopArrival } from "@/utils/arrivals/stopArrivals";
+import { findRoute, RouteCandidate, RouteStep, TransitStep } from "@/utils/routing/offlineRouter";
 
 export default function TabOneScreen() {
   const [stops, setStops] = useState<Stop[]>(() => getTransitStops());
-  const { stopId, routeDestLat, routeDestLng, routeDestName } =
-    useLocalSearchParams<{
-      stopId?: string;
-      routeDestLat?: string;
-      routeDestLng?: string;
-      routeDestName?: string;
-    }>();
+  const { stopId, routeDestLat, routeDestLng, routeDestName } = useLocalSearchParams<{
+    stopId?: string;
+    routeDestLat?: string;
+    routeDestLng?: string;
+    routeDestName?: string;
+  }>();
   const router = useRouter();
 
   const [search, setSearch] = useState("");
@@ -64,12 +51,8 @@ export default function TabOneScreen() {
     name: string;
   } | null>(null);
 
-  const [homeLoc, setHomeLoc] = useState<HomeWorkLocation | undefined>(
-    undefined,
-  );
-  const [workLoc, setWorkLoc] = useState<HomeWorkLocation | undefined>(
-    undefined,
-  );
+  const [homeLoc, setHomeLoc] = useState<HomeWorkLocation | undefined>(undefined);
+  const [workLoc, setWorkLoc] = useState<HomeWorkLocation | undefined>(undefined);
 
   const [visibleRegion, setVisibleRegion] = useState<{
     latitude: number;
@@ -98,9 +81,7 @@ export default function TabOneScreen() {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const routeSheetRef = useRef<BottomSheet>(null);
 
-  const [selectedRoute, setSelectedRoute] = useState<RouteCandidate | null>(
-    null,
-  );
+  const [selectedRoute, setSelectedRoute] = useState<RouteCandidate | null>(null);
   const [sheetIndex, setSheetIndex] = useState(-1);
   const [navigationActive, setNavigationActive] = useState(false);
   const closingAfterSelectionRef = useRef(false);
@@ -157,7 +138,7 @@ export default function TabOneScreen() {
         latitudeDelta: 0.003,
         longitudeDelta: 0.003,
       },
-      600,
+      600
     );
     setSelectedStop(stop);
     setSelectedRouteId(null);
@@ -188,7 +169,7 @@ export default function TabOneScreen() {
         const location = await Location.getCurrentPositionAsync({});
         const regionId = resolveTransitRegionId(
           location.coords.latitude,
-          location.coords.longitude,
+          location.coords.longitude
         );
         setInitialRegion({
           latitude: location.coords.latitude,
@@ -221,22 +202,19 @@ export default function TabOneScreen() {
         latitudeDelta: 0.006,
         longitudeDelta: 0.006,
       },
-      500,
+      500
     );
   }
 
   const visibleStopIds = useMemo(() => {
     const ids = stops
       .filter((stop) => {
-        if (selectedRouteId)
-          return stop.routes.some((r) => r.id === selectedRouteId);
+        if (selectedRouteId) return stop.routes.some((r) => r.id === selectedRouteId);
         if (!visibleRegion) return false;
         const latOk =
-          Math.abs(stop.latitude - visibleRegion.latitude) <
-          visibleRegion.latitudeDelta / 2;
+          Math.abs(stop.latitude - visibleRegion.latitude) < visibleRegion.latitudeDelta / 2;
         const lngOk =
-          Math.abs(stop.longitude - visibleRegion.longitude) <
-          visibleRegion.longitudeDelta / 2;
+          Math.abs(stop.longitude - visibleRegion.longitude) < visibleRegion.longitudeDelta / 2;
         return latOk && lngOk;
       })
       .map((s) => s.id);
@@ -258,9 +236,7 @@ export default function TabOneScreen() {
       .filter((stop) => stop.name.toLowerCase().includes(query))
       .slice(0, 10)
       .map((stop) => {
-        const uniqueRoutes = Array.from(
-          new Map(stop.routes.map((r) => [r.id, r])).values(),
-        );
+        const uniqueRoutes = Array.from(new Map(stop.routes.map((r) => [r.id, r])).values());
         return {
           id: stop.id,
           name: stop.name,
@@ -276,8 +252,7 @@ export default function TabOneScreen() {
     const streetResults: SearchResult[] = streets
       .filter(
         (street) =>
-          street.nameEs.toLowerCase().includes(query) ||
-          street.nameEu.toLowerCase().includes(query),
+          street.nameEs.toLowerCase().includes(query) || street.nameEu.toLowerCase().includes(query)
       )
       .slice(0, 10)
       .map((street) => ({
@@ -358,9 +333,7 @@ export default function TabOneScreen() {
     let interval: any;
     const fetchVehicles = async () => {
       try {
-        const res = await fetch(
-          `http://192.168.50.10:3000/api/buses?routeId=${selectedRouteId}`,
-        );
+        const res = await fetch(`http://192.168.50.10:3000/api/buses?routeId=${selectedRouteId}`);
         const data = await res.json();
         setVehicles(Array.isArray(data) ? data : []);
       } catch {
@@ -385,7 +358,7 @@ export default function TabOneScreen() {
           latitudeDelta: 0.003,
           longitudeDelta: 0.003,
         },
-        500,
+        500
       );
       setSelectedStop(stop);
       setSearch("");
@@ -411,7 +384,7 @@ export default function TabOneScreen() {
           latitudeDelta: 0.006,
           longitudeDelta: 0.006,
         },
-        500,
+        500
       );
       setSelectedStop(null);
       setSelectedRouteId(null);
@@ -437,7 +410,7 @@ export default function TabOneScreen() {
         latitudeDelta: 0.006,
         longitudeDelta: 0.006,
       },
-      500,
+      500
     );
     setSelectedStop(null);
     setSelectedRouteId(null);
@@ -473,7 +446,7 @@ export default function TabOneScreen() {
       location.coords.latitude,
       location.coords.longitude,
       destination.latitude,
-      destination.longitude,
+      destination.longitude
     );
     if (!routes.length) return;
 
@@ -490,9 +463,7 @@ export default function TabOneScreen() {
     setRoutePlanVersion((v) => v + 1);
     setNavigationActive(true);
 
-    const firstTransit = route.steps.find(
-      (s): s is TransitStep => s.type === "transit",
-    );
+    const firstTransit = route.steps.find((s): s is TransitStep => s.type === "transit");
     if (firstTransit) setSelectedRouteId(firstTransit.routeId);
 
     const points = route.steps.flatMap((step) =>
@@ -501,7 +472,7 @@ export default function TabOneScreen() {
         : [
             { latitude: step.fromLat, longitude: step.fromLng },
             { latitude: step.toLat, longitude: step.toLng },
-          ],
+          ]
     );
     mapRef.current?.fitToCoordinates(points, {
       edgePadding: { top: 120, right: 60, bottom: 250, left: 60 },
@@ -536,9 +507,7 @@ export default function TabOneScreen() {
         onPress={() => Keyboard.dismiss()}
         onRegionChangeComplete={(region) => setVisibleRegion(region)}
       >
-        <RouteLines
-          selectedRouteId={navigationActive ? null : selectedRouteId}
-        />
+        <RouteLines selectedRouteId={navigationActive ? null : selectedRouteId} />
         <TransitStops
           stops={stops}
           visibleStopIds={navigationActive ? navigationStopIds : visibleStopIds}

@@ -1,8 +1,8 @@
-import test from "node:test";
 import assert from "node:assert/strict";
+import test from "node:test";
 
-import { normalizeTransitDatasetPayload } from "../services/transit/transitRepository";
 import { staticTransitDataset } from "../services/transit/staticTransitDataset";
+import { normalizeTransitDatasetPayload } from "../services/transit/transitRepository";
 
 test("normalizeTransitDatasetPayload merges remote payload with local fallback", () => {
   const remotePayload = {
@@ -13,13 +13,15 @@ test("normalizeTransitDatasetPayload merges remote payload with local fallback",
       agencyId: "test-agency",
       modes: ["bus"],
     },
-    stops: [{
-      id: "remote-stop",
-      name: "Remote stop",
-      latitude: 43.25,
-      longitude: -2.92,
-      routes: [{ id: "R1", name: "Route 1" }],
-    }],
+    stops: [
+      {
+        id: "remote-stop",
+        name: "Remote stop",
+        latitude: 43.25,
+        longitude: -2.92,
+        routes: [{ id: "R1", name: "Route 1" }],
+      },
+    ],
   };
 
   const normalized = normalizeTransitDatasetPayload(remotePayload, "bilbao");
